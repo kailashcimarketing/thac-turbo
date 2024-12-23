@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+<div class="{{value.css_class}} table-responsive table-content">
+    {% for block in value.table_item %}
+    {% include_block block %}
+    {% endfor %}
+</div>

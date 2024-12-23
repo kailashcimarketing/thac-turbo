@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}general-page innerpage{% endblock %}
+
+{% block content %}
+{% include "pages/hero.html" with type="internal" page=page %}
+
+{% with blocks=page.body %}
+{% for block in blocks %}
+{% include_block block %}
+{% endfor %}
+{% endwith %}
+{% endblock content %}

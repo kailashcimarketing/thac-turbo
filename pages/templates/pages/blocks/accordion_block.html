@@ -1,0 +1,20 @@
+{% load wagtailcore_tags %}
+<div class="accordion" id="{{value.accordion_id|slugify|default:'accordion-block'}}">
+    {% for item in value.items %}
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-{{item.title|slugify}}">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{item.title|slugify}}" aria-expanded="true" aria-controls="collapse-{{item.title|slugify}}">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="collapse-{{item.title|slugify}}" class="accordion-collapse collapse show" aria-labelledby="heading-{{item.title|slugify}}" data-bs-parent="#{{value.accordion_id|slugify|default:'accordion-block'}}">
+        <div class="accordion-body">
+          {% for block in item.content_blocks %}
+          {% include_block block %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+  </div>

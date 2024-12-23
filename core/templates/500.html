@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}error500-page{% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="container">
+        <h1>Internal server error</h1>
+
+        <p>Sorry, there seems to be an error. Please try again soon.</p>        
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,7 @@
+
+{% load wagtailcore_tags %}
+<div class="sub-section {{value.css_class|safe}}">
+    {% for block in value.content.content %}
+    {% include_block block %}
+    {% endfor %}
+</div>

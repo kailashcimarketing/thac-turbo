@@ -1,0 +1,6 @@
+<div class="complex-content__section-txt-wrap {{value.list_style}} {{value.css_class}} {{value.ul_style}}">
+        {{value.content |safe}}
+        {% if value.ul_style == 'icon' and value.list_icon %}
+        <div class="icon-html d-none">{{value.list_icon|safe}}</div>
+        {% endif %}
+</div>

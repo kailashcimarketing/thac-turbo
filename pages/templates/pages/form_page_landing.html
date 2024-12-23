@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}general hero-type-{{page.hero_type}} {{page.body_class}}{% endblock %}
+{% block inner_content_class %}inner-page-content{% endblock %}
+{% block content %}
+{% include "pages/hero.html" with type=page.hero_type page=page %}
+
+{% with blocks=page.top_body %}
+{% for block in blocks %}
+    <section class="block-{{ block.block_type }}">
+      {% include_block block %}
+    </section>      
+{% endfor %}
+{% endwith %}
+
+    <!-- form -->
+    <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          {% block thankyou_message %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- form end -->
+
+  {% with blocks=page.bottom_body %}
+    {% for block in blocks %}
+        <section class="block-{{ block.block_type }}">
+          {% include_block block %}
+        </section>      
+    {% endfor %}
+  {% endwith %}
+{% endblock %}

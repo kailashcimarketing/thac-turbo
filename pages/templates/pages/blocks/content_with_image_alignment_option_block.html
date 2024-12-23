@@ -1,0 +1,15 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="section image-{{value.alignment}}">
+
+    <div class="container">
+        <div class="col-lg-6">
+            {% image value.image original as img %}
+            <img src="{{img.url}}" class="full">
+        </div>
+        <div class="col-lg-6">
+            {% for block in value.content %}
+            {% include_block block %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
