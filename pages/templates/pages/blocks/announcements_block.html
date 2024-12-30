@@ -1,0 +1,44 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section class="s-small-banners position-relative">
+    <div class="container position-relative s-small-banners__container container-anim-js">
+        {% if value.title or value.script_title %}
+        <h2 class="s-small-banners__title block-anim-js block-anim--from-right-js">{{value.title|safe|default:""}}
+            <span class="child-special-text"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.script_title|safe|default:""}}</span></span>
+        </h2>
+        {% endif %}
+        <div class="swiper swiper-md-def-js overflow-visible">
+            <div class="row s-small-banners__row swiper-wrapper">
+                {% for item in value.items %}
+                <div class="col-4 s-small-banners__col swiper-slide block-anim-js block-anim--from-right-js block-anim--each-3-js">
+                    <div class="small-banner-card position-relative overflow-hidden hover-pic-wrap">
+                        <a href="{{item.href.url}}" {{item.href.target}} class="link-mask"></a>
+                        {% image item.image fill-400x400-c100 format-webp as img %}
+                        <img class="small-banner-card__pic w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if value.button.text %}
+        <div class="s-small-banners__btn-wrap d-md-block d-none block-anim-js">
+            <a href="{{value.button.href.url}}" {{value.button.href.target}} class="big-circle-btn big-circle-btn--secondary d-flex align-items-center justify-content-center">
+                <svg class="big-circle-btn__border">
+                    <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                    <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                </svg>
+                <span class="big-circle-btn__txt transition-def">{{value.button.text|safe}}</span> </a>
+        </div>
+        {% endif %}
+        {% if value.button.text %}
+        <div class="s-small-banners__btn-wrap-2 d-md-none d-block text-center block-anim-js">
+            <a href="{{value.button.href.url}}" {{value.button.href.target}} class="btn btn--third">
+                <span class="btn__content">
+                    <span class="btn__txt">{{value.button.text|safe}}</span>
+                    <svg class="btn__arrow" width="15" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.25 7.5625L8.75 12.8125C8.4375 13.0938 7.96875 13.0938 7.6875 12.7812C7.40625 12.4688 7.40625 12 7.71875 11.7188L11.875 7.75H1.25C0.8125 7.75 0.5 7.4375 0.5 7C0.5 6.59375 0.8125 6.25 1.25 6.25H11.875L7.71875 2.3125C7.40625 2.03125 7.40625 1.53125 7.6875 1.25C7.96875 0.9375 8.46875 0.9375 8.75 1.21875L14.25 6.46875C14.4062 6.625 14.5 6.8125 14.5 7C14.5 7.21875 14.4062 7.40625 14.25 7.5625Z" fill="currentColor"/>
+</svg></span> </a>
+        </div>
+        {% endif %}
+    </div>
+</section>

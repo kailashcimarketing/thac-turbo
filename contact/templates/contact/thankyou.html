@@ -1,0 +1,11 @@
+{% extends "contact/contact_form.html" %}
+{% load static wagtailcore_tags wagtailimages_tags crispy_forms_tags %}
+
+{% block thankyou_message %}
+<div class="col-lg-6 offset-lg-3">
+  {{ page.thankyou_message|richtext }}
+</div>
+{% endblock %}
+
+{% block form %}
+{% endblock %}

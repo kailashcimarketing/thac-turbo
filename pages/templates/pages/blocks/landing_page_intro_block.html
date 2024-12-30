@@ -1,0 +1,66 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-college position-relative">
+    <div class="s-college__bg-wrap overlay--special overlay after-el before-el">
+        {% image value.background_image original format-webp as img %}
+        <img class="w-100 h-100 obj-cover" src="{{img.url}}" alt="">
+    </div>
+    <div class="container s-college__container container-anim-js">
+        <div class="position-relative s-college__title-wrap">
+            <div class="s-college__big-circle-btn-wrap position-absolute z-index-3 d-md-block d-none block-anim-js">
+                <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
+                    <svg class="big-circle-btn__border">
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                    </svg>
+                    <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0.521484L2.25 1.83398L15.75 9.75586L18 11.0215L15.75 12.334L2.25 20.209L0 21.5215V18.9434V3.14648V0.521484ZM2.25 4.45898V17.6309L13.5 11.0215L2.25 4.45898Z" class="transition-def" fill="white"></path>
+                    </svg>
+                </a>
+            </div>
+            <h2 class="s-college__title mb-0 h1 block-anim-js block-anim--from-right-js">
+                {{value.primary_title|safe}}
+            </h2>
+        </div>
+        {% if value.text %}
+        <div class="s-college__txt-wrap last-el-mb-0 block-anim-js">
+            <p>{{value.text|safe}}</p>
+        </div>
+        <h3 class="s-college__big-txt-wrap text-anim-by-line-js position-relative z-index-3 text-anim-by-line-js">
+            {{value.title|safe}}
+        </h3>
+        {% if value.button.text %}
+                    <div class="s-college__btn-wrap d-md-none d-block text-center block-anim-js">
+                        <a href="{{value.button.href.url}}" class="btn btn--third">
+                                 <span class="btn__content">
+                                   <span class="btn__txt">{{value.button.text|safe}} </span>
+                                 </span> </a>
+                    </div>
+                    {% endif %}
+    </div>
+</section>
+<section class="s-quote s-quote--primary parallax-trigger-js">
+    <div class="container s-quote__container container-anim-js">
+        <div class="row s-quote__row">
+            <div class="col-lg-5 col-12 s-quote__col s-quote__col-1">
+                <div class="s-quote__col-content position-relative">
+                    <blockquote class="s-quote__txt-wrap block-anim-js">
+                        <p>{{value.quote|safe}}</p>
+                    </blockquote>
+                    <h3 class="s-quote__name h6 fw-500 mb-0 block-anim-js">
+                        {{value.quote_by|safe}}
+                    </h3>
+                    <div class="s-quote__icon-wrap block-anim-js">
+                        
+                        <img class="s-quote__icon" src="/sattic/images/about/Quote-Right.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-12 s-quote__col s-quote__col-2">
+                <div class="s-quote__pic-wrap parallax-y-js parallax-js">
+                    {% image value.image fill-790x860-c100 format-webp as img %}
+                    <img class="s-quote__pic w-100 h-100 obj-cover block-anim-js" src="{{img.url}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

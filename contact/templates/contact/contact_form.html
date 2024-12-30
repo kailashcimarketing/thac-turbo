@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags crispy_forms_tags widget_tweaks %}
+{% block body_class %}contact-page innerpage sky-blue-04-bg{% endblock %}
+
+
+{% block content %}
+{% include "pages/hero.html" with type="internal" page=page %}
+
+{% with blocks=page.body %}
+{% for block in blocks %}
+{% include_block block %}
+{% endfor %}
+{% endwith %}
+<section class="contact-form-section section" style="background-image:url(images/Hero.jpg) ;">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="form-wrap">
+                    <div class="section-header">
+                        <h2>General Enquiry</h2>
+                        <p>Please use this form to contact the school with general enquiries. For any accounts
+                            matters, please send an email to <a
+                                href="mailto:accounts@wycliffe.nsw.edu.au">accounts@wycliffe.nsw.edu.au</a> </p>
+                    </div>
+                    {% block thankyou_message %}
+                        {% endblock %}
+                        {% block form %}
+                        {{form.errors}}
+                        <form action="." method="POST" class="contact-form">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="">First Name </label>
+                                    {% render_field form.first_name class+="form-control" placeholder="John" autocomplete="Off" %}
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="">Last Name </label>
+                                    {% render_field form.last_name class+="form-control" placeholder="John" autocomplete="Off" %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="">Email Address </label>
+                                    {% render_field form.email class+="form-control" placeholder="John" autocomplete="Off" %}
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="">Phone </label>
+                                    {% render_field form.phone class+="form-control" placeholder="Enter your mobile or home number" autocomplete="Off" %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="">Enquiry</label>
+                                    {% render_field form.enquiry class+="form-control" placeholder="Enter your message here...." autocomplete="Off" %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="">I’m interested in enrolment for the following year groups</label>
+                                    <div class="select-box">
+                                        {% render_field form.year_of_group class+="form-control" autocomplete="Off" %}    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="">I am enquiring about enrolment for the following calendar year
+    
+                                    </label>
+                                    <div class="select-box">
+                                        {% render_field form.calendar_year class+="form-control" autocomplete="Off" %}    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    
+                                        {% render_field form.captcha %}    
+                                    
+                                </div>
+                            </div>
+                            
+    
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="btn-wrap">
+                                        <input type="submit" value="Send Enquiry" class="btn btn-solid-red">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        {% endblock %}
+                    
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-------------------------------->
+
+{% with blocks=page.bottom_body %}
+{% for block in blocks %}
+{% include_block block %}
+{% endfor %}
+{% endwith %}
+
+
+{% endblock %}

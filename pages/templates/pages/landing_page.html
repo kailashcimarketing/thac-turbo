@@ -4,7 +4,7 @@
 {% block body_class %}landing-page innerpage{% endblock %}
 
 {% block content %}
-{% include "pages/hero.html" with type="internal" page=page %}
+{% include "pages/hero.html" with type="landing" page=page %}
 
 {% with blocks=page.body %}
 {% for block in blocks %}

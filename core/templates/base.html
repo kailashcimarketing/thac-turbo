@@ -40,24 +40,18 @@
 
     <body class="{% block body_class %}{% endblock %} {{page.body_css_class|safe}}">
         {% wagtailuserbar %}
-
-        {% load_content_holder "alert-box" %}
-        
+        {% block pre_loader %}{% endblock %}
         {% load_content_holder "header-design" %}
-
-        <!--- post header -->
-        {% block post_header_design %}{% endblock %}
-        <!--- post header end-->
-        <main class="{% block main_div_class %}{% endblock %}">
-            {% block content %}{% endblock %}
-        </main>
-        {% load_content_holder "footer-design" %}
-
+        <div id="body-content-wrap" class="body-content-wrap hide-scrollbar {% block main_div_class %}{% endblock %}" data-scrollbar>
+            <div id="body-content" class="body-content">
+                {% block content %}{% endblock %}
+                {% load_content_holder "footer-design" %}
+            </div>
+        </div>
+        {% block model_block %}{% endblock %}
         {% load_content_holder "footer-script" %}
-        
-
-        {% block extra_js %}        {{ block.super }}
-        {% endblock %}
+        {% load_content_holder "modal-content" %}
+        {% block extra_js %}{% endblock %}
         <script>
             {{ settings.core.ExtraStyleSettings.extra_js|safe|default:"" }}
         </script>

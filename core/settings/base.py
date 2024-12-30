@@ -58,7 +58,9 @@ INSTALLED_APPS = [
      'crispy_bootstrap5',
      'wagtailmenus',
      "compressor",
-     'wagtail.contrib.table_block',
+    'wagtail.contrib.table_block',
+     'django_recaptcha',
+      'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -195,15 +197,40 @@ WAGTAILSEARCH_BACKENDS = {
     }
 }
 
+# ReCaptcha
+NOCAPTCHA = True
+RECAPTCHA_PUBLIC_KEY = '6LckEb0UAAAAAJ7wFGQGFBESsRzYgIAHiV_MT0ed'
+RECAPTCHA_PRIVATE_KEY = '6LckEb0UAAAAAB_uiqS_y1DY7LV8goPRvGoQ47X9'
+
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
+ALLOWED_HOSTS = ['*']
+SECRET_KEY = '7tr09iq2_mef500rvcven_ho1qg1zghc26sdmo1#@&3d6kqgik'
+FABRIC = {
+    "DEPLOY_TOOL": "git",  # Deploy with "git", "hg", or "rsync"
+    "SSH_USER": "ec2-user",  # VPS SSH username
+    "HOSTS": ['52.63.59.32'],  # The IP address of your VPS
+    "DOMAINS": ALLOWED_HOSTS,  # Edit domains in ALLOWED_HOSTS
+    "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
+    "LOCALE": "en_US.UTF-8",  # Should end with ".UTF-8"
+    #"DB_NAME": 'schooldemo',
+    #"DB_PASS": "",  # Live database password
+    #"ADMIN_PASS": "",  # Live admin user password
+    "SECRET_KEY": SECRET_KEY,
+    "USER": "ec2-user",
+    "VENV": "/home/ec2-user/.virtualenvs/thacenv",
+    "CELERY_LOG": '/var/log/celery/celery.log',
+    "PEM_KEY": '~/.ssh/cimarketing-key.pem',
+}
+
 
 # Allowed file extensions for documents in the document library.
 # This can be omitted to allow all files, but note that this may present a security risk
 # if untrusted users are allowed to upload files -
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
+WAGTAILIMAGES_EXTENSIONS = ["gif", "jpg", "jpeg", "png", "webp", "svg"]
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -222,3 +249,4 @@ LOGGING = {
         },
     },
 }
+

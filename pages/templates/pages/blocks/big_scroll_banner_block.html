@@ -1,0 +1,54 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-scroll-banners text-center">
+    <div class="s-scroll-banners__container-main container position-relative  container-anim-js">
+        <div class="container s-scroll-banners__container">
+            <h2 class="s-scroll-banners__title">
+                <span class="d-md-block d-none">
+                {{value.title|safe}} {{value.script_title|safe|default:""}}
+                </span> <span class="d-md-none d-block">
+                    {{value.title|safe}} <span class="child-special-text"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.script_title|safe|default:""}}</span></span>
+                </span>
+            </h2>
+        </div>
+        <div class="swiper swiper-md-def-js overflow-visible">
+            <div class="swiper-wrapper s-scroll-banners__pics-wrap">
+                {% for item in value.items %}
+                <div class="swiper-slide s-scroll-banners__slide">
+                    <div class="s-scroll-banners__pic-wrap after-el after-el--full hover-pic-wrap overflow-hidden">
+                        <a href="{{item.href.url}}" {{item.href.target}} class="link-mask"></a>
+                        {% image item.image fill-640x700-c100 format-webp as img %}
+                        <img class="s-scroll-banners__pic w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
+                        <div class="s-scroll-banners__content position-relative z-index-4 d-md-none d-block">
+                            <h3 class="s-scroll-banners__content-title position-relative">{{item.title|safe|default:""}}                                <span class="s-scroll-banners__content-title-arrow-wrap">
+                    <svg class="s-scroll-banners__content-title-arrow" width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="transition-def" d="M14.1064 9.00098L9.3252 13.8135L8.79395 14.3447L7.73145 13.2822L8.2627 12.751L11.7627 9.21973H1.4502H0.700195V7.71973H1.4502H11.7627L8.2627 4.21973L7.73145 3.68848L8.79395 2.62598L9.3252 3.15723L14.1064 7.93848L14.6377 8.46973L14.1064 9.00098Z" fill="white"></path>
+                    </svg>
+                </span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if value.button.text %}
+        <div class="s-scroll-banners__btn-wrap d-md-block d-none block-anim-js">
+            <a href="{{value.button.href.url}}" {{value.button.href.target}} class="big-circle-btn big-circle-btn--secondary d-flex align-items-center justify-content-center">
+                <svg class="big-circle-btn__border">
+                    <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                    <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                </svg>
+                <span class="big-circle-btn__txt transition-def">{{value.button.text|safe}}</span>
+            </a>
+        </div>
+        <div class="s-scroll-banners__btn-wrap-2 d-md-none d-block text-center block-anim-js">
+            <a href="{{value.button.href.url}}" {{value.button.href.target}} class="btn btn--third">
+                <span class="btn__content">
+                    <span class="btn__txt">{{value.button.text|safe}}</span>
+                    <svg class="btn__arrow" width="15" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.25 7.5625L8.75 12.8125C8.4375 13.0938 7.96875 13.0938 7.6875 12.7812C7.40625 12.4688 7.40625 12 7.71875 11.7188L11.875 7.75H1.25C0.8125 7.75 0.5 7.4375 0.5 7C0.5 6.59375 0.8125 6.25 1.25 6.25H11.875L7.71875 2.3125C7.40625 2.03125 7.40625 1.53125 7.6875 1.25C7.96875 0.9375 8.46875 0.9375 8.75 1.21875L14.25 6.46875C14.4062 6.625 14.5 6.8125 14.5 7C14.5 7.21875 14.4062 7.40625 14.25 7.5625Z" fill="currentColor"/>
+</svg></span> </a>
+        </div>
+        {% endif %}
+    </div>
+</section>

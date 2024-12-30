@@ -6,11 +6,13 @@ HomePage.content_panels = [
     FieldPanel('title', classname='title'),
     InlinePanel('homepage_hero', label='Hero Images', panels=[        
         FieldPanel('title'), 
+        FieldPanel('script_title'),
         FieldPanel('image'),
         FieldPanel('background_video_url'),
+        FieldPanel('video_poster_image'),
         FieldPanel('button_label'), 
         FieldPanel('button_url'),  
-        FieldPanel('popup_video_url'),
+        #FieldPanel('popup_video_url'),
     ],max_num=1),
     FieldPanel('body'),
 ]

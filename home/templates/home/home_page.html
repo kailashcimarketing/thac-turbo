@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags extra_tags %}
 {% block body_class %}home-page{% endblock %}
+{% block pre_loader %}
+
+{% endblock %}
 
 {% block content %}
-{% include "pages/hero.html" with type="internal" page=page %}
+{% include "pages/hero.html" with type="home" page=page %}
 
 {% with blocks=page.body %}
 {% for block in blocks %}

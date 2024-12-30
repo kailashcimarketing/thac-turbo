@@ -306,6 +306,140 @@ class ContentWithImageAlignmentOption(blocks.StructBlock):
         template = "pages/blocks/content_with_image_alignment_option_block.html"
 
 
+
+class AnnouncementsBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    script_title = blocks.CharBlock(required=False)
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock()),
+        ('href',HrefBlock())
+    ]))
+    button = SimpleButton()
+    class Meta:
+        label = "Announcements"
+        template = "pages/blocks/announcements_block.html"
+
+class FeaturedSectionBlock(blocks.StructBlock):
+    parallax_image = ImageChooserBlock()
+    title = blocks.CharBlock()
+    highlighted_title = blocks.CharBlock(required=False)
+    button = SimpleButton()
+    class Meta:
+        label = "Featured Section"
+        template = "pages/blocks/featured_section_block.html"
+
+class BigScrollBannerBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    script_title = blocks.CharBlock(required=False)
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock()),
+        ('href',HrefBlock())
+    ]))
+    button = SimpleButton()
+    class Meta:
+        label = "Big scroll banner"
+        template = "pages/blocks/big_scroll_banner_block.html"
+
+class IconBlock(blocks.StructBlock):
+    icon_code = blocks.CharBlock(required=False)
+    icon_svg = DocumentChooserBlock(required=False)    
+    icon_image = ImageChooserBlock(required=False)
+    class Meta:
+        label = "Icon"
+        template = "pages/blocks/icon_block.html"
+
+class TwoColumnScrollSliderBlock(blocks.StructBlock):
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock()),
+        ('icon',ImageChooserBlock()),
+        ('pre_title',blocks.CharBlock()),
+        ('title',blocks.CharBlock()),
+        ('script_title',blocks.CharBlock(required=False)),
+        ('text',blocks.RichTextBlock(required=False))
+    ]))        
+    class Meta:
+        label = "Two column scroll slider"
+        template = "pages/blocks/two_column_scroll_slider.html"
+
+
+class FullWidthPromoBannerBlock(blocks.StructBlock):
+    image = ImageChooserBlock(label="Background Image")
+    title = blocks.CharBlock()
+    text  = blocks.TextBlock()
+    button = SimpleButton()
+    class Meta:
+        template = "pages/blocks/fullwidth_promobanner_block.html"        
+        label = "Full width promo banner"
+        
+class ProfileWithVideoBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    image = ImageChooserBlock(label="Profile Picture")
+    text = blocks.TextBlock(label="Short Description")
+    video_url = blocks.URLBlock()
+    video_poster = ImageChooserBlock(required=False)
+    button = SimpleButton()
+
+    class Meta:
+        label = "Profile with video"
+        template = "pages/blocks/profile_with_video_block.html"
+
+
+class CTACardLinksBlock(blocks.StructBlock):
+    image = ImageChooserBlock(label="Default backgrund image")
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock(label="Background image")),
+        ('icon',ImageChooserBlock()),
+        ('title',blocks.CharBlock()),
+        ('text',blocks.TextBlock()),
+        ('button',SimpleButton()),
+    ]))
+    class Meta:
+        label = "CTA card links"
+        template = "pages/blocks/cta_card_links_block.html"
+
+
+class PromoBlock(blocks.StructBlock):
+    image = ImageChooserBlock(label="Background image")
+    promo_image = ImageChooserBlock()
+    title = blocks.CharBlock()
+    title2 = blocks.CharBlock()
+    text = blocks.TextBlock()
+    script_title = blocks.CharBlock(required=False)
+    class Meta:
+        label = "Promo Banner"
+        template = "pages/blocks/promo_banner_block.html"
+
+class LandingPageIntroBlock(blocks.StructBlock):
+    background_image = ImageChooserBlock()
+    primary_title = blocks.CharBlock()        
+    text = blocks.TextBlock(required=False)
+    video_url = blocks.URLBlock(help_text="Mp4 Video")
+    title = blocks.CharBlock(required=False)
+    image = ImageChooserBlock()
+    quote = blocks.TextBlock(required=False)
+    quote_by = blocks.CharBlock(required=False)
+    button = SimpleButton()
+    class Meta:
+        group = "Landing Page"
+        label = "Intro content for landing page"
+        template = "pages/blocks/landing_page_intro_block.html"
+        
+class ExplorePagesBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    landing_page = PageChooserBlock(required=False)
+    class Meta:
+        label = "Explore Pages(local navigation)"
+        group = "Landing Page"
+        template = "pages/blocks/explore_pages_block.html"
+    
+class QuoteWithImage(blocks.StructBlock):
+    quote = blocks.RichTextBlock()
+    quote_by = blocks.CharBlock()
+    image = ImageChooserBlock()
+    class Meta:
+        label = "Quote with image"
+        template = "pages/blocks/quote_with_image_block.html"
+        
 #custompreviousnext
 #dynamicprevnext
 #news

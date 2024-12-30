@@ -69,6 +69,7 @@ class LandingpageHero(HeroAbstract):
 
 class LandingPage(Page):
     body = StreamField(landingpage_stream_fields,null=True,blank=True)
+    
 
     template = 'pages/landing_page.html'
     class Meta:

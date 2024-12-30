@@ -8,6 +8,17 @@ common_blocks = [
     ('TwoColumnBlock',TwoColumnBlock()),
     ('SliderGalleryBlock',SliderGalleryBlock()),
     ('ContentWithImageAlignmentOption',ContentWithImageAlignmentOption()),
+    ('AnnouncementsBlock',AnnouncementsBlock()),
+    ('FeaturedSectionBlock',FeaturedSectionBlock()),
+    ('BigScrollBannerBlock',BigScrollBannerBlock()),
+    ('TwoColumnScrollSliderBlock',TwoColumnScrollSliderBlock()),
+    ('FullWidthPromoBannerBlock',FullWidthPromoBannerBlock()),
+    ('ProfileWithVideoBlock',ProfileWithVideoBlock()),
+    ('CTACardLinksBlock',CTACardLinksBlock()),
+    ('PromoBlock',PromoBlock()),
+    ('LandingPageIntroBlock',LandingPageIntroBlock()),
+    ('ExplorePagesBlock',ExplorePagesBlock()),
+    ('QuoteWithImage',QuoteWithImage()),
 ]
 homepage_stream_fields= common_blocks+ []
 

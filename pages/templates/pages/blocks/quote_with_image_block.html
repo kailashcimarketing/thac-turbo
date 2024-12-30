@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-quote s-quote--secondary">
+    <div class="container s-quote__container  container-anim-js">
+        <div class="row s-quote__row">
+            <div class="col-xl-7 col-lg-6 s-quote__col s-quote__col-1">
+                <div class="s-quote__col-content position-relative h-100 block-anim-js">
+                    <blockquote class="s-quote__txt-wrap">
+                        {{value.quote|safe}}
+                    </blockquote>
+                    <h3 class="s-quote__name h6 fw-500 mb-0 block-anim-js">
+                        {{value.quote_by|safe}}
+                    </h3>
+                    <div class="s-quote__icon-wrap block-anim-js">
+                        
+                        <img class="s-quote__icon" src="/static/images/about/Quote-Right.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6 s-quote__col s-quote__col-2">
+                <div class="s-quote__pic-wrap parallax-y-js parallax-js">
+                    {% image value.image fill-400x540-c100 format-webp as img  %}
+                    <img class="s-quote__pic w-100 h-100 obj-cover block-anim-js" src="{{img.url}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

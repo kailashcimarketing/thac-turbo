@@ -14,7 +14,8 @@ GeneralPage.content_panels = Page.content_panels + [
 LandingPage.content_panels = Page.content_panels + [
     InlinePanel('landingpage_hero', label='Hero Images', panels=[
         FieldPanel('image'),
-        FieldPanel('title'),        
+        #FieldPanel('title'),     
+        #FieldPanel('background_video_url'),   
     ],max_num=1),
     FieldPanel('body'),
 ]

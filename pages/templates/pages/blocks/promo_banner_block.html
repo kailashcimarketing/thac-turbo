@@ -1,0 +1,20 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-promo-banner position-relative overflow-hidden">
+    <div class="s-promo-banner__bg-wrap overlay--special overlay after-el before-el">
+        {% image value.image original format-webp as img %}
+        <img class="w-100 h-100 obj-cover" src="{{img.url}}" alt="">
+    </div>
+    <h2 class="s-promo-banner__big-txt">
+        <span class="s-promo-banner__big-txt-line s-promo-banner__big-txt-line--1">{{value.title|safe}}</span>
+        <span class="s-promo-banner__big-txt-line s-promo-banner__big-txt-line--2">{{value.title2|safe}}</span>
+    </h2>
+    <div class="container s-promo-banner__container text-center container-anim-js">
+        <div class="s-promo-banner__pic-wrap d-inline-block position-relative after-el  block-anim-js">
+            {% image value.promo_image original format-webp as img %}
+            <img class="s-promo-banner__pic" src="{{img.url}}" alt="">
+        </div>
+        <h2 class="s-promo-banner__title position-relative z-index-2 mb-0  block-anim-js">{{value.text|safe}}
+            <span class="child-special-text"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.script_title|safe}}</span></span>
+        </h2>
+    </div>
+</section>

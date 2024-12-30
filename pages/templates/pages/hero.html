@@ -1,0 +1,103 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if page.get_hero %}
+
+{% for item in page.get_hero %}
+{% if type == 'home' %}
+<section class="hero-primary position-relative d-flex align-items-end">
+
+    <div class="overlay hero-primary__bg-wrap after-el after-el--full before-el overflow-hidden">
+        {% image item.image fill-1920x533-c100 format-webp as img %}
+        <img class="w-100 h-100 obj-cover hero-pic-scale-js" src="{{img.url}}" alt="">
+    </div>
+    <div class="container container-hero-anim-js hero-primary__container position-relative d-xl-flex flex-wrap justify-content-between align-items-end">
+        <div class="hero-primary__big-circle-btn-wrap position-absolute hero-item-js hero-item-2-js">
+            <a href="#modal-2" class="big-circle-btn d-flex align-items-center justify-content-center modal-toggle-btn-js">
+                <svg class="big-circle-btn__border">
+                    <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                    <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                </svg>
+                <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0.521484L2.25 1.83398L15.75 9.75586L18 11.0215L15.75 12.334L2.25 20.209L0 21.5215V18.9434V3.14648V0.521484ZM2.25 4.45898V17.6309L13.5 11.0215L2.25 4.45898Z" class="transition-def" fill="white"/>
+                </svg>
+            </a>
+        </div>
+        {% if item.background_video_url %}
+        <div class="d-xl-none hero-primary__btn-wrap position-relative z-index-3 hero-item-js hero-item-2-js">
+            <a class="link-with-icon bg-img-none modal-toggle-btn-js" href="#modal-2">
+                        <span class="link-with-icon__icon-wrap">
+                            <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.0566406 1.07959L1.55664 1.95459L10.5566 7.23584L12.0566 8.07959L10.5566 8.95459L1.55664 14.2046L0.0566406 15.0796V13.3608V2.82959V1.07959ZM1.55664 3.70459V12.4858L9.05664 8.07959L1.55664 3.70459Z" fill="currentColor"/>
+</svg></span> <span class="ink-with-icon__txt">Play Video</span> </a>
+        </div>
+        {% endif %}
+        <div class="col-auto hero-primary__col hero-primary__col-1">
+            <h1 class="hero-primary__title hero-title-js">
+                {{item.title|safe}}
+                {% if item.script_title %}
+                <span class="child-special-text"><span class="child-special-text__txt">{{item.script_title|safe}}</span></span>
+                {% endif %}
+            </h1>
+        </div>
+        <div class="col-auto hero-primary__col hero-primary__col-2 hero-item-js hero-item-3-js">
+            <div class="hero-primary__small-card transition-def position-relative overflow-hidden d-inline-flex align-items-center">
+                <a href="https://thac.youtour.com.au/a/thac/index.htm" target="_blank" class="link-mask"></a>
+                <div class="hero-primary__small-card-pic-wrap">
+                    <img class="hero-primary__small-card-pic w-100 h-100 obj-cover" src="/static/images/homepage/hero-pic-2.webp" alt="">
+                </div>
+                <div class="hero-primary__small-card-content text-uppercase last-el-mb-0">
+                    <h4 class="hero-primary__small-card-title">TAKE A VIRTUAL TOUR</h4>
+                    <p>CLICK TO EXPLORE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if item.background_video_url %}
+<div id="modal-2" class="modal modal--full-video modal--secondary-anim position-fixed d-flex flex-column modal-js">
+    <a href="#modal-2" class="modal__overlay position-absolute bg-img-none modal-toggle-btn-js"></a>
+    <div  data-scroll="exclude" class="modal__block hide-scrollbar position-relative m-auto">
+        <a href="#modal-2" class="modal-close bg-img-none modal-toggle-btn-js d-flex justify-content-center align-items-center cursor-pointer position-absolute">
+            <svg class="modal-close__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="transition-def" d="M15.1875 7.58691L11.9062 10.8682L15.1875 14.1807C15.5938 14.5557 15.5938 15.2119 15.1875 15.5869C14.8125 15.9932 14.1562 15.9932 13.7812 15.5869L10.5 12.3057L7.1875 15.5869C6.8125 15.9932 6.15625 15.9932 5.78125 15.5869C5.375 15.2119 5.375 14.5557 5.78125 14.1807L9.0625 10.8682L5.78125 7.58691C5.375 7.21191 5.375 6.55566 5.78125 6.18066C6.15625 5.77441 6.8125 5.77441 7.1875 6.18066L10.5 9.46191L13.7812 6.18066C14.1562 5.77441 14.8125 5.77441 15.1875 6.18066C15.5938 6.55566 15.5938 7.21191 15.1875 7.58691Z" fill="white" fill-opacity="0.5"/>
+            </svg>
+        </a>
+        <div class="modal-video-wrap">
+            {% image item.video_poster_image original format-webp as img %}
+            <video preload="metadata" class="obj-cover w-100 h-100 modal-video modal-video-js" id="modal-video-1" 
+            playsinline src="{{item.background_video_url}}" poster="{{img.url}}" type='video/mp4'></video>
+            <!-- <div id="modal-video-1" class=" w-100 h-100 modal-video"></div>-->
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endif %}
+
+{% if type == 'landing' %}
+<section class="hero-about  parallax-trigger-js">
+    <div class="container hero-about__container position-relative z-index-2 container-hero-anim-js">
+        <div data-scrollbar class="pages-nav hide-scrollbar hero-item-js hero-item-1-js">
+
+            {% if page.get_ancestors|length > 1 %}
+            <ul class="pages-nav__list d-inline-flex list-unstyled">
+                {% for p in page.get_ancestors %}
+                {% if p.is_root == False %}
+                    <li><a class="text-link" href="{{ p.url }}"><span class="text-link__txt">{{p.title|safe}}</span></a></li>
+                {% endif %}
+                {% endfor %}
+                <li>{{page.title|safe}}</li>
+            </ul>
+            {% endif %}
+        </div>
+        <h1 class="hero-about__title position-relative z-index-4 hero-title-js hero-title--to-right-js split-text-by-line-js">
+            {{page.title|safe}}
+        </h1>
+    </div>
+    <div class="hero-about__bg-wrap overflow-hidden">
+        {% image item.image fill-1920x533-c100 format-webp as img %}
+        <img class="w-100 h-100 hero-about__bg obj-cover parallax-js parallax-def-js parallax-hero-js" src="{{img.url}}" alt="">
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+{% endif %}

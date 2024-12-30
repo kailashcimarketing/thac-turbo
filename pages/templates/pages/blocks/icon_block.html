@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+{% if value.icon_code %}
+{{value.icon_code|safe}}
+{% elif value.icon_svg %}
+
+{% elif value.icon_image %}
+{% image value.icon_image original as img %}
+<img src="{{img.url}}"  >
+{% endif %}
