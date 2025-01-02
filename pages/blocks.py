@@ -485,7 +485,6 @@ class StatsCardWithParallaxImageBlock(blocks.StructBlock):
         label = "Stats card with parallax image"
         template = "pages/blocks/stats_card_with_parallax_image_block.html"
 
-
 class SimpleImageCardwithTextBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     sub_title = blocks.CharBlock()
@@ -496,3 +495,115 @@ class SimpleImageCardwithTextBlock(blocks.StructBlock):
     class Meta:
         label = "Simple image and text card grid"
         template = "pages/blocks/simple_image_card_with_text_block.html"
+
+
+class LeftImageAndRightTextWithBackgroundImageBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    background_image = ImageChooserBlock()
+    image = ImageChooserBlock()
+    lead_text = blocks.TextBlock()
+    text = blocks.TextBlock()
+    button = SimpleButton()
+    class Meta:
+        label = "Left image and right text with background image"        
+        template = "pages/blocks/left_image_right_text_with_background_image_block.html"
+
+
+
+
+class StatsCardWithoutParallaxBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    sub_title = blocks.CharBlock()
+    text = blocks.TextBlock()
+    image = ImageChooserBlock()
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('pre_title',blocks.CharBlock()),
+        ('value',blocks.CharBlock()),
+        ('symbol',blocks.CharBlock()),
+        ('post_title',blocks.CharBlock()),
+        ('text',blocks.TextBlock())
+    ]))
+    class Meta:
+        label = "Stats card without parallax"
+        template = "pages/blocks/stats_card_without_parallax_block.html"
+    
+
+
+class FullwidthCTABanner(blocks.StructBlock):
+    background_image = ImageChooserBlock()
+    title = blocks.CharBlock()
+    sub_title = blocks.CharBlock()
+    text =blocks.TextBlock()
+    button = SimpleButton()
+    class Meta:
+        label = "Fullwidth CTA banner"
+        template = "pages/blocks/fullwidth_cta_banner_block.html"
+
+
+class GridPhotoGalleryBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    items = blocks.ListBlock(blocks.StructBlock([
+            ('image',ImageChooserBlock())
+            ]))
+    class Meta:
+        label = "Grid photo gallery"
+        template = "pages/blocks/grid_photo_gallery_block.html"
+
+
+class VideoBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    script_title = blocks.CharBlock()
+    lead_text = blocks.TextBlock()
+    poster_image = ImageChooserBlock()
+    vide_url = blocks.URLBlock(help_text="MP4 video url")
+    class Meta:
+        label = "Video"        
+        template = "pages/blocks/vide_block.html"
+
+class TwocolumnLeftImageAndRightContent(blocks.StructBlock):
+    image = ImageChooserBlock()
+    lead_text = blocks.TextBlock()
+    text = blocks.TextBlock()
+    class Meta:
+        group = "Two Columns"
+        label = "Left image and right content"        
+        template = "pages/blocks/twocolumn_left_image_right_content_block.html"
+
+class TwocolumnListContentBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    items=  blocks.ListBlock(blocks.StructBlock([
+        ('title',blocks.CharBlock()),
+        ('theme',blocks.ChoiceBlock([
+            ('coloured-block--1','Teal'),
+            ('coloured-block--2','Peach'),
+            ('coloured-block--3','Yellow'),
+            ('coloured-block--4','Green'),
+            ('coloured-block--5','Orange'),
+            ('coloured-block--6','Lilac'),
+            ('coloured-block--7','Light Blue'),
+            ('coloured-block--8','Turquoise'),
+        ])),
+        ('list_content',blocks.RichTextBlock())
+    ]))
+    class Meta:
+        label = "List Content"
+        template = "pages/blocks/twocolumn_list_content_block.html"
+
+class CTAButton(blocks.StructBlock):
+    title = blocks.CharBlock()
+    button = SimpleButton()
+    class Meta:
+        label = "CTA Button"        
+        template = "pages/blocks/cta_button_block.html"
+
+
+class TimelineBlock(blocks.StructBlock):
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('icon',ImageChooserBlock()),
+        ('image',ImageChooserBlock()),
+        ('title',blocks.CharBlock()),
+        ('button',SimpleButton()),
+    ]))
+    class Meta:
+        label = "Timeline"
+        template = "pages/blocks/timeline_block.html"

@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+<section class="s-cta text-center">
+    <div class="container s-cta__container container-anim-js">
+        <h2 class="s-cta__title text-anim-js">{{value.title|safe}}</h2>
+        <div class="s-cta__btn-wrap block-anim-js">
+            {% if value.button.text %}
+            <a href="{{value.button.href.url}}" {{value.button.hre.target}} class="btn btn--seventh">
+                <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>

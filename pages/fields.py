@@ -22,6 +22,15 @@ common_blocks = [
     ('InternalpageIntroBlock',InternalpageIntroBlock()),
     ('StatsCardWithParallaxImageBlock',StatsCardWithParallaxImageBlock()),
     ('SimpleImageCardwithTextBlock',SimpleImageCardwithTextBlock()),
+    ('LeftImageAndRightTextWithBackgroundImageBlock',LeftImageAndRightTextWithBackgroundImageBlock()),
+    ('StatsCardWithoutParallaxBlock',StatsCardWithoutParallaxBlock()),
+    ('FullwidthCTABanner',FullwidthCTABanner()),
+    ('GridPhotoGalleryBlock',GridPhotoGalleryBlock()),
+    ('VideoBlock',VideoBlock()),
+    ('TwocolumnLeftImageAndRightContent',TwocolumnLeftImageAndRightContent()),
+    ('TwocolumnListContentBlock',TwocolumnListContentBlock()),
+    ('CTAButton',CTAButton()),
+    ('TimelineBlock',TimelineBlock()),
 ]
 homepage_stream_fields= common_blocks+ []
 contactpage_stream_fields= common_blocks+ [

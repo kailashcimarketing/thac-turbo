@@ -1,0 +1,17 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-simple-2cols">
+    <div class="container s-simple-2cols__container container-anim-js">
+        <div class="row s-simple-2cols__row">
+            <div class="col-lg-6 col-12  s-simple-2cols__col s-simple-2cols__col-1 block-anim-js">
+                {% image value.image original format-webp as img %}
+                <img class="s-simple-2cols__pic" src="{{img.url}}" alt="">
+            </div>
+            <div class="col-lg-6 col-12 s-simple-2cols__col s-simple-2cols__col-2">
+                <h2 class="s-simple-2cols__title block-anim-js" data-delay-anim-lg-=".2">{{value.lead_text|safe}}</h2>
+                <div class="s-simple-2cols__txt-wrap last-el-mb-0 block-anim-js">
+                    <p>{{value.text|safe}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

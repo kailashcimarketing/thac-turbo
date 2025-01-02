@@ -1,0 +1,18 @@
+{% load wagtailcore_tags %}
+<section class="s-coloured-blocks">
+    <div class="container s-coloured-blocks__container container-anim-js">
+        <h2 class="s-coloured-blocks__title h3 block-anim-js">Secondary Coloured Blocks</h2>
+        <div class="row s-coloured-blocks__row">
+            {% for item in value.items %}
+            <div class="s-coloured-blocks__col col-md-6 col-12 block-anim-js block-anim--each-2-md-js">
+                <div class="coloured-block {{item.theme|safe}}">
+                    <h3 class="coloured-block__title">{{item.title|safe}}</h3>
+                    <div class="coloured-block__list mb-0 check-list">
+                        {{item.list_content|safe}}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}            
+        </div>
+    </div>
+</section>

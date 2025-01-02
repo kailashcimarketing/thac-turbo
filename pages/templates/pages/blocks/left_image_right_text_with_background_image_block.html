@@ -1,0 +1,35 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-feature light-theme">
+    <div class="container s-feature__container container-anim-js">
+        <h2 class="s-feature__title text-center block-anim-js">{{value.title|safe}}</h2>
+        <div class="row s-feature__row position-relative align-items-center z-index-3">
+            <div class="s-feature__bg-wrap position-absolute overflow-hidden">
+                {% image value.background_image fill-866x1000-c100 format-webp as img %}
+                <img class="s-feature__bg w-100 h-100 obj-cover parallax-y-js parallax-js" src="{{img.url}}" alt="">
+            </div>
+            <div class="col-lg-6 col-12 s-feature__col s-feature__col--1">
+                <div class="s-feature__pic-wrap  block-anim-js">
+                    {% image value.image fill-560x700-c100 format-webp as img %}
+                    <img class="s-feature__pic w-100" src="{{img.url}}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-12 s-feature__col s-feature__col--2">
+                <h3 class="s-feature__big-txt last-el-mb-0  block-anim-js">
+                    {{value.lead_text|safe}}                    
+                </h3>
+                {% if value.text %}
+                <div class="s-feature__txt-wrap last-el-mb-0  block-anim-js">
+                    <p>{{value.text|safe}}</p>
+                </div>
+                {% endif %}
+                {% if value.button.text %}
+                <div class="s-feature__btn-wrap block-anim-js">
+                    <a href="{{value.button.href.url}}" {{value.button.href.target}} class="btn btn--eighth">
+                        <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

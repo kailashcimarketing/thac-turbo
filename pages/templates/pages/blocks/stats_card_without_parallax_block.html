@@ -1,0 +1,43 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-intro">
+    <div class="container s-intro__container container-anim-js">
+        <div class="row s-intro__row">
+            <div class="col-lg-6 col-12 s-intro__col s-intro__col-1">
+                <h2 class="s-intro__title text-anim-by-line-js">
+                                <span class="color-1">{{value.title|safe}}</span>{{value.sub_title|safe}}
+                </h2>
+                <div class="s-intro__txt-wrap last-el-mb-0 block-anim-js">
+                    <p>{{value.text|safe}}</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12 s-intro__col s-intro__col-2">
+                <div class="s-intro__pic-wrap position-relative after-el d-inline-block  block-anim-js">
+                    {% image value.image fill-680x680-c100 format-webp as img  %}
+                    <img class="s-intro__pic" src="{{img.url}}" alt="">
+                </div>
+            </div>
+        </div>
+        <hr class="s-intro__divider">
+        <div class="row s-intro__cards justify-content-center">
+            {% for item in value.items %}
+            <div class="s-intro__card-col col-lg-4 col-sm-6 col-12 block-counter-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
+                <div class="benefit-card benefit-card--secondary d-flex flex-column">
+                    <div class="benefit-card__heading">
+                        <h3 class="benefit-card__heading-title-1">{{item.pre_title|safe}}</h3>
+                        <h3 class="benefit-card__heading-numb">
+                            <span data-finish="96" class="counter-js">{{item.value|safE}}</span><sub>{{item.symbol|safe}}</sub>
+                        </h3>
+                        <h4 class="benefit-card__heading-title-2">{{item.post_title|safe}}</h4>
+                    </div>
+                    {% if item.text %}
+                    <div class="benefit-card__body last-el-mb-0">
+                        <p>{{item.text|safe}}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
