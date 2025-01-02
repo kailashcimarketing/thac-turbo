@@ -133,3 +133,4 @@ syntax: regexp
 /static/
 /media/
 local.py
+/__pycache__/

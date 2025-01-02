@@ -1,0 +1,45 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="light-theme">
+    <section class="s-gallery-slider">
+        <div class="container s-gallery-slider__container-2 container-anim-js">
+            <div class="container s-gallery-slider__container">
+                <h2 class="h3 s-gallery-slider__title block-anim-js">{{value.title|safe}}</h2>
+                <div class="swiper s-gallery-slider__swiper s-gallery-slider__swiper-js overflow-visible">
+                    <div class="swiper-wrapper">
+                        {% for item in value.items %}
+                        <div class="swiper-slide s-gallery-slider__slide s-gallery-slider__slide-js  block-anim-js block-anim--row-js">
+                            {% image item.image fill-1160x480-c100 format-webp as img %}
+                            <img class="w-100 h-100 obj-cover" src="{{img.url}}" alt="">
+                        </div>
+                        {% endfor  %}
+                    </div>
+                    <div class="swiper-btns  block-anim-js">
+                        <div class="swiper-btn swiper-btn--prev">
+                            <svg class="swiper-btn__svg" width="29" height="33" viewBox="0 0 29 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="transition-def" d="M27.6875 17.25L17.1875 27.75L16.5 28.4375L15.0625 27L15.75 26.3125L24.5625 17.5H1.5H0.5V15.5H1.5H24.5625L15.75 6.75L15.0625 6L16.5 4.625L17.1875 5.3125L27.6875 15.8125L28.375 16.5L27.6875 17.25Z" fill="white" fill-opacity="0.9"/>
+                            </svg>
+                        </div>
+                        <div class="swiper-btn swiper-btn--next">
+                            <svg class="swiper-btn__svg" width="29" height="33" viewBox="0 0 29 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="transition-def" d="M27.6875 17.25L17.1875 27.75L16.5 28.4375L15.0625 27L15.75 26.3125L24.5625 17.5H1.5H0.5V15.5H1.5H24.5625L15.75 6.75L15.0625 6L16.5 4.625L17.1875 5.3125L27.6875 15.8125L28.375 16.5L27.6875 17.25Z" fill="white" fill-opacity="0.9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="swiper__add-info row justify-content-between">
+                        <div class="col-sm-8 col-12 swiper__add-info-col  swiper__add-info-col--1  block-anim-js">
+                            <div class="swiper__captions swiper__captions-js position-relative">
+                                {% for item in value.items %}
+                                <div class="swiper__caption swiper__caption-js swiper__caption-{{forloop.counter0}}-js transition-def {% if forloop.first %}is-active{% endif %}">{{item.caption|safe|default:""}}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-12 swiper__add-info-col swiper__add-info-col--2 swiper-pagination-wrap text-right  block-anim-js" data-delay-anim-sm=".2">
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</div>

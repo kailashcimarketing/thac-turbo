@@ -9,6 +9,8 @@ from modelcluster.fields import ParentalKey
 class HeroAbstract(models.Model):
     title = models.CharField(null=True,blank=True,max_length=255)
     script_title =models.CharField(null=True,blank=True,max_length=255) 
+    primary_tagline = models.CharField(null=True,blank=True,max_length=255)
+    secondary_tagline = models.CharField(null=True,blank=True,max_length=255)
     text = models.TextField(null=True,blank=True)
     image = models.ForeignKey(
         Image, 

@@ -5,7 +5,10 @@ from .models import GeneralPage,LandingPage
 GeneralPage.content_panels = Page.content_panels + [
     InlinePanel('generalpage_hero', label='Hero Images', panels=[
         FieldPanel('image'),
-        FieldPanel('title'),        
+        FieldPanel('title'),
+        FieldPanel('script_title'),
+        FieldPanel('primary_tagline'),
+        FieldPanel('secondary_tagline'),   
     ],max_num=1),
     FieldPanel('body'),
 ]

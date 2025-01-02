@@ -273,6 +273,7 @@ class TwoColumnBlock(blocks.StructBlock):
 
 
 class SliderGalleryBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
     items = blocks.ListBlock(blocks.StructBlock([
         ('image',ImageChooserBlock()),
         ('caption',blocks.CharBlock(required=False))
@@ -423,6 +424,16 @@ class LandingPageIntroBlock(blocks.StructBlock):
         group = "Landing Page"
         label = "Intro content for landing page"
         template = "pages/blocks/landing_page_intro_block.html"
+
+class InternalpageIntroBlock(blocks.StructBlock):
+    title = blocks.CharBlock()        
+    sub_title = blocks.CharBlock()
+    image = ImageChooserBlock()
+    text = blocks.TextBlock()
+    class Meta:
+        label = "Internal page intro"
+        template = "pages/blocks/internal_page_intro_block.html"
+
         
 class ExplorePagesBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
@@ -439,10 +450,49 @@ class QuoteWithImage(blocks.StructBlock):
     class Meta:
         label = "Quote with image"
         template = "pages/blocks/quote_with_image_block.html"
-        
-#custompreviousnext
-#dynamicprevnext
-#news
-#events
-#globalsocialsettings
-#searchfunction
+
+
+class ContactpageHeroBlock(blocks.StructBlock):
+    title = blocks.CharBlock()        
+    script_title = blocks.CharBlock()
+    image = ImageChooserBlock()
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('icon',ImageChooserBlock()),
+        ('title',blocks.CharBlock()),
+        ('text',blocks.TextBlock()),
+        ('button',SimpleButton()),
+        ('footer_text',blocks.CharBlock(required=False)),
+        ('footer_button',SimpleButton())
+    ]))
+    class Meta:
+        label = "Contact page hero section"
+        group = "Hero Section"
+        template = "pages/blocks/contact_page_hero_block.html"
+
+
+class StatsCardWithParallaxImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+    title = blocks.CharBlock()
+    sub_title = blocks.CharBlock()
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('pre_title',blocks.CharBlock()),
+        ('value',blocks.CharBlock()),
+        ('symbol',blocks.CharBlock()),
+        ('post_title',blocks.CharBlock()),
+        ('text',blocks.TextBlock())
+    ]))
+    class Meta:
+        label = "Stats card with parallax image"
+        template = "pages/blocks/stats_card_with_parallax_image_block.html"
+
+
+class SimpleImageCardwithTextBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    sub_title = blocks.CharBlock()
+    items=  blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock()),
+        ('text',blocks.TextBlock())
+    ]))
+    class Meta:
+        label = "Simple image and text card grid"
+        template = "pages/blocks/simple_image_card_with_text_block.html"

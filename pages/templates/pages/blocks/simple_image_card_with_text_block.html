@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-simple-cards">
+    <div class="container s-simple-cards__container container-anim-js">
+        <h2 class="s-simple-cards__title text-center position-relative z-index-2 text-anim-by-line-js">
+            {{value.title|safe}} <span class="color-1">{{value.sub_title|safe}}</span>
+        </h2>
+        <div class="row s-simple-cards__row justify-content-center">
+            {% for item in value.items %}
+            <div class="col-lg-4 col-sm-6 col-12 s-simple-cards__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
+                <div class="simple-card">
+                    <div class="simple-card__pic-wrap">
+                        {% image item.image fill-360x480-c100 format-webp as img %}
+                        <img class="simple-card__pic w-100 h-100 obj-cover" src="{{img.url}}" alt="">
+                    </div>
+                    <div class="simple-card__content text-uppercase last-el-mb-0">
+                        <p>{{item.text|safe}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>

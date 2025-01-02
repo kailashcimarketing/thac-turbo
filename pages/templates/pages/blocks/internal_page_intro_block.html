@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtialimages_tags %}
+<div class="light-theme">
+    <section class="s-2-columns">
+        <div class="container s-2-columns__container container-anim-js">
+            <div class="row s-2-columns__row justify-content-between">
+                <div class="col-lg-5 col-12 s-2-columns__col s-2-columns__col--1 d-flex flex-column">
+                    <h2 class="s-2-columns__title h2--secondary text-anim-by-line-js">
+                            <span class="color-1">{{value.title|safe}}</span> {{value.sub_title|safe}}
+                    </h2>
+                    <div class="s-2-columns__txt-wrap last-el-mb-0 block-anim-js">
+                        <p>{{value.text|safe}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 s-2-columns__col s-2-columns__col--2">
+                    <div class="s-2-columns__pic-wrap block-anim-js">
+                        {% image value.image fill-710x790-c100 format-webp as img %}
+                        <img class="s-2-columns__pic" src="{{img.url}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+</div>

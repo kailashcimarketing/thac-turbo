@@ -19,8 +19,15 @@ common_blocks = [
     ('LandingPageIntroBlock',LandingPageIntroBlock()),
     ('ExplorePagesBlock',ExplorePagesBlock()),
     ('QuoteWithImage',QuoteWithImage()),
+    ('InternalpageIntroBlock',InternalpageIntroBlock()),
+    ('StatsCardWithParallaxImageBlock',StatsCardWithParallaxImageBlock()),
+    ('SimpleImageCardwithTextBlock',SimpleImageCardwithTextBlock()),
 ]
 homepage_stream_fields= common_blocks+ []
+contactpage_stream_fields= common_blocks+ [
+    ('ContactpageHeroBlock',ContactpageHeroBlock()),
+]
+
 
 
 generalpage_stream_fields=common_blocks+[]

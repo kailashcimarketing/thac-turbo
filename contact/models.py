@@ -3,12 +3,13 @@ from django.shortcuts import render
 from django.template.loader import get_template
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
-from pages.fields import homepage_stream_fields
+from pages.fields import contactpage_stream_fields
 from home.models import HeroAbstract
 from wagtail.fields import StreamField, RichTextField
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from modelcluster.fields import ParentalKey
 from wagtail.models import Page
+from wagtail.images.models import Image
 from django.utils.html import strip_tags
 
 # Create your models here.
@@ -73,11 +74,12 @@ class ContactPage(Page):
     notification_from_address = models.CharField(max_length=100, null=True, blank=True)
     notification_to_address = models.CharField(max_length=200, null=True, blank=True)
     notification_subject = models.CharField(max_length=500,null=True,blank=True)
-    body = StreamField(homepage_stream_fields,null=True,blank=True)
-    bottom_body = StreamField(homepage_stream_fields,null=True,blank=True)
+    body = StreamField(contactpage_stream_fields,null=True,blank=True)
+    bottom_body = StreamField(contactpage_stream_fields,null=True,blank=True)
 
 
     content_panels = Page.content_panels + [
+        
         FieldPanel('thankyou_message'),
         MultiFieldPanel([
         FieldPanel('autoresponder_from_email'),
@@ -96,12 +98,6 @@ class ContactPage(Page):
     class Meta:
         verbose_name = "Contact Page"
 
-    def get_hero_image(self):
-        if self.contactpage_hero.all():
-            return self.contactpage_hero.all()[0]
-        else:
-            return False 
-        
     def get_hero(self):
         return False
 
