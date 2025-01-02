@@ -656,4 +656,4 @@ class HomepageIntroContentBlock(blocks.StructBlock):
     button= SimpleButton()
     class Meta:
         label = "Homepage intro content"
-        templte = "pages/blocks/homepage_intro_content_block.html" 
+        template = "pages/blocks/homepage_intro_content_block.html" 
