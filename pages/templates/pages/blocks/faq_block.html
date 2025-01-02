@@ -1,0 +1,45 @@
+<section class="s-faq light-theme">
+    <div class="container s-faq__container container-anim-js">
+        <div class="row s-faq__row">
+            <div class="col-auto s-faq__col s-faq__col-1 position-relative">
+                <h2 class="s-faq__title">
+                    <span class="d-block parallax-x-js parallax-js" data-parallax-value="30">{{value.title|safe}}</span>
+                </h2>
+                <div class="s-faq__big-circle-btn-wrap position-absolute z-index-3 d-lg-block d-none block-anim-js">
+                    <a href="{{value.button.href.url}}" {{value.button.href.target}} class="big-circle-btn d-flex align-items-center justify-content-center">
+                        <svg class="big-circle-btn__border">
+                            <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                            <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                        </svg>
+                        <svg width="29" height="32" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.6875 16.75L17.1875 27.25L16.5 27.9375L15.0625 26.5L15.75 25.8125L24.5625 17H1.5H0.5V15H1.5H24.5625L15.75 6.25L15.0625 5.5L16.5 4.125L17.1875 4.8125L27.6875 15.3125L28.375 16L27.6875 16.75Z" class="transition-def" fill="#002664"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="col-auto s-faq__col s-faq__col-2">
+                <div class="s-faq__items acc-items-js">
+                    {% for item in value.items %}
+                    <div class="acc-item-wrap-js block-anim-js">
+                        <div class="s-faq__item acc-item-js">
+                            <h3 class="s-faq__item-title cursor-pointer mb-0 ff-body h6 acc-title-js position-relative">
+                                {{value.title|safe}}
+                                <span class="s-faq__item-title-icon after-el before-el position-absolute"></span>
+                            </h3>
+                            <div class="s-faq__item-content acc-content-js last-el-mb-0">
+                                {{item.content|safe}}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% if vlaue.button.text %}
+        <div class="s-faq__btn-wrap  block-anim-js d-lg-none d-block">
+            <a href="{{value.button.href.url}}" {{value.button.href.target}} class="btn s-faq__btn btn--secondary">
+                <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span> </a>
+        </div>
+        {% endif %}
+    </div>
+</section>

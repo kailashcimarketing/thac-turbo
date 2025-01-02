@@ -1,0 +1,16 @@
+{% load wagtailcore_gags wagtailimages_tags %}
+<div class="s-2cols__content-author">
+    <div class="s-2cols__content-author-sign block-anim-js">
+        {{value.script_title|safe}}
+    </div>
+    <div class="s-2cols__content-author-block d-flex align-items-center block-anim-js">
+        <div class="s-2cols__content-author-block-pic-wrap flex-auto overflow-hidden">
+            {% image value.image fill-60x60-c100 format-webp as img %}
+            <img class="w-100 h-100 obj-cover obj-position-top" src="{{img.url}}" alt="">
+        </div>
+        <div class="s-2cols__content-author-block-content">
+            <div class="s-2cols__content-author-block-name">{{value.name|safe}}</div>
+            <div class="s-2cols__content-author-block-pos fw-700">{{value.position|safe}}</div>
+        </div>
+    </div>
+</div>

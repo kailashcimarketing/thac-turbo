@@ -31,8 +31,12 @@ common_blocks = [
     ('TwocolumnListContentBlock',TwocolumnListContentBlock()),
     ('CTAButton',CTAButton()),
     ('TimelineBlock',TimelineBlock()),
+    ('FaqBlock',FaqBlock()),
+    ('ContentWithLeftHeadingBlock',ContentWithLeftHeadingBlock()),
 ]
-homepage_stream_fields= common_blocks+ []
+homepage_stream_fields= common_blocks+ [
+    ('HomepageIntroContentBlock',HomepageIntroContentBlock()),
+]
 contactpage_stream_fields= common_blocks+ [
     ('ContactpageHeroBlock',ContactpageHeroBlock()),
 ]

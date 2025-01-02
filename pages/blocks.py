@@ -607,3 +607,53 @@ class TimelineBlock(blocks.StructBlock):
     class Meta:
         label = "Timeline"
         template = "pages/blocks/timeline_block.html"
+
+
+class FaqBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    items= blocks.ListBlock(blocks.StructBlock([
+        ('title',blocks.CharBlock(label="Question")),
+        ('content',blocks.RichTextBlock(label="Answer"))
+    ]))
+    button = SimpleButton()
+    class Meta:
+        label = "FAQs"
+        template = "pages/blocks/faq_block.html"
+
+
+class ChildVideBlock(blocks.StructBlock):
+    poster_image = ImageChooserBlock()
+    video_url = blocks.URLBlock()
+    class Meta:
+        label ="Video"
+        template = "pages/blocks/sub_video_block.html"
+
+class ProfileBlock(blocks.StructBlock):
+    script_title = blocks.CharBlock()
+    image = ImageChooserBlock()
+    name = blocks.CharBlock()
+    position = blocks.CharBlock()
+    class Meta:
+        label = "Profile"
+        template = "pages/blocks/profile_block.thml"
+
+class ContentWithLeftHeadingBlock(blocks.StructBlock):
+    left_title = blocks.CharBlock()
+    content = blocks.StreamBlock([
+        ('heading',HeadingBlock()),
+        ('content',ContentBlock()),
+        ('video',ChildVideBlock()),
+        ('ProfileBlock',ProfileBlock()),
+    ])
+    class Meta:
+        label = "Content with left heading"
+        template = "pages/blocks/content_with_left_heading_block.html"
+
+
+class HomepageIntroContentBlock(blocks.StructBlock):
+    lead_text = blocks.TextBlock()        
+    text = blocks.RichTextBlock()
+    button= SimpleButton()
+    class Meta:
+        label = "Homepage intro content"
+        templte = "pages/blocks/homepage_intro_content_block.html" 

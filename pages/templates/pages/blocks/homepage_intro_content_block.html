@@ -1,0 +1,23 @@
+<section class="text-2-cols">
+    <div class="container text-2-cols__container container-anim-js">
+        <div class="row text-2-cols__row justify-content-end">
+            <div class="col-xl-5 col-md-6 col-12 text-2-cols__col text-2-cols__col-1">
+                <h2 class="text-2-cols__title block-anim-js">
+                    {{vlaue.lead_text|safe}}
+                </h2>
+            </div>
+            <div class="col-xl-4 col-md-6 col-12 text-2-cols__col text-2-cols__col-2">
+                <div data-delay-anim-md=".2" class="text-2-cols__txt-wrap last-el-mb-0 block-anim-js">
+                    {{value.text|safe}}
+                </div>
+                {% if value.button.text %}
+                <div class="text-2-cols__btn-wrap block-anim-js">
+                    <a href="#" class="btn btn--third">
+                        <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

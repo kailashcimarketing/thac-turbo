@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="video-module video-module-js">
+    <div class="video-module__btn video-module__btn-js">
+        <img class="video-module__btn-icon video-module__btn-icon--play transition-def" src="/static/images/principal's-welcome/play-icon.svg" alt="">
+        <img class="video-module__btn-icon video-module__btn-icon--pause transition-def" src="/static/images/principal's-welcome/pause-btn.svg" alt="">
+    </div>
+    {% image value.poster_image original as img %}
+    <video class="w-100 h-100 obj-cover" preload="metadata" playsinline src="{{value.video_url}}" poster="{{img.url}}" type="video/mp4"></video>
+</div>
