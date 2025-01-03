@@ -25,8 +25,9 @@
         <div class="s-college__txt-wrap last-el-mb-0 block-anim-js">
             <p>{{value.text|safe}}</p>
         </div>
+        {% endif %}
         <h3 class="s-college__big-txt-wrap text-anim-by-line-js position-relative z-index-3 text-anim-by-line-js">
-            {{value.title|safe}}
+            <span class="color-1">{{value.title|safe}}</span> {{value.sub_title|safe}}
         </h3>
         {% if value.button.text %}
                     <div class="s-college__btn-wrap d-md-none d-block text-center block-anim-js">

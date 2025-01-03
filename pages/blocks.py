@@ -418,6 +418,7 @@ class LandingPageIntroBlock(blocks.StructBlock):
     text = blocks.TextBlock(required=False)
     video_url = blocks.URLBlock(help_text="Mp4 Video")
     title = blocks.CharBlock(required=False)
+    sub_title = blocks.CharBlock(required=False)
     image = ImageChooserBlock()
     quote = blocks.TextBlock(required=False)
     quote_by = blocks.CharBlock(required=False)
