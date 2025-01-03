@@ -5,8 +5,8 @@
             <div class="row s-pin-banners__row">
                 <div class="col-6 s-pin-banners__col s-pin-banners__col-1">
                     <div class="s-pin-banners__contents-wrap">
-                        {% for item in value.items %}
-                        <div class="s-pin-banners__content s-pin-banners__content-js s-pin-banners__content--{{forloop.counter}} hide-scrollbar">
+                        {% for item in value.items reversed  %}
+                        <div class="s-pin-banners__content s-pin-banners__content-js s-pin-banners__content--{{ forloop.revcounter  }} hide-scrollbar">
                             <div data-scrollbar class="s-pin-banners__content-container">
                                 <h4 class="s-pin-banners__content-kicker">
                                 <span class="d-block s-pin-banners__content-kicker-icon-wrap d-flex align-items-center justify-content-center">
@@ -27,8 +27,8 @@
                         {% endfor %}
                         <div class="s-pin-banners__amount-block  block-anim-js">
                             <span class="s-pin-banners__amount-block-numb">
-                                {% for item in value.items %}
-                                 <span class="s-pin-banners__amount-block-numb-txt s-pin-banners__amount-block-numb-txt--{{forloop.counter}}">0{{forloop.counter}}</span>
+                                {% for item in value.items reversed  %}
+                                 <span class="s-pin-banners__amount-block-numb-txt s-pin-banners__amount-block-numb-txt--{{ forloop.revcounter  }}">0{{ forloop.revcounter  }}</span>
                                  {% endfor %}
                             </span>/0{{value.items|length}}
                         </div>
@@ -36,9 +36,9 @@
                 </div>
                 <div class="col-6 s-pin-banners__col s-pin-banners__col-2">
                     <div class="s-pin-banners__contents-wrap">
-                        {% for item in value.items %}
-                        <div class="s-pin-banners__contents-pic-wrap s-pin-banners__contents-pic-wrap--{{forloop.counter}}">
-                            <div data-block=".s-pin-banners__block--{{forloop.counter}}" data-slide=".s-pin-banners__block--{{forloop.counter}} .s-pin-banners__txt-wrap" class="s-pin-banners__btn-circle s-pin-banners__btn-circle-js transition-def d-md-none d-flex justify-content-center align-items-center cursor-pointer position-absolute">
+                        {% for item in value.items reversed  %}
+                        <div class="s-pin-banners__contents-pic-wrap s-pin-banners__contents-pic-wrap--{{ forloop.revcounter  }}">
+                            <div data-block=".s-pin-banners__block--{{ forloop.revcounter  }}" data-slide=".s-pin-banners__block--{{ forloop.revcounter  }} .s-pin-banners__txt-wrap" class="s-pin-banners__btn-circle s-pin-banners__btn-circle-js transition-def d-md-none d-flex justify-content-center align-items-center cursor-pointer position-absolute">
                                 <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.75 2.25V7.25H12.75H13.5V8.75H12.75H7.75V13.75V14.5H6.25V13.75V8.75H1.25H0.5V7.25H1.25H6.25V2.25V1.5H7.75V2.25Z" fill="#002664"/>
                                 </svg>
@@ -52,8 +52,8 @@
                 </div>
             </div>
             <div class="s-pin-banners__blocks">
-                {% for item in value.items %}
-                <div class="s-pin-banners__block s-pin-banners__block--{{forloop.counter}}"></div>
+                {% for item in value.items reversed  %}
+                <div class="s-pin-banners__block s-pin-banners__block--{{ forloop.revcounter  }}"></div>
                 {% endfor %}
             </div>
         </div>
