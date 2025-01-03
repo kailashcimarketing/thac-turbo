@@ -366,6 +366,7 @@ class TwoColumnScrollSliderBlock(blocks.StructBlock):
 class FullWidthPromoBannerBlock(blocks.StructBlock):
     image = ImageChooserBlock(label="Background Image")
     title = blocks.CharBlock()
+    sub_title = blocks.CharBlock()
     text  = blocks.TextBlock()
     button = SimpleButton()
     class Meta:
@@ -374,6 +375,7 @@ class FullWidthPromoBannerBlock(blocks.StructBlock):
         
 class ProfileWithVideoBlock(blocks.StructBlock):
     title = blocks.CharBlock()
+    sub_title= blocks.CharBlock()
     image = ImageChooserBlock(label="Profile Picture")
     text = blocks.TextBlock(label="Short Description")
     video_url = blocks.URLBlock()
