@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <section class="s-parallax-banner position-relative">
     <div class="s-parallax-banner__bg-wrap overlay after-el after-el--full before-el parallax-trigger-js overflow-hidden">
-        {% image value.background_image orignal format-webp as img %}
+        {% image value.background_image original format-webp as img %}
         <img class="w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="{{img.url}}" alt="">
     </div>
     <div class="container s-parallax-banner__container position-relative z-index-3 container-anim-js">
