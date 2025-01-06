@@ -91,6 +91,7 @@ class GeneralpageHero(HeroAbstract):
     page = ParentalKey('GeneralPage', related_name='generalpage_hero')
 
 class GeneralPage(Page):
+    show_in_menus_default = True
     body = StreamField(generalpage_stream_fields,null=True,blank=True)
 
     class Meta:
@@ -285,4 +286,5 @@ class FormPage(AbstractEmailForm):
     class Meta:
         verbose_name = "Form Page"
 
-        
+
+

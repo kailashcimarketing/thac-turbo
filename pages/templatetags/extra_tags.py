@@ -26,3 +26,5 @@ def load_content_holder(context, Slug):
     return {
         'html_header': html_header
     }
+
+

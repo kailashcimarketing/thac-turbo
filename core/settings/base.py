@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     "search",   
     "news",
     "events", 
+    "team",
+    "vacancies",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",

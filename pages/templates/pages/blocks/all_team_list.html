@@ -1,0 +1,45 @@
+{% load wagtailcore_tags wagtailimages_tags team_tags %}
+{% get_team as team %}
+{% get_categories as categories %}
+<section class="s-team">
+    <div class="container s-team__container container-anim-js">
+        <div class="s-team__heading row align-items-end">
+            <div class="col-lg-6 col-12 s-team__heading-col s-team__heading-col--1">
+                <h2 class="h3 s-team__title block-anim-js">Leadership Team</h2>
+            </div>
+            <div class="col-lg-6 col-12 s-team__heading-col s-team__heading-col--2">
+                <ul class="nav s-team__heading-list">
+                    <li class="block-anim-js block-anim--row-short-js">
+                        <a class="text-link is-active" href="#"><span class="text-link__txt">ALL</span></a>
+                    </li>
+                    {% for item in categories.items %}
+                    <li class="block-anim-js block-anim--row-short-js">
+                        <a class="text-link" href="#"><span class="text-link__txt">{{item.title|safe}}</span></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row s-team__cards">
+            {% for item in team.items %}
+            <div class="s-team__card-col col-lg-4 col-sm-6 col-12 block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
+                <div class="new-card new-card--third position-relative hover-pic-wrap">
+                    <a href="mailto:{{item.email}}" class="link-mask"></a>
+                    <div class="new-card__pic-wrap position-relative overflow-hidden">
+                        {% image item.profile_picture fill-360x590-c100 format-webp as img  %}
+                        <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
+                    </div>
+                    <div class="new-card__content">
+                        <h3 class="new-card__title">{{item.title|safe}}</h3>
+                        <div class="new-card__txt-wrap last-el-mb-0">
+                            <p>{{item.position|safe}}
+                            </p>
+                        </div>
+                        <span class="text-link--reverse text-link color-1"><span class="text-link__txt">{{item.email|safe}}</span></span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

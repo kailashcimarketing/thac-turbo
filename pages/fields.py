@@ -33,6 +33,8 @@ common_blocks = [
     ('TimelineBlock',TimelineBlock()),
     ('FaqBlock',FaqBlock()),
     ('ContentWithLeftHeadingBlock',ContentWithLeftHeadingBlock()),
+    ('VacanciesListBlock',VacanciesListBlock()),
+    ('TeamListBlock',TeamListBlock()),
 ]
 homepage_stream_fields= common_blocks+ [
     ('HomepageIntroContentBlock',HomepageIntroContentBlock()),

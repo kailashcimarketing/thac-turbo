@@ -601,6 +601,7 @@ class CTAButton(blocks.StructBlock):
 
 
 class TimelineBlock(blocks.StructBlock):
+    text = blocks.TextBlock()
     items = blocks.ListBlock(blocks.StructBlock([
         ('icon',ImageChooserBlock()),
         ('image',ImageChooserBlock()),
@@ -660,3 +661,17 @@ class HomepageIntroContentBlock(blocks.StructBlock):
     class Meta:
         label = "Homepage intro content"
         template = "pages/blocks/homepage_intro_content_block.html" 
+
+
+class VacanciesListBlock(blocks.StructBlock):
+    items = blocks.StaticBlock()
+    class Meta:
+        label = "List all vacancies"
+        template = "pages/blocks/all_vacancies_block.html"
+
+
+class TeamListBlock(blocks.StructBlock):
+    items = blocks.StaticBlock()
+    class Meta:
+        label = "List all team"
+        template = "pages/blocks/all_team_list.html"
