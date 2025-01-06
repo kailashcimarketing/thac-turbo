@@ -49,4 +49,6 @@ landingpage_stream_fields=common_blocks+[]
 content_holder_stream_fields= [
     ('HtmlSourceBlock',HtmlSourceBlock()),
     ('CTABannerBlock',CTABannerBlock()),
+    ('CTAButton',CTAButton()),
+    ('CTACardLinksBlock',CTACardLinksBlock()),
 ]
