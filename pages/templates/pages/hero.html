@@ -6,7 +6,7 @@
 <section class="hero-primary position-relative d-flex align-items-end">
 
     <div class="overlay hero-primary__bg-wrap after-el after-el--full before-el overflow-hidden">
-        {% image item.image fill-1920x533-c100 format-webp as img %}
+        {% image item.image original format-webp as img %}
         <img class="w-100 h-100 obj-cover hero-pic-scale-js" src="{{img.url}}" alt="">
     </div>
     <div class="container container-hero-anim-js hero-primary__container position-relative d-xl-flex flex-wrap justify-content-between align-items-end">
@@ -94,7 +94,7 @@
         </h1>
     </div>
     <div class="hero-about__bg-wrap overflow-hidden">
-        {% image item.image fill-1920x533-c100 format-webp as img %}
+        {% image item.image original format-webp as img %}
         <img class="w-100 h-100 hero-about__bg obj-cover parallax-js parallax-def-js parallax-hero-js" src="{{img.url}}" alt="">
     </div>
 </section>
@@ -103,7 +103,7 @@
 {% if type == 'internal' %}
 <section class="hero hero--secondary position-relative z-index-3 parallax-trigger-js text-center">
     <div class="hero__pic-wrap position-relative after-el before-el overflow-hidden">
-        {% image item.image fill-1920x533-c100 format-webp as img %}
+        {% image item.image original format-webp as img %}
         <img class="w-100 h-100 obj-cover hero__pic hero-pic-scale-js" src="{{img.url}}" alt="">
     </div>
     <div class="container hero__container position-relative z-index-2 container-hero-anim-js">
