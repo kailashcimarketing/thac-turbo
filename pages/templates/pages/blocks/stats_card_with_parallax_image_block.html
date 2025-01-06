@@ -2,11 +2,12 @@
 <div class="light-theme">
     <section class="s-benefits">
         <div class="s-benefits__banner overflow-hidden parallax-trigger-js">
-            <img class="w-100 h-100 obj-cover parallax-js parallax-img-js parallax-y-js" src="images/full-width-blocks/pic-5.webp" alt="">
+            {% image value.image fill-1920x600-c100 format-webp as img %}
+            <img class="w-100 h-100 obj-cover parallax-js parallax-img-js parallax-y-js" src="{{img.url}}" alt="">
         </div>
         <div class="container s-benefits__container container-anim-js">
             <h2 class="s-benefits__title position-relative z-index-3 text-anim-by-line-js">
-                {{value.title|safe}}<span class="color-1">{{value.secondary_title|safe}}</span>
+                {{value.title|safe}}<span class="color-1">{{value.sub_title|safe}}</span>
             </h2>
             <div class="row s-benefits__row justify-content-center">
                 {% for item in value.items %}
