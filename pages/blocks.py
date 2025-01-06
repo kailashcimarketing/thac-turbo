@@ -439,6 +439,7 @@ class InternalpageIntroBlock(blocks.StructBlock):
 
         
 class ExplorePagesBlock(blocks.StructBlock):
+    image = ImageChooserBlock(label="Background image")
     title = blocks.CharBlock(required=False)
     landing_page = PageChooserBlock(required=False)
     class Meta:

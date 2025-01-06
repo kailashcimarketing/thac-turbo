@@ -4,7 +4,8 @@
 
 <section class="s-explore position-relative">
     <div class="s-explore__bg-wrap overlay--special overlay after-el before-el overflow-hidden parallax-trigger-js">
-        <img class="w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="images/preloader/preloader-bg.webp" alt="">
+        {% image value.image original format-webp as img %}
+        <img class="w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="{{img.url}}" alt="">
     </div>
     <div class="container s-explore__container container-anim-js">
         <h2 class="s-explore__title text-center block-anim-js">
@@ -17,7 +18,7 @@
             {% for item in value.landing_page.get_child_pages %}
             <div class="col-lg-4 col-sm-6 col-12 s-explore__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
                 <div class="new-card new-card--secondary position-relative hover-pic-wrap">
-                    <a href="#" class="link-mask"></a>
+                    <a href="{{item.url}}" class="link-mask"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
                         {% image item.get_image.image fill-320x320-c100 as img %}
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
@@ -35,7 +36,7 @@
             {% for item in page.get_child_pages %}
             <div class="col-lg-4 col-sm-6 col-12 s-explore__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
                 <div class="new-card new-card--secondary position-relative hover-pic-wrap">
-                    <a href="#" class="link-mask"></a>
+                    <a href="{{item.url}}" class="link-mask"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
                         {% image item.get_image.image fill-320x320-c100 as img %}
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
