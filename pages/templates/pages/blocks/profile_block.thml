@@ -1,4 +1,4 @@
-{% load wagtailcore_gags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 <div class="s-2cols__content-author">
     <div class="s-2cols__content-author-sign block-anim-js">
         {{value.script_title|safe}}
