@@ -24,7 +24,6 @@ common_blocks = [
     ('SimpleImageCardwithTextBlock',SimpleImageCardwithTextBlock()),
     ('LeftImageAndRightTextWithBackgroundImageBlock',LeftImageAndRightTextWithBackgroundImageBlock()),
     ('StatsCardWithoutParallaxBlock',StatsCardWithoutParallaxBlock()),
-    ('FullwidthCTABanner',FullwidthCTABanner()),
     ('GridPhotoGalleryBlock',GridPhotoGalleryBlock()),
     ('VideoBlock',VideoBlock()),
     ('TwocolumnLeftImageAndRightContent',TwocolumnLeftImageAndRightContent()),
@@ -53,4 +52,5 @@ content_holder_stream_fields= [
     ('CTABannerBlock',CTABannerBlock()),
     ('CTAButton',CTAButton()),
     ('CTACardLinksBlock',CTACardLinksBlock()),
+    ('FullWidthPromoBannerBlock',FullWidthPromoBannerBlock()),
 ]

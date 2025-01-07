@@ -372,6 +372,17 @@ class FullWidthPromoBannerBlock(blocks.StructBlock):
     class Meta:
         template = "pages/blocks/fullwidth_promobanner_block.html"        
         label = "Full width promo banner"
+
+"""class FullwidthCTABanner(blocks.StructBlock):
+    background_image = ImageChooserBlock()
+    title = blocks.CharBlock()
+    sub_title = blocks.CharBlock()
+    text =blocks.TextBlock()
+    button = SimpleButton()
+    class Meta:
+        label = "Fullwidth CTA banner"
+        template = "pages/blocks/fullwidth_cta_banner_block.html"        
+"""
         
 class ProfileWithVideoBlock(blocks.StructBlock):
     title = blocks.CharBlock()
@@ -533,15 +544,7 @@ class StatsCardWithoutParallaxBlock(blocks.StructBlock):
     
 
 
-class FullwidthCTABanner(blocks.StructBlock):
-    background_image = ImageChooserBlock()
-    title = blocks.CharBlock()
-    sub_title = blocks.CharBlock()
-    text =blocks.TextBlock()
-    button = SimpleButton()
-    class Meta:
-        label = "Fullwidth CTA banner"
-        template = "pages/blocks/fullwidth_cta_banner_block.html"
+
 
 
 class GridPhotoGalleryBlock(blocks.StructBlock):

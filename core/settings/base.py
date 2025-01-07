@@ -233,6 +233,8 @@ FABRIC = {
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 WAGTAILIMAGES_EXTENSIONS = ["gif", "jpg", "jpeg", "png", "webp", "svg"]
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 20 * 1024 * 1024  # 20 MB
+WAGTAILDOCS_MAX_UPLOAD_SIZE = 50 * 1024 * 1024  # 50 MB
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
