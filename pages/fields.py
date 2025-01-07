@@ -34,6 +34,7 @@ common_blocks = [
     ('ContentWithLeftHeadingBlock',ContentWithLeftHeadingBlock()),
     ('VacanciesListBlock',VacanciesListBlock()),
     ('TeamListBlock',TeamListBlock()),
+    ('CustomTableBlock',CustomTableBlock(),)
 ]
 homepage_stream_fields= common_blocks+ [
     ('HomepageIntroContentBlock',HomepageIntroContentBlock()),

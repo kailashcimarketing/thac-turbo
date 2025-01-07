@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <figure>
-    {% image value.image original formate-webp as img %}
+    {% image value.image original format-webp as img %}
     <img src="{{img.url}}" alt="{{value.captions|slugify}}"/>
     {% if value.caption %}
     <figcaption>
