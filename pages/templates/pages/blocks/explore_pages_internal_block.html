@@ -1,0 +1,39 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-explore s-explore--secondary position-relative">
+    <div class="s-explore__bg-wrap overlay--special overlay after-el before-el overflow-hidden parallax-trigger-js">
+        <img class="w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="/static/images/preloader/preloader-bg.webp" alt="">
+    </div>
+    <div class="container s-explore__container container-anim-js">
+        <h2 class="s-explore__title-2 text-center block-anim-js">
+            {% if value.title %}{{value.title|safe}}{% else %}{% endif %}
+        </h2>
+        <div class="row s-explore__row">
+            {% if value.landing_page %}
+            {% for item in value.landing_page.specific.get_child_pages %}
+            {% if forloop.counter < 4 %}
+            <div class="col-lg-4 col-sm-6 col-12 s-explore__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
+                <div class="new-card new-card--secondary position-relative hover-pic-wrap">
+                    <a href="{{item.url}}" class="link-mask"></a>
+                    <div class="new-card__pic-wrap position-relative overflow-hidden">
+                        {% image item.specific.get_hero_image.image fill-320x320-c100 as img %}
+                        <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
+                    </div>
+                    <div class="new-card__content">
+                        <h3 class="new-card__title">Welcome</h3>
+                        <div class="new-card__txt-wrap last-el-mb-0">
+                            <p>{{item.title|safe}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% if value.landing_page %}
+        <div class="s-explore__card-btn-wrap block-anim-js text-center">
+            <a href="{{value.landing_page.url}}" class="btn btn--sixth s-explore__card-btn">
+                <span class="btn__content"> <span class="btn__txt">Back to {{value.landing_page.title|safe}}</span> </span> </a>
+        </div>
+        {% endif %}
+    </div>
+</section>

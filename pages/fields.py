@@ -18,6 +18,7 @@ common_blocks = [
     ('PromoBlock',PromoBlock()),
     ('LandingPageIntroBlock',LandingPageIntroBlock()),
     ('ExplorePagesBlock',ExplorePagesBlock()),
+    ('ExplorePagesInternalBlock',ExplorePagesInternalBlock()),
     ('QuoteWithImage',QuoteWithImage()),
     ('InternalpageIntroBlock',InternalpageIntroBlock()),
     ('StatsCardWithParallaxImageBlock',StatsCardWithParallaxImageBlock()),

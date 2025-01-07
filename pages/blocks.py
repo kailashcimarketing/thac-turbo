@@ -461,6 +461,14 @@ class ExplorePagesBlock(blocks.StructBlock):
         label = "Explore Pages(local navigation)"
         group = "Landing Page"
         template = "pages/blocks/explore_pages_block.html"
+
+class ExplorePagesInternalBlock(blocks.StructBlock):
+    image = ImageChooserBlock(label="Background image")
+    title = blocks.CharBlock(required=False)
+    landing_page = PageChooserBlock(required=False)
+    class Meta:
+        label = "Internal Explore Pages(local navigation)"
+        template = "pages/blocks/explore_pages_internal_block.html"        
     
 class QuoteWithImage(blocks.StructBlock):
     quote = blocks.RichTextBlock()
