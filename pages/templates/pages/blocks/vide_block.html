@@ -1,4 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags %}
+<div class="light-theme">
 <section class="s-simple-txt text-center">
     <div class="container s-simple-txt__container container-anim-js">
         <h2 class="s-simple-txt__title block-anim-js">
@@ -11,7 +12,7 @@
     </div>
 </section>
 <div class="video-module-container container container-anim-js">
-    <div class="video-module video-module--def video-module-js block-anim-js block-anim--static-js">
+    <div class="video-module video-module--def video-module-js block-anim-j <div class="light-theme">s block-anim--static-js">
         <div class="video-module__btn video-module__btn-js">
             <img class="video-module__btn-icon video-module__btn-icon--play transition-def" src="/static/images/principal's-welcome/play-icon.svg" alt="">
             <img class="video-module__btn-icon video-module__btn-icon--pause transition-def" src="/static/images/principal's-welcome/pause-btn.svg" alt="">
@@ -19,4 +20,5 @@
         {% image value.poster_image original format-webp as img %}
         <video class="w-100 h-100 obj-cover" preload="metadata" playsinline src="{{value.video_url}}" poster="{{img.url}}" type="video/mp4"></video>
     </div>
+</div>
 </div>
