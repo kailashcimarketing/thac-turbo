@@ -1,7 +1,8 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <section class="s-explore s-explore--secondary position-relative">
     <div class="s-explore__bg-wrap overlay--special overlay after-el before-el overflow-hidden parallax-trigger-js">
-        <img class="w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="/static/images/preloader/preloader-bg.webp" alt="">
+        {% image value.image original format-webp as img %}
+        <img class="w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="{{img.url}}" alt="">
     </div>
     <div class="container s-explore__container container-anim-js">
         <h2 class="s-explore__title-2 text-center block-anim-js">
@@ -28,6 +29,7 @@
             </div>
             {% endif %}
             {% endfor %}
+            {% endif %}
         </div>
         {% if value.landing_page %}
         <div class="s-explore__card-btn-wrap block-anim-js text-center">
