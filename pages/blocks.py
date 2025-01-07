@@ -649,13 +649,24 @@ class ProfileBlock(blocks.StructBlock):
         label = "Profile"
         template = "pages/blocks/profile_block.thml"
 
+
+class ChildImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+    caption = blocks.CharBlock(required=False)
+    class Meta:
+        label = "Image"
+        template = "pages/blocks/child_image_block.html"
+
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
     left_title = blocks.CharBlock()
     content = blocks.StreamBlock([
         ('heading',HeadingBlock()),
         ('content',ContentBlock()),
         ('video',ChildVideBlock()),
+        ('QuoteBlock',QuoteBlock()),
         ('ProfileBlock',ProfileBlock()),
+        ('ChildImageBlock',ChildImageBlock()),
+        ('space',SpaceBlock()),
     ])
     class Meta:
         label = "Content with left heading"

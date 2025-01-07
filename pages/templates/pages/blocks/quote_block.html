@@ -1,6 +1,6 @@
 <blockquote>
-    {{value.quote|safe}}
+    <p>{{value.quote|safe}}</p>
     {% if value.author %}
-    <span class="author">{{value.author|safe}}</span>
+    <cite>{{value.author|safe}}</cite>
     {% endif %}
 </blockquote>

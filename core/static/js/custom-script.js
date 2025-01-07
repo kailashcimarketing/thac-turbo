@@ -9,7 +9,7 @@ function makeid(length) {
     return result;
 }
 
-$(function() {
+$(function () {
     $('.lazy').lazy();
 
     if ($('.gallery-slider').length) {
@@ -34,4 +34,10 @@ $(function() {
             });
         });
     }
+    $('.modal-toggle-btn-js').each(function () {
+        var target_id = $(this).attr('id');
+        if ($(id).length) {
+
+        }
+    });
 });
