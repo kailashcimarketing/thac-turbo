@@ -98,6 +98,7 @@ class GeneralpageHero(HeroAbstract):
 
 class GeneralPage(Page):
     show_in_menus_default = True
+    short_description = models.TextField(null=True,blank=True)
     body = StreamField(generalpage_stream_fields,null=True,blank=True)
 
     class Meta:

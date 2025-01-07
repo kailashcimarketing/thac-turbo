@@ -20,10 +20,12 @@
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>
                     <div class="new-card__content">
-                        <h3 class="new-card__title">Welcome</h3>
+                        <h3 class="new-card__title">{{item.title|safe}}</h3>
+                        {% if item.specific.short_description %}
                         <div class="new-card__txt-wrap last-el-mb-0">
-                            <p>{{item.title|safe}}</p>
+                            <p>{{item.specific.short_description|safe}}</p>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
