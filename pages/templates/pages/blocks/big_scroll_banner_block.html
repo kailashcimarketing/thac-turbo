@@ -1,7 +1,13 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<section class="s-scroll-banners text-center">
+<section class="s-scroll-banners text-center {% if value.theme == 'secondary' %} s-scroll-banners--secondary{% endif %}">
     <div class="s-scroll-banners__container-main container position-relative  container-anim-js">
         <div class="container s-scroll-banners__container">
+            {% if value.theme == 'secondary' %}
+            <h2 class="s-scroll-banners__title-2">
+                <span class="d-md-block d-none"><span class="child-special-text d-block"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.title|safe}} </span></span> {{value.script_title|safe|default:""}}</span>
+                <span class="d-md-none d-block">{{value.title|safe}}<span class="child-special-text d-block"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.script_title|safe|default:""}}</span></span></span>
+            </h2>
+            {% else %}
             <h2 class="s-scroll-banners__title">
                 <span class="d-md-block d-none">
                 {{value.title|safe}} {{value.script_title|safe|default:""}}
@@ -9,6 +15,7 @@
                     {{value.title|safe}} <span class="child-special-text"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.script_title|safe|default:""}}</span></span>
                 </span>
             </h2>
+            {% endif %}
         </div>
         <div class="swiper swiper-md-def-js overflow-visible">
             <div class="swiper-wrapper s-scroll-banners__pics-wrap">
@@ -52,3 +59,4 @@
         {% endif %}
     </div>
 </section>
+

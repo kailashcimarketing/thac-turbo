@@ -17,6 +17,8 @@ class Vacancies(models.Model):
     start_date = models.DateField() 
     end_date = models.DateField()
     short_description = models.TextField()
+    status = models.BooleanField(default=True,blank=True)
+    weight = models.IntegerField(default=100,null=False,blank=False)
     document =  models.ForeignKey(
         Document,
         on_delete=models.SET_NULL,

@@ -17,38 +17,42 @@
         <div class="row s-form__row">
             <div class="col-md-6 col-12 s-form__col s-form__col-1">
                 <div class="s-form__pic-wrap overflow-hidden">
-                    <img class="s-form__pic w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="images/contact/contact-banner.webp" alt="">
+                    <img class="s-form__pic w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="/static/images/contact/contact-banner.webp" alt="">
                 </div>
             </div>
             <div class="col-md-6 col-12 s-form__col d-flex justify-content-center align-items-center s-form__col-2 light-theme">
                 <div class="s-form__block w-100">
-                    <h2 class="s-form__block-title h2--secondary text-center block-anim-js">
-                        SEND
-                        <span class="child-special-text child-special-text--static"><span class="child-special-text__txt child-special-text__txt--secondary">us a</span></span> MESSAGE
-                    </h2>
                     {% block thankyou_message %}
                         {% endblock %}
+                    
+                    
                         {% block form %}
-                        {{form.errors}}
-                    <form class="s-form__form">
+                        <h2 class="s-form__block-title h2--secondary text-center block-anim-js">
+                            SEND
+                            <span class="child-special-text child-special-text--static"><span class="child-special-text__txt child-special-text__txt--secondary">us a</span></span> MESSAGE
+                        </h2>
+                        
+                    <form class="s-form__form" method="post" action=".">
                         {% csrf_token %}
                         <div class="s-form__form-item block-anim-js">
                             {% render_field form.full_name class+="form-control input-style" placeholder="Full name *" autocomplete="Off" %}
+                            {{form.full_name.errors}}   
                         </div>
                         <div class="s-form__form-item block-anim-js">
                             {% render_field form.email class+="form-control input-style" placeholder="Email Address *" autocomplete="Off" %}
+                            {{form.email.errors}}   
                         </div>
                         <div class="s-form__form-item block-anim-js">
-                            <input class="input-style" type="tel" placeholder="Contact number *">
                             {% render_field form.phone class+="form-control input-style" placeholder="Contact number *" autocomplete="Off" %}
+                            {{form.phone.errors}}   
                         </div>
                         <div class="s-form__form-item s-form__form-item--last block-anim-js">
                             {% render_field form.message class+="form-control input-style" placeholder="message" autocomplete="Off" %}
-                            
+                            {{form.message.errors}}   
                         </div>
                         <div class="s-form__form-check-wrap block-anim-js">
                             <div class="checkbox-block">
-                                {% render_field form.terms_condition class+="checkbox-block__input d-none" placeholder="message" autocomplete="Off" %}
+                                {% render_field form.terms_condition id="checkbox" class+="checkbox-block__input d-none" autocomplete="Off" %}
                                 <label for="checkbox" class="checkbox-block__label">
                                             <span class="checkbox-block__label-check">
                                                 <img class="checkbox-block__label-check-icon transition-def" src="/static/images/contact/check.png" alt="">
@@ -56,9 +60,11 @@
                                     <span class="checkbox-block__label-txt"> I accept <a href="#">the terms</a> for processing personal data</span>
                                 </label>
                             </div>
+                            {{form.terms_condition.errors}}   
                         </div>
                         <div class="s-form__form-check-wrap block-anim-js">
-                        {% render_field form.captcha %}    
+                        {% render_field form.captcha %} 
+                        {{form.captcha.errors}}   
                     </div>
                         <div class="s-form__form-btn-wrap block-anim-js">
                             <button class="big-circle-btn big-circle-btn--mini mx-auto s-form__form-btn bg-none d-flex align-items-center justify-content-center">

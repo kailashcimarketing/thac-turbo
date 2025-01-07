@@ -81,11 +81,17 @@ class LandingPage(Page):
         else:
             return False
         
+   
+    def get_hero_image(self):
+        if self.get_hero():
+            return self.get_hero()[0]
+        
+        return False
+        
     
     def get_child_pages(self):
         return self.get_children().live().filter(show_in_menus=True)
         
-     
 
 class GeneralpageHero(HeroAbstract):
     page = ParentalKey('GeneralPage', related_name='generalpage_hero')
@@ -102,6 +108,12 @@ class GeneralPage(Page):
             return self.generalpage_hero.all()
         else:
             return False
+    
+    def get_hero_image(self):
+        if self.get_hero():
+            return self.get_hero()[0]
+        
+        return False
         
 
 """

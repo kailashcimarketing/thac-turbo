@@ -15960,3 +15960,11 @@ body:not(.menu-open) .header__megamenu {
 }
 @media (max-width: 375px) {
 }
+
+ul.errorlist li{
+    list-style: none;
+    color:red;
+    margin: 0;
+    padding: 0;
+}
+ul.errorlist li::before{display: none;}

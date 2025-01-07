@@ -15,12 +15,12 @@
         </h2>
         <div class="row s-explore__row">
             {% if value.landing_page %}
-            {% for item in value.landing_page.get_child_pages %}
+            {% for item in value.landing_page.specific.get_child_pages %}
             <div class="col-lg-4 col-sm-6 col-12 s-explore__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
                 <div class="new-card new-card--secondary position-relative hover-pic-wrap">
                     <a href="{{item.url}}" class="link-mask"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
-                        {% image item.get_image.image fill-320x320-c100 as img %}
+                        {% image item.specific.get_hero_image.image fill-320x320-c100 as img %}
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>
                     <div class="new-card__content">
@@ -33,12 +33,12 @@
             </div>
             {% endfor %}
             {% else %}
-            {% for item in page.get_child_pages %}
+            {% for item in page.specific.get_child_pages %}
             <div class="col-lg-4 col-sm-6 col-12 s-explore__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
                 <div class="new-card new-card--secondary position-relative hover-pic-wrap">
                     <a href="{{item.url}}" class="link-mask"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
-                        {% image item.get_image.image fill-320x320-c100 as img %}
+                        {% image item.specific.get_hero_image.image fill-320x320-c100 as img %}
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>
                     <div class="new-card__content">

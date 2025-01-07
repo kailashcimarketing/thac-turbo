@@ -18,7 +18,7 @@ class ContactSubmission(models.Model):
     email = models.EmailField(null=True,blank=False)
     phone =  models.CharField(null=True,blank=False,max_length=25)
     message = models.TextField(null=True,blank=True)
-    terms_condition = models.BooleanField(default=True,blank=False)
+    terms_condition = models.BooleanField(default=False,blank=False)
     created = models.DateTimeField("Created", auto_now_add=True)
 
     class Meta:

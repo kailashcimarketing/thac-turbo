@@ -330,6 +330,10 @@ class FeaturedSectionBlock(blocks.StructBlock):
         template = "pages/blocks/featured_section_block.html"
 
 class BigScrollBannerBlock(blocks.StructBlock):
+    theme = blocks.ChoiceBlock([
+        ('primary','Primary'),
+        ('secondary','Secondary'),
+    ],default='primary')
     title = blocks.CharBlock(required=False)
     script_title = blocks.CharBlock(required=False)
     items = blocks.ListBlock(blocks.StructBlock([
@@ -338,7 +342,7 @@ class BigScrollBannerBlock(blocks.StructBlock):
     ]))
     button = SimpleButton()
     class Meta:
-        label = "Big scroll banner"
+        label = "Big vertical scroll banner"
         template = "pages/blocks/big_scroll_banner_block.html"
 
 class IconBlock(blocks.StructBlock):
