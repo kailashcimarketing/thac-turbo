@@ -655,7 +655,7 @@ class ProfileBlock(blocks.StructBlock):
     position = blocks.CharBlock()
     class Meta:
         label = "Profile"
-        template = "pages/blocks/profile_block.thml"
+        template = "pages/blocks/profile_block.html"
 
 
 class ChildImageBlock(blocks.StructBlock):
