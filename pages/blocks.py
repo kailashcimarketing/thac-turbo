@@ -666,6 +666,10 @@ class ChildImageBlock(blocks.StructBlock):
         template = "pages/blocks/child_image_block.html"
 
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dard-theme','Dark')
+    ],label="background",default="light-theme")
     left_title = blocks.CharBlock()
     content = blocks.StreamBlock([
         ('heading',HeadingBlock()),
