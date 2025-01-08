@@ -31,6 +31,7 @@ from django.urls import reverse
 from django.forms import FileField, CharField, ChoiceField
 from django import forms
 from wagtail.contrib.forms.views import SubmissionsListView
+from wagtail.search import index
 
 
 # Create your models here.
@@ -91,6 +92,10 @@ class LandingPage(Page):
     
     def get_child_pages(self):
         return self.get_children().live().filter(show_in_menus=True)
+    
+    search_fields = Page.search_fields + [ # Inherit search_fields from Page
+        index.SearchField('body'),        
+    ]
         
 
 class GeneralpageHero(HeroAbstract):
@@ -100,6 +105,10 @@ class GeneralPage(Page):
     show_in_menus_default = True
     short_description = models.TextField(null=True,blank=True)
     body = StreamField(generalpage_stream_fields,null=True,blank=True)
+
+    search_fields = Page.search_fields + [ # Inherit search_fields from Page
+        index.SearchField('body'),        
+    ]
 
     class Meta:
         verbose_name = "Internal Page"

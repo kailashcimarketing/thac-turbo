@@ -10,6 +10,7 @@ HomePage.content_panels = [
         FieldPanel('image'),
         FieldPanel('background_video_url'),
         FieldPanel('video_poster_image'),
+        FieldPanel('popup_video_url'),
         FieldPanel('button_label'), 
         FieldPanel('button_url'),  
         #FieldPanel('popup_video_url'),

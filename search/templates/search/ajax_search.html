@@ -1,0 +1,39 @@
+{% load static wagtailcore_tags extra_tags wagtailimages_tags %}
+
+
+
+
+{% if search_results %}
+  {% for result in search_results %}
+    {% if not result.specific.hide_from_search %}
+    <li>
+        <a href="#" class="link-mask"></a>
+        <div class="search-block__results-pic-wrap">
+            {% if result.specific.get_hero_image %}
+            {% image result.specific.get_hero_image.image fill-425x265 as img %}
+            <img class="search-block__results-pic w-100 h-100 obj-cover transition-def" src="{{img.url}}" alt="">
+            {% else %}
+            <img class="search-block__results-pic w-100 h-100 obj-cover transition-def" src="/static/images/header/search-res-3_3.webp" alt="">
+            {% endif %}
+            
+        </div>
+        <div class="search-block__results-content last-el-mb-0">
+            <h4>{{ result }}</h4>
+            {% if result.specific.body %}
+            <div class="search-item-text">{{ result.specific.body|striptags|highlight:search_query|safe }}</div>
+          {% endif %}
+        </div>
+    </li>
+
+      
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <li>
+    <div class="search-block__results-pic-wrap">
+        <p>No results found</p>
+    </div>
+  </li>
+    
+  
+{% endif %}

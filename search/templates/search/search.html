@@ -1,30 +1,60 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags extra_tags wagtailimages_tags %}
 
 {% block body_class %}template-searchresults{% endblock %}
 
 {% block title %}Search{% endblock %}
 
 {% block content %}
-<h1>Search</h1>
+<section class="hero hero--secondary position-relative z-index-3 parallax-trigger-js text-center pt-10">
+    
+    <div class="container hero__container position-relative z-index-2 container-hero-anim-js">
+        <h1 class="hero__title hero-item-js hero-item-2-js">
+            Search 
+            <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">Result</span></span>
+        </h1>
+        
+    </div>
+</section>
+<section class="s-simple-2cols pt-0">
+    <div class="container s-simple-2cols__container container-anim-js">
+        <div class="row s-simple-2cols__row">
+            <div class="col-lg-6">
 
 <form action="{% url 'search' %}" method="get">
     <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
     <input type="submit" value="Search" class="button">
 </form>
-
+</div>
 {% if search_results %}
+
+<div class="search-result">
 <ul>
     {% for result in search_results %}
     <li>
-        <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-        {% if result.search_description %}
-        {{ result.search_description }}
-        {% endif %}
+        <div class="media">
+            <div class="media-left">
+                {% if result.specific.get_hero_image %}
+                {% image result.specific.get_hero_image.image fill-425x265 as img %}
+                <img class="search-block__results-pic w-100 h-100 obj-cover transition-def" src="{{img.url}}" alt="">
+                {% else %}
+                <img class="search-block__results-pic w-100 h-100 obj-cover transition-def" src="/static/images/header/search-res-3_3.webp" alt="">
+                {% endif %}
+            </div>
+            <div class="media-body">
+
+                <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
+                {% if result.specific.body %}
+                    <div class="search-item-text">{{ result.specific.body|striptags|highlight:search_query|safe }}</div>
+                  {% endif %}
+            </div>
+        </div>
+       
+
     </li>
     {% endfor %}
 </ul>
-
+</div>
 {% if search_results.has_previous %}
 <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
 {% endif %}
@@ -35,4 +65,6 @@
 {% elif search_query %}
 No results found
 {% endif %}
+</div></div></section>
+
 {% endblock %}
