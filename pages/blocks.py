@@ -702,3 +702,11 @@ class TeamListBlock(blocks.StructBlock):
     class Meta:
         label = "List all team"
         template = "pages/blocks/all_team_list.html"
+
+
+class PDFFlipBookBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    html = HtmlSourceBlock()
+    class Meta:
+        label ="PDF flip book"
+        template = "pages/blocks/pdf_flip_book_block.html"

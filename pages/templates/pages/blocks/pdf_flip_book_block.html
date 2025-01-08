@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+<section class="s-pdf-book">
+    <div class="container s-pdf-book__container container-anim-js">
+        <h2 class="s-pdf-book__title h3 block-anim-js">{{value.title|safe}}</h2>
+        <div class="s-pdf-book__book block-anim-js">
+            {% include_block value.html %}
+        </div>
+    </div>
+</section>
