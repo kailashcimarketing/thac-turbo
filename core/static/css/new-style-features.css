@@ -1,0 +1,146 @@
+/*-----------------------------------------------------*/
+.container-video-js.child-video-play img {
+    display: none;
+}
+.container-video-js:not(.hero-primary__bg-wrap) {
+    position: relative;
+    z-index: 0;
+}
+.container-video-js video {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.container-video-js img {
+    position: relative;
+    z-index: 1;
+}
+/*-----------------------------------------------------*/
+.header--update-1 .header__megamenu-list-pic-wrap:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(28, 28, 28, 0.3);
+    z-index: 1;
+}
+.header__megamenu-list-2-wrap-menus {
+    position: relative;
+    width: 50%;
+    margin-bottom: 80px;
+    -webkit-transition: height var(--animation-smooth);
+    -o-transition: height var(--animation-smooth);
+    transition: height var(--animation-smooth);
+}
+.header__megamenu-list-2-wrap-menus .header__megamenu-list-2-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    -webkit-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    transform: translateX(100px);
+    opacity: 0;
+    visibility: hidden;
+}
+.enable-transition .header__megamenu-list-2-wrap-menus .header__megamenu-list-2-wrap {
+    -webkit-transition: opacity var(--animation-smooth), visibility var(--animation-smooth), -webkit-transform var(--animation-smooth);
+    transition: opacity var(--animation-smooth), visibility var(--animation-smooth), -webkit-transform var(--animation-smooth);
+    -o-transition: transform var(--animation-smooth), opacity var(--animation-smooth), visibility var(--animation-smooth);
+    transition: transform var(--animation-smooth), opacity var(--animation-smooth), visibility var(--animation-smooth);
+    transition: transform var(--animation-smooth), opacity var(--animation-smooth), visibility var(--animation-smooth), -webkit-transform var(--animation-smooth);
+}
+@-webkit-keyframes showMenu {
+    from {
+        -webkit-transform: translateX(-100px);
+        transform: translateX(-100px);
+        opacity: 0;
+        visibility: visible;
+    }
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+@keyframes showMenu {
+    from {
+        -webkit-transform: translateX(-100px);
+        transform: translateX(-100px);
+        opacity: 0;
+        visibility: visible;
+    }
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+@-webkit-keyframes hideMenu {
+    from {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+@keyframes hideMenu {
+    from {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+.enable-transition .header__megamenu-list-2-wrap-menus .header__megamenu-list-2-wrap.hide-menu-item {
+    -webkit-animation: hideMenu var(--animation-smooth) forwards;
+    animation: hideMenu var(--animation-smooth) forwards;
+}
+.enable-transition .header__megamenu-list-2-wrap-menus .header__megamenu-list-2-wrap.show-menu-item {
+    -webkit-animation: showMenu var(--animation-smooth) forwards;
+    animation: showMenu var(--animation-smooth) forwards;
+}
+.header--update-1 .header__megamenu-list-1-wrap {
+    padding-right: 30px;
+}
+.header--update-1 .header__megamenu-list-1 span {
+    max-width: -webkit-min-content;
+    max-width: -moz-min-content;
+    max-width: min-content;
+}
+@media (min-width: 992px) {
+    .header__megamenu-panel-btn-active {
+        color: var(--secondary-teal) !important;
+    }
+}
+@media (max-width: 1199px) {
+    .header__megamenu-list-2-wrap-menus {
+        width: 30%;
+    }
+}
+@media (max-width: 991px) {
+    .header__megamenu-list-2-wrap-menus {
+        display: none;
+    }
+}
+/*-----------------------------------------------------*/

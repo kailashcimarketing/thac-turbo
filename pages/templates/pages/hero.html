@@ -5,19 +5,16 @@
 {% if type == 'home' %}
 <section class="hero-primary position-relative d-flex align-items-end">
 
-    <div class="overlay hero-primary__bg-wrap after-el after-el--full before-el overflow-hidden"   >
-        {% if item.background_video_url %}
-        <video width="100%" height="auto" muted autoplay>
-            <source src="{{item.background_video_url}}" type="video/mp4">
-          Your browser does not support the video tag.
-          </video>
-        {% else %}
-    
+       <div class="overlay hero-primary__bg-wrap after-el after-el--full before-el overflow-hidden container-video-js">
         {% image item.image original format-webp as img %}
-        <img class="w-100 h-100 obj-cover hero-pic-scale-js" src="{{img.url}}" alt="">
+        {% if item.background_video_url %}
+        <video class="w-100 h-100 obj-cover video-js" playsinline="" autoplay="" muted="" loop="" preload="metadata" src="{{item.background_video_url}}" poster="{{img.url}}"></video>        {% else %}
+        
         {% endif %}
+        <img class="w-100 h-100 obj-cover hero-pic-scale-js" src="{{img.url}}" alt="">
     </div>
     <div class="container container-hero-anim-js hero-primary__container position-relative d-xl-flex flex-wrap justify-content-between align-items-end">
+        {% if item.popup_video_url %}
         <div class="hero-primary__big-circle-btn-wrap position-absolute hero-item-js hero-item-2-js">
             <a href="#modal-2" class="big-circle-btn d-flex align-items-center justify-content-center modal-toggle-btn-js">
                 <svg class="big-circle-btn__border">
@@ -29,7 +26,7 @@
                 </svg>
             </a>
         </div>
-        {% if item.popup_video_url %}
+        
         <div class="d-xl-none hero-primary__btn-wrap position-relative z-index-3 hero-item-js hero-item-2-js">
             <a class="link-with-icon bg-img-none modal-toggle-btn-js" href="#modal-2">
                         <span class="link-with-icon__icon-wrap">
@@ -50,7 +47,7 @@
             <div class="hero-primary__small-card transition-def position-relative overflow-hidden d-inline-flex align-items-center">
                 <a href="https://thac.youtour.com.au/a/thac/index.htm" target="_blank" class="link-mask"></a>
                 <div class="hero-primary__small-card-pic-wrap">
-                    <img class="hero-primary__small-card-pic w-100 h-100 obj-cover" src="/static/images/homepage/hero-pic-2.webp" alt="">
+                    <img class="hero-primary__small-card-pic w-100 h-100 obj-cover" src="images/homepage/hero-pic-2.webp" alt="">
                 </div>
                 <div class="hero-primary__small-card-content text-uppercase last-el-mb-0">
                     <h4 class="hero-primary__small-card-title">TAKE A VIRTUAL TOUR</h4>
@@ -85,7 +82,6 @@
 <section class="hero-about  parallax-trigger-js">
     <div class="container hero-about__container position-relative z-index-2 container-hero-anim-js">
         <div data-scrollbar class="pages-nav hide-scrollbar hero-item-js hero-item-1-js">
-
             {% if page.get_ancestors|length > 1 %}
             <ul class="pages-nav__list d-inline-flex list-unstyled">
                 {% for p in page.get_ancestors %}
@@ -101,32 +97,33 @@
             {{page.title|safe}}
         </h1>
     </div>
-    <div class="hero-about__bg-wrap overflow-hidden">
-        {% if item.background_video_url %}
-        <video width="100%" height="auto" muted autoplay>
-            <source src="{{item.background_video_url}}" type="video/mp4">
-          Your browser does not support the video tag.
-          </video>
-        {% else %}
+    <div class="hero-about__bg-wrap overflow-hidden container-video-js">
         {% image item.image original format-webp as img %}
-        <img class="w-100 h-100 hero-about__bg obj-cover parallax-js parallax-def-js parallax-hero-js" src="{{img.url}}" alt="">
+        {% if item.background_video_url %}
+        <video class="w-100 h-100 obj-cover video-js" playsinline="" autoplay="" muted="" loop="" preload="metadata" src="{{item.background_video_url}}" poster="{{img.url}}"></video>
         {% endif %}
+
+        <img class="w-100 h-100 hero-about__bg obj-cover parallax-js parallax-def-js parallax-hero-js" src="{{img.url}}" alt="">
+        
+        
+        
+        
     </div>
 </section>
+
+
 {% endif %}
 
 {% if type == 'internal' %}
 <section class="hero hero--secondary position-relative z-index-3 parallax-trigger-js text-center">
-    <div class="hero__pic-wrap position-relative after-el before-el overflow-hidden">
-        {% if item.background_video_url %}
-        <video width="100%" height="auto" muted autoplay>
-            <source src="{{item.background_video_url}}" type="video/mp4">
-          Your browser does not support the video tag.
-          </video>
-        {% else %}
+    <div class="hero__pic-wrap position-relative after-el before-el overflow-hidden container-video-js">
         {% image item.image original format-webp as img %}
-        <img class="w-100 h-100 obj-cover hero__pic hero-pic-scale-js" src="{{img.url}}" alt="">
+        {% if item.background_video_url %}
+        <video class="w-100 h-100 obj-cover video-js" playsinline="" autoplay="" muted="" loop="" preload="metadata" src="{{item.background_video_url}}" poster="{{img.url}}"></video>
         {% endif %}
+        
+        <img class="w-100 h-100 obj-cover hero__pic hero-pic-scale-js" src="{{img.url}}" alt="">
+        
     </div>
     <div class="container hero__container position-relative z-index-2 container-hero-anim-js">
         <div data-scrollbar class="pages-nav hide-scrollbar hero__pages-nav hero-item-js hero-item-1-js text-center">
