@@ -44,7 +44,9 @@
         {% load_content_holder "header-design" %}
         <div id="body-content-wrap" class="body-content-wrap hide-scrollbar {% block main_div_class %}{% endblock %}" data-scrollbar>
             <div id="body-content" class="body-content">
-                {% block content %}{% endblock %}
+                <main id="main" class="main overflow-hidden">
+                    {% block content %}{% endblock %}
+                </main>
                 {% load_content_holder "footer-design" %}
             </div>
         </div>
