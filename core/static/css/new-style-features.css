@@ -92,8 +92,8 @@
         visibility: visible;
     }
     to {
-        -webkit-transform: translateX(100px);
-        transform: translateX(100px);
+        -webkit-transform: translateX(-100px);
+        transform: translateX(-100px);
         opacity: 0;
         visibility: hidden;
     }
@@ -106,8 +106,8 @@
         visibility: visible;
     }
     to {
-        -webkit-transform: translateX(100px);
-        transform: translateX(100px);
+        -webkit-transform: translateX(-100px);
+        transform: translateX(-100px);
         opacity: 0;
         visibility: hidden;
     }
