@@ -10,7 +10,6 @@ function makeid(length) {
 }
 
 $(function () {
-    $('.lazy').lazy();
 
     if ($('.gallery-slider').length) {
         $('.gallery-slider').each(function () {
@@ -34,7 +33,9 @@ $(function () {
             });
         });
     }
+
     $('.modal-popup').each(function () {
         $(this).appendTo('body');
     });
+    
 });
