@@ -3,7 +3,7 @@
 {% load static wagtailcore_tags wagtailimages_tags extra_tags %}
 {% block body_class %}home-page{% endblock %}
 {% block pre_loader %}
-
+{% load_content_holder 'pre-loader' %}
 {% endblock %}
 
 {% block content %}
