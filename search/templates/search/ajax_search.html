@@ -7,7 +7,7 @@
   {% for result in search_results %}
     {% if not result.specific.hide_from_search %}
     <li>
-        <a href="#" class="link-mask"></a>
+        <a href="{% pageurl result %}" class="link-mask"></a>
         <div class="search-block__results-pic-wrap">
             {% if result.specific.get_hero_image %}
             {% image result.specific.get_hero_image.image fill-425x265 as img %}
