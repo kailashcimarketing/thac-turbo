@@ -126,6 +126,20 @@ class GeneralPage(Page):
         return False
         
 
+class EventPage(Page):
+    show_in_menus_default = True
+    hero_image = models.ForeignKey(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL, 
+        related_name='+'
+    ) 
+    hero_title = models.CharField(null=True,blank=False,max_length=255)
+    hero_script_title = models.CharField(null=True,blank=False,max_length=255)
+
+
+
 """
 Form page template
 """        

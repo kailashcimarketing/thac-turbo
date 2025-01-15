@@ -66,7 +66,7 @@ gsap.registerEffect({
     tl_preloader.counter('#preloader__counter-numb', {
         end: '100',
         increment: 1,
-        duration: 5,
+        duration: 3,
     });
 // }
 let selector_txt_lines = '.split-text-by-line-js';

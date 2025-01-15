@@ -714,3 +714,23 @@ class PDFFlipBookBlock(blocks.StructBlock):
     class Meta:
         label ="PDF flip book"
         template = "pages/blocks/pdf_flip_book_block.html"
+
+
+
+
+class EventQuote(blocks.StructBlock):
+    quote = blocks.CharBlock()
+    author = blocks.CharBlock(required=False)
+    class Meta:
+        label = "Quote"
+        template = "pages/blocks/events/quote_block.html"
+
+class EventContentBlocks(blocks.StreamBlock):
+    content = blocks.RichTextBlock()        
+    gallery = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock())
+    ]))
+    
+    class Meta:
+        label  = "Content"
+        template = "pages/blocks/events/content_block.html"

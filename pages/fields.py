@@ -45,6 +45,11 @@ contactpage_stream_fields= common_blocks+ [
     ('ContactpageHeroBlock',ContactpageHeroBlock()),
 ]
 
+events_stream_fields = [
+    ('EventQuote',EventQuote()),
+    ('EventContentBlocks',EventContentBlocks()),
+    ('ProfileBlock',ProfileBlock()),
+]
 
 
 generalpage_stream_fields=common_blocks+[]

@@ -5,6 +5,8 @@ from wagtail.models import Page, Orderable
 from django_extensions.db.fields import AutoSlugField
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.fields import StreamField, RichTextField
+from pages.fields import events_stream_fields
 
 class Category(models.Model):
     title = models.CharField(null=True,max_length=255,blank=False)
@@ -23,7 +25,8 @@ class Events(ClusterableModel):
     title = models.CharField(null=True,max_length=255,blank=False)
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     start_date = models.DateField()
-    end_date = models.DateField()    
+    end_date = models.DateField()  
+    time_label = models.CharField(null=True,blank=True,help_text='Event time eg. 1:00pm - 5:15pm')  
     image = models.ForeignKey(
         Image, 
         null=True, 
@@ -31,21 +34,34 @@ class Events(ClusterableModel):
         on_delete=models.SET_NULL, 
         related_name='+'
     ) 
+    hero_image = models.ForeignKey(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL, 
+        related_name='+',
+        help_text='Detail page hero image'
+    ) 
     short_description = models.TextField(null=True,blank=True)
-    published_date = models.DateField()
+    location = models.CharField(null=True,blank=True,max_length=255)
     status = models.BooleanField(default=True)
     category = models.ForeignKey('events.Category', related_name='event_category', null=True, blank=True, on_delete=models.SET_NULL)
+    body = StreamField(events_stream_fields,null=True,blank=True)
     
     panels = [
         FieldPanel('title'),
         FieldPanel('slug'),
+        FieldPanel('status'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
+        FieldPanel('time_label'),
         FieldPanel('image'),
+        FieldPanel('hero_image'),
+        FieldPanel('location'),
         FieldPanel('short_description'),
         FieldPanel('category'),
-        FieldPanel('status'),
         
+        FieldPanel('body'),        
     ]
     class Meta:
         verbose_name = 'News'

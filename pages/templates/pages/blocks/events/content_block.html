@@ -1,0 +1,26 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="modal__section-simple-content-wrap last-el-mb-0">
+    {% for block in value %}
+    {% if block.block_type == 'content' %}
+        {{block|safe}}
+    {% elif block.block_type == 'gallery' %}
+    <div class="row modal__section-simple-content-pics-grid">
+        {% for item in block.value %}
+        {% image item.image original format-webp as img %}
+        <div class="col-sm-4 col-6 modal__section-simple-content-pic-col">
+            <div class="modal__section-simple-content-pic-wrap position-relative">
+                <div class="modal__section-simple-content-pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
+                    <div class="modal__section-simple-content-pic-hover-block d-flex align-items-center justify-content-center">
+                        <img class="modal__section-simple-content-pic-hover-block-icon flex-auto" src="/static/images/news/Expand-Icon.svg" alt="">
+                    </div>
+                </div>
+                <a class="link-mask venobox" href="{{img.url}}" data-gall="gallery-1"></a>
+                <img class="w-100 h-100 obj-cover modal__section-simple-content-pic" src="{{img.url}}" alt="">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    
+</div>

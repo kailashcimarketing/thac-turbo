@@ -1,6 +1,6 @@
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.models import Page
-from .models import GeneralPage,LandingPage
+from .models import GeneralPage,LandingPage, EventPage
 
 GeneralPage.content_panels = Page.content_panels + [
     InlinePanel('generalpage_hero', label='Hero Images', panels=[
@@ -25,3 +25,10 @@ LandingPage.content_panels = Page.content_panels + [
     FieldPanel('body'),
 ]
 
+
+EventPage.content_panels = Page.content_panels + [
+    FieldPanel('hero_image'),
+    FieldPanel('hero_title'),     
+    FieldPanel('hero_script_title'),   
+    #FieldPanel('body'),
+]
