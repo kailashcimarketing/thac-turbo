@@ -7,7 +7,11 @@
     </div>
     <div class="container s-banner__container container-anim-js">
         <h2 class="s-banner__title text-anim-by-line-js">
+            {% if value.light_theme %}
+            {{value.title|safe}}<span class="color-1">{{value.highlighted_title|safe|default:""}}</span>
+            {% else %}
             <span class="color-1">{{value.title|safe}}</span>{{value.highlighted_title|safe|default:""}}
+            {% endif %}
         </h2>
         {% if value.light_theme %}
         <div class="s-cta__btn-wrap block-anim-js">
