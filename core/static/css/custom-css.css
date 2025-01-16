@@ -110,7 +110,7 @@
   padding:0 1rem;
 }
 
-.color-2 {
+/*.color-2 {
   color: var(--primary-red);
 }
 
@@ -119,7 +119,7 @@
 }
 .home-page .main .s-banner .s-banner_container .s-banner__title span{
   color: var(--primary-dark-blue);
-}
+}*/
 
 .header__megamenu-list-1{
   font-family: var(--font-family);

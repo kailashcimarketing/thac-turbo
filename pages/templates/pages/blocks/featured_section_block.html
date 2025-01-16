@@ -1,5 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<section class="s-banner position-relative d-flex align-items-center text-center">
+<section class="s-banner position-relative d-flex align-items-center text-center {% if value.light_theme %}light-theme{% endif %}">
 
     <div class="s-banner__pic-wrap overlay--special overlay after-el before-el overflow-hidden">
         {% image value.parallax_image original format-webp as img %}
@@ -9,12 +9,25 @@
         <h2 class="s-banner__title text-anim-by-line-js">
             <span class="color-1">{{value.title|safe}}</span>{{value.highlighted_title|safe|default:""}}
         </h2>
+        {% if value.light_theme %}
+        <div class="s-cta__btn-wrap block-anim-js">
+            {% if value.button.text %}
+            <a href="{{value.button.href.url}}" {{value.button.hre.target}} class="btn btn--seventh">
+                <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span>
+            </a>
+            {% endif %}
+        </div>
+        {% else %}
+
         {% if value.button.text %}
         <div class="s-banner__btn-wrap block-anim-js">
             <a href="{{value.button.href.url}}" {{value.button.href.target}} class="btn btn--third">
                 <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span>
             </a>
-        </div>
+        </div>        
         {% endif %}
+        {% endif %}
+        
+        
     </div>
 </section>

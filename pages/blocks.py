@@ -321,6 +321,7 @@ class AnnouncementsBlock(blocks.StructBlock):
         template = "pages/blocks/announcements_block.html"
 
 class FeaturedSectionBlock(blocks.StructBlock):
+    light_theme = blocks.BooleanBlock(required=False)
     parallax_image = ImageChooserBlock()
     title = blocks.CharBlock()
     highlighted_title = blocks.CharBlock(required=False)
@@ -610,6 +611,7 @@ class TwocolumnListContentBlock(blocks.StructBlock):
 
 class CTAButton(blocks.StructBlock):
     title = blocks.CharBlock()
+    sub_title =blocks.CharBlock(required=False)
     button = SimpleButton()
     class Meta:
         label = "CTA Button"        
