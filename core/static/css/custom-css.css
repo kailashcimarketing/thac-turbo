@@ -206,4 +206,8 @@
 .home-page .main .s-small-banners__btn-wrap {
   bottom: -8.5rem;
 }
-
+@media (min-width:1300px){
+.landing-page  .s-quote--primary .s-quote__pic-wrap{
+  width:55vw;
+  height: auto;
+}}
