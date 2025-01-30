@@ -212,7 +212,7 @@ SECRET_KEY = '7tr09iq2_mef500rvcven_ho1qg1zghc26sdmo1#@&3d6kqgik'
 FABRIC = {
     "DEPLOY_TOOL": "git",  # Deploy with "git", "hg", or "rsync"
     "SSH_USER": "ec2-user",  # VPS SSH username
-    "HOSTS": ['52.63.59.32'],  # The IP address of your VPS
+    "HOSTS": ['54.252.172.240'],  # The IP address of your VPS
     "DOMAINS": ALLOWED_HOSTS,  # Edit domains in ALLOWED_HOSTS
     "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
     "LOCALE": "en_US.UTF-8",  # Should end with ".UTF-8"
