@@ -68,6 +68,7 @@ def get_news_list(category='all',limit='all', ):
                     if valid_news:
                         if item.get('release_date'):
                             if today >= item.get('release_date'):
+                                items['release_date'] = datetime.strptime(item.get('release_date'), "%Y-%m-%d").date()
                                 news_items.append(item)  
                     
                     if item.get('featured') and featured_item == False:

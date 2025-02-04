@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags vacancies_tags %}
 {% get_vacancies as vacancies %}
 {% get_categories as categories %}
-<section class="s-vacancies light-theme">
+<section class="s-vacancies {{value.background}}">
     <div class="container s-vacancies__container container-anim-js">
         <h2 class="s-vacancies__title block-anim-js text-center">Browse Vacancies</h2>
         <div class="s-vacancies__swiper-wrap text-center">

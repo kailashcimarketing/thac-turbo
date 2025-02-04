@@ -228,8 +228,13 @@ class AccordionBlock(blocks.StructBlock):
 
 
 class ContentWithVariableWidthBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="dark-theme")
     column_width = blocks.ChoiceBlock(column_width,default="col-lg-12")        
     column_offset = blocks.ChoiceBlock(column_offset,required=False)
+    
     
     content_blocks = blocks.StreamBlock([
         ('html',HtmlSourceBlock()),
@@ -561,6 +566,10 @@ class StatsCardWithoutParallaxBlock(blocks.StructBlock):
 
 
 class GridPhotoGalleryBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="light-theme")
     title = blocks.CharBlock()
     items = blocks.ListBlock(blocks.StructBlock([
             ('image',ImageChooserBlock())
@@ -610,6 +619,10 @@ class TwocolumnListContentBlock(blocks.StructBlock):
         template = "pages/blocks/twocolumn_list_content_block.html"
 
 class CTAButton(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="light-theme")
     title = blocks.CharBlock()
     sub_title =blocks.CharBlock(required=False)
     button = SimpleButton()
@@ -623,6 +636,7 @@ class TimelineBlock(blocks.StructBlock):
     items = blocks.ListBlock(blocks.StructBlock([
         ('icon',ImageChooserBlock()),
         ('image',ImageChooserBlock()),
+        ('video_url',blocks.URLBlock(required=False,help_text='Mp4 video')),
         ('title',blocks.CharBlock()),
         ('button',SimpleButton()),
     ]))
@@ -670,7 +684,7 @@ class ChildImageBlock(blocks.StructBlock):
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
-        ('dard-theme','Dark')
+        ('dark-theme','Dark')
     ],label="background",default="light-theme")
     left_title = blocks.CharBlock()
     content = blocks.StreamBlock([
@@ -697,6 +711,10 @@ class HomepageIntroContentBlock(blocks.StructBlock):
 
 
 class VacanciesListBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark') 
+    ],label="background",default="light-theme")
     items = blocks.StaticBlock()
     class Meta:
         label = "List all vacancies"
@@ -711,6 +729,10 @@ class TeamListBlock(blocks.StructBlock):
 
 
 class PDFFlipBookBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark') 
+    ],label="background",default="dark-theme")
     title = blocks.CharBlock()
     html = HtmlSourceBlock()
     class Meta:

@@ -112,7 +112,8 @@
                             src="{{item.intro_image}}" alt="">
                     </div>
                     <div class="new-card__content">
-                        <time class="new-card__time d-block text-uppercase" datetime="{{item.release_date|safe}}">{{item.release_date|safe|date:"d M, Y"}}</time>
+                        {{item.release_date|date}} --- {{item.release_date}}
+                        <time class="new-card__time d-block text-uppercase" datetime="{{item.release_date|safe}}">hh{{item.release_date|date}}</time>
                         <h3 class="new-card__title">{{item.title|truncatechars:40|safe}}</h3>
                         <div class="new-card__txt-wrap last-el-mb-0">
                             {{item.introduction_content|rm_tags:"style"|truncatewords:27|safe}}
