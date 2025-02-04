@@ -206,7 +206,7 @@
 .home-page .main .s-small-banners__btn-wrap {
   bottom: -8.5rem;
 }
-
+body .header__login-block-container,
 body .header__megamenu-container {
   width: auto;
 }
@@ -214,7 +214,14 @@ body .header__megamenu-container {
 body .header__megamenu-list-2 a:hover {
   color: var(--secondary-teal);
 }
-
+body .header__megamenu-list-2-col-1,
+body .header__megamenu-list-2-col-2 {
+  flex:1 0 0;
+  width: auto;
+}
+body .header__megamenu-footer-col-2 {
+  margin-left: 3.5%;
+}
 
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
