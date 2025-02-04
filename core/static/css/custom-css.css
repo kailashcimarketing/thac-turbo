@@ -206,8 +206,45 @@
 .home-page .main .s-small-banners__btn-wrap {
   bottom: -8.5rem;
 }
-@media (min-width:1300px){
-.landing-page  .s-quote--primary .s-quote__pic-wrap{
-  width:55vw;
-  height: auto;
-}}
+
+body .header__megamenu-container {
+  width: auto;
+}
+
+body .header__megamenu-list-2 a:hover {
+  color: var(--secondary-teal);
+}
+
+
+@media (min-width:1300px) {
+  .landing-page .s-quote--primary .s-quote__pic-wrap {
+    width: 55vw;
+    height: auto;
+  }
+
+  body .s-parallax-banner {
+    padding: 5rem 0;
+   
+  }
+  body .s-parallax-banner  .s-parallax-banner__container{
+     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+     min-height: 70vh;
+    height: 70vh;   
+  }
+  body .s-parallax-banner h2 {
+    margin: 0;
+  }
+}
+
+@media (min-width:1400px) {
+  body .s-parallax-banner {
+    padding: 6rem 0;
+  }
+}
+@media (min-width:1900px) {
+  body .s-parallax-banner {
+    padding:8rem 0;
+  }
+}

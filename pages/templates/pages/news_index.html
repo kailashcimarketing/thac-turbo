@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags extra_tags %}
+{% block body_class %}general-page innerpage{% endblock %}
+
+{% block content %}
+{% include "pages/hero.html" with type="internal" page=page %}
+{% get_news_category as categories %}
+{% get_news_list as news_listing %}
+
+<section class="hero-news parallax-trigger-js">
+    <div class="hero-news__bg-wrap overlay--special overlay after-el before-el overflow-hidden">
+        <img class="w-100 h-100 obj-cover parallax-js parallax-def-js parallax-hero-js"
+            src="https://hf.nvinis.com/THAC/images/news/preloader/preloader-bg.webp" alt="">
+    </div>
+    <div class="container hero-news__container position-relative z-index-2 container-hero-anim-js">
+        <div data-scrollbar
+            class="pages-nav hide-scrollbar hero-news__pages-nav hero-item-js hero-item-1-js text-center">
+            <ul class="pages-nav__list d-inline-flex list-unstyled">
+                <li><a class="text-link" href="#"><span class="text-link__txt">HOME</span></a></li>
+                <li><a class="text-link" href="#"><span class="text-link__txt">Community</span></a>
+                </li>
+                <li>news</li>
+            </ul>
+        </div>
+        <h1 class="hero-news__title hero-item-js hero-item-2-js text-center">
+            LATEST
+            <span class="child-special-text d-flex justify-content-center"><span
+                    class="child-special-text__txt">news</span></span>
+        </h1>
+        <div class="hero-news__circle-btns-wrap d-flex justify-content-center">
+            <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
+                <a href="#"
+                    class="big-circle-btn big-circle-btn--active-cat d-flex align-items-center justify-content-center">
+                    <svg class="big-circle-btn__border">
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                    </svg>
+                    <span class="big-circle-btn__txt transition-def">All</span> </a>
+            </div>
+            <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
+                <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
+                    <svg class="big-circle-btn__border">
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                    </svg>
+                    <span class="big-circle-btn__txt transition-def">Junior</span> </a>
+            </div>
+            <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
+                <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
+                    <svg class="big-circle-btn__border">
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                    </svg>
+                    <span class="big-circle-btn__txt transition-def">Senior</span> </a>
+            </div>
+        </div>
+        <div class="text-center hero-news__btns-wrap-2">
+            <div
+                class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third btn--active-cat">
+                            <span class="btn__content"> <span class="btn__txt">All</span> </span> </a>
+                    </div>
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third">
+                            <span class="btn__content"> <span class="btn__txt">News</span> </span> </a>
+                    </div>
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third">
+                            <span class="btn__content"> <span class="btn__txt">Events</span> </span> </a>
+                    </div>
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third">
+                            <span class="btn__content"> <span class="btn__txt">Learning</span> </span> </a>
+                    </div>
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third">
+                            <span class="btn__content"> <span class="btn__txt">Performing Arts</span> </span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third">
+                            <span class="btn__content"> <span class="btn__txt">Sport</span> </span> </a>
+                    </div>
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third">
+                            <span class="btn__content"> <span class="btn__txt">Co-Curricular</span> </span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                        <a href="#" class="btn btn--third">
+                            <span class="btn__content"> <span class="btn__txt">Community</span> </span> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row hero-news__cards container-anim-js">
+            {% for item in news_listing.items %}
+            <div
+                class="col-lg-4 col-sm-6 col-12 hero-news__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
+                <div class="new-card new-card--third position-relative hover-pic-wrap">
+                    <a href="#modal-info" class="link-mask modal-event-btn-js"></a>
+                    <div class="new-card__pic-wrap position-relative overflow-hidden">                        
+                        <div class="new-card__label position-absolute">{% for cat in item.category %}
+                            {% if forloop.first %}
+                            {{cat}}
+                            {% endif %}
+                            {% endfor %}</div>
+                        <img class="w-100 h-100 obj-cover hover-pic"
+                            src="{{item.intro_image}}" alt="">
+                    </div>
+                    <div class="new-card__content">
+                        <time class="new-card__time d-block text-uppercase" datetime="{{item.release_date|safe}}">{{item.release_date|safe|date:"d M, Y"}}</time>
+                        <h3 class="new-card__title">{{item.title|truncatechars:40|safe}}</h3>
+                        <div class="new-card__txt-wrap last-el-mb-0">
+                            {{item.introduction_content|rm_tags:"style"|truncatewords:27|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}            
+        </div>
+        <div class="hero-news__cards-btn-wrap block-anim-js text-center">
+            <a href="#" class="btn hero-news__cards-btn">
+                <span class="btn__content"> <span class="btn__txt">Load more News</span> </span> </a>
+        </div>
+    </div>
+</section>
+<section class="s-promo-banner s-promo-banner--secondary position-relative overflow-hidden">
+    <div class="s-promo-banner__bg-wrap overlay--special overlay after-el before-el">
+        <img class="w-100 h-100 obj-cover" src="https://hf.nvinis.com/THAC/images/news/preloader/preloader-bg.webp"
+            alt="">
+    </div>
+    <h2 class="s-promo-banner__big-txt">
+        <span class="s-promo-banner__big-txt-line s-promo-banner__big-txt-line--1">Nurturing excellence</span>
+        <span class="s-promo-banner__big-txt-line s-promo-banner__big-txt-line--2">Inspiring futures</span>
+    </h2>
+    <div class="container s-promo-banner__container text-center container-anim-js">
+        <div class="s-promo-banner__pic-wrap d-inline-block position-relative after-el  block-anim-js">
+            <img class="s-promo-banner__pic" src="https://hf.nvinis.com/THAC/images/news/homepage/Etched-Girls-1.5x.png"
+                alt="">
+        </div>
+        <h2 class="s-promo-banner__title position-relative z-index-2 mb-0  block-anim-js">it’s about their
+            <span class="child-special-text"><span
+                    class="child-special-text__txt child-special-text__txt--secondary">future...</span></span>
+        </h2>
+    </div>
+</section>
+
+
+
+{% endblock content %}
+{% block model_block %}
+<div id="modal-info" class="modal modal-event-js modal--info position-fixed d-flex flex-column">
+    <a href="#modal-info" id="modal__overlay"
+        class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
+    <div class="modal__block-wrap position-relative ml-auto w-100">
+        <a href="#modal-info" id="modal-close-info"
+            class="modal-close bg-img-none modal-event-btn-js d-inline-flex justify-content-center align-items-center cursor-pointer position-absolute">
+            <svg class="modal-close__icon" width="21" height="21" viewBox="0 0 21 21" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path class="transition-def"
+                    d="M15.1875 7.58691L11.9062 10.8682L15.1875 14.1807C15.5938 14.5557 15.5938 15.2119 15.1875 15.5869C14.8125 15.9932 14.1562 15.9932 13.7812 15.5869L10.5 12.3057L7.1875 15.5869C6.8125 15.9932 6.15625 15.9932 5.78125 15.5869C5.375 15.2119 5.375 14.5557 5.78125 14.1807L9.0625 10.8682L5.78125 7.58691C5.375 7.21191 5.375 6.55566 5.78125 6.18066C6.15625 5.77441 6.8125 5.77441 7.1875 6.18066L10.5 9.46191L13.7812 6.18066C14.1562 5.77441 14.8125 5.77441 15.1875 6.18066C15.5938 6.55566 15.5938 7.21191 15.1875 7.58691Z"
+                    fill="var(--primary-dark-blue)" fill-opacity="0.5" />
+            </svg>
+        </a>
+        <div data-scroll="exclude" class="modal__block modal__block--info hide-scrollbar">
+            <section class="modal__section">
+                <div class="modal__section-pic-wrap">
+                    <img class="modal__section-pic w-100 h-100 obj-cover"
+                        src="https://hf.nvinis.com/THAC/images/news/new-modal-big.webp" alt="">
+                </div>
+                <div class="modal__section-container mx-auto w-100">
+                    <div class="modal__section-head row position-relative z-index-3 text-uppercase align-items-end">
+                        <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--1">
+                            <time class="modal__section-head-time">
+                                <span class="modal__section-head-time-big">15</span>
+                                <span class="modal__section-head-time-small d-inline-block">SEP 2024</span>
+                            </time>
+                        </div>
+                        <div class="col-sm-6 col-12 modal__section-head-col  modal__section-head-col--2">
+                            <a href="#" class="btn btn--fifth modal__section-head-btn">
+                                <span class="btn__content"> <span class="btn__txt">Whole School</span> </span> </a>
+                        </div>
+                    </div>
+                    <h2 class="modal__section-title">
+                        A LARGE AND ENGAGING HEADLINE UP to THREE or FOUR LINES IN LENGTH Introduces the story
+                    </h2>
+                    <div class="modal__section-highlight last-el-mb-0 after-el position-relative">
+                        <p>And whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving
+                            thanks to God the Father through him.</p>
+                        <h4>Colossians 3:17</h4>
+                    </div>
+                    <div class="modal__section-simple-content-wrap last-el-mb-0">
+                        <p>The College grounds are looking beautiful with the flowers in full bloom and the students are
+                            busy completing assessments and examinations based on their learning for the term. We are
+                            also preparing to farewell the Class of 2024 who will graduate next Wednesday before sitting
+                            their HSC.</p>
+                        <p>This year I have been speaking to staff about our impact, your stories and how we can design
+                            opportunities for everyone to flourish. This week one of our bus drivers shared a lovely
+                            story that I am sure you will all enjoy too. He received a gift from two students in Year
+                            12. He has been their driver since they began at the College – welcoming them each morning
+                            with a smile and sense of safety. They presented him with some chocolates and fancy socks
+                            because this is their memory of him and thanked him for looking after them each day. This is
+                            significant. He has had an impact, and they have also had an impact on him. We work together
+                            in community, and this is how we all flourish.</p>
+                        <div class="row modal__section-simple-content-pics-grid">
+                            <div class="col-sm-4 col-6 modal__section-simple-content-pic-col">
+                                <div class="modal__section-simple-content-pic-wrap position-relative">
+                                    <div
+                                        class="modal__section-simple-content-pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
+                                        <div
+                                            class="modal__section-simple-content-pic-hover-block d-flex align-items-center justify-content-center">
+                                            <img class="modal__section-simple-content-pic-hover-block-icon flex-auto"
+                                                src="https://hf.nvinis.com/THAC/images/news/Expand-Icon.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <a class="link-mask venobox"
+                                        href="images/news/News-Detail-Photo-Gallery-Thumb_6.webp"
+                                        data-gall="gallery-1"></a>
+                                    <img class="w-100 h-100 obj-cover modal__section-simple-content-pic"
+                                        src="https://hf.nvinis.com/THAC/images/news/new-modal-1.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-6 modal__section-simple-content-pic-col">
+                                <div class="modal__section-simple-content-pic-wrap position-relative">
+                                    <div
+                                        class="modal__section-simple-content-pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
+                                        <div
+                                            class="modal__section-simple-content-pic-hover-block d-flex align-items-center justify-content-center">
+                                            <img class="modal__section-simple-content-pic-hover-block-icon flex-auto"
+                                                src="https://hf.nvinis.com/THAC/images/news/Expand-Icon.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <a class="link-mask venobox"
+                                        href="images/news/News-Detail-Photo-Gallery-Thumb_1_1.webp"
+                                        data-gall="gallery-1"></a>
+                                    <img class="w-100 h-100 obj-cover modal__section-simple-content-pic"
+                                        src="https://hf.nvinis.com/THAC/images/news/new-modal-2.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-6 modal__section-simple-content-pic-col">
+                                <div class="modal__section-simple-content-pic-wrap position-relative">
+                                    <div
+                                        class="modal__section-simple-content-pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
+                                        <div
+                                            class="modal__section-simple-content-pic-hover-block d-flex align-items-center justify-content-center">
+                                            <img class="modal__section-simple-content-pic-hover-block-icon flex-auto"
+                                                src="https://hf.nvinis.com/THAC/images/news/Expand-Icon.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <a class="link-mask venobox"
+                                        href="images/news/News-Detail-Photo-Gallery-Thumb_2_2.webp"
+                                        data-gall="gallery-1"></a>
+                                    <img class="w-100 h-100 obj-cover modal__section-simple-content-pic"
+                                        src="https://hf.nvinis.com/THAC/images/news/new-modal-3.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-6 modal__section-simple-content-pic-col">
+                                <div class="modal__section-simple-content-pic-wrap position-relative">
+                                    <div
+                                        class="modal__section-simple-content-pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
+                                        <div
+                                            class="modal__section-simple-content-pic-hover-block d-flex align-items-center justify-content-center">
+                                            <img class="modal__section-simple-content-pic-hover-block-icon flex-auto"
+                                                src="https://hf.nvinis.com/THAC/images/news/Expand-Icon.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <a class="link-mask venobox"
+                                        href="images/news/News-Detail-Photo-Gallery-Thumb_3_3.webp"
+                                        data-gall="gallery-1"></a>
+                                    <img class="w-100 h-100 obj-cover modal__section-simple-content-pic"
+                                        src="https://hf.nvinis.com/THAC/images/news/new-modal-4.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-6 modal__section-simple-content-pic-col">
+                                <div class="modal__section-simple-content-pic-wrap position-relative">
+                                    <div
+                                        class="modal__section-simple-content-pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
+                                        <div
+                                            class="modal__section-simple-content-pic-hover-block d-flex align-items-center justify-content-center">
+                                            <img class="modal__section-simple-content-pic-hover-block-icon flex-auto"
+                                                src="https://hf.nvinis.com/THAC/images/news/Expand-Icon.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <a class="link-mask venobox"
+                                        href="images/news/News-Detail-Photo-Gallery-Thumb_4_4.webp"
+                                        data-gall="gallery-1"></a>
+                                    <img class="w-100 h-100 obj-cover modal__section-simple-content-pic"
+                                        src="https://hf.nvinis.com/THAC/images/news/new-modal-5.webp" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-6 modal__section-simple-content-pic-col">
+                                <div class="modal__section-simple-content-pic-wrap position-relative">
+                                    <div
+                                        class="modal__section-simple-content-pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
+                                        <div
+                                            class="modal__section-simple-content-pic-hover-block d-flex align-items-center justify-content-center">
+                                            <img class="modal__section-simple-content-pic-hover-block-icon flex-auto"
+                                                src="https://hf.nvinis.com/THAC/images/news/Expand-Icon.svg" alt="">
+                                        </div>
+                                    </div>
+                                    <a class="link-mask venobox"
+                                        href="images/news/News-Detail-Photo-Gallery-Thumb_5_5.webp"
+                                        data-gall="gallery-1"></a>
+                                    <img class="w-100 h-100 obj-cover modal__section-simple-content-pic"
+                                        src="https://hf.nvinis.com/THAC/images/news/new-modal-6.webp" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p>I am also grateful for the community that we have here at Thomas Hassall. I am sad to
+                            farewell the current Year 12 students. They are remarkable young people with a positive
+                            future ahead of them. I have been impressed with their kindness, the way they support one
+                            another, and I am looking forward to hearing their stories as they impact others beyond the
+                            gates of Thomas Hassall.</p>
+                        <img src="https://hf.nvinis.com/THAC/images/news/new-modal-7.webp" alt=""> <br><br>
+                        <p>Please be in prayer for them and their families as they prepare for examinations and consider
+                            options for life after formal schooling.</p>
+                        <p>The new building is also taking shape with some of the scaffolding now removed so you can see
+                            the exterior starting to be revealed. This building will feature our STEM subjects in 2025.
+                            STEM – or Science, Technology, Engineering and Mathematics – are important subjects for
+                            future careers and the direction of our country. We are keen to develop students’ interest
+                            in how these subjects interact and the cross over of skills that can lead to flourishing
+                            opportunities post school.</p>
+                        <p>I do wish you all rest and safety over the coming break.</p>
+                    </div>
+                    <div class="modal__section-author">
+                        <div class="modal__section-author-sign">
+                            Mrs Karen Easton
+                        </div>
+                        <div class="modal__section-author-block d-flex align-items-center">
+                            <div class="modal__section-author-block-pic-wrap flex-auto overflow-hidden">
+                                <img class="w-100 h-100 obj-cover obj-position-top"
+                                    src="https://hf.nvinis.com/THAC/images/news/news-Avatar.webp" alt="">
+                            </div>
+                            <div class="modal__section-author-block-content">
+                                <div class="modal__section-author-block-name">Mrs Karen Easton</div>
+                                <div class="modal__section-author-block-pos fw-700">Principal</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="modal__section-divider">
+                    <ul class="nav modal__section-links">
+                        <li><a target="_blank" href="#">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M24 12C24 18.1406 19.3594 23.2031 13.4531 23.9531V15.7031H16.6875L17.3438 12H13.4531V10.7344C13.4531 8.76562 14.2031 8.01562 16.1719 8.01562C16.7812 8.01562 17.25 8.0625 17.5312 8.0625V4.78125C17.0156 4.59375 15.7031 4.45312 14.9531 4.45312C10.9219 4.45312 9.09375 6.375 9.09375 10.4531V12H6.60938V15.7031H9.09375V23.6719C3.84375 22.3594 0 17.625 0 12C0 5.39062 5.34375 0 12 0C18.6094 0 24 5.39062 24 12Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </a></li>
+                        <li><a target="_blank" href="#">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 6.60938C14.9531 6.60938 17.3906 9.04688 17.3906 12C17.3906 15 14.9531 17.3906 12 17.3906C9 17.3906 6.60938 15 6.60938 12C6.60938 9.04688 9 6.60938 12 6.60938ZM12 15.5156C13.9219 15.5156 15.4688 13.9688 15.4688 12C15.4688 10.0781 13.9219 8.53125 12 8.53125C10.0312 8.53125 8.48438 10.0781 8.48438 12C8.48438 13.9688 10.0781 15.5156 12 15.5156ZM18.8438 6.42188C18.8438 5.71875 18.2812 5.15625 17.5781 5.15625C16.875 5.15625 16.3125 5.71875 16.3125 6.42188C16.3125 7.125 16.875 7.6875 17.5781 7.6875C18.2812 7.6875 18.8438 7.125 18.8438 6.42188ZM22.4062 7.6875C22.5 9.42188 22.5 14.625 22.4062 16.3594C22.3125 18.0469 21.9375 19.5 20.7188 20.7656C19.5 21.9844 18 22.3594 16.3125 22.4531C14.5781 22.5469 9.375 22.5469 7.64062 22.4531C5.95312 22.3594 4.5 21.9844 3.23438 20.7656C2.01562 19.5 1.64062 18.0469 1.54688 16.3594C1.45312 14.625 1.45312 9.42188 1.54688 7.6875C1.64062 6 2.01562 4.5 3.23438 3.28125C4.5 2.0625 5.95312 1.6875 7.64062 1.59375C9.375 1.5 14.5781 1.5 16.3125 1.59375C18 1.6875 19.5 2.0625 20.7188 3.28125C21.9375 4.5 22.3125 6 22.4062 7.6875ZM20.1562 18.1875C20.7188 16.8281 20.5781 13.5469 20.5781 12C20.5781 10.5 20.7188 7.21875 20.1562 5.8125C19.7812 4.92188 19.0781 4.17188 18.1875 3.84375C16.7812 3.28125 13.5 3.42188 12 3.42188C10.4531 3.42188 7.17188 3.28125 5.8125 3.84375C4.875 4.21875 4.17188 4.92188 3.79688 5.8125C3.23438 7.21875 3.375 10.5 3.375 12C3.375 13.5469 3.23438 16.8281 3.79688 18.1875C4.17188 19.125 4.875 19.8281 5.8125 20.2031C7.17188 20.7656 10.4531 20.625 12 20.625C13.5 20.625 16.7812 20.7656 18.1875 20.2031C19.0781 19.8281 19.8281 19.125 20.1562 18.1875Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </a></li>
+                        <li><a target="_blank" href="#">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M21 1.5C21.7969 1.5 22.5 2.20312 22.5 3.04688V21C22.5 21.8438 21.7969 22.5 21 22.5H2.95312C2.15625 22.5 1.5 21.8438 1.5 21V3.04688C1.5 2.20312 2.15625 1.5 2.95312 1.5H21ZM7.82812 19.5V9.51562H4.73438V19.5H7.82812ZM6.28125 8.10938C7.26562 8.10938 8.0625 7.3125 8.0625 6.32812C8.0625 5.34375 7.26562 4.5 6.28125 4.5C5.25 4.5 4.45312 5.34375 4.45312 6.32812C4.45312 7.3125 5.25 8.10938 6.28125 8.10938ZM19.5 19.5V14.0156C19.5 11.3438 18.8906 9.23438 15.75 9.23438C14.25 9.23438 13.2188 10.0781 12.7969 10.875H12.75V9.51562H9.79688V19.5H12.8906V14.5781C12.8906 13.2656 13.125 12 14.7656 12C16.3594 12 16.3594 13.5 16.3594 14.625V19.5H19.5Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </a></li>
+                        <li><a target="_blank" href="#">
+                                <svg width="26" height="24" viewBox="0 0 26 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M25.2344 5.85938C25.7969 7.82812 25.7969 12.0469 25.7969 12.0469C25.7969 12.0469 25.7969 16.2188 25.2344 18.2344C24.9531 19.3594 24.0625 20.2031 22.9844 20.4844C20.9688 21 13 21 13 21C13 21 4.98438 21 2.96875 20.4844C1.89062 20.2031 1 19.3594 0.71875 18.2344C0.15625 16.2188 0.15625 12.0469 0.15625 12.0469C0.15625 12.0469 0.15625 7.82812 0.71875 5.85938C1 4.73438 1.89062 3.84375 2.96875 3.5625C4.98438 3 13 3 13 3C13 3 20.9688 3 22.9844 3.5625C24.0625 3.84375 24.9531 4.73438 25.2344 5.85938ZM10.375 15.8438L17.0312 12.0469L10.375 8.25V15.8438Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </a></li>
+                    </ul>
+                    <div class="modal__section-btn-wrap">
+                        <a href="#modal-info" class="btn  modal-event-btn-js modal__section-btn btn--fifth"> <span
+                                class="btn__content">
+                                <svg class="btn__icon" width="15" viewBox="0 0 15 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.714844 9.17773C0.558594 9.02148 0.496094 8.83398 0.496094 8.61523C0.496094 8.42773 0.558594 8.24023 0.714844 8.08398L6.21484 2.83398C6.52734 2.55273 6.99609 2.55273 7.27734 2.86523C7.55859 3.14648 7.55859 3.64648 7.24609 3.92773L3.08984 7.86523H13.7461C14.1523 7.86523 14.4961 8.20898 14.4961 8.61523C14.4961 9.05273 14.1523 9.36523 13.7461 9.36523H3.08984L7.24609 13.334C7.55859 13.6152 7.55859 14.084 7.27734 14.3965C6.99609 14.709 6.52734 14.709 6.21484 14.4277L0.714844 9.17773Z"
+                                        fill="var(--primary-dark-blue)" />
+                                </svg>
+                                <span class="btn__txt">Back to News List</span>
+                            </span> </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

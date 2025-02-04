@@ -7,14 +7,16 @@
     <div class="container s-parallax-banner__container position-relative z-index-3 container-anim-js">
         <h2 class="s-parallax-banner__title text-anim-by-line-js">
             <span class="color-1">{{value.title|safe}}</span> <br> {{value.sub_title|safe}}</h2>
-        <div class="s-parallax-banner__txt-wrap last-el-mb-0 block-anim-js">
-            <p>{{value.text|safe}}</p>
+                <div class="banner-desc">
+                    <div class="s-parallax-banner__txt-wrap last-el-mb-0 block-anim-js">
+                        <p>{{value.text|safe}}</p>
+                    </div>
+                    {% if value.button.text %}
+                    <div class="s-parallax-banner__btn-wrap block-anim-js">
+                        <a href="{{value.button.href.url}}" {{value.button.href.target}} class="btn btn--secondary">
+                            <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span> </a>
+                    </div>
+                    {% endif %}
         </div>
-        {% if value.button.text %}
-        <div class="s-parallax-banner__btn-wrap block-anim-js">
-            <a href="{{value.button.href.url}}" {{value.button.href.target}} class="btn btn--secondary">
-                <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span> </a>
-        </div>
-        {% endif %}
     </div>
 </section>

@@ -254,3 +254,9 @@ LOGGING = {
     },
 }
 
+NEWS_URL ='https://news.loretonh.nsw.edu.au/newsroom/public/api/submissions/'
+NEWS_REQUEST_TIMEOUT = 10 
+SEND_HQ_URL = 'http://demo.sendhq.com.au'
+ENROL_HQ_URL = 'https://cimarketing.enrolhq.com.au/dashboard/'
+ISSUE_REFERENCES_URL = "https://sendhq.com.au/demo/issue-references/"
+

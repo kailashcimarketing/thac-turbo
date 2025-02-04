@@ -5,6 +5,7 @@ from wagtail.models import Page, Orderable
 from django_extensions.db.fields import AutoSlugField
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
+from home.models import HeroAbstract
 
 class Category(models.Model):
     title = models.CharField(null=True,max_length=255,blank=False)
@@ -57,3 +58,28 @@ class News(ClusterableModel):
     ]
     class Meta:
         verbose_name = 'News'
+
+
+class NewspageHero(HeroAbstract):
+    page = ParentalKey('NewsIndexPage', related_name='newspage_hero')
+
+class NewsIndexPage(Page):
+    """
+    We'll render news items from SendHQ with JSON.
+    """
+    template = 'pages/news_index.html'
+    class Meta:
+        verbose_name = "News Index Page"
+
+    def get_hero_image(self):
+        if self.get_hero():
+            return self.get_hero()[0]
+        
+        return False
+        
+
+    def get_hero(self):
+        if self.newspage_hero.all():
+            return self.newspage_hero.all()
+        else:
+            return False
