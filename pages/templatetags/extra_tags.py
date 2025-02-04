@@ -39,6 +39,13 @@ def rm_tags(string,tags):
     text = strip_tags(text)
     return text
 
+@register.filter
+def str_to_date(value, format="%Y-%m-%d"):
+    try:
+        return datetime.strptime(value, format).date()
+    except (ValueError, TypeError):
+        return None
+    
 @register.simple_tag()
 def get_news_category():
     items = NewsCategories.objects.all()

@@ -101,7 +101,7 @@
             <div
                 class="col-lg-4 col-sm-6 col-12 hero-news__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
                 <div class="new-card new-card--third position-relative hover-pic-wrap">
-                    <a href="#modal-info" class="link-mask modal-event-btn-js"></a>
+                    <a href="#modal-{{item.title|slugify|safe}}" class="link-mask modal-event-btn-js"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">                        
                         <div class="new-card__label position-absolute">{% for cat in item.category %}
                             {% if forloop.first %}
@@ -112,8 +112,7 @@
                             src="{{item.intro_image}}" alt="">
                     </div>
                     <div class="new-card__content">
-                        {{item.release_date|date}} --- {{item.release_date}}
-                        <time class="new-card__time d-block text-uppercase" datetime="{{item.release_date|safe}}">hh{{item.release_date|date}}</time>
+                        <time class="new-card__time d-block text-uppercase" datetime="{{item.release_date|safe}}">{{item.release_date|str_to_date|date:"d M Y"}}</time>
                         <h3 class="new-card__title">{{item.title|truncatechars:40|safe}}</h3>
                         <div class="new-card__txt-wrap last-el-mb-0">
                             {{item.introduction_content|rm_tags:"style"|truncatewords:27|safe}}
@@ -154,7 +153,9 @@
 
 {% endblock content %}
 {% block model_block %}
-<div id="modal-info" class="modal modal-event-js modal--info position-fixed d-flex flex-column">
+{% get_news_list as news_listing %}
+{% for item in news_listing.items %}
+<div id="modal-{{item.title|slugify|safe}}" class="modal modal-event-js modal--info position-fixed d-flex flex-column">
     <a href="#modal-info" id="modal__overlay"
         class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
     <div class="modal__block-wrap position-relative ml-auto w-100">
@@ -171,23 +172,30 @@
             <section class="modal__section">
                 <div class="modal__section-pic-wrap">
                     <img class="modal__section-pic w-100 h-100 obj-cover"
-                        src="https://hf.nvinis.com/THAC/images/news/new-modal-big.webp" alt="">
+                        src="{{item.intro_image}}" alt="">
                 </div>
                 <div class="modal__section-container mx-auto w-100">
                     <div class="modal__section-head row position-relative z-index-3 text-uppercase align-items-end">
                         <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--1">
                             <time class="modal__section-head-time">
-                                <span class="modal__section-head-time-big">15</span>
-                                <span class="modal__section-head-time-small d-inline-block">SEP 2024</span>
+                                <span class="modal__section-head-time-big">{{item.release_date|str_to_date|date:"d"}}</span>
+                                <span class="modal__section-head-time-small d-inline-block">{{item.release_date|str_to_date|date:"M Y"}}</span>
                             </time>
                         </div>
                         <div class="col-sm-6 col-12 modal__section-head-col  modal__section-head-col--2">
                             <a href="#" class="btn btn--fifth modal__section-head-btn">
-                                <span class="btn__content"> <span class="btn__txt">Whole School</span> </span> </a>
+                                <span class="btn__content"> 
+                                    {% for cat in item.category %}
+                            {% if forloop.first %}
+                            <span class="btn__txt">{{cat}}</span>
+                            {% endif %}
+                            {% endfor %}
+                                </span> 
+                            </a>
                         </div>
                     </div>
                     <h2 class="modal__section-title">
-                        A LARGE AND ENGAGING HEADLINE UP to THREE or FOUR LINES IN LENGTH Introduces the story
+                        {{item.title|safe}}
                     </h2>
                     <div class="modal__section-highlight last-el-mb-0 after-el position-relative">
                         <p>And whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving
@@ -378,7 +386,7 @@
                             </a></li>
                     </ul>
                     <div class="modal__section-btn-wrap">
-                        <a href="#modal-info" class="btn  modal-event-btn-js modal__section-btn btn--fifth"> <span
+                        <a href="#modal-{{item.title|slugify|safe}}" class="btn  modal-event-btn-js modal__section-btn btn--fifth"> <span
                                 class="btn__content">
                                 <svg class="btn__icon" width="15" viewBox="0 0 15 17" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -394,4 +402,5 @@
         </div>
     </div>
 </div>
+{% endfor %}  
 {% endblock %}

@@ -45,6 +45,10 @@ bottom_padding_list =[
     ('pb-4','4x'),
     ('pb-5','5x')
 ]
+background_color =[
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ]
 
 class TableItemBlock(blocks.StreamBlock):
     table = TableBlock()
@@ -71,6 +75,7 @@ class HtmlSourceBlock(blocks.StructBlock):
 
 class SpaceBlock(blocks.StructBlock):
     height = blocks.IntegerBlock(default=50)
+    background = blocks.ChoiceBlock(background_color,label="background",default="light-theme")
     class Meta:
         label = "Space"
         template = "pages/blocks/space.html"
