@@ -237,6 +237,8 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('light-theme','Light'),
         ('dark-theme','Dark')
     ],label="background",default="dark-theme")
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     column_width = blocks.ChoiceBlock(column_width,default="col-lg-12")        
     column_offset = blocks.ChoiceBlock(column_offset,required=False)
     
