@@ -805,9 +805,9 @@ $(window).on('load', function () {
         }
     }
     if(window.innerWidth > 991) {
-        $('.s-team__card-col.col-lg-4:nth-child(3n + 1) .new-card').addClass('parallax-xx-js parallax-js').attr('data-parallax-value',5).attr('parallax-trigger-start','top bottom').attr('parallax-trigger-end','bottom center');
+        $('.s-team__card-col.col-lg-4:nth-child(3n + 1) .new-card').addClass('parallax-xx-js parallax-js-x').attr('data-parallax-value',5).attr('parallax-trigger-start','top bottom').attr('parallax-trigger-end','bottom center');
         $('.s-team__card-col.col-lg-4:nth-child(3n + 2) .new-card').addClass('parallax-y-js parallax-js').attr('data-parallax-value',-5).attr('parallax-trigger-start','top bottom').attr('parallax-trigger-end','bottom center');
-        $('.s-team__card-col.col-lg-4:nth-child(3n + 3) .new-card').addClass('parallax-xx-js parallax-js').attr('data-parallax-value',-5).attr('parallax-trigger-start','top bottom').attr('parallax-trigger-end','bottom center');
+        $('.s-team__card-col.col-lg-4:nth-child(3n + 3) .new-card').addClass('parallax-xx-js parallax-js-x').attr('data-parallax-value',-5).attr('parallax-trigger-start','top bottom').attr('parallax-trigger-end','bottom center');
     }
     if(window.innerWidth < 992) {
         if($('.s-table__block-wrap').length) {
