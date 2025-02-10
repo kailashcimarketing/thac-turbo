@@ -266,6 +266,10 @@ class ContentStreamBlock(blocks.StreamBlock):
     
 
 class TwoColumnBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="dark-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     left_column_width = blocks.ChoiceBlock(column_width,required=False,default='col-lg-6')
