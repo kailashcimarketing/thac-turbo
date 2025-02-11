@@ -1,0 +1,5 @@
+{% if value.text %}
+  <div class="text-2-cols__btn-wrap block-anim-js">
+    <a href="{{ value.href.url|safe }}" class="btn btn--third"><span class="btn__content"><span class="btn__txt">{{ value.text|safe }}</span></span></a>
+  </div>
+{% endif %}

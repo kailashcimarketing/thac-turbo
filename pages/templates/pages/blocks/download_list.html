@@ -1,0 +1,15 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="download-list-section">
+    <div class="download-list">
+        <div class="row">
+            {% for item in value.items %}
+            <div class="col-lg-6">
+                <a href="{{item.document.url}}" target="_blank" class="btn-download">
+                    <i class="fa-regular fa-file-arrow-down"></i>
+                    {{item.label|safe}}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

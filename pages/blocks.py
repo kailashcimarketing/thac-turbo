@@ -206,6 +206,7 @@ class SimpleButton(blocks.StructBlock):
     href =  HrefBlock()
     class Meta:
         label = "Simple Button"
+        template = "pages/blocks/simple_button_block.html"
 
 
 class QuoteBlock(blocks.StructBlock):
@@ -215,6 +216,16 @@ class QuoteBlock(blocks.StructBlock):
         label = "Quote"
         template = "pages/blocks/quote_block.html"
 
+class DownloadList(blocks.StructBlock):
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('label',blocks.CharBlock()),
+        ('document',DocumentChooserBlock()),
+    ]))
+    class Meta:
+        label = "Download List"
+        icon = "download"
+        template = "pages/blocks/download_list.html"
+        
 class AccordionBlock(blocks.StructBlock):
     items = blocks.ListBlock(blocks.StructBlock([
             ('title',blocks.CharBlock()),
@@ -251,6 +262,7 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('accordion',AccordionBlock()),
         ('QuoteBlock',QuoteBlock()),
         ('table',CustomTableBlock()),
+        ('DownloadList',DownloadList())
     ])
     css_class = blocks.CharBlock(required=False)
     class Meta:
@@ -691,7 +703,7 @@ class ChildImageBlock(blocks.StructBlock):
     class Meta:
         label = "Image"
         template = "pages/blocks/child_image_block.html"
-
+        
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
@@ -706,6 +718,9 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
         ('ProfileBlock',ProfileBlock()),
         ('ChildImageBlock',ChildImageBlock()),
         ('space',SpaceBlock()),
+        ('DownloadList',DownloadList()),
+        ('button',SimpleButton()),
+        
     ])
     class Meta:
         label = "Content with left heading"
