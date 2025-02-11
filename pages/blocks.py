@@ -208,7 +208,19 @@ class SimpleButton(blocks.StructBlock):
         label = "Simple Button"
         template = "pages/blocks/simple_button_block.html"
 
-
+class ThemeButton(blocks.StructBlock):
+    text = blocks.CharBlock(required=False)        
+    theme = blocks.ChoiceBlock([
+        ('btn btn--fifth','Dark blue'),
+        ('btn btn--secondary','Solid teal'),
+        ('btn btn--third','Teal outline'),
+        ('link','Link'),
+    ],required=False)
+    href = HrefBlock()
+    class Meta:
+        label = "Theme Button"
+        template = "pages/blocks/theme_button.html"
+        
 class QuoteBlock(blocks.StructBlock):
     quote = blocks.TextBlock()
     author = blocks.CharBlock(required=False)
@@ -719,7 +731,7 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
         ('ChildImageBlock',ChildImageBlock()),
         ('space',SpaceBlock()),
         ('DownloadList',DownloadList()),
-        ('button',SimpleButton()),
+        ('button',ThemeButton()),
         
     ])
     class Meta:
