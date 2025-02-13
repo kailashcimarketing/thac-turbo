@@ -378,7 +378,7 @@ class BigScrollBannerBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
     script_title = blocks.CharBlock(required=False)
     items = blocks.ListBlock(blocks.StructBlock([
-        ('title',blocks.CharBlock()),
+        ('title',blocks.CharBlock(required=False)),
         ('image',ImageChooserBlock()),
         ('href',HrefBlock())
     ]))
