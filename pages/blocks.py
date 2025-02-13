@@ -378,6 +378,7 @@ class BigScrollBannerBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
     script_title = blocks.CharBlock(required=False)
     items = blocks.ListBlock(blocks.StructBlock([
+        ('title',blocks.CharBlock()),
         ('image',ImageChooserBlock()),
         ('href',HrefBlock())
     ]))
@@ -717,11 +718,14 @@ class ChildImageBlock(blocks.StructBlock):
         template = "pages/blocks/child_image_block.html"
         
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
+    left_title = blocks.CharBlock()
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark')
-    ],label="background",default="light-theme")
-    left_title = blocks.CharBlock()
+    ],label="background",default="light-theme")   
+    
     content = blocks.StreamBlock([
         ('heading',HeadingBlock()),
         ('content',ContentBlock()),
@@ -796,3 +800,11 @@ class EventContentBlocks(blocks.StreamBlock):
     class Meta:
         label  = "Content"
         template = "pages/blocks/events/content_block.html"
+        
+class NextPrevBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    background_image = ImageChooserBlock(required=False)
+      
+    class Meta:
+        label = "Next Prev"    
+        template = "pages/blocks/next_prev.html"

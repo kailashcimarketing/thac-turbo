@@ -152,4 +152,38 @@ def get_related_news(category='all', limit='all',related='all'):
     }  
 
 
+@register.simple_tag()
+def get_next_pre_pages(page):
+        # Get the current page's parent
+    parent_page = page.specific.get_parent()
+
+    # Get the previous page (sibling)
+    previous_page = page.specific.get_prev_sibling()
+
+    # If no previous sibling, get the parent's previous sibling
+    if not previous_page:
+        previous_page = parent_page.get_prev_sibling().get_children().last()  # Get the last child before the current page's depth
+
+    # Get the next two pages (siblings)
+    next_page = page.specific.get_next_sibling()
+
+    # Get the second next page
+    second_next_page = next_page.get_next_sibling() if next_page else None
+
+    # If no next page, get the parent's next sibling
+    if not next_page:
+        next_page = parent_page.get_next_sibling().get_children().first()
+        second_next_page = next_page.get_next_sibling()
+        
+
+    # If no second next page, get the parent's next sibling after the next page
+    if not second_next_page and next_page:
+        second_next_page = parent_page.get_next_sibling().get_children().first()
+
+    # Now you can pass these pages to the template context
+    return {
+        'previous_page': previous_page,
+        'next_page': next_page,
+        'second_next_page': second_next_page,
+    }
 

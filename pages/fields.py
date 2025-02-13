@@ -37,6 +37,8 @@ common_blocks = [
     ('TeamListBlock',TeamListBlock()),
     ('CustomTableBlock',CustomTableBlock()),
     ('PDFFlipBookBlock',PDFFlipBookBlock()),
+    ('DynamicSnippetChooserBlock',DynamicSnippetChooserBlock()),
+    ('NextPrevBlock',NextPrevBlock())
 ]
 homepage_stream_fields= common_blocks+ [
     ('HomepageIntroContentBlock',HomepageIntroContentBlock()),
