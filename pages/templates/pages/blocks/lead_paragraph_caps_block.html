@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <div class="{{value.background|safe}}">
-  <section class="s-simple-txt text-center">
+  <section class="s-simple-txt text-center  {{value.top_padding|safe}} {{value.bottom_padding|safe}}">
     <div class="container s-simple-txt__container container-anim-js">
       <h3 class="s-simple-txt__sub-title text-anim-js">{{ value.lead_text|safe }}</h3>
     </div>

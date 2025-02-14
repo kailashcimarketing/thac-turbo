@@ -615,6 +615,8 @@ class GridPhotoGalleryBlock(blocks.StructBlock):
         template = "pages/blocks/grid_photo_gallery_block.html"
 
 class CentredTitleBlock(blocks.StructBlock):
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark')
@@ -626,6 +628,8 @@ class CentredTitleBlock(blocks.StructBlock):
         template = "pages/blocks/centred_title_block.html"
         
 class LeadParagraphCapsBlock(blocks.StructBlock):
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark')
@@ -636,6 +640,8 @@ class LeadParagraphCapsBlock(blocks.StructBlock):
         template = "pages/blocks/lead_paragraph_caps_block.html"
         
 class VideoBlock(blocks.StructBlock):
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark')
