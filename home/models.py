@@ -20,7 +20,7 @@ class HeroAbstract(models.Model):
         on_delete=models.SET_NULL, 
         related_name='+'
     ) 
-    background_video_url = models.URLField(null=True,blank=True,help_text="mp4 video",verbose_name="Background video")
+    background_video_url = models.CharField(null=True,max_length=1000,blank=True,help_text="mp4 video",verbose_name="Background video")
     video_poster_image = models.ForeignKey(
         Image, 
         null=True, 
