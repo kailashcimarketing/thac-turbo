@@ -69,6 +69,7 @@ class LandingpageHero(HeroAbstract):
     page = ParentalKey('LandingPage', related_name='landingpage_hero')
 
 class LandingPage(Page):
+    short_description = models.TextField(null=True,blank=True)
     body = StreamField(landingpage_stream_fields,null=True,blank=True)
     
 

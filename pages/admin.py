@@ -26,7 +26,9 @@ LandingPage.content_panels = Page.content_panels + [
     ],max_num=1),
     FieldPanel('body'),
 ]
-
+LandingPage.promote_panels = Page.promote_panels + [
+    FieldPanel('short_description'),
+]
 
 EventPage.content_panels = Page.content_panels + [
     FieldPanel('hero_image'),

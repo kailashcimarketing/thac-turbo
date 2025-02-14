@@ -64,6 +64,7 @@ class ContactSubmission(models.Model):
 
 
 class ContactPage(Page):
+    short_description = models.TextField(null=True,blank=True)
     # intro = RichTextField(blank=True)
     thankyou_message = RichTextField()
     #auto
@@ -95,6 +96,9 @@ class ContactPage(Page):
         FieldPanel('bottom_body'),
     ]
 
+    promote_panels = Page.promote_panels + [
+        FieldPanel('short_description'),
+    ]
     class Meta:
         verbose_name = "Contact Page"
 
