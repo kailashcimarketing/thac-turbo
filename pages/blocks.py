@@ -644,7 +644,7 @@ class VideoBlock(blocks.StructBlock):
         ('light-theme','Light'),
         ('dark-theme','Dark')
     ],label="background",default="light-theme")
-    poster_image = ImageChooserBlock()
+    poster_image = ImageChooserBlock(required=False)
     video_url = blocks.URLBlock(help_text="MP4 video url")
     class Meta:
         label = "Video"        
