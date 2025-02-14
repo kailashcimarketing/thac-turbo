@@ -614,16 +614,37 @@ class GridPhotoGalleryBlock(blocks.StructBlock):
         label = "Grid photo gallery"
         template = "pages/blocks/grid_photo_gallery_block.html"
 
-
-class VideoBlock(blocks.StructBlock):
+class CentredTitleBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="light-theme")
     title = blocks.CharBlock()
-    script_title = blocks.CharBlock()
+    script_title = blocks.CharBlock()    
+    class Meta:
+        label = "Centred Title Block"        
+        template = "pages/blocks/centred_title_block.html"
+        
+class LeadParagraphCapsBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="light-theme")
     lead_text = blocks.TextBlock()
+    class Meta:
+        label = "lead paragraph in all caps"        
+        template = "pages/blocks/lead_paragraph_caps_block.html"
+        
+class VideoBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="light-theme")
     poster_image = ImageChooserBlock()
     vide_url = blocks.URLBlock(help_text="MP4 video url")
     class Meta:
         label = "Video"        
-        template = "pages/blocks/vide_block.html"
+        template = "pages/blocks/video_block.html"
 
 class TwocolumnLeftImageAndRightContent(blocks.StructBlock):
     image = ImageChooserBlock()

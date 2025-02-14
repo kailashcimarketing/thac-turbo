@@ -26,6 +26,8 @@ common_blocks = [
     ('LeftImageAndRightTextWithBackgroundImageBlock',LeftImageAndRightTextWithBackgroundImageBlock()),
     ('StatsCardWithoutParallaxBlock',StatsCardWithoutParallaxBlock()),
     ('GridPhotoGalleryBlock',GridPhotoGalleryBlock()),
+    ('LeadParagraphCapsBlock',LeadParagraphCapsBlock()),
+    ('CentredTitleBlock',CentredTitleBlock()),
     ('VideoBlock',VideoBlock()),
     ('TwocolumnLeftImageAndRightContent',TwocolumnLeftImageAndRightContent()),
     ('TwocolumnListContentBlock',TwocolumnListContentBlock()),

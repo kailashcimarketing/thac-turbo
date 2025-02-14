@@ -1,16 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<div class="light-theme">
-<section class="s-simple-txt text-center">
-    <div class="container s-simple-txt__container container-anim-js">
-        <h2 class="s-simple-txt__title block-anim-js">
-            {{value.title|safe}}
-            <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">{{value.script_title|safe}}</span></span>
-        </h2>
-        <h3 class="s-simple-txt__sub-title text-anim-js">
-            {{value.lead_text|safe}}
-        </h3>
-    </div>
-</section>
+<div class="{{value.background|safe}}">
 <div class="video-module-container container container-anim-js">
     <div class="video-module video-module--def video-module-js block-anim-js block-anim--static-js">
         <div class="video-module__btn video-module__btn-js">

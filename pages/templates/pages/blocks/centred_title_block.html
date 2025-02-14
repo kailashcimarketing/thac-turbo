@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="{{value.background|safe}}">
+  <section class="s-simple-txt text-center">
+    <div class="container s-simple-txt__container container-anim-js">
+      <h2 class="s-simple-txt__title block-anim-js">
+        {{ value.title|safe }}
+        <span class="child-special-text d-flex justify-content-center">
+          <span class="child-special-text__txt"> {{ value.script_title|safe }}</span>
+        </span>
+      </h2>
+    </div>
+  </section>
+</div>
