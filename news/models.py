@@ -6,6 +6,8 @@ from django_extensions.db.fields import AutoSlugField
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from home.models import HeroAbstract
+from pages.fields import generalpage_stream_fields
+from wagtail.fields import StreamField, RichTextField
 
 class Category(models.Model):
     title = models.CharField(null=True,max_length=255,blank=False)
@@ -64,6 +66,8 @@ class NewspageHero(HeroAbstract):
     page = ParentalKey('NewsIndexPage', related_name='newspage_hero')
 
 class NewsIndexPage(Page):
+    short_description = models.TextField(null=True,blank=True)
+    body = StreamField(generalpage_stream_fields,null=True,blank=True)
     """
     We'll render news items from SendHQ with JSON.
     """

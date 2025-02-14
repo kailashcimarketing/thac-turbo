@@ -1,220 +1,178 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% load static wagtailcore_tags wagtailimages_tags extra_tags %}
-{% block body_class %}general-page innerpage{% endblock %}
+{% block body_class %}
+  general-page innerpage
+{% endblock %}
 
 {% block content %}
-{% include "pages/hero.html" with type="internal" page=page %}
-{% get_news_category as categories %}
-{% get_news_list as news_listing %}
+  {% include 'pages/hero.html' with type='internal' page=page %}
+  {% get_news_category as categories %}
+  {% get_news_list as news_listing %}
 
-<section class="hero-news parallax-trigger-js">
+  <section class="hero-news parallax-trigger-js">
     <div class="hero-news__bg-wrap overlay--special overlay after-el before-el overflow-hidden">
-        <img class="w-100 h-100 obj-cover parallax-js parallax-def-js parallax-hero-js"
-            src="/static/images/preloader/preloader-bg.webp" alt="">
+      <img class="w-100 h-100 obj-cover parallax-js parallax-def-js parallax-hero-js" src="/static/images/preloader/preloader-bg.webp" alt="" />
     </div>
     <div class="container hero-news__container position-relative z-index-2 container-hero-anim-js">
-        <div data-scrollbar
-            class="pages-nav hide-scrollbar hero-news__pages-nav hero-item-js hero-item-1-js text-center">
-            <ul class="pages-nav__list d-inline-flex list-unstyled">
-                <li><a class="text-link" href="#"><span class="text-link__txt">HOME</span></a></li>
-                <li><a class="text-link" href="#"><span class="text-link__txt">Community</span></a>
-                </li>
-                <li>news</li>
-            </ul>
-        </div>
-        <h1 class="hero-news__title hero-item-js hero-item-2-js text-center">
-            LATEST
-            <span class="child-special-text d-flex justify-content-center"><span
-                    class="child-special-text__txt">news</span></span>
-        </h1>
-        <div class="hero-news__circle-btns-wrap d-flex justify-content-center">
-            <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
-                <a href="#"
-                    class="big-circle-btn big-circle-btn--active-cat d-flex align-items-center justify-content-center">
-                    <svg class="big-circle-btn__border">
-                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
-                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
-                    </svg>
-                    <span class="big-circle-btn__txt transition-def">All</span> </a>
-            </div>
-            <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
-                <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
-                    <svg class="big-circle-btn__border">
-                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
-                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
-                    </svg>
-                    <span class="big-circle-btn__txt transition-def">Junior</span> </a>
-            </div>
-            <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
-                <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
-                    <svg class="big-circle-btn__border">
-                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
-                        <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
-                    </svg>
-                    <span class="big-circle-btn__txt transition-def">Senior</span> </a>
-            </div>
-        </div>
-        <div class="text-center hero-news__btns-wrap-2">
-            <div
-                class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
-                <div class="swiper-wrapper news-category-filter">
-                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
-                        <a href="#"  data-filter="*" class="btn btn--third btn--active-cat">
-                            <span class="btn__content"> <span class="btn__txt">All</span> </span> </a>
-                    </div>
-                    
-                    {% for category in categories.items %}
-                    <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
-                        <a href="#"  data-filter=".{{category.slug|safe}}" class="btn btn--third">
-                            <span class="btn__content"> 
-                                <span class="btn__txt">{{category.title|safe}}</span> 
-                            </span> 
-                        </a>
-                    </div>
-                    {% endfor %}                    
-                </div>
-            </div>
-        </div>
-        <div class="row hero-news__cards container-anim-js">
-            {% for item in news_listing.items %}
-            <div
-                class="col-lg-4 col-sm-6 col-12 hero-news__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js 
-                {% for cat in item.category %}
-                {{cat|slugify|safe}}
-                {% endfor %}">
-                <div class="new-card new-card--third position-relative hover-pic-wrap">
-                    <a href="#modal-{{item.title|slugify|safe}}" class="link-mask modal-event-btn-js"></a>
-                    <div class="new-card__pic-wrap position-relative overflow-hidden">                        
-                        <div class="new-card__label position-absolute">{% for cat in item.category %}
-                            {% if forloop.first %}
-                            {{cat}}
-                            {% endif %}
-                            {% endfor %}</div>
-                        <img class="w-100 h-100 obj-cover hover-pic" src="{{item.intro_image}}" alt="">
-                    </div>
-                    <div class="new-card__content">
-                        <time class="new-card__time d-block text-uppercase" datetime="{{item.release_date|safe}}">{{item.release_date|str_to_date|date:"d M Y"}}</time>
-                        <h3 class="new-card__title">{{item.title|truncatechars:40|safe}}</h3>
-                        <div class="new-card__txt-wrap last-el-mb-0">
-                            {{item.introduction_content|rm_tags:"style"|truncatewords:27|safe}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}            
-        </div>
-        <div class="hero-news__cards-btn-wrap block-anim-js text-center">
-            <a href="#" class="btn hero-news__cards-btn load-more-news">
-                <span class="btn__content"> <span class="btn__txt">Load more News</span> </span> </a>
-        </div>
-    </div>
-</section>
-<section class="s-promo-banner s-promo-banner--secondary position-relative overflow-hidden">
-    <div class="s-promo-banner__bg-wrap overlay--special overlay after-el before-el">
-        <img class="w-100 h-100 obj-cover" src="/static/images/preloader/preloader-bg.webp"
-            alt="">
-    </div>
-    <h2 class="s-promo-banner__big-txt">
-        <span class="s-promo-banner__big-txt-line s-promo-banner__big-txt-line--1">Nurturing excellence</span>
-        <span class="s-promo-banner__big-txt-line s-promo-banner__big-txt-line--2">Inspiring futures</span>
-    </h2>
-    <div class="container s-promo-banner__container text-center container-anim-js">
-        <div class="s-promo-banner__pic-wrap d-inline-block position-relative after-el  block-anim-js">
-            <img class="s-promo-banner__pic" src="/static/images/homepage/Etched-Girls-1.5x.png"
-                alt="">
-        </div>
-        <h2 class="s-promo-banner__title position-relative z-index-2 mb-0  block-anim-js">it’s about their
-            <span class="child-special-text"><span
-                    class="child-special-text__txt child-special-text__txt--secondary">future...</span></span>
-        </h2>
-    </div>
-</section>
-
-
-
-{% endblock content %}
-{% block model_block %}
-{% get_news_list as news_listing %}
-{% for item in news_listing.items %}
-<div id="modal-{{item.title|slugify|safe}}" class="modal modal-event-js modal--info position-fixed d-flex flex-column">
-    <a href="#modal-{{item.title|slugify|safe}}" id="modal__overlay"
-        class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
-    <div class="modal__block-wrap position-relative ml-auto w-100">
-        <a href="#modal-{{item.title|slugify|safe}}" id="modal-close-info"
-            class="modal-close bg-img-none modal-event-btn-js d-inline-flex justify-content-center align-items-center cursor-pointer position-absolute">
-            <svg class="modal-close__icon" width="21" height="21" viewBox="0 0 21 21" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path class="transition-def"
-                    d="M15.1875 7.58691L11.9062 10.8682L15.1875 14.1807C15.5938 14.5557 15.5938 15.2119 15.1875 15.5869C14.8125 15.9932 14.1562 15.9932 13.7812 15.5869L10.5 12.3057L7.1875 15.5869C6.8125 15.9932 6.15625 15.9932 5.78125 15.5869C5.375 15.2119 5.375 14.5557 5.78125 14.1807L9.0625 10.8682L5.78125 7.58691C5.375 7.21191 5.375 6.55566 5.78125 6.18066C6.15625 5.77441 6.8125 5.77441 7.1875 6.18066L10.5 9.46191L13.7812 6.18066C14.1562 5.77441 14.8125 5.77441 15.1875 6.18066C15.5938 6.55566 15.5938 7.21191 15.1875 7.58691Z"
-                    fill="var(--primary-dark-blue)" fill-opacity="0.5" />
+      <div data-scrollbar class="pages-nav hide-scrollbar hero-news__pages-nav hero-item-js hero-item-1-js text-center">
+        <ul class="pages-nav__list d-inline-flex list-unstyled">
+          <li>
+            <a class="text-link" href="#"><span class="text-link__txt">HOME</span></a>
+          </li>
+          <li>
+            <a class="text-link" href="#"><span class="text-link__txt">Community</span></a>
+          </li>
+          <li>news</li>
+        </ul>
+      </div>
+      <h1 class="hero-news__title hero-item-js hero-item-2-js text-center">
+        LATEST
+        <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">news</span></span>
+      </h1>
+      <div class="hero-news__circle-btns-wrap d-flex justify-content-center">
+        <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
+          <a href="#" class="big-circle-btn big-circle-btn--active-cat d-flex align-items-center justify-content-center">
+            <svg class="big-circle-btn__border">
+              <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+              <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
             </svg>
+            <span class="big-circle-btn__txt transition-def">All</span>
+          </a>
+        </div>
+        <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
+          <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
+            <svg class="big-circle-btn__border">
+              <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+              <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+            </svg>
+            <span class="big-circle-btn__txt transition-def">Junior</span>
+          </a>
+        </div>
+        <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
+          <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
+            <svg class="big-circle-btn__border">
+              <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+              <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+            </svg>
+            <span class="big-circle-btn__txt transition-def">Senior</span>
+          </a>
+        </div>
+      </div>
+      <div class="text-center hero-news__btns-wrap-2">
+        <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
+          <div class="swiper-wrapper news-category-filter">
+            <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+              <a href="#" data-filter="*" class="btn btn--third btn--active-cat"><span class="btn__content"><span class="btn__txt">All</span></span></a>
+            </div>
+            {% for category in categories.items %}
+              <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+                <a href="#" data-filter=".{{ category.slug|safe }}" class="btn btn--third"><span class="btn__content"><span class="btn__txt">{{ category.title|safe }}</span></span></a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="row hero-news__cards container-anim-js">
+        {% for item in news_listing.items %}
+          <div class="col-lg-4 col-sm-6 col-12 hero-news__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js 
+                {% for cat in item.category %}
+              {{ cat|slugify|safe }}
+            {% endfor %}">
+            <div class="new-card new-card--third position-relative hover-pic-wrap">
+              <a href="#modal-{{ item.title|slugify|safe }}" class="link-mask modal-event-btn-js"></a>
+              <div class="new-card__pic-wrap position-relative overflow-hidden">
+                <div class="new-card__label position-absolute">
+                  {% for cat in item.category %}
+                    {% if forloop.first %}
+                      {{ cat }}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <img class="w-100 h-100 obj-cover hover-pic" src="{{ item.intro_image }}" alt="" />
+              </div>
+              <div class="new-card__content">
+                <time class="new-card__time d-block text-uppercase" datetime="{{ item.release_date|safe }}">{{ item.release_date|str_to_date|date:'d M Y' }}</time>
+                <h3 class="new-card__title">{{ item.title|truncatechars:40|safe }}</h3>
+                <div class="new-card__txt-wrap last-el-mb-0">{{ item.introduction_content|rm_tags:'style'|truncatewords:27|safe }}</div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="hero-news__cards-btn-wrap block-anim-js text-center">
+        <a href="#" class="btn hero-news__cards-btn load-more-news"><span class="btn__content"><span class="btn__txt">Load more News</span></span></a>
+      </div>
+    </div>
+  </section>
+{% with blocks=page.body %}
+{% for block in blocks %}
+{% include_block block %}
+{% endfor %}
+{% endwith %}
+
+{% endblock %}
+{% block model_block %}
+  {% get_news_list as news_listing %}
+  {% for item in news_listing.items %}
+    <div id="modal-{{ item.title|slugify|safe }}" class="modal modal-event-js modal--info position-fixed d-flex flex-column">
+      <a href="#modal-{{ item.title|slugify|safe }}" id="modal__overlay" class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
+      <div class="modal__block-wrap position-relative ml-auto w-100">
+        <a href="#modal-{{ item.title|slugify|safe }}" id="modal-close-info" class="modal-close bg-img-none modal-event-btn-js d-inline-flex justify-content-center align-items-center cursor-pointer position-absolute">
+          <svg class="modal-close__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="transition-def" d="M15.1875 7.58691L11.9062 10.8682L15.1875 14.1807C15.5938 14.5557 15.5938 15.2119 15.1875 15.5869C14.8125 15.9932 14.1562 15.9932 13.7812 15.5869L10.5 12.3057L7.1875 15.5869C6.8125 15.9932 6.15625 15.9932 5.78125 15.5869C5.375 15.2119 5.375 14.5557 5.78125 14.1807L9.0625 10.8682L5.78125 7.58691C5.375 7.21191 5.375 6.55566 5.78125 6.18066C6.15625 5.77441 6.8125 5.77441 7.1875 6.18066L10.5 9.46191L13.7812 6.18066C14.1562 5.77441 14.8125 5.77441 15.1875 6.18066C15.5938 6.55566 15.5938 7.21191 15.1875 7.58691Z" fill="var(--primary-dark-blue)" fill-opacity="0.5" />
+          </svg>
         </a>
         <div data-scroll="exclude" class="modal__block modal__block--info hide-scrollbar">
-            <section class="modal__section">
-                <div class="modal__section-pic-wrap">
-                    <img class="modal__section-pic w-100 h-100 obj-cover"
-                        src="{{item.intro_image}}" alt="">
+          <section class="modal__section">
+            <div class="modal__section-pic-wrap">
+              <img class="modal__section-pic w-100 h-100 obj-cover" src="{{ item.intro_image }}" alt="" />
+            </div>
+            <div class="modal__section-container mx-auto w-100">
+              <div class="modal__section-head row position-relative z-index-3 text-uppercase align-items-end">
+                <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--1">
+                  <time class="modal__section-head-time">
+                    <span class="modal__section-head-time-big">{{ item.release_date|str_to_date|date:'d' }}</span>
+                    <span class="modal__section-head-time-small d-inline-block">{{ item.release_date|str_to_date|date:'M Y' }}</span>
+                  </time>
                 </div>
-                <div class="modal__section-container mx-auto w-100">
-                    <div class="modal__section-head row position-relative z-index-3 text-uppercase align-items-end">
-                        <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--1">
-                            <time class="modal__section-head-time">
-                                <span class="modal__section-head-time-big">{{item.release_date|str_to_date|date:"d"}}</span>
-                                <span class="modal__section-head-time-small d-inline-block">{{item.release_date|str_to_date|date:"M Y"}}</span>
-                            </time>
-                        </div>
-                        <div class="col-sm-6 col-12 modal__section-head-col  modal__section-head-col--2">
-                            {% for cat in item.category %}
-                            <a href="#" class="btn btn--fifth modal__section-head-btn">
-                                 
-                                    
-                                    <span class="btn__content"><span class="btn__txt">{{cat}}</span></span> 
-                            
-                                
-                            </a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <h2 class="modal__section-title">
-                        {{item.title|safe}}
-                    </h2>
-                    <div class="modal__section-simple-content-wrap last-el-mb-0 after-el position-relative" id="intro-{{item.id|safe}}">
-                        {{item.introduction_content|safe}}
-                    </div>
-                    <div class="modal__section-simple-content-wrap last-el-mb-0" id="body-{{item.id|safe}}">
-                        {{item.body_content|safe}}                        
-                    </div>                    
-                    
-                    <div class="modal__section-btn-wrap">
-                        <a href="#modal-{{item.title|slugify|safe}}" class="btn  modal-event-btn-js modal__section-btn btn--fifth"> <span
-                                class="btn__content">
-                                <svg class="btn__icon" width="15" viewBox="0 0 15 17" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0.714844 9.17773C0.558594 9.02148 0.496094 8.83398 0.496094 8.61523C0.496094 8.42773 0.558594 8.24023 0.714844 8.08398L6.21484 2.83398C6.52734 2.55273 6.99609 2.55273 7.27734 2.86523C7.55859 3.14648 7.55859 3.64648 7.24609 3.92773L3.08984 7.86523H13.7461C14.1523 7.86523 14.4961 8.20898 14.4961 8.61523C14.4961 9.05273 14.1523 9.36523 13.7461 9.36523H3.08984L7.24609 13.334C7.55859 13.6152 7.55859 14.084 7.27734 14.3965C6.99609 14.709 6.52734 14.709 6.21484 14.4277L0.714844 9.17773Z"
-                                        fill="var(--primary-dark-blue)" />
-                                </svg>
-                                <span class="btn__txt">Back to News List</span>
-                            </span> </a>
-                    </div>
+                <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--2">
+                  {% for cat in item.category %}
+                    <a href="#" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">{{ cat }}</span></span></a>
+                  {% endfor %}
                 </div>
-            </section>
+              </div>
+              <h2 class="modal__section-title">{{ item.title|safe }}</h2>
+              <div class="modal__section-simple-content-wrap last-el-mb-0 after-el position-relative" id="intro-{{ item.id|safe }}">{{ item.introduction_content|safe }}</div>
+              <div class="modal__section-simple-content-wrap last-el-mb-0" id="body-{{ item.id|safe }}">{{ item.body_content|safe }}</div>
+
+              <div class="modal__section-btn-wrap">
+                <a href="#modal-{{ item.title|slugify|safe }}" class="btn modal-event-btn-js modal__section-btn btn--fifth">
+                  <span class="btn__content">
+                    <svg class="btn__icon" width="15" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0.714844 9.17773C0.558594 9.02148 0.496094 8.83398 0.496094 8.61523C0.496094 8.42773 0.558594 8.24023 0.714844 8.08398L6.21484 2.83398C6.52734 2.55273 6.99609 2.55273 7.27734 2.86523C7.55859 3.14648 7.55859 3.64648 7.24609 3.92773L3.08984 7.86523H13.7461C14.1523 7.86523 14.4961 8.20898 14.4961 8.61523C14.4961 9.05273 14.1523 9.36523 13.7461 9.36523H3.08984L7.24609 13.334C7.55859 13.6152 7.55859 14.084 7.27734 14.3965C6.99609 14.709 6.52734 14.709 6.21484 14.4277L0.714844 9.17773Z" fill="var(--primary-dark-blue)" />
+                    </svg>
+                    <span class="btn__txt">Back to News List</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </section>
         </div>
+      </div>
     </div>
-</div>
-{% endfor %}  
+  {% endfor %}
 {% endblock %}
 
 {% block extra_js %}
-<style>
-    .hidden{
-        display: none !important;
+  <style>
+    .hidden {
+      display: none !important;
     }
-    .news-category-filter .is-active{
-        color: var(--primary-dark-blue);
-    background: var(--secondary-teal);
+    .news-category-filter .is-active {
+      color: var(--primary-dark-blue);
+      background: var(--secondary-teal);
     }
-</style>
-<script src="/static/js/news-filter.js"></script>
+  </style>
+  <script src="/static/js/news-filter.js"></script>
 {% endblock %}
