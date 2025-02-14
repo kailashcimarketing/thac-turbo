@@ -101,9 +101,11 @@
         {% image item.image original format-webp as img %}
         {% if item.background_video_url %}
         <video class="w-100 h-100 obj-cover video-js" playsinline="" autoplay="" muted="" loop="" preload="metadata" src="{{item.background_video_url}}" poster="{{img.url}}"></video>
+        {% else %}
+        <img class="w-100 h-100 hero-about__bg obj-cover parallax-js parallax-def-js parallax-hero-js" src="{{img.url}}" alt="">
         {% endif %}
 
-        <img class="w-100 h-100 hero-about__bg obj-cover parallax-js parallax-def-js parallax-hero-js" src="{{img.url}}" alt="">
+        
         
         
         
@@ -120,9 +122,11 @@
         {% image item.image original format-webp as img %}
         {% if item.background_video_url %}
         <video class="w-100 h-100 obj-cover video-js" playsinline="" autoplay="" muted="" loop="" preload="metadata" src="{{item.background_video_url}}" poster="{{img.url}}"></video>
+        {% else %}
+        <img class="w-100 h-100 obj-cover hero__pic hero-pic-scale-js" src="{{img.url}}" alt="">
         {% endif %}
         
-        <img class="w-100 h-100 obj-cover hero__pic hero-pic-scale-js" src="{{img.url}}" alt="">
+        
         
     </div>
     <div class="container hero__container position-relative z-index-2 container-hero-anim-js">

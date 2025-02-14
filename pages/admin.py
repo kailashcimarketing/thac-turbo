@@ -11,8 +11,10 @@ GeneralPage.content_panels = Page.content_panels + [
         FieldPanel('primary_tagline'),
         FieldPanel('secondary_tagline'),   
     ],max_num=1),
-    FieldPanel('short_description'),
     FieldPanel('body'),
+]
+GeneralPage.promote_panels = Page.promote_panels + [
+    FieldPanel('short_description'),
 ]
 
 
