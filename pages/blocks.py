@@ -615,8 +615,6 @@ class GridPhotoGalleryBlock(blocks.StructBlock):
         template = "pages/blocks/grid_photo_gallery_block.html"
 
 class CentredTitleBlock(blocks.StructBlock):
-    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
-    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark')

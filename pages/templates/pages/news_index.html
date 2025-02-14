@@ -58,15 +58,15 @@
         <div class="text-center hero-news__btns-wrap-2">
             <div
                 class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper news-category-filter">
                     <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
-                        <a href="#" class="btn btn--third btn--active-cat">
+                        <a href="#"  data-filter="*" class="btn btn--third btn--active-cat">
                             <span class="btn__content"> <span class="btn__txt">All</span> </span> </a>
                     </div>
                     
                     {% for category in categories.items %}
                     <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
-                        <a href="#" class="btn btn--third">
+                        <a href="#"  data-filter=".{{category.slug|safe}}" class="btn btn--third">
                             <span class="btn__content"> 
                                 <span class="btn__txt">{{category.title|safe}}</span> 
                             </span> 
@@ -105,7 +105,7 @@
             {% endfor %}            
         </div>
         <div class="hero-news__cards-btn-wrap block-anim-js text-center">
-            <a href="#" class="btn hero-news__cards-btn">
+            <a href="#" class="btn hero-news__cards-btn load-more-news">
                 <span class="btn__content"> <span class="btn__txt">Load more News</span> </span> </a>
         </div>
     </div>
@@ -165,21 +165,21 @@
                             </time>
                         </div>
                         <div class="col-sm-6 col-12 modal__section-head-col  modal__section-head-col--2">
+                            {% for cat in item.category %}
                             <a href="#" class="btn btn--fifth modal__section-head-btn">
-                                <span class="btn__content"> 
-                                    {% for cat in item.category %}
-                            {% if forloop.first %}
-                            <span class="btn__txt">{{cat}}</span>
-                            {% endif %}
-                            {% endfor %}
-                                </span> 
+                                 
+                                    
+                                    <span class="btn__content"><span class="btn__txt">{{cat}}</span></span> 
+                            
+                                
                             </a>
+                            {% endfor %}
                         </div>
                     </div>
                     <h2 class="modal__section-title">
                         {{item.title|safe}}
                     </h2>
-                    <div class="modal__section-highlight last-el-mb-0 after-el position-relative" id="intro-{{item.id|safe}}">
+                    <div class="modal__section-simple-content-wrap last-el-mb-0 after-el position-relative" id="intro-{{item.id|safe}}">
                         {{item.introduction_content|safe}}
                     </div>
                     <div class="modal__section-simple-content-wrap last-el-mb-0" id="body-{{item.id|safe}}">
@@ -204,4 +204,13 @@
     </div>
 </div>
 {% endfor %}  
+{% endblock %}
+
+{% block extra_js %}
+<style>
+    .hidden{
+        display: none !important;
+    }
+</style>
+<script src="/static/js/news-filter.js"></script>
 {% endblock %}
