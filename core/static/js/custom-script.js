@@ -80,5 +80,16 @@ $(function () {
     }
     let typingTimer;
     
+
+    $('.vimeo-video-btn').on('click',function(){
+        var video_container = $(this).parents('.video-module-container');
+        video_container.find('.vimeo-post-img').hide();
+        $(this).hide();
+        video_container.find('.vimeo-iframe').show();
+        var iframe = video_container.find('iframe');
+        const player = new Vimeo.Player(iframe);
+        player.play();
+        return false;
+    });
 });
 

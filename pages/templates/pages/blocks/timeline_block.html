@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <section class="s-steps">
-    <div class="container s-steps__container container-anim-js">
+    <div class="container s-steps__container container-anim-js timeline-block">
         <div class="s-steps__label mx-auto text-center last-el-mb-0 block-anim-js">
             <p>{{value.text|safe}}</p>
         </div>
@@ -31,6 +31,13 @@
                             {% endif %}
                             
                         </div>
+                        {% if item.button.text %}
+                        <div class="step-card__btn-wrap">
+                            <a href="{{item.button.href.url}}" {{item.button.href.target}} class="btn step-card__btn">
+                                <span class="btn__content"> <span class="btn__txt">{{item.button.text|safe}}</span> </span>
+                            </a>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

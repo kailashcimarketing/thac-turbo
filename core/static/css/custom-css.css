@@ -278,7 +278,9 @@ body .header__megamenu-footer-col-2 {
 .download-list-section .download-list .btn-download:hover i {
   color: var(--secondary-teal);
 }
-
+.timeline-block video{
+  height: 100%;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
