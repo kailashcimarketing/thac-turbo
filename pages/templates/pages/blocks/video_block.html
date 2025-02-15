@@ -2,12 +2,14 @@
 <div class="{{value.background|safe}} {{value.top_padding|safe}} {{value.bottom_padding|safe}}">
 <div class="video-module-container container container-anim-js">
     <div class="video-module video-module--def video-module-js block-anim-js block-anim--static-js">
-        <div class="video-module__btn video-module__btn-js">
+        <!--div class="video-module__btn video-module__btn-js123">
             <img class="video-module__btn-icon video-module__btn-icon--play transition-def" src="/static/images/principal's-welcome/play-icon.svg" alt="">
             <img class="video-module__btn-icon video-module__btn-icon--pause transition-def" src="/static/images/principal's-welcome/pause-btn.svg" alt="">
-        </div>
+        </div -->
         {% image value.poster_image original format-webp as img %}
-        <video class="w-100 h-100 obj-cover" preload="metadata" playsinline src="{{value.video_url}}" poster="{{img.url}}" type="video/mp4"></video>
+        <div style="padding:56.25% 0 0 0;position:relative;">
+            <iframe src="{{value.video_url}}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Sample Video"></iframe></div>
+        <!-- video class="w-100 h-100 obj-cover" preload="metadata" playsinline src="{{value.video_url}}" poster="{{img.url}}" type="video/mp4"></video-->
     </div>
 </div>
 </div>
