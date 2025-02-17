@@ -12,7 +12,7 @@ class NewsCategoryViewSet(SnippetViewSet):
 class NewsViewSet(SnippetViewSet):
     model = News
     menu_label = "News"
-    list_display  = ("title",'published_date','status',)
+    list_display  = ("title",'release_date','status',)
     search_fields = ("title",)
 
 

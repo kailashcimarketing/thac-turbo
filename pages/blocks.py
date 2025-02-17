@@ -228,6 +228,13 @@ class QuoteBlock(blocks.StructBlock):
         label = "Quote"
         template = "pages/blocks/quote_block.html"
 
+class NewsQuoteBlock(blocks.StructBlock):
+    quote = blocks.TextBlock()
+    author = blocks.CharBlock(required=False)
+    class Meta:
+        label = "Quote"
+        template = "pages/blocks/quote_block.html"
+        
 class DownloadList(blocks.StructBlock):
     items = blocks.ListBlock(blocks.StructBlock([
         ('label',blocks.CharBlock()),
@@ -442,6 +449,16 @@ class ProfileWithVideoBlock(blocks.StructBlock):
     class Meta:
         label = "Profile with video"
         template = "pages/blocks/profile_with_video_block.html"
+        
+        
+class NewsProfileBlock(blocks.StructBlock):
+    sign= blocks.CharBlock(required=False)
+    image = ImageChooserBlock(label="Profile Picture")
+    position = blocks.CharBlock(required=False)
+
+    class Meta:
+        label = "News Profile"
+        template = "pages/blocks/news_profile_block.html"
 
 
 class CTACardLinksBlock(blocks.StructBlock):
@@ -613,6 +630,14 @@ class GridPhotoGalleryBlock(blocks.StructBlock):
     class Meta:
         label = "Grid photo gallery"
         template = "pages/blocks/grid_photo_gallery_block.html"
+        
+class NewsPhotoGalleryBlock(blocks.StructBlock):
+    items = blocks.ListBlock(blocks.StructBlock([
+            ('image',ImageChooserBlock())
+            ]))
+    class Meta:
+        label = "Grid photo gallery"
+        template = "pages/blocks/news_photo_gallery_block.html"
 
 class CentredTitleBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock([

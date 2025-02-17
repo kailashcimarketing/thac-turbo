@@ -6,7 +6,7 @@ from django_extensions.db.fields import AutoSlugField
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from home.models import HeroAbstract
-from pages.fields import generalpage_stream_fields
+from pages.fields import generalpage_stream_fields,newspage_stream_fields
 from wagtail.fields import StreamField, RichTextField
 
 class Category(models.Model):
@@ -42,19 +42,21 @@ class News(ClusterableModel):
         related_name='+'
     ) 
     short_description = models.TextField(null=True,blank=True)
-    published_date = models.DateField()
+    release_date = models.DateField()
     status = models.BooleanField(default=True)
+    body = StreamField(newspage_stream_fields,null=True,blank=True)
     
     panels = [
         FieldPanel('title'),
         FieldPanel('slug'),
         FieldPanel('image'),
         FieldPanel('short_description'),
-        FieldPanel('published_date'),
+        FieldPanel('release_date'),
         FieldPanel('status'),
         InlinePanel('news_category', label='Categories', panels=[
             FieldPanel('category'),
         ],max_num=1),
+        FieldPanel('body'),
         
 
     ]

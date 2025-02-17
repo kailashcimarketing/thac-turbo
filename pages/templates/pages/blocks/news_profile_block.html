@@ -1,0 +1,14 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="modal__section-author">
+  <div class="modal__section-author-sign">{{value.sign}}</div>
+  <div class="modal__section-author-block d-flex align-items-center">
+    <div class="modal__section-author-block-pic-wrap flex-auto overflow-hidden">
+        {% image value.image original format-webp as img %}
+      <img class="w-100 h-100 obj-cover obj-position-top" src="{{ img.url }}" alt="" />
+    </div>
+    <div class="modal__section-author-block-content">
+      <div class="modal__section-author-block-name">{{value.sign}}</div>
+      <div class="modal__section-author-block-pos fw-700">{{value.position}}</div>
+    </div>
+  </div>
+</div>

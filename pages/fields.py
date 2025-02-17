@@ -59,6 +59,16 @@ events_stream_fields = [
 generalpage_stream_fields=common_blocks+[]
 landingpage_stream_fields=common_blocks+[]
 
+newspage_stream_fields=[
+   ('HtmlSourceBlock',HtmlSourceBlock()), 
+   ('NewsQuoteBlock',NewsQuoteBlock()),
+   ('ContentBlock',ContentBlock()),
+   ('CTABannerBlock',CTABannerBlock()),
+   ('NewsPhotoGalleryBlock',NewsPhotoGalleryBlock()),
+   ('NewsProfileBlock',NewsProfileBlock()),
+   ('SpaceBlock',SpaceBlock())
+]
+
 content_holder_stream_fields= [
     ('HtmlSourceBlock',HtmlSourceBlock()),
     ('CTABannerBlock',CTABannerBlock()),

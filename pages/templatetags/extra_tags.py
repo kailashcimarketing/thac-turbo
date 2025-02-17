@@ -5,11 +5,13 @@ from django.template import Template, Context
 from pages.models import ContentHolder
 from django.utils.safestring import mark_safe
 register = template.Library()
-from news.models import Category
+from news.models import Category,News
 from django.utils.html import strip_spaces_between_tags, strip_tags
 from datetime import datetime
 import re
 import random
+today = datetime.now()
+
 
 @register.filter
 def highlight(string, term):
@@ -49,7 +51,7 @@ def str_to_date(value, format="%Y-%m-%d"):
 @register.simple_tag()
 def get_news_category():
     items = Category.objects.filter()
-    print("---------------",items)
+    #print("---------------",items)
     return {'items':items}
 
 @register.simple_tag()
@@ -92,6 +94,7 @@ def get_news_list(category='all',limit='all', ):
         'items': news_items,
         'featured_item':featured_item,
     }    
+
 
 @register.simple_tag()
 def get_news_detail(slug):
@@ -151,6 +154,11 @@ def get_related_news(category='all', limit='all',related='all'):
         'items': news_items,
     }  
 
+@register.simple_tag()
+def get_news_items():
+    items = News.objects.filter(status=True).order_by('release_date')
+    
+    return {'items':items}
 
 @register.simple_tag()
 def get_next_pre_pages(page):
