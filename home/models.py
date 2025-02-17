@@ -28,7 +28,7 @@ class HeroAbstract(models.Model):
         on_delete=models.SET_NULL, 
         related_name='+'
     )
-    popup_video_url = models.URLField(null=True,blank=True,help_text="")
+    popup_video_url = models.CharField(null=True,blank=True,help_text="",max_length=1000)
     button_label = models.CharField(null=True,blank=True,max_length=500)
     button_url = models.URLField(null=True,blank=True)
 
