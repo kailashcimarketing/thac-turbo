@@ -233,7 +233,7 @@ class NewsQuoteBlock(blocks.StructBlock):
     author = blocks.CharBlock(required=False)
     class Meta:
         label = "Quote"
-        template = "pages/blocks/quote_block.html"
+        template = "pages/blocks/news_quote_block.html"
         
 class DownloadList(blocks.StructBlock):
     items = blocks.ListBlock(blocks.StructBlock([
