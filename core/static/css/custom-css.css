@@ -278,9 +278,11 @@ body .header__megamenu-footer-col-2 {
 .download-list-section .download-list .btn-download:hover i {
   color: var(--secondary-teal);
 }
-.timeline-block video{
+
+.timeline-block video {
   height: 100%;
 }
+
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
@@ -314,5 +316,46 @@ body .header__megamenu-footer-col-2 {
 @media (min-width:1900px) {
   body .s-parallax-banner {
     padding: 8rem 0;
+  }
+}
+
+@media (min-width:992px){
+  .s-scroll-banners__btn-wrap .small-title{
+    position: absolute;
+    top: 3%;
+    left: 5rem;
+  }
+  .s-scroll-banners__btn-wrap .small-title h3{
+    font-size: 1rem;
+    color: white;
+    font-family: var(--font-family);
+    line-height: normal;
+  }
+
+}
+
+@media (max-width:767px) {
+  .header__megamenu-footer-content .column-row .right-col {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .header__megamenu-container .right-column,
+  .header__megamenu-footer-content .column-row>div .header__megamenu-footer-col-1,
+  .header__megamenu-footer-content .column-row>div .header__megamenu-footer-col-2 {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .header__megamenu-footer-content .column-row>div .header__megamenu-footer-col-2 {
+    padding: 15px 18px;
+  }
+  .header__megamenu-header,
+  .header__col-3-btns-wrap {
+    width: 100%;
+  }
+
+  .header__col-3-btns-wrap .btn {
+    flex: 1;
   }
 }

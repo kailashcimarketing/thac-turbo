@@ -70,6 +70,14 @@ class LandingpageHero(HeroAbstract):
 
 class LandingPage(Page):
     short_description = models.TextField(null=True,blank=True)
+    promo_image = models.ForeignKey(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL, 
+        related_name='+'
+    )
+    promo_title = models.TextField(null=True,blank=True)
     body = StreamField(landingpage_stream_fields,null=True,blank=True)
     
 

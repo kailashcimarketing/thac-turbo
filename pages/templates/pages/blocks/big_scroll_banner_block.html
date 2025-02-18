@@ -11,7 +11,8 @@
             <h2 class="s-scroll-banners__title">
                 <span class="d-md-block d-none">
                 {{value.title|safe}} {{value.script_title|safe|default:""}}
-                </span> <span class="d-md-none d-block">
+                </span> 
+                <span class="d-md-none d-block">
                     {{value.title|safe}} <span class="child-special-text"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.script_title|safe|default:""}}</span></span>
                 </span>
             </h2>
@@ -25,7 +26,7 @@
                         <a href="{{item.href.url}}" {{item.href.target}} class="link-mask"></a>
                         {% image item.image fill-640x700-c100 format-webp as img %}
                         <img class="s-scroll-banners__pic w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
-                        <div class="s-scroll-banners__content position-relative z-index-4 d-md-none d-block">
+                        <div class="s-scroll-banners__content position-relative z-index-4 small-title d-block">
                             <h3 class="s-scroll-banners__content-title position-relative">{{item.title|safe|default:""}}                                <span class="s-scroll-banners__content-title-arrow-wrap">
                     <svg class="s-scroll-banners__content-title-arrow" width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class="transition-def" d="M14.1064 9.00098L9.3252 13.8135L8.79395 14.3447L7.73145 13.2822L8.2627 12.751L11.7627 9.21973H1.4502H0.700195V7.71973H1.4502H11.7627L8.2627 4.21973L7.73145 3.68848L8.79395 2.62598L9.3252 3.15723L14.1064 7.93848L14.6377 8.46973L14.1064 9.00098Z" fill="white"></path>
