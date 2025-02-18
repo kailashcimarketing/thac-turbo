@@ -55,7 +55,7 @@ class News(ClusterableModel):
         FieldPanel('status'),
         InlinePanel('news_category', label='Categories', panels=[
             FieldPanel('category'),
-        ],max_num=1),
+        ]),
         FieldPanel('body'),
         
 

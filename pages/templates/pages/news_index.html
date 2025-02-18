@@ -30,9 +30,9 @@
         LATEST
         <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">news</span></span>
       </h1>
-      <div class="hero-news__circle-btns-wrap d-flex justify-content-center">
+      <div class="hero-news__circle-btns-wrap d-flex justify-content-center news-category-filter" data-filter-group="parent-category">
         <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
-          <a href="#" class="big-circle-btn big-circle-btn--active-cat d-flex align-items-center justify-content-center">
+          <a href="#" data-filter="*" class="big-circle-btn big-circle-btn--active-cat d-flex align-items-center justify-content-center">
             <svg class="big-circle-btn__border">
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
@@ -41,7 +41,7 @@
           </a>
         </div>
         <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
-          <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
+          <a href="#" data-filter=".junior"  class="big-circle-btn d-flex align-items-center justify-content-center">
             <svg class="big-circle-btn__border">
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
@@ -50,7 +50,7 @@
           </a>
         </div>
         <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
-          <a href="#" class="big-circle-btn d-flex align-items-center justify-content-center">
+          <a href="#" data-filter=".senior" class="big-circle-btn d-flex align-items-center justify-content-center">
             <svg class="big-circle-btn__border">
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
@@ -61,7 +61,7 @@
       </div>
       <div class="text-center hero-news__btns-wrap-2">
         <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
-          <div class="swiper-wrapper news-category-filter">
+          <div class="swiper-wrapper news-category-filter"  data-filter-group="category">
             <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
               <a href="#" data-filter="*" class="btn btn--third btn--active-cat"><span class="btn__content"><span class="btn__txt">All</span></span></a>
             </div>

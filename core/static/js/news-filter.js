@@ -1,5 +1,6 @@
 var qsRegex;
 var searchResultFlag;
+var filters = {};
 $(window).on('load', function () {
 
     // init Isotope
@@ -10,22 +11,27 @@ $(window).on('load', function () {
     });
 
 
+
+
     // bind filter button click
     $('.news-category-filter').on('click', 'a', function () {
+        var filterGroup = $(this).parents('.news-category-filter').attr('data-filter-group');
         $('.news-category-filter a').removeClass('is-active');
         $(this).addClass('is-active');
         var filterValue = $(this).attr('data-filter');
+        if (!filters[filterGroup]) {
+            filters[filterGroup] = [];
+        }
+        var filterString = Object.values(filters).map(group => group.join(',')).join('');
         // use filterFn if matches value
-        $container.isotope({
-            filter: filterValue
-        });
+        $container.isotope({ filter: filterString || '*' });
     });
 
-    $container.on( 'arrangeComplete', function( event, filteredItems ) {
-        if(filteredItems.length == 0){
+    $container.on('arrangeComplete', function (event, filteredItems) {
+        if (filteredItems.length == 0) {
             $('.no-result-found').show();
             $('.load-more-news').hide();
-        }else{
+        } else {
             $('.no-result-found').hide();
         };
     });
@@ -87,9 +93,9 @@ $(window).on('load', function () {
 
     let $quicksearch = $('.quicksearch').keyup(debounce(function () {
         $container.find(".hidden").removeClass("hidden");
-        if($quicksearch.val().length == 0){
+        if ($quicksearch.val().length == 0) {
             $(".load-more-news").show();
-        }else{
+        } else {
             $(".load-more-news").hide();
         }
         qsRegex = new RegExp($quicksearch.val(), 'gi');
