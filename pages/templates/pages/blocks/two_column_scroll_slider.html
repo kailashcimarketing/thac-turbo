@@ -43,7 +43,7 @@
                                     <path d="M7.75 2.25V7.25H12.75H13.5V8.75H12.75H7.75V13.75V14.5H6.25V13.75V8.75H1.25H0.5V7.25H1.25H6.25V2.25V1.5H7.75V2.25Z" fill="#002664"/>
                                 </svg>
                             </div>
-                            {% image item.image fill-767x495-c100 format-webp as img %}
+                            {% image item.image original format-webp as img %}
                             <img class="s-pin-banners__contents-pic w-100 h-100 obj-cover" src="{{img.url}}" alt="">
                         </div>
                         {% endfor %}
