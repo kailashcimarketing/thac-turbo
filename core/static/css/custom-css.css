@@ -320,18 +320,20 @@ body .header__megamenu-footer-col-2 {
 }
 
 @media (min-width:992px){
-  .s-scroll-banners__btn-wrap .small-title{
+  .s-scroll-banners__slide .small-title{
     position: absolute;
-    top: 3%;
-    left: 5rem;
+    top: 3rem;
+    left: 4rem;
   }
-  .s-scroll-banners__btn-wrap .small-title h3{
+  .s-scroll-banners__slide .small-title h3{
     font-size: 1rem;
     color: white;
     font-family: var(--font-family);
     line-height: normal;
   }
-
+  .s-scroll-banners__slide .small-title h3 span.s-scroll-banners__content-title-arrow-wrap{
+    display: none;
+  }
 }
 
 @media (max-width:767px) {
