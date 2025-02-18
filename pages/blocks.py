@@ -244,7 +244,14 @@ class DownloadList(blocks.StructBlock):
         label = "Download List"
         icon = "download"
         template = "pages/blocks/download_list.html"
-        
+
+class ChildImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock()
+    caption = blocks.CharBlock(required=False)
+    class Meta:
+        label = "Image"
+        template = "pages/blocks/child_image_block.html"
+               
 class AccordionBlock(blocks.StructBlock):
     items = blocks.ListBlock(blocks.StructBlock([
             ('title',blocks.CharBlock()),
@@ -281,12 +288,14 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('accordion',AccordionBlock()),
         ('QuoteBlock',QuoteBlock()),
         ('table',CustomTableBlock()),
-        ('DownloadList',DownloadList())
+        ('DownloadList',DownloadList()),
+        ('ChildImageBlock',ChildImageBlock())
     ])
     css_class = blocks.CharBlock(required=False)
     class Meta:
         label = "Content with variable width"
         template = "pages/blocks/content_with_variable_width_block.html"
+
 
 class ContentStreamBlock(blocks.StreamBlock):
     html = HtmlSourceBlock()
@@ -296,6 +305,7 @@ class ContentStreamBlock(blocks.StreamBlock):
     accordion = AccordionBlock()
     quote = QuoteBlock()
     table = CustomTableBlock()
+    image = ChildImageBlock()
     
 
 class TwoColumnBlock(blocks.StructBlock):
@@ -760,13 +770,7 @@ class ProfileBlock(blocks.StructBlock):
         template = "pages/blocks/profile_block.html"
 
 
-class ChildImageBlock(blocks.StructBlock):
-    image = ImageChooserBlock()
-    caption = blocks.CharBlock(required=False)
-    class Meta:
-        label = "Image"
-        template = "pages/blocks/child_image_block.html"
-        
+      
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
