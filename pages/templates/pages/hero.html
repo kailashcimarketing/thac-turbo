@@ -39,8 +39,9 @@
             <h1 class="hero-primary__title hero-title-js">
                 {{item.title|safe}}
                 {% if item.script_title %}
-                <span class="child-special-text"><span class="child-special-text__txt">{{item.script_title|safe}}<span class="ellipses">...</span></span></span>
+                <span class="child-special-text"><span class="child-special-text__txt">{{item.script_title|safe}}</span></span>
                 {% endif %}
+                <span class="ellipses">...</span>
             </h1>
         </div>
         <div class="col-auto hero-primary__col hero-primary__col-2 hero-item-js hero-item-3-js">

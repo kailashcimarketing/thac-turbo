@@ -288,11 +288,7 @@ body .header__megamenu-footer-col-2 {
   span.ellipses{
     font-family: var(--third-family);
     color: #fff;
-    line-height: 10rem;
-    font-size: 9.5rem;
-    letter-spacing: 0.25rem;
-    position: absolute;
-    bottom: 7rem;
+    letter-spacing: 0px;
 }
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
@@ -373,5 +369,8 @@ body .header__megamenu-footer-col-2 {
 
   .header__col-3-btns-wrap .btn {
     flex: 1;
+  }
+  .btn.btn--third .btn__txt br{
+    display: none;
   }
 }
