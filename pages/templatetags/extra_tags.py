@@ -2,7 +2,7 @@ import requests
 from django import template
 from django.conf import settings
 from django.template import Template, Context
-from pages.models import ContentHolder
+from pages.models import ContentHolder,LandingPage
 from django.utils.safestring import mark_safe
 register = template.Library()
 from news.models import Category,News
@@ -11,6 +11,8 @@ from datetime import datetime
 import re
 import random
 today = datetime.now()
+
+
 
 
 @register.filter
@@ -193,5 +195,20 @@ def get_next_pre_pages(page):
         'previous_page': previous_page,
         'next_page': next_page,
         'second_next_page': second_next_page,
+    }
+
+@register.inclusion_tag('pages/content-holders/promo_title_image.html',takes_context=True)
+def get_promo_section(context,page_slug):
+        # Get the current page's parent
+    try:
+        page = LandingPage.objects.get(slug=page_slug).specific
+        promo_title=page.specific.promo_title
+    except Exception:
+        promo_title = "Content holder with name '" +page_slug+"' not found."
+    
+    return {
+            'promo_title': promo_title,
+            'promo_image': page.specific.promo_image,
+            'request': context['request'],  # To ensure images render correctly
     }
 

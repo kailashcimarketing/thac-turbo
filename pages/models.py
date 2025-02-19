@@ -77,7 +77,7 @@ class LandingPage(Page):
         on_delete=models.SET_NULL, 
         related_name='+'
     )
-    promo_title = models.TextField(null=True,blank=True)
+    promo_title = models.CharField(max_length=500,null=True,blank=True)
     body = StreamField(landingpage_stream_fields,null=True,blank=True)
     
 

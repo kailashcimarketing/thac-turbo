@@ -1,0 +1,14 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if promo_title or promo_image %}
+  <div class="header__megamenu-list-pic-block">
+    {% if promo_image %}
+      {% image promo_image original format-webp as img %}
+      <div class="header__megamenu-list-pic-wrap">
+        <img class="w-100 h-100 obj-cover" src="{{ img.url }}" alt="{{ promo_title }}" />
+      </div>
+    {% endif %}
+    {% if promo_title %}
+      <h3 class="header__megamenu-list-pic-block-title">{{ promo_title|safe }}</h3>
+    {% endif %}
+  </div>
+{% endif %}
