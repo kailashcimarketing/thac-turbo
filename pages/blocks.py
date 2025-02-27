@@ -211,7 +211,8 @@ class SimpleButton(blocks.StructBlock):
 class ThemeButton(blocks.StructBlock):
     text = blocks.CharBlock(required=False)        
     theme = blocks.ChoiceBlock([
-        ('btn btn--fifth','Dark blue'),
+        ('btn btn--dark-blue','Solid blue'),
+        ('btn btn--fifth','Solid white'),
         ('btn btn--secondary','Solid teal'),
         ('btn btn--third','Teal outline'),
         ('link','Link'),
@@ -289,7 +290,8 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('QuoteBlock',QuoteBlock()),
         ('table',CustomTableBlock()),
         ('DownloadList',DownloadList()),
-        ('ChildImageBlock',ChildImageBlock())
+        ('ChildImageBlock',ChildImageBlock()),
+        ('ThemeButton',ThemeButton())
     ])
     css_class = blocks.CharBlock(required=False)
     class Meta:

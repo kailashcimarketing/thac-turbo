@@ -41,12 +41,12 @@
                 {% if item.script_title %}
                 <span class="child-special-text"><span class="child-special-text__txt">{{item.script_title|safe}}</span></span>
                 {% endif %}
-                <span class="ellipses">...</span>
             </h1>
         </div>
+        {% if item.button_url %}
         <div class="col-auto hero-primary__col hero-primary__col-2 hero-item-js hero-item-3-js">
             <div class="hero-primary__small-card transition-def position-relative overflow-hidden d-inline-flex align-items-center">
-                <a href="#" target="_blank" class="link-mask"></a>
+                <a href="{{item.button_url|safe}}" target="_blank" class="link-mask"></a>
                 <div class="hero-primary__small-card-pic-wrap">
                     <img class="hero-primary__small-card-pic w-100 h-100 obj-cover" src="/static/images/homepage/hero-pic-2.webp" alt="">
                 </div>
@@ -56,6 +56,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 </section>
 {% if item.popup_video_url %}
