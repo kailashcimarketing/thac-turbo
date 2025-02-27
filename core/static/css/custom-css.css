@@ -302,6 +302,10 @@ span.ellipses {
 .btn--dark-blue {
   color: var(--basic-white);
   background: var(--primary-dark-blue);
+  border-color: var(--primary-dark-blue);
+}
+.btn--dark-blue:hover{
+  border-color: var(--secondary-teal);
 }
 .hero-primary__title > .anim-lines::after{
   content: '...';
