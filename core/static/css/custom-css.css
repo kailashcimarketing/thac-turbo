@@ -303,6 +303,9 @@ span.ellipses {
   color: var(--basic-white);
   background: var(--primary-dark-blue);
 }
+.hero-primary__title > .anim-lines::after{
+  content: '...';
+}
 
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
