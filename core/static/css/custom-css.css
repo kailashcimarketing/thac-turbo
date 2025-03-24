@@ -310,6 +310,10 @@ span.ellipses {
 .hero-primary__title > .anim-lines::after{
   content: '...';
 }
+.news-index-page .vbox-container{
+  max-height: 100vh;
+  overflow: hidden;
+}
 
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {

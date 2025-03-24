@@ -2,7 +2,7 @@
 
 {% load static wagtailcore_tags wagtailimages_tags extra_tags %}
 {% block body_class %}
-  general-page innerpage
+  general-page innerpage news-index-page
 {% endblock %}
 
 {% block content %}
@@ -66,7 +66,7 @@
               <a href="#" data-filter="*" class="btn btn--third btn--active-cat"><span class="btn__content"><span class="btn__txt">All</span></span></a>
             </div>
             {% for category in categories.items %}
-              <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+              <div class="w-auto block-anim-js block-anim--row-short-js">
                 <a href="#" data-filter=".{{ category.slug|safe }}" class="btn btn--third"><span class="btn__content"><span class="btn__txt">{{ category.title|safe }}</span></span></a>
               </div>
             {% endfor %}
@@ -94,8 +94,8 @@
               </div>
               <div class="new-card__content">
                 <time class="new-card__time d-block text-uppercase" datetime="{{ item.release_date|safe }}">{{ item.release_date|date:'d M Y' }}</time>
-                <h3 class="new-card__title">{{ item.title|truncatechars:40|safe }}</h3>
-                <div class="new-card__txt-wrap last-el-mb-0">{{ item.short_description|rm_tags:'style'|truncatewords:27|safe }}</div>
+                <h3 class="new-card__title">{{ item.title|truncatechars:45|safe }}</h3>
+                <div class="new-card__txt-wrap last-el-mb-0">{{ item.short_description|rm_tags:'style'|truncatewords:20|safe }}</div>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--2">
                   {% for cat in item.news_category.all %}
-                    <a href="#" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">{{ cat.category.title }}</span></span></a>
+                    <a href="#{{ category.slug|safe }}" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">{{ cat.category.title }}</span></span></a>
                   {% endfor %}
                 </div>
               </div>
