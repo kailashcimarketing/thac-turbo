@@ -311,10 +311,15 @@ span.ellipses {
   content: '...';
 }
 .news-index-page .vbox-container{
-  max-height: 100vh;
+  max-height: 95vh;
   overflow: hidden;
 }
-
+.news-index-page .hero-news__title{
+  color: var(--secondary-teal);
+}
+.news-index-page .hero-news__title .child-special-text__txt{
+  color: #fff;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;

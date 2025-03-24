@@ -562,6 +562,10 @@ class ContactpageHeroBlock(blocks.StructBlock):
         ('footer_text',blocks.CharBlock(required=False)),
         ('footer_button',SimpleButton())
     ]))
+    facebook_url = blocks.CharBlock(required=False)
+    instagram_url = blocks.CharBlock(required=False)
+    linkedin_url = blocks.CharBlock(required=False)
+    youtube_url = blocks.CharBlock(required=False)
     class Meta:
         label = "Contact page hero section"
         group = "Hero Section"
