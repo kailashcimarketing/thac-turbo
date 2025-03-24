@@ -3,14 +3,15 @@
   {% for item in menu_items %}
     {% if item.sub_menu %}
     <li><a class="header__megamenu-panel-btn-js" data-menu="#header__megamenu-list-{{forloop.counter}}-wrap"
-        data-panel="#header__megamenu-panel--{{forloop.counter}}" href="#"> <span> {{item.text|safe}}
-            <svg width="48" height="32" viewBox="0 0 48 32" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M46.875 17.125L33.375 30.625L32.3438 31.6562L30.1875 29.5L31.3125 28.4688L42.1875 17.5H1.5H0V14.5H1.5H42.1875L31.3125 3.625L30.1875 2.5L32.3438 0.4375L33.375 1.46875L46.875 14.9688L48 16L46.875 17.125Z"
-                    fill="currentColor" />
-            </svg>
-        </span> </a></li>
+      data-panel="#header__megamenu-panel--{{forloop.counter}}" href="#"> <span> {{item.text|safe}}
+          <svg width="48" height="32" viewBox="0 0 48 32" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M46.875 17.125L33.375 30.625L32.3438 31.6562L30.1875 29.5L31.3125 28.4688L42.1875 17.5H1.5H0V14.5H1.5H42.1875L31.3125 3.625L30.1875 2.5L32.3438 0.4375L33.375 1.46875L46.875 14.9688L48 16L46.875 17.125Z"
+                  fill="currentColor" />
+          </svg>
+      </span> </a></li>
+
     {% else %}
       <li class="{{ item.active_class }}">
         <a href="{{ item.href }}" data-id="{{ item.id }}" class="ignore">{{ item.text }}</a>
