@@ -76,7 +76,7 @@ class LandingPage(Page):
         blank=True, 
         on_delete=models.SET_NULL, 
         related_name='+',
-        verbose_name="Menu Promo Page"
+        
     )
     promo_title = models.CharField(max_length=500,null=True,blank=True)
     promo_page = models.ForeignKey(
@@ -84,7 +84,8 @@ class LandingPage(Page):
         null=True, 
         blank=True, 
         on_delete=models.SET_NULL, 
-        related_name='+'
+        related_name='+',
+        verbose_name="Menu Promo Page"
     )
     body = StreamField(landingpage_stream_fields,null=True,blank=True)
     
