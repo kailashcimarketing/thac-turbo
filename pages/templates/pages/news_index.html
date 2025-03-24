@@ -66,7 +66,7 @@
               <a href="#" data-filter="*" class="btn btn--third btn--active-cat"><span class="btn__content"><span class="btn__txt">All</span></span></a>
             </div>
             {% for category in categories.items %}
-              <div class="w-auto block-anim-js block-anim--row-short-js">
+              <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
                 <a href="#" data-filter=".{{ category.slug|safe }}" class="btn btn--third"><span class="btn__content"><span class="btn__txt">{{ category.title|safe }}</span></span></a>
               </div>
             {% endfor %}
@@ -95,7 +95,7 @@
               <div class="new-card__content">
                 <time class="new-card__time d-block text-uppercase" datetime="{{ item.release_date|safe }}">{{ item.release_date|date:'d M Y' }}</time>
                 <h3 class="new-card__title">{{ item.title|truncatechars:45|safe }}</h3>
-                <div class="new-card__txt-wrap last-el-mb-0">{{ item.short_description|rm_tags:'style'|truncatewords:20|safe }}</div>
+                <div class="new-card__txt-wrap last-el-mb-0">{{ item.short_description|rm_tags:'style'|truncatewords:18|safe }}</div>
               </div>
             </div>
           </div>
