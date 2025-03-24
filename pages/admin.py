@@ -19,6 +19,7 @@ GeneralPage.promote_panels = Page.promote_panels + [
 
 
 LandingPage.content_panels = Page.content_panels + [
+    FieldPanel('promo_page'),
     InlinePanel('landingpage_hero', label='Hero Images', panels=[
         FieldPanel('image'),
         FieldPanel('title'),     

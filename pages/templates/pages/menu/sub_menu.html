@@ -1,0 +1,47 @@
+{% load menu_tags extra_tags wagtailimages_tags %}
+{% for item in menu_items %}
+{% if item.sub_menu %}
+<div id="header__megamenu-list-2-wrap" class="hide-menu-item header__megamenu-list-{{forloop.counter}}-wrap header__megamenu-list-2-wrap-js header__megamenu-list-wrap-col flex-auto">
+        <div id="header__megamenu-list-2-wrap-2" data-wrapper-2="#header__megamenu-list-2-wrap"
+            data-wrapper="#header__megamenu-container-{{forloop.counter}}"
+            class="header__megamenu-list-{{forloop.counter}}-wrap-2 header__megamenu-list-2-wrap-2-js">
+            <a href="#header__megamenu-panel--{{forloop.counter}}" data-panel="#header__megamenu-panel--{{forloop.counter}}"
+                class="btn header__megamenu-list-2-wrap__btn d-lg-none"> <span
+                    class="btn__content">
+                    <svg class="btn__icon" width="14" viewBox="0 0 14 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.21875 8.75952C0.0625 8.60327 0 8.41577 0 8.19702C0 8.00952 0.0625 7.82202 0.21875 7.66577L5.71875 2.41577C6.03125 2.13452 6.5 2.13452 6.78125 2.44702C7.0625 2.72827 7.0625 3.22827 6.75 3.50952L2.59375 7.44702H13.25C13.6562 7.44702 14 7.79077 14 8.19702C14 8.63452 13.6562 8.94702 13.25 8.94702H2.59375L6.75 12.9158C7.0625 13.197 7.0625 13.6658 6.78125 13.9783C6.5 14.2908 6.03125 14.2908 5.71875 14.0095L0.21875 8.75952Z"
+                            fill="#A1E7D7" />
+                    </svg>
+                    <span class="btn__txt">Back</span>
+
+                </span> </a>
+            <h3 class="header__megamenu-list-2-wrap-2__title d-lg-none">About</h3>
+            <div class="header__megamenu-list-2-col header__megamenu-list-2-col-1">
+                <ul class="list-unstyled header__megamenu-list-2">
+                    {% flat_menu item.handle max_levels=4 show_menu_heading=False template="pages/menu/main-menu.html" fall_back_to_default_site_menus=True %}
+                </ul>
+            </div>
+            <div class="header__megamenu-list-2-col header__megamenu-list-2-col-2">
+                <div class="header__megamenu-list-pic-container overflow-hidden">
+                <!------>
+                <div class="header__megamenu-list-pic-block">
+                    {% if item.link_page.specific.promo_page %}
+                    
+                    {% image item.link_page.specific.promo_page.specific.get_hero_image.image original format-webp as img %}
+                    <div class="header__megamenu-list-pic-wrap">
+                    <img class="w-100 h-100 obj-cover" src="{{ img.url }}" alt="{{ promo_title }}" />
+                    </div>
+                
+                    <h3 class="header__megamenu-list-pic-block-title">{{ item.link_page.specific.promo_page.title|safe }}</h3>
+                    {% endif %}
+                  </div>
+                <!------->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endfor %}
+                            

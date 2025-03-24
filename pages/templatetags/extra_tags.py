@@ -25,12 +25,12 @@ def highlight(string, term):
 
 @register.inclusion_tag('pages/content-holders/content_holder.html',takes_context=True)
 def load_content_holder(context, Slug):
-    try:
-        header = ContentHolder.objects.get(slug=Slug)
-        header = Template(header.content)
-        html_header = header.render(context)
-    except Exception:
-        html_header = "Content holder with name '" +Slug+"' not found."
+    #try:
+    header = ContentHolder.objects.get(slug=Slug)
+    header = Template(header.content)
+    html_header = header.render(context)
+    #except Exception:
+    #    html_header = "Content holder with name '" +Slug+"' not found."
     
     return {
         'html_header': html_header
