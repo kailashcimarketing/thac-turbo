@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'pages/hero.html' with type='internal' page=page %}
   {% get_news_category as categories %}
   {% get_news_items as news_listing %}
 

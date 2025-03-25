@@ -1,3 +1,13 @@
+{% if value.theme == 'btn btn-download' %}
+<a href="{{value.href.url}}" {{value.href.target}} class="{{value.theme|safe}}">
+    <span class="btn__content"> <i class="fa-regular fa-file-arrow-down"></i><span class="btn__txt">{{value.text|safe}}</span> </span>
+</a>
+{% elif value.theme == 'btn external-link' %}
+<a href="{{value.href.url}}" {{value.href.target}} class="{{value.theme|safe}}">
+    <span class="btn__content"> <span class="btn__txt">{{value.text|safe}}</span> <i class="fa-regular fa-file-arrow-down"></i></span>
+</a>
+{% else %}
 <a href="{{value.href.url}}" {{value.href.target}} class="{{value.theme|safe}}">
     <span class="btn__content"> <span class="btn__txt">{{value.text|safe}}</span> </span>
 </a>
+{% endif %}

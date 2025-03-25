@@ -215,6 +215,8 @@ class ThemeButton(blocks.StructBlock):
         ('btn btn--fifth','Solid white'),
         ('btn btn--secondary','Solid teal'),
         ('btn btn--third','Teal outline'),
+        ('btn btn-download','Download'),
+        ('btn btn-external-link','External link'),
         ('link','Link'),
     ],required=False)
     href = HrefBlock()
@@ -565,6 +567,7 @@ class ContactpageHeroBlock(blocks.StructBlock):
     ]))
     facebook_url = blocks.CharBlock(required=False)
     instagram_url = blocks.CharBlock(required=False)
+    vimeo_url = blocks.CharBlock(required=False)
     linkedin_url = blocks.CharBlock(required=False)
     youtube_url = blocks.CharBlock(required=False)
     class Meta:
