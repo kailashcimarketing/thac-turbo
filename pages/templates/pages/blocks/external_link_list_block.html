@@ -1,8 +1,10 @@
 <div class="external-links">
     {% for item in value.items %}
-    <h5>{{item.title|safe}}</h5>
-    {% for link in item.links %}
-    <a href="{{link.external_link}}" target="_blank" class="btn btn-external-link">{{link.label|safe}}</a>
-    {% endfor %}
+    <div class="external-link-item">
+        <h3>{{item.title|safe}}</h3>
+        {% for link in item.links %}
+        <a href="{{link.external_link}}" target="_blank" class="btn btn-external-link">{{link.label|safe}}</a>
+        {% endfor %}
+    </div>
     {% endfor %}
 </div>

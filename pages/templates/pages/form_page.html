@@ -7,31 +7,31 @@
 
 {% with blocks=page.top_body %}
 {% for block in blocks %}
-    <section class="block-{{ block.block_type }}">
-      {% include_block block %}
-    </section>      
+<section class="block-{{ block.block_type }}">
+  {% include_block block %}
+</section>
 {% endfor %}
 {% endwith %}
 
-    <!-- form -->
-    <div class="section light-theme">
-    <div class="container">
-      <div class="row">
-          {% block thankyou_message %}
-          {% endblock %}
-          {% block form %}
-                {% include 'pages/form/default_form.html' %}
-          {% endblock %}
-      </div>
+<!-- form -->
+<div class="section light-theme">
+  <div class="container">
+    <div class="row">
+      {% block thankyou_message %}
+      {% endblock %}
+      {% block form %}
+      {% include 'pages/form/default_form.html' %}
+      {% endblock %}
     </div>
   </div>
-    <!-- form end -->
+</div>
+<!-- form end -->
 
-  {% with blocks=page.bottom_body %}
-    {% for block in blocks %}
-        <section class="block-{{ block.block_type }}">
-          {% include_block block %}
-        </section>      
-    {% endfor %}
-  {% endwith %}
+{% with blocks=page.bottom_body %}
+{% for block in blocks %}
+<section class="block-{{ block.block_type }}">
+  {% include_block block %}
+</section>
+{% endfor %}
+{% endwith %}
 {% endblock %}

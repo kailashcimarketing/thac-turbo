@@ -5,7 +5,7 @@
 </div>
 {% else %}
 <div class="col-lg-8 offset-lg-2">
-  <form action="{% pageurl page %}" id="wagtail-form" class="webform-client-form"  enctype="multipart/form-data" method="POST">
+  <form action="{% pageurl page %}" id="wagtail-form" class="webform-client-form s-form__form"  enctype="multipart/form-data" method="POST">
     <div class="row">
       {% csrf_token %}
       {% for field in form %}
@@ -16,7 +16,7 @@
         {% elif field.field.widget|klass == 'ReCaptchaV2Checkbox' %}
           {% render_field field %}
         {% else %}
-          <div class="form-group {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+          <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
             <label>
               {{ field.field.label }}
               {% if field.field.required %}
@@ -24,7 +24,7 @@
               {% endif %}
             </label>
             <div class="select-input" data-required="{{ field.field.required }}">
-              {% render_field field class+='form-control' %}
+              {% render_field field class+='form-control input-style' %}
             </div>
             <small>{{ field.field.help_text|safe }}</small>
             {{ field.errors }}

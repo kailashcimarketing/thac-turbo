@@ -246,6 +246,7 @@ body .header__megamenu-footer-col-2 {
 .btn.btn-external-link,
 .btn.btn-download {
   display: flex;
+  width: 100%;
   padding: 1.125rem;
   align-items: center;
   gap: 1.125rem;
@@ -284,15 +285,18 @@ body .header__megamenu-footer-col-2 {
   right: 1.25rem;
 }
 
+
+
+
 .btn.btn-external-link:hover,
 .btn.btn-download:hover {
-  background: var(--primary-dark-blue);
-  color: var(--basic-white);
+  background: var(--secondary-teal);
+  color: var(--primary-dark-blue);
 }
 
 .btn.btn-external-link:hover i,
 .btn.btn-download:hover i {
-  color: var(--basic-white);
+  color: var(--primary-dark-blue);
 }
 
 .timeline-block video {
@@ -313,6 +317,26 @@ span.ellipses {
 .btn+.link {
   display: inline-flex;
   margin-left: 0.5rem;
+}
+
+.download-list btn.btn-download+.btn.btn-download,
+.external-links .btn.btn-external-link+.btn.btn-external-link {
+  margin-left: 0;
+}
+
+.external-links .external-link-item,
+.download-list {
+  margin-bottom: 2.5rem;
+}
+
+.download-list h3,
+.external-links .external-link-item h3 {
+  margin-bottom: 1.5rem;
+  font-family: var(--font-family);
+  text-transform: none;
+  font-weight: 600;
+  font-size: 2rem;
+
 }
 
 .btn--dark-blue {
@@ -373,6 +397,28 @@ span.ellipses {
   line-height: 1.5em;
 }
 
+form{
+  padding: 4rem 0;
+}
+input[type="radio"],
+input[type="checkbox"]{
+  width:1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  margin: .5rem;
+}
+form button.btn{
+  background: var(--primary-dark-blue);
+  color: var(--basic-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 3rem;
+
+}
+.header  .header__login-block-container + .header__login-block-container{
+  margin-top: 1.5rem;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
