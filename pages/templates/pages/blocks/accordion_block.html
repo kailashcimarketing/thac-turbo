@@ -1,20 +1,24 @@
-{% load wagtailcore_tags %}
-<div class="accordion" id="{{value.accordion_id|slugify|default:'accordion-block'}}">
-    {% for item in value.items %}
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="heading-{{item.title|slugify}}">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{item.title|slugify}}" aria-expanded="true" aria-controls="collapse-{{item.title|slugify}}">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="collapse-{{item.title|slugify}}" class="accordion-collapse collapse show" aria-labelledby="heading-{{item.title|slugify}}" data-bs-parent="#{{value.accordion_id|slugify|default:'accordion-block'}}">
-        <div class="accordion-body">
-          {% for block in item.content_blocks %}
-          {% include_block block %}
-          {% endfor %}
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="s-faq {{value.background|safe}} {{value.top_padding|safe}} {{value.bottom_padding|safe}}">
+  <div class="container s-faq__container container-anim-js">
+    <div class="row s-faq__row">
+      <div class="s-faq__items acc-items-js">
+        {% for item in value.items %}
+        <div class="acc-item-wrap-js block-anim-js">
+          <div class="s-faq__item acc-item-js">
+            <h3 class="s-faq__item-title cursor-pointer mb-0 ff-body h6 acc-title-js position-relative">
+              {{item.title|safe}}
+              <span class="s-faq__item-title-icon after-el before-el position-absolute"></span>
+            </h3>
+            <div class="s-faq__item-content acc-content-js last-el-mb-0">
+              {% for block in item.content_blocks %}
+              {% include_block block %}
+              {% endfor %}
+            </div>
+          </div>
         </div>
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
-    
   </div>
+</section>

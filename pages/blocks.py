@@ -257,6 +257,12 @@ class ChildImageBlock(blocks.StructBlock):
         template = "pages/blocks/child_image_block.html"
                
 class AccordionBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="light-theme")
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     items = blocks.ListBlock(blocks.StructBlock([
             ('title',blocks.CharBlock()),
             ('content_blocks',blocks.StreamBlock([
@@ -271,6 +277,17 @@ class AccordionBlock(blocks.StructBlock):
     class Meta:
         label = "Accordion"
         template = "pages/blocks/accordion_block.html"
+
+class FaqBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    items= blocks.ListBlock(blocks.StructBlock([
+        ('title',blocks.CharBlock(label="Question")),
+        ('content',blocks.RichTextBlock(label="Answer"))
+    ]))
+    button = SimpleButton()
+    class Meta:
+        label = "FAQs"
+        template = "pages/blocks/faq_block.html"
 
 
 class ContentWithVariableWidthBlock(blocks.StructBlock):
@@ -751,16 +768,7 @@ class TimelineBlock(blocks.StructBlock):
         template = "pages/blocks/timeline_block.html"
 
 
-class FaqBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
-    items= blocks.ListBlock(blocks.StructBlock([
-        ('title',blocks.CharBlock(label="Question")),
-        ('content',blocks.RichTextBlock(label="Answer"))
-    ]))
-    button = SimpleButton()
-    class Meta:
-        label = "FAQs"
-        template = "pages/blocks/faq_block.html"
+
 
 
 class ChildVideBlock(blocks.StructBlock):

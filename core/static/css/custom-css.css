@@ -419,6 +419,12 @@ form button.btn{
 .header  .header__login-block-container + .header__login-block-container{
   margin-top: 1.5rem;
 }
+.s-faq.light-theme{
+  background: var(--template-cover);
+}
+.s-faq.dark-theme{
+  background: var(--primary-dark-blue);
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
