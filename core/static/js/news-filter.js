@@ -2,19 +2,31 @@ var qsRegex;
 var searchResultFlag;
 var filters = {};
 $(window).on('load', function () {
+    var $grid = $('.grid').isotope({
+        // options
+      });
+      // filter items on button click
+      $('.filter-button-group').on( 'click', 'button', function() {
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+      });
 
     // init Isotope
     let $container = $('.hero-news__cards').isotope({
-        itemSelector: '.hero-news__col',
+        itemSelector: '.element-item',
         layoutMode: 'fitRows',
-
     });
 
 
-
+    $('.news-category-filter a').on( 'click', function() {
+        $('.news-category-filter a').removeClass('is-active');
+        var filterValue = $(this).attr('data-filter');
+        $(this).addClass('is-active');
+        $container.isotope({ filter: filterValue });
+      });
 
     // bind filter button click
-    $('.news-category-filter').on('click', 'a', function () {
+    /*$('.news-category-filter').on('click', 'a', function () {
         var filterGroup = $(this).parents('.news-category-filter').attr('data-filter-group');
         $('.news-category-filter a').removeClass('is-active');
         $(this).addClass('is-active');
@@ -25,7 +37,7 @@ $(window).on('load', function () {
         var filterString = Object.values(filters).map(group => group.join(',')).join('');
         // use filterFn if matches value
         $container.isotope({ filter: filterString || '*' });
-    });
+    });*/
 
     $container.on('arrangeComplete', function (event, filteredItems) {
         if (filteredItems.length == 0) {

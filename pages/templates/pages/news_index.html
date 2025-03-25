@@ -60,32 +60,29 @@
         </div>
       </div>
       <div class="text-center hero-news__btns-wrap-2">
-        <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
-          <div class="swiper-wrapper news-category-filter"  data-filter-group="category">
-            <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
-              <a href="#" data-filter="*" class="btn btn--third btn--active-cat"><span class="btn__content"><span class="btn__txt">All</span></span></a>
+        <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible container-anim-js">
+          <div class="news-category-filter"  data-filter-group="category">
+            <div class="w-auto block-anim-js block-anim--row-short-js">
+              <a href="#" data-filter="*" class="btn btn--third is-active"><span class="btn__content"><span class="btn__txt">All</span></span></a>
             </div>
             {% for category in categories.items %}
-              <div class="swiper-slide w-auto block-anim-js block-anim--row-short-js">
+              <div class="w-auto block-anim-js block-anim--row-short-js">
                 <a href="#" data-filter=".{{ category.slug|safe }}" class="btn btn--third"><span class="btn__content"><span class="btn__txt">{{ category.title|safe }}</span></span></a>
               </div>
             {% endfor %}
           </div>
         </div>
       </div>
-      <div class="row hero-news__cards container-anim-js">
+      <div class="row hero-news__cards">
         {% for item in news_listing.items %}
-          <div class="col-lg-4 col-sm-6 col-12 hero-news__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js 
-          {% for cat in item.news_category.all %}
-              {{ cat.category.title|slugify|safe }}
-            {% endfor %}">
+          <div class="col-lg-4 col-sm-6 col-12 hero-news__col element-item {% for cat in item.news_category.all %}{{ cat.category.slug}} {% endfor %}">
             <div class="new-card new-card--third position-relative hover-pic-wrap">
               <a href="#modal-{{ item.title|slugify|safe }}" class="link-mask modal-event-btn-js"></a>
               <div class="new-card__pic-wrap position-relative overflow-hidden">
                 <div class="new-card__label position-absolute">
                   {% for cat in item.news_category.all %}
                     {% if forloop.first %}
-                      {{ cat.category.title }}
+                      {{ cat.category.title|safe }}
                     {% endif %}
                   {% endfor %}
                 </div>

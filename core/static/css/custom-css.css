@@ -320,6 +320,16 @@ span.ellipses {
 .news-index-page .hero-news__title .child-special-text__txt{
   color: #fff;
 }
+.news-category-filter{
+  display: flex;
+  flex-wrap: wrap;
+}
+.news-category-filter > .block-anim-js{
+  margin-bottom: 1rem;
+}
+.news-category-filter > .block-anim-js + .block-anim-js{
+  margin-left: 1rem;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
