@@ -1,6 +1,8 @@
-<blockquote>
-    <p>{{value.quote|safe}}</p>
-    {% if value.author %}
-   {{value.author|safe}}
-    {% endif %}
+<blockquote class="s-quote__txt-wrap">
+    {{value.quote|safe}}
 </blockquote>
+{% if value.author %}
+<h3 class="s-quote__name h6 fw-500 mb-0 block-anim-js">
+    {{value.author|safe}}
+</h3>
+{% endif %}
