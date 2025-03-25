@@ -256,6 +256,8 @@ class FormPage(AbstractEmailForm):
             ]),
             FieldPanel('subject'),
         ], "Email"),
+        FieldPanel('top_body'),
+        FieldPanel('bottom_body'),
     ]
     
     def get_hero(self):
