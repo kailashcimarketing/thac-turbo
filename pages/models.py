@@ -227,6 +227,10 @@ class CustomSubmissionsListView(SubmissionsListView):
 
         return context
     
+class FormpageHero(HeroAbstract):
+    page = ParentalKey('FormPage', related_name='formpage_hero')
+
+    
 class FormPage(AbstractEmailForm):
     form_builder = CustomFormBuilder
     submissions_list_view_class = CustomSubmissionsListView
@@ -235,6 +239,14 @@ class FormPage(AbstractEmailForm):
     thankyou_message = RichTextField(blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
+        InlinePanel('formpage_hero', label='Hero Images', panels=[
+            FieldPanel('image'),
+            FieldPanel('background_video_url'),   
+            FieldPanel('title'),
+            FieldPanel('script_title'),
+            FieldPanel('primary_tagline'),
+            FieldPanel('secondary_tagline'),   
+        ],max_num=1),
         InlinePanel('form_fields', label="Form fields"),
         FieldPanel('thankyou_message'),
         MultiFieldPanel([
@@ -245,6 +257,18 @@ class FormPage(AbstractEmailForm):
             FieldPanel('subject'),
         ], "Email"),
     ]
+    
+    def get_hero(self):
+        if self.formpage_hero.all():
+            return self.formpage_hero.all()
+        else:
+            return False
+    
+    def get_hero_image(self):
+        if self.get_hero():
+            return self.get_hero()[0]
+        
+        return False
 
     def get_form_fields(self):
         return self.form_fields.all()

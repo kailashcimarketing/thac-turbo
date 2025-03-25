@@ -330,6 +330,22 @@ span.ellipses {
 .news-category-filter > .block-anim-js + .block-anim-js{
   margin-left: 1rem;
 }
+.s-quote__txt-wrap .s-quote__name {
+  color: var(--primary-dark-blue);
+}
+.header  .header__megamenu-list-wrap-col li a:hover svg{
+  opacity: 1;
+}
+
+.s-team .new-card--third .new-card__txt-wrap {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(1.5em * 2);
+  line-height: 1.5em;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;

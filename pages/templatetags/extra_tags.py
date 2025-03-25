@@ -13,7 +13,9 @@ import random
 today = datetime.now()
 
 
-
+@register.filter('klass')
+def klass(ob):
+    return ob.__class__.__name__
 
 @register.filter
 def highlight(string, term):

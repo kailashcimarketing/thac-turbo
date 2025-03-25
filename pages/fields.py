@@ -53,6 +53,11 @@ events_stream_fields = [
     ('EventQuote',EventQuote()),
     ('EventContentBlocks',EventContentBlocks()),
     ('ProfileBlock',ProfileBlock()),
+    ('HtmlSourceBlock',HtmlSourceBlock()),
+    ('space',SpaceBlock()),
+    ('VideoBlock',VideoBlock()),
+    ('ContentWithVariableWidthBlock',ContentWithVariableWidthBlock()),
+    ('CTAButton',CTAButton()),
 ]
 
 

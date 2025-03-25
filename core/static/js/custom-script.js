@@ -10,7 +10,12 @@ function makeid(length) {
 }
 
 $(function () {
-
+    $('.internal-link').on('click',function(){
+        if($($(this).attr('href')).length){
+            $('html, body').animate({ scrollTop: $($(this).attr('href')).offset.top }, 500);
+        }
+        
+    });
     if ($('.gallery-slider').length) {
         $('.gallery-slider').each(function () {
             let gallery_id = "gallery-" + makeid(10);

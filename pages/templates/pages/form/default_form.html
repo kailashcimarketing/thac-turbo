@@ -1,8 +1,40 @@
-{% load static wagtailcore_tags  crispy_forms_filters %}
-<div class="col-lg-8 offset-lg-2">
-<form action="{% pageurl page %}" id="wagtail-form" enctype="multipart/form-data" method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" value="Submit"></button>
-</form>
+{% load static wagtailcore_tags crispy_forms_filters extra_tags widget_tweaks %}
+{% if page.layout == "left-image" %}
+<div class="col-lg-6 offset-lg-6">
+  
 </div>
+{% else %}
+<div class="col-lg-8 offset-lg-2">
+  <form action="{% pageurl page %}" id="wagtail-form" class="webform-client-form"  enctype="multipart/form-data" method="POST">
+    <div class="row">
+      {% csrf_token %}
+      {% for field in form %}
+        {% if field.field.widget.attrs.data_type == 'heading' %}
+          <div class="section-heading col-lg-12">
+            <h6>{{ field.label|safe }}</h6>
+          </div>
+        {% elif field.field.widget|klass == 'ReCaptchaV2Checkbox' %}
+          {% render_field field %}
+        {% else %}
+          <div class="form-group {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+            <label>
+              {{ field.field.label }}
+              {% if field.field.required %}
+                <span class="required=">*</span>
+              {% endif %}
+            </label>
+            <div class="select-input" data-required="{{ field.field.required }}">
+              {% render_field field class+='form-control' %}
+            </div>
+            <small>{{ field.field.help_text|safe }}</small>
+            {{ field.errors }}
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="col-lg-12">
+        <button type="submit" value="Submit" class="btn btn-green">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endif %}

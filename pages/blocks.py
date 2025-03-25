@@ -239,7 +239,8 @@ class NewsQuoteBlock(blocks.StructBlock):
 class DownloadList(blocks.StructBlock):
     items = blocks.ListBlock(blocks.StructBlock([
         ('label',blocks.CharBlock()),
-        ('document',DocumentChooserBlock()),
+        ('document',DocumentChooserBlock(required=False)),
+        ('external_link',blocks.URLBlock(required=False))
     ]))
     class Meta:
         label = "Download List"
@@ -775,7 +776,17 @@ class ProfileBlock(blocks.StructBlock):
         label = "Profile"
         template = "pages/blocks/profile_block.html"
 
-
+class ExternalLinkListingBlock(blocks.StructBlock):
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('title',blocks.CharBlock(required=False)),
+        ('links',blocks.ListBlock(blocks.StructBlock([
+            ('label', blocks.CharBlock()),
+            ('external_link',blocks.URLBlock())
+        ])))
+    ]))
+    class Meta:
+        label = "External Link List"
+        template = "pages/blocks/external_link_list_block.html"
       
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
@@ -796,6 +807,8 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
         ('space',SpaceBlock()),
         ('DownloadList',DownloadList()),
         ('button',ThemeButton()),
+        ('external_links',ExternalLinkListingBlock()),
+        ('accordion',AccordionBlock()),
         
     ])
     class Meta:
@@ -868,3 +881,5 @@ class NextPrevBlock(blocks.StructBlock):
     class Meta:
         label = "Next Prev"    
         template = "pages/blocks/next_prev.html"
+
+
