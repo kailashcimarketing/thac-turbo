@@ -352,7 +352,7 @@ span.ellipses {
 .hero-primary__title>.anim-lines::after {
   content: '...';
 }
-
+.news-index-page .vbox-container img,
 .news-index-page .vbox-container {
   max-height: 95vh;
   overflow: hidden;
@@ -369,6 +369,7 @@ span.ellipses {
 .news-category-filter {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .news-category-filter>.block-anim-js {
@@ -424,6 +425,10 @@ form button.btn{
 }
 .s-faq.dark-theme{
   background: var(--primary-dark-blue);
+}
+.header  .header__megamenu-list-pic-block-title{
+  position: absolute;
+  bottom: 0;
 }
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
