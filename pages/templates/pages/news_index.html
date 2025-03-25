@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--2">
                   {% for cat in item.news_category.all %}
-                    <a href="#{{ cat.category.slug|safe }}" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">{{ cat.category.title }}</span></span></a>
+                    <a href="#{{ cat.category.slug|safe }}" data-filter=".{{ cat.category.slug|safe }}" class="btn btn--fifth modal__section-head-btn modal-category-tag"><span class="btn__content"><span class="btn__txt">{{ cat.category.title }}</span></span></a>
                   {% endfor %}
                 </div>
               </div>

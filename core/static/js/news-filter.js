@@ -25,6 +25,12 @@ $(window).on('load', function () {
         $container.isotope({ filter: filterValue });
       });
 
+      $('.modal-category-tag').on('click',function(){
+        var filterValue = $(this).attr('data-filter');
+        console.log(filterValue);
+        $('.news-category-filter a[data-filter="'+filterValue+'"').trigger('click');
+      });
+
     // bind filter button click
     /*$('.news-category-filter').on('click', 'a', function () {
         var filterGroup = $(this).parents('.news-category-filter').attr('data-filter-group');
