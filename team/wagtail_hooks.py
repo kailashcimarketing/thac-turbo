@@ -7,6 +7,7 @@ class TeamViewSet(SnippetViewSet):
     menu_label = "Team"
     ordering = ("title",)
     list_display  =["title","position","status","weight",]
+    list_filter = ["catgory"]
     search_fields = ("title",)
     #add_to_admin_menu = True
 
