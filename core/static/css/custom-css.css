@@ -430,6 +430,9 @@ form button.btn {
   position: absolute;
   bottom: 0;
 }
+.webform-client-form label{
+  color: var(--primary-dark-blue);
+}
 
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
