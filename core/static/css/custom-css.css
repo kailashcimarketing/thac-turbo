@@ -434,7 +434,7 @@ form button.btn {
   color: var(--primary-dark-blue);
 }
 .news-detail .light-theme{
-  color: var(--primary-dark-blue);
+  background: var(--primary-dark-blue)
 }
 
 @media (min-width:1300px) {
