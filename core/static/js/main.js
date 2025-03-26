@@ -521,8 +521,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBurger) {
         menuBurger.addEventListener('click', () => {
             event.preventDefault();
+            
+            if(!$('body').hasClass('menu-open') && $('body').hasClass('is-open-menu')){
+            $('.close-search').trigger('click');
+            }
             document.body.classList.toggle('menu-open');
-            document.querySelector('#header__overlay').classList.toggle('show-overlay-1');
+            document.querySelector('#header__overlay').classList.toggle('show-overlay-1');            
         });
     }
     const element = document.querySelector('#header__megamenu-list-2-wrap-2');
@@ -1435,7 +1439,7 @@ $(window).on('load', function () {
         });
     }
     //-----------------------------
-    let body = $('body');
+        let body = $('body');
     let dropupBtns = $('.drop-block__btn-js');
     if (dropupBtns.length) {
         dropupBtns.on('click', function (e) {
@@ -1445,6 +1449,10 @@ $(window).on('load', function () {
                 hides = $($(this).data('hide-open')),
                 overlay = $($(this).data('overlay'));
             if (targetContent.length) {
+                if(targetId == '#search-block' && !targetContent.hasClass('is-open') && $('body').hasClass('menu-open')){
+                    document.body.classList.toggle('menu-open');
+                    document.querySelector('#header__overlay').classList.toggle('show-overlay-1');
+                }
                 body.toggleClass('is-open-menu');
                 targetContent.toggleClass('is-open');
                 $('.drop-block__btn-js[href="' + targetId + '"]').toggleClass('is-open');
@@ -1457,7 +1465,7 @@ $(window).on('load', function () {
             }
             if(overlay.length) {
                 overlay.toggleClass($(this).data('overlay-class'));
-            }
+}
         });
     }
     let drop_btn = $('.drop-block__btn-2-js');
