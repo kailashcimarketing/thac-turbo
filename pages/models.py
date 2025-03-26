@@ -232,6 +232,7 @@ class FormpageHero(HeroAbstract):
 
     
 class FormPage(AbstractEmailForm):
+    short_description = models.TextField(null=True,blank=True)
     form_builder = CustomFormBuilder
     submissions_list_view_class = CustomSubmissionsListView
     top_body = StreamField(generalpage_stream_fields,null=True,blank=True)
@@ -258,6 +259,9 @@ class FormPage(AbstractEmailForm):
         ], "Email"),
         FieldPanel('top_body'),
         FieldPanel('bottom_body'),
+    ]
+    promote_panels = AbstractEmailForm.promote_panels + [
+        FieldPanel('short_description'),
     ]
     
     def get_hero(self):
