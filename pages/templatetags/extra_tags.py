@@ -103,19 +103,7 @@ def get_news_list(category='all',limit='all', ):
 @register.simple_tag()
 def get_news_detail(slug):
     try:
-        detail = False
-        try:
-            r = requests.get(settings.NEWS_URL,verify=False,timeout=settings.NEWS_REQUEST_TIMEOUT)
-        except ReadTimeout:
-            return {'item':False}
-
-        if r.status_code == 200:
-            full_json = r.json()
-            if full_json:
-                for item in full_json.get('results'):
-                    if slug == item.get("slug"):
-                        detail = item
-                        break
+        detail = News.objects.get(slug=slug)
     except Exception:
         detail = False
     return {
