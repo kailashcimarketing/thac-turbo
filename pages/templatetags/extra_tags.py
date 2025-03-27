@@ -174,7 +174,8 @@ def get_next_pre_pages(page):
     # If no next page, get the parent's next sibling
     if not next_page:
         next_page = parent_page.get_next_sibling().get_children().first()
-        second_next_page = next_page.get_next_sibling()
+        if next_page :
+            second_next_page = next_page.get_next_sibling()
         
 
     # If no second next page, get the parent's next sibling after the next page
