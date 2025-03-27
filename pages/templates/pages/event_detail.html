@@ -8,7 +8,7 @@
 {% with item=event_detail.item %}
 <section class="modal__section">
   <div class="modal__section-pic-wrap">
-    {% image item.image original format-webp as img %}
+    {% image item.hero_image original format-webp as img %}
     <img class="modal__section-pic w-100 h-100 obj-cover" src="{{ img.url }}" alt="" />
   </div>
   <div class="modal__section-container mx-auto w-100">
