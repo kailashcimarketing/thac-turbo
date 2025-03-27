@@ -352,6 +352,8 @@ class TwoColumnBlock(blocks.StructBlock):
 
 
 class SliderGalleryBlock(blocks.StructBlock):
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     title = blocks.CharBlock()
     items = blocks.ListBlock(blocks.StructBlock([
         ('image',ImageChooserBlock()),

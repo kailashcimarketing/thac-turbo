@@ -110,7 +110,6 @@ def get_news_detail(slug):
         'item': detail
     }  
 
-
 @register.simple_tag()
 def get_related_news(category='all', limit='all',related='all'):
     today = datetime.today().strftime('%Y-%m-%d')

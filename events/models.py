@@ -56,7 +56,7 @@ class Events(ClusterableModel):
         FieldPanel('end_date'),
         FieldPanel('time_label'),
         FieldPanel('image'),
-        FieldPanel('hero_image'),
+        #FieldPanel('hero_image'),
         FieldPanel('location'),
         FieldPanel('short_description'),
         FieldPanel('category'),
