@@ -29,10 +29,13 @@ class Team(models.Model):
         verbose_name="Category"
     ) 
     position = models.CharField(null=True,blank=False,max_length=500)
+    credentials = models.CharField(null=True,blank=True,max_length=500)
     phone = models.CharField(null=True,blank=True,max_length=50)
     email  = models.EmailField(null=True,blank=True)
     status = models.BooleanField(default=True,blank=True)
     weight = models.IntegerField(default=100,null=False,blank=False)
+    additional_information = models.TextField(null=True, blank=True)
+    
 
     def __str__(self):
         return self.title 

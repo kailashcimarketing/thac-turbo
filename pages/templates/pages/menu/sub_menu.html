@@ -29,12 +29,12 @@
                 {% if item.link_page.specific.promo_page %}
                     
                 {% image item.link_page.specific.promo_page.specific.get_hero_image.image original format-webp as img %}
-                <div class="header__megamenu-list-pic-wrap">
+                <a href="{{ item.link_page.specific.promo_page.url }}"  class="header__megamenu-list-pic-wrap">
                 <img class="w-100 h-100 obj-cover" src="{{ img.url }}" alt="{{ promo_title }}" />
-                </div>
+                </a>
             
                 <h3 class="header__megamenu-list-pic-block-title">
-                    <a href="{{ item.link_page.specific.promo_page.url }}">{{ item.link_page.specific.promo_page.title|safe }}</a>
+                    {{ item.link_page.specific.promo_page.title|safe }}
                 </h3>
                 {% endif %}
             </div>

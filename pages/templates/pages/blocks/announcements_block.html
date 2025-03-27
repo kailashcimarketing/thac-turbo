@@ -12,7 +12,11 @@
                 {% for item in value.items %}
                 <div class="col-4 s-small-banners__col swiper-slide block-anim-js block-anim--from-right-js block-anim--each-3-js">
                     <div class="small-banner-card position-relative overflow-hidden hover-pic-wrap">
+                        {% if item.event %}
+                        <a href="{% url 'event_detail_page' item.event.slug %}" class="link-mask"></a>
+                        {% else %}
                         <a href="{{item.href.url}}" {{item.href.target}} class="link-mask"></a>
+                        {% endif %}
                         {% image item.image fill-400x400-c100 format-webp as img %}
                         <img class="small-banner-card__pic w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>

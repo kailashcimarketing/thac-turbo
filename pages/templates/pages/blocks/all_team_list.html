@@ -7,6 +7,7 @@
             <div class="col-lg-6 col-12 s-team__heading-col s-team__heading-col--1">
                 <h2 class="h3 s-team__title block-anim-js">Leadership Team</h2>
             </div>
+            {% if not value.category %}
             <div class="col-lg-6 col-12 s-team__heading-col s-team__heading-col--2">
                 <ul class="nav s-team__heading-list team-category-filter">
                     <li class="block-anim-js block-anim--row-short-js">
@@ -19,6 +20,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            {% endif %}
         </div>
         <div class="row s-team__cards">
             <div class="no-result-found" style="display:none;">No result found.</div>
@@ -33,10 +35,19 @@
                     <div class="new-card__content">
                         <h3 class="new-card__title">{{item.title|safe}}</h3>
                         <div class="new-card__txt-wrap last-el-mb-0">
-                            <p>{{item.position|safe}}
-                            </p>
+                            {% if item.position %}
+                            <p>{{item.position|safe}}</p>
+                            {% endif %}
+                            {% if item.additional_information %}
+                            <p>{{item.additional_information|safe}}</p>
+                            {% endif %}
+                            {% if item.credentials %}
+                            <p>{{item.credentials|safe}}</p>
+                            {% endif %}
                         </div>
+                        {% if item.email %}
                         <span class="text-link--reverse text-link color-1"><span class="text-link__txt">{{item.email|safe}}</span></span>
+                        {% endif %}
                     </div>
                 </div>
             </div>

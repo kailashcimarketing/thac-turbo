@@ -8,7 +8,7 @@
                     <div class="swiper-wrapper">
                         {% for item in value.items %}
                         <div class="swiper-slide s-gallery-slider__slide s-gallery-slider__slide-js  block-anim-js block-anim--row-js">
-                            {% image item.image fill-1160x480-c100 format-webp as img %}
+                            {% image item.image fill-1450x600-c100 format-webp as img %}
                             <img class="w-100 h-100 obj-cover" src="{{img.url}}" alt="">
                         </div>
                         {% endfor  %}
