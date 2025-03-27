@@ -167,8 +167,9 @@ def get_next_pre_pages(page):
     # Get the next two pages (siblings)
     next_page = page.specific.get_next_sibling()
 
-    # Get the second next page
-    second_next_page = next_page.get_next_sibling() if next_page else None
+    # Get the second next page     
+    if next_page :
+        second_next_page = next_page.get_next_sibling()
 
     # If no next page, get the parent's next sibling
     if not next_page:
