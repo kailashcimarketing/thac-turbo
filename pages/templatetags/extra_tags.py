@@ -166,6 +166,7 @@ def get_next_pre_pages(page):
 
     # Get the next two pages (siblings)
     next_page = page.specific.get_next_sibling()
+    second_next_page = None
 
     # Get the second next page     
     if next_page :
