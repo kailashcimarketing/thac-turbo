@@ -63,5 +63,8 @@ class Events(ClusterableModel):
         
         FieldPanel('body'),        
     ]
+    def __str__(self):
+        return self.title
+    
     class Meta:
         verbose_name = 'News'

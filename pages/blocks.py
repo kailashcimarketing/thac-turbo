@@ -392,7 +392,7 @@ class AnnouncementsBlock(blocks.StructBlock):
     script_title = blocks.CharBlock(required=False)
     items = blocks.ListBlock(blocks.StructBlock([
         ('image',ImageChooserBlock()),
-        ('event',SnippetChooserBlock('events.Events')),
+        ('event',SnippetChooserBlock('events.Events',required=False)),
         ('href',HrefBlock())
     ]))
     button = SimpleButton()
