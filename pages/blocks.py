@@ -408,6 +408,7 @@ class FeaturedSectionBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     highlighted_title = blocks.CharBlock(required=False)
     button = SimpleButton()
+    background_opacity = blocks.CharBlock(required=False)
     class Meta:
         label = "Featured Section"
         template = "pages/blocks/featured_section_block.html"

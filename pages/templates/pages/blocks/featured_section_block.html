@@ -3,7 +3,7 @@
 
     <div class="s-banner__pic-wrap overlay--special overlay after-el before-el overflow-hidden">
         {% image value.parallax_image original format-webp as img %}
-        <img class="w-100 h-100 obj-cover parallax-js parallax-img-js parallax-y-js" src="{{img.url}}" alt="">
+        <img class="w-100 h-100 obj-cover parallax-js parallax-img-js parallax-y-js" src="{{img.url}}" alt="" {% if value.background_opacity %} style="opacity: {{value.background_opacity}};" {% endif %}>
     </div>
     <div class="container s-banner__container container-anim-js">
         <h2 class="s-banner__title text-anim-by-line-js">
