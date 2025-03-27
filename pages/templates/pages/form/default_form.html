@@ -1,40 +1,195 @@
 {% load static wagtailcore_tags crispy_forms_filters extra_tags widget_tweaks %}
 {% if page.layout == "left-image" %}
-<div class="col-lg-6 offset-lg-6">
-  
-</div>
-{% else %}
-<div class="col-lg-8 offset-lg-2">
-  <form action="{% pageurl page %}" id="wagtail-form" class="webform-client-form s-form__form"  enctype="multipart/form-data" method="POST">
-    <div class="row">
-      {% csrf_token %}
-      {% for field in form %}
-        {% if field.field.widget.attrs.data_type == 'heading' %}
+<section class="s-form" id="contact-form-section">
+    <div class="container s-form__container container-anim-js">
+        <div class="row s-form__row">
+            <div class="col-md-6 col-12 s-form__col s-form__col-1">
+                <div class="s-form__pic-wrap overflow-hidden">
+                    <img class="s-form__pic w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="/static/images/contact/contact-banner.webp" alt="">
+                </div>
+            </div>
+            <div class="col-md-6 col-12 s-form__col d-flex justify-content-center align-items-center s-form__col-2 light-theme">
+                <div class="s-form__block w-100">
+                    
+                    
+                    
+                        {% block form %}
+                        <h2 class="s-form__block-title h2--secondary text-center block-anim-js">
+                            SEND
+                            <span class="child-special-text child-special-text--static"><span class="child-special-text__txt child-special-text__txt--secondary">us a</span></span> MESSAGE
+                        </h2>
+
+                        <form action="{% pageurl page %}" id="wagtail-form" class="webform-client-form s-form__form"
+      enctype="multipart/form-data" method="POST">
+      <div class="row">
+          {% csrf_token %}
+          {% for field in form %}
+          {% if field.field.widget.attrs.data_type == 'heading' %}
           <div class="section-heading col-lg-12">
-            <h6>{{ field.label|safe }}</h6>
+              <h6>{{ field.label|safe }}</h6>
           </div>
-        {% elif field.field.widget|klass == 'ReCaptchaV2Checkbox' %}
+          {% elif field.field.widget|klass == 'ReCaptchaV2Checkbox' %}
           {% render_field field %}
-        {% else %}
+          {% elif field.field.widget|klass == 'SelectMultiple' or field.field.widget|klass == 'Select' or field.field.widget|klass == 'RadioSelect'  %}
           <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
-            <label>
+              <label>
+                {{ field.field.label }}
+                {% if field.field.required %}
+                <span class="required=">*</span>
+                {% endif %}
+              </label>
+              <div class="select-input" data-required="{{ field.field.required }}">
+                {% render_field field class+='form-control input-style' %}
+              </div>
+              <small>{{ field.field.help_text|safe }}</small>
+              {{ field.errors }}
+            </div>
+          {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'CheckboxInput' %}
+          <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+              <label>
               {{ field.field.label }}
               {% if field.field.required %}
-                <span class="required=">*</span>
+              <span class="required=">*</span>
               {% endif %}
-            </label>
-            <div class="select-input" data-required="{{ field.field.required }}">
+              </label>
+              <div class="select-input" data-required="{{ field.field.required }}">
               {% render_field field class+='form-control input-style' %}
-            </div>
-            <small>{{ field.field.help_text|safe }}</small>
-            {{ field.errors }}
+              </div>
+              <small>{{ field.field.help_text|safe }}</small>
+              {{ field.errors }}
           </div>
-        {% endif %}
-      {% endfor %}
-      <div class="col-lg-12">
-        <button type="submit" value="Submit" class="btn btn-green">Submit</button>
+          {% elif field.field.widget|klass == 'ClearableFileInput' %}
+            <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+                <label>
+                  {{ field.field.label }}
+                  {% if field.field.required %}
+                  <span class="required=">*</span>
+                  {% endif %}
+                </label>
+                <div class="select-input" data-required="{{ field.field.required }}">
+                  {% render_field field class+='form-control input-style' %}
+                </div>
+                <small>{{ field.field.help_text|safe }}</small>
+                {{ field.errors }}
+              </div>
+          {% else %}           
+          {% with placeholder_text=field.field.label|add:" *" %}
+          <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+              <div class="input-wrap" data-required="{{ field.field.required }}">
+                  {% if field.field.required %}
+                  {% render_field field class+='form-control input-style' placeholder=placeholder_text autocomplete="Off" %}
+                  {% else %}
+                  {% render_field field class+='form-control input-style' placeholder=field.field.label autocomplete="Off" %}
+                  {% endif %}
+              </div>
+              <small>{{ field.field.help_text|safe }}</small>
+              {{ field.errors }}
+          </div>
+          {% endwith %}
+          {% endif %}
+          {% endfor %}
+          <div class="col-lg-12">
+            <div class="s-form__form-btn-wrap block-anim-js">
+              <button type="submit" class="big-circle-btn big-circle-btn--mini mx-auto s-form__form-btn bg-none d-flex align-items-center justify-content-center">
+                  <svg class="big-circle-btn__border">
+                      <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                      <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                  </svg>
+                  <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M21 12.5625L13.125 20.4375L12.6094 20.9531L11.5312 19.875L12.0469 19.3594L18.6562 12.75H1.35938H0.609375V11.25H1.35938H18.6562L12.0469 4.6875L11.5312 4.125L12.6094 3.09375L13.125 3.60938L21 11.4844L21.5156 12L21 12.5625Z" fill="#002664"/>
+                  </svg>
+              </button>
+          </div>
+          </div>
       </div>
-    </div>
   </form>
+                        
+                    
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<div class="container">
+  <div class="row">
+<div class="col-lg-8 offset-lg-2">
+  <form action="{% pageurl page %}" id="wagtail-form" class="webform-client-form s-form__form"
+      enctype="multipart/form-data" method="POST">
+      <div class="row">
+          {% csrf_token %}
+          {% for field in form %}
+          {% if field.field.widget.attrs.data_type == 'heading' %}
+          <div class="section-heading col-lg-12">
+              <h6>{{ field.label|safe }}</h6>
+          </div>
+          {% elif field.field.widget|klass == 'ReCaptchaV2Checkbox' %}
+          {% render_field field %}
+          {% elif field.field.widget|klass == 'SelectMultiple' or field.field.widget|klass == 'Select' or field.field.widget|klass == 'RadioSelect'  %}
+          <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+              <label>
+                {{ field.field.label }}
+                {% if field.field.required %}
+                <span class="required=">*</span>
+                {% endif %}
+              </label>
+              <div class="select-input" data-required="{{ field.field.required }}">
+                {% render_field field class+='form-control input-style' %}
+              </div>
+              <small>{{ field.field.help_text|safe }}</small>
+              {{ field.errors }}
+            </div>
+          {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'CheckboxInput' %}
+          <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+              <label>
+              {{ field.field.label }}
+              {% if field.field.required %}
+              <span class="required=">*</span>
+              {% endif %}
+              </label>
+              <div class="select-input" data-required="{{ field.field.required }}">
+              {% render_field field class+='form-control input-style' %}
+              </div>
+              <small>{{ field.field.help_text|safe }}</small>
+              {{ field.errors }}
+          </div>
+          {% elif field.field.widget|klass == 'ClearableFileInput' %}
+            <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+                <label>
+                  {{ field.field.label }}
+                  {% if field.field.required %}
+                  <span class="required=">*</span>
+                  {% endif %}
+                </label>
+                <div class="select-input" data-required="{{ field.field.required }}">
+                  {% render_field field class+='form-control input-style' %}
+                </div>
+                <small>{{ field.field.help_text|safe }}</small>
+                {{ field.errors }}
+              </div>
+          {% else %}           
+          {% with placeholder_text=field.field.label|add:" *" %}
+          <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+              <div class="input-wrap" data-required="{{ field.field.required }}">
+                  {% if field.field.required %}
+                  {% render_field field class+='form-control input-style' placeholder=placeholder_text autocomplete="Off" %}
+                  {% else %}
+                  {% render_field field class+='form-control input-style' placeholder=field.field.label autocomplete="Off" %}
+                  {% endif %}
+              </div>
+              <small>{{ field.field.help_text|safe }}</small>
+              {{ field.errors }}
+          </div>
+          {% endwith %}
+          {% endif %}
+          {% endfor %}
+          <div class="col-lg-12">
+              <button type="submit" value="Submit" class="btn btn-green">Submit</button>
+          </div>
+      </div>
+  </form>
+</div>
+</div>
 </div>
 {% endif %}

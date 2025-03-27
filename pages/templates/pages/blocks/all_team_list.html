@@ -1,5 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags team_tags %}
-{% get_team as team %}
+{% get_team value.category.slug as team %}
 {% get_categories as categories %}
 <section class="s-team">
     <div class="container s-team__container container-anim-js">

@@ -17,7 +17,7 @@
                             <img src="{{img.url}}" alt="">
                         </div>
                         <div class="step-card__img-wrap">
-                            {% image item.image fill-360x360-c100 format-webp as img  %}
+                            {% image item.image fill-360x360-c100 as img  %}
                             {% if item.video_url %}
                             <video width="100%"  controls>
                                 <source src="{{item.video_url}}" type="video/mp4">

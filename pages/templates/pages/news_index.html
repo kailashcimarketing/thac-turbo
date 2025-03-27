@@ -139,7 +139,9 @@
                   {% endfor %}
                 </div>
               </div>
-              <h2 class="modal__section-title">{{ item.title|safe }}</h2>
+              <h2 class="modal__section-title">
+                <a href="{% url 'news_detail_page' item.slug %}">{{ item.title|safe }}</a>
+              </h2>
               <div class="modal__section-simple-content-wrap last-el-mb-0">
                 {% with blocks=item.body %}
                   {% for block in blocks %}

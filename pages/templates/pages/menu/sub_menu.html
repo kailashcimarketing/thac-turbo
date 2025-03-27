@@ -16,7 +16,8 @@
                 </svg>
                 <span class="btn__txt">Back</span>
 
-            </span> </a>
+            </span> 
+        </a>
         <h3 class="header__megamenu-list-2-wrap-2__title d-lg-none">Learning Journey</h3>
         <div class="header__megamenu-list-2-col header__megamenu-list-2-col-1">
             <ul class="list-unstyled header__megamenu-list-2">
@@ -32,7 +33,9 @@
                 <img class="w-100 h-100 obj-cover" src="{{ img.url }}" alt="{{ promo_title }}" />
                 </div>
             
-                <h3 class="header__megamenu-list-pic-block-title">{{ item.link_page.specific.promo_page.title|safe }}</h3>
+                <h3 class="header__megamenu-list-pic-block-title">
+                    <a href="{{ item.link_page.specific.promo_page.url }}">{{ item.link_page.specific.promo_page.title|safe }}</a>
+                </h3>
                 {% endif %}
             </div>
         </div>

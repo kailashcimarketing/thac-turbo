@@ -7,8 +7,11 @@ from django.utils.timezone import now
 today = now().date()
 
 @register.simple_tag
-def get_team():
-    items = Team.objects.filter(status=True)
+def get_team(category='all'):
+    if not category == 'all':
+        items = Team.objects.filter(status=True,catgory__slug=category)
+    else:
+        items = Team.objects.filter(status=True)
     return {'items':items}
 
 @register.simple_tag

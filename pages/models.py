@@ -75,8 +75,7 @@ class LandingPage(Page):
         null=True, 
         blank=True, 
         on_delete=models.SET_NULL, 
-        related_name='+',
-        
+        related_name='+',        
     )
     promo_title = models.CharField(max_length=500,null=True,blank=True)
     promo_page = models.ForeignKey(
@@ -232,6 +231,22 @@ class FormpageHero(HeroAbstract):
 
     
 class FormPage(AbstractEmailForm):
+    LAYOUT_TYPE = [
+        ('fullwidth', 'Fullwidth'),
+        ('left-image', 'Form with Left Image'),
+    ]
+    layout = models.CharField(
+        max_length=20,
+        choices=LAYOUT_TYPE,
+        default='fullwidth',
+    )
+    form_left_image = models.ForeignKey(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL, 
+        related_name='+',        
+    )
     short_description = models.TextField(null=True,blank=True)
     form_builder = CustomFormBuilder
     submissions_list_view_class = CustomSubmissionsListView
@@ -248,6 +263,8 @@ class FormPage(AbstractEmailForm):
             FieldPanel('primary_tagline'),
             FieldPanel('secondary_tagline'),   
         ],max_num=1),
+        FieldPanel('layout'),
+        FieldPanel('form_left_image'),
         InlinePanel('form_fields', label="Form fields"),
         FieldPanel('thankyou_message'),
         MultiFieldPanel([

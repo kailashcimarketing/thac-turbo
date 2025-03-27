@@ -436,7 +436,10 @@ form button.btn {
 .news-detail .light-theme{
   background: var(--primary-dark-blue)
 }
-
+.modal__section-title a{
+  text-decoration: none !important;
+    background: none;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;

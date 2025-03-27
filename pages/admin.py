@@ -29,8 +29,9 @@ LandingPage.content_panels = Page.content_panels + [
 ]
 LandingPage.promote_panels = Page.promote_panels + [
     FieldPanel('short_description'),
-    FieldPanel('promo_image'),
-    FieldPanel('promo_title'),
+    #FieldPanel('promo_image'),
+    #FieldPanel('promo_title'),
+    #FieldPanel('promo_page'),    
 ]
 
 EventPage.content_panels = Page.content_panels + [

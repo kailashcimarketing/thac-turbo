@@ -25,7 +25,8 @@ class Team(models.Model):
         null=True, 
         blank=True, 
         on_delete=models.SET_NULL, 
-        related_name='+'
+        related_name='+',
+        verbose_name="Category"
     ) 
     position = models.CharField(null=True,blank=False,max_length=500)
     phone = models.CharField(null=True,blank=True,max_length=50)

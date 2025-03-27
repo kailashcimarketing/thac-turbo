@@ -847,7 +847,8 @@ class VacanciesListBlock(blocks.StructBlock):
         template = "pages/blocks/all_vacancies_block.html"
 
 
-class TeamListBlock(blocks.StructBlock):
+class TeamListBlock(blocks.StructBlock):    
+    category = SnippetChooserBlock('team.Category')
     items = blocks.StaticBlock()
     class Meta:
         label = "List all team"
