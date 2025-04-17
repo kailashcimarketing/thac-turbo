@@ -12,7 +12,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title 
 
-class TeamCategory(Category):
+class TeamCategory(models.Model):
     page = ParentalKey('Team', related_name='team_category')
     catgory = models.ForeignKey(
         'team.category', 
