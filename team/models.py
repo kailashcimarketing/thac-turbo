@@ -10,7 +10,9 @@ class Category(models.Model):
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     
     def __str__(self):
-        return self.title 
+        if not self.title:
+            return ''
+        return self.title
 
 class TeamCategory(models.Model):
     page = ParentalKey('Team', related_name='team_category')
