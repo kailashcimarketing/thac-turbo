@@ -11,7 +11,7 @@ class Category(models.Model):
     
     def __str__(self):
         if not self.title:
-            return ''
+            return '-'
         return self.title
 
 class TeamCategory(models.Model):
