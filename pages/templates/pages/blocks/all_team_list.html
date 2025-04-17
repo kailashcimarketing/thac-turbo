@@ -26,7 +26,7 @@
             <div class="no-result-found" style="display:none;">No result found.</div>
             {% for item in team.items %}
             
-            <div class="s-team__card-col col-lg-4 col-sm-6 col-12 block-anim-js {% for cat in item.team_category.all %} {{cat.catgory.slug|safe}} {% endfor %}">
+            <div class="s-team__card-col col-lg-4 col-sm-6 col-12 block-anim-js {% for cat in item.categories.all %} {{cat.catgory.slug|safe}} {% endfor %}">
                 <div class="new-card new-card--third position-relative hover-pic-wrap">
                     <a href="mailto:{{item.email}}" class="link-mask"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">

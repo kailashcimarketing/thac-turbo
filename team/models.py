@@ -10,12 +10,10 @@ class Category(models.Model):
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     
     def __str__(self):
-        if not self.title:
-            return '-'
-        return self.title
-
-class TeamCategory(models.Model):
-    page = ParentalKey('Team', related_name='team_category')
+        return self.title or "Unnamed Category"
+    
+class StaffCategory(models.Model):
+    page = ParentalKey('Team', related_name='categories',null=True,blank=True)
     catgory = models.ForeignKey(
         'team.category', 
         null=True, 
@@ -60,7 +58,7 @@ class Team(ClusterableModel):
         FieldPanel('title'),
         FieldPanel('profile_picture'),
         FieldPanel('catgory'),
-        InlinePanel('team_category', label='Categories', panels=[
+        InlinePanel('categories', label='Categories', panels=[
             FieldPanel('catgory'),
         ]),
         FieldPanel('position'),
@@ -73,7 +71,7 @@ class Team(ClusterableModel):
     
 
     def __str__(self):
-        return self.title 
+        return self.title or "Unnamed Team"
 
     class Meta:
         verbose_name = "Team"
