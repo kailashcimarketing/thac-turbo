@@ -245,8 +245,8 @@ body .header__megamenu-footer-col-2 {
 
 .btn.btn-external-link,
 .btn.btn-download {
-  display: flex; 
-  align-items: center;  
+  display: flex;
+  align-items: center;
   border: 1px solid var(--secondary-teal, #A1E7D7);
   color: var(--primary-dark-blue, #002664);
   font-family: var(--font-family);
@@ -430,31 +430,40 @@ form button.btn {
   position: absolute;
   bottom: 0;
 }
-.webform-client-form label{
+
+.webform-client-form label {
   color: var(--primary-dark-blue);
 }
-.news-detail .light-theme{
+
+.news-detail .light-theme {
   background: var(--primary-dark-blue)
 }
-.modal__section-title a{
+
+.modal__section-title a {
   text-decoration: none !important;
-    background: none;
+  background: none;
 }
 
-.s-team.thac-team__cards  .s-team__cards{
+.s-team.thac-team__cards .s-team__cards {
   margin-top: 2.5rem;
 }
 
-.s-team.thac-team__cards .new-card{
- padding: 0;
- position: relative;
-border: none;
-overflow: hidden;
+.s-team.thac-team__cards .s-team__heading-list li:not(:last-child) {
+  margin: 0 28px 4px 0;
 }
-.s-team.thac-team__cards  .new-card   .new-card__pic-wrap{
-margin-bottom: 0;
+
+.s-team.thac-team__cards .new-card {
+  padding: 0;
+  position: relative;
+  border: none;
+  overflow: hidden;
 }
-.s-team.thac-team__cards .new-card .new-card__content{
+
+.s-team.thac-team__cards .new-card .new-card__pic-wrap {
+  margin-bottom: 0;
+}
+
+.s-team.thac-team__cards .new-card .new-card__content {
   padding: 5rem 1.25rem 1.25rem;
   text-align: center;
   background: linear-gradient(180deg, rgba(0, 38, 100, 0.00) 5.21%, rgba(0, 38, 100, 0.65) 52.61%, rgba(0, 38, 100, 0.80) 76.3%, #002664 100%);
@@ -462,18 +471,21 @@ margin-bottom: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto; 
+  margin: auto;
   height: auto;
-  
+
 }
-.s-team.thac-team__cards .new-card .new-card__txt-wrap{
-margin-bottom: .625rem;
-min-height: inherit;
+
+.s-team.thac-team__cards .new-card .new-card__txt-wrap {
+  margin-bottom: .625rem;
+  min-height: inherit;
 }
-.s-team.thac-team__cards .new-card{
-transform: none !important;
+
+.s-team.thac-team__cards .new-card {
+  transform: none !important;
 }
-.s-team.thac-team__cards .s-team__title{
+
+.s-team.thac-team__cards .s-team__title {
   margin: 0;
 }
 
@@ -530,6 +542,64 @@ transform: none !important;
 
   .s-scroll-banners__slide .small-title h3 span.s-scroll-banners__content-title-arrow-wrap {
     display: none;
+  }
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+
+  .s-team.thac-team__cards .s-team__heading h3,
+  .s-team.thac-team__cards .s-team__heading .h3 {
+    font-size: 32px;
+  }
+
+  .s-team.thac-team__cards .s-team__heading-list {
+    font-size: 13px;
+  }
+
+  .s-team.thac-team__cards .s-team__heading-list li:not(:last-child) {
+    margin: 0px 15px 2px 0;
+  }
+}
+
+@media (max-width:992px) {
+  .s-team.thac-team__cards .s-team__heading-list {
+    gap: 1rem;
+    margin: 2rem 0 0;
+  }
+  .s-team.thac-team__cards .s-team__cards{
+    margin-top: 0;
+  }
+
+  .s-team.thac-team__cards .s-team__heading-list li a {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 100%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--basic-white);
+    background: #0000;
+    border: 1px solid var(--secondary-teal);
+    border-radius: 360px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    position: relative;
+    text-decoration: none !important;
+    outline: none !important;
+    padding: 12px 20px;
+  }
+  .s-team.thac-team__cards .s-team__heading-list li a .text-link__txt{
+  background: none;
+  }
+
+  .s-team.thac-team__cards .s-team__heading-list li a.active,
+  .s-team.thac-team__cards .s-team__heading-list li a:hover {
+    color: var(--primary-dark-blue) !important;
+    background: var(--secondary-teal) !important;
+  }
+  .s-team.thac-team__cards .s-team__heading-list li:not(:last-child){
+    margin: 0;
   }
 }
 
