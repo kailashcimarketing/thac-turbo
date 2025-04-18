@@ -441,7 +441,7 @@ form button.btn {
     background: none;
 }
 
-.s-team.thac-team__cards  .new-cards{
+.s-team.thac-team__cards  .s-team__cards{
   margin-top: 2.5rem;
 }
 
@@ -468,10 +468,15 @@ margin-bottom: 0;
 }
 .s-team.thac-team__cards .new-card .new-card__txt-wrap{
 margin-bottom: .625rem;
+min-height: inherit;
 }
 .s-team.thac-team__cards .new-card{
 transform: none !important;
 }
+.s-team.thac-team__cards .s-team__title{
+  margin: 0;
+}
+
 
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
