@@ -807,6 +807,7 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     left_title = blocks.CharBlock()
+    left_title_css_class = blocks.CharBlock(required=False)
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark')
@@ -852,7 +853,7 @@ class VacanciesListBlock(blocks.StructBlock):
 
 
 class TeamListBlock(blocks.StructBlock):    
-    category = SnippetChooserBlock('team.Category')
+    category = SnippetChooserBlock('team.Category',required=False)
     items = blocks.StaticBlock()
     class Meta:
         label = "List all team"

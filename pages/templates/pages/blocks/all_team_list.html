@@ -1,7 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags team_tags %}
+{% if value.category %}
 {% get_team value.category.slug as team %}
+{% else %}
+{% get_team 'all' as team %}
+{% endif %}
 {% get_categories as categories %}
-<section class="s-team">
+<section class="s-team thac-team__cards">
     <div class="container s-team__container container-anim-js">
         <div class="s-team__heading row align-items-end">
             <div class="col-lg-6 col-12 s-team__heading-col s-team__heading-col--1">

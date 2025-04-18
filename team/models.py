@@ -57,7 +57,7 @@ class Team(ClusterableModel):
     panels = [
         FieldPanel('title'),
         FieldPanel('profile_picture'),
-        FieldPanel('catgory'),
+        #FieldPanel('catgory'),
         InlinePanel('categories', label='Categories', panels=[
             FieldPanel('catgory'),
         ]),
