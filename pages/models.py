@@ -247,6 +247,9 @@ class FormPage(AbstractEmailForm):
         on_delete=models.SET_NULL, 
         related_name='+',        
     )
+    before_script_title =models.CharField(null=True,blank=True,max_length=255)
+    script_title =models.CharField(null=True,blank=True,max_length=255) 
+    after_script_title =models.CharField(null=True,blank=True,max_length=255)
     short_description = models.TextField(null=True,blank=True)
     form_builder = CustomFormBuilder
     submissions_list_view_class = CustomSubmissionsListView
@@ -263,8 +266,13 @@ class FormPage(AbstractEmailForm):
             FieldPanel('primary_tagline'),
             FieldPanel('secondary_tagline'),   
         ],max_num=1),
-        FieldPanel('layout'),
-        FieldPanel('form_left_image'),
+        MultiFieldPanel([
+            FieldPanel('layout'),
+            FieldPanel('form_left_image'),
+            FieldPanel('before_script_title'),
+            FieldPanel('script_title'),
+            FieldPanel('after_script_title'),
+        ], "layout"),
         InlinePanel('form_fields', label="Form fields"),
         FieldPanel('thankyou_message'),
         MultiFieldPanel([

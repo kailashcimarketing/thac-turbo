@@ -5,11 +5,17 @@
 {% get_team 'all' as team %}
 {% endif %}
 {% get_categories as categories %}
-<section class="s-team thac-team__cards">
+<section class="s-team thac-team__cards {{value.background}}">
     <div class="container s-team__container container-anim-js">
         <div class="s-team__heading row align-items-end">
             <div class="col-lg-4 col-xl-5 col-12 s-team__heading-col s-team__heading-col--1">
-                <h2 class="h3 s-team__title block-anim-js">Leadership Team</h2>
+                <h2 class="h3 s-team__title block-anim-js">
+                    {% if value.title %}
+                    {{value.title}}
+                    {% else %}
+                    Leadership Team
+                    {% endif %}
+                </h2>
             </div>
             {% if not value.category %}
             <div class="col-lg-8 col-xl-7 col-12 s-team__heading-col s-team__heading-col--2">

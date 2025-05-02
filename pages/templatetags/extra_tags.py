@@ -145,10 +145,20 @@ def get_related_news(category='all', limit='all',related='all'):
         'items': news_items,
     }  
 
-@register.simple_tag()
-def get_news_items():
-    items = News.objects.filter(status=True).order_by('release_date')
-    
+@register.simple_tag
+def get_news_items(category='all', limit='all'):
+    if category != 'all':
+        items = News.objects.filter(status=True)
+    else:
+        items = News.objects.filter(status=True).order_by('release_date')
+
+    if limit != 'all':
+        try:
+            limit = int(limit)
+            items = items[:limit]
+        except ValueError:
+            pass  # fallback: return all items if limit is not an integer
+
     return {'items':items}
 
 @register.simple_tag()

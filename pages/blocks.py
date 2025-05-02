@@ -556,6 +556,16 @@ class ExplorePagesBlock(blocks.StructBlock):
         label = "Explore Pages(local navigation)"
         group = "Landing Page"
         template = "pages/blocks/explore_pages_block.html"
+        
+class ExplorePageswithFlyoutPanelBlock(blocks.StructBlock):
+    image = ImageChooserBlock(label="Background image")
+    title = blocks.CharBlock(required=False)
+    script_title =blocks.CharBlock(required=False) 
+    landing_page = PageChooserBlock(required=False)
+    class Meta:
+        label = "Explore Pages with Flyout Panel"
+        group = "Landing Page"
+        template = "pages/blocks/explore_pages_with_flyout_panel_block.html"
 
 class ExplorePagesInternalBlock(blocks.StructBlock):
     image = ImageChooserBlock(label="Background image")
@@ -652,12 +662,7 @@ class StatsCardWithoutParallaxBlock(blocks.StructBlock):
     ]))
     class Meta:
         label = "Stats card without parallax"
-        template = "pages/blocks/stats_card_without_parallax_block.html"
-    
-
-
-
-
+        template = "pages/blocks/stats_card_without_parallax_block.html" 
 
 class GridPhotoGalleryBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock([
@@ -710,6 +715,10 @@ class VideoBlock(blocks.StructBlock):
         ('light-theme','Light'),
         ('dark-theme','Dark')
     ],label="background",default="light-theme")
+    layout = blocks.ChoiceBlock([
+        ('container','Container'),
+        ('container-fluid','Fullwidth')
+    ],label="layout",default="container")
     poster_image = ImageChooserBlock(required=False)
     video_url = blocks.URLBlock(help_text="MP4 video url")
     class Meta:
@@ -852,12 +861,31 @@ class VacanciesListBlock(blocks.StructBlock):
         template = "pages/blocks/all_vacancies_block.html"
 
 
-class TeamListBlock(blocks.StructBlock):    
+class TeamListBlock(blocks.StructBlock): 
+    title = blocks.CharBlock(required=False)   
     category = SnippetChooserBlock('team.Category',required=False)
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark') 
+    ],label="background",default="dark-theme")
     items = blocks.StaticBlock()
     class Meta:
         label = "List all team"
         template = "pages/blocks/all_team_list.html"
+        
+class LatestNewsBlock(blocks.StructBlock): 
+    title = blocks.CharBlock(required=False)   
+    category = SnippetChooserBlock('news.Category',required=False)
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark') 
+    ],label="background",default="dark-theme")
+    limit = blocks.IntegerBlock(default=3)
+    items = blocks.StaticBlock()
+    
+    class Meta:
+        label = "Latest News"
+        template = "pages/blocks/latest_news_block.html"
 
 
 class PDFFlipBookBlock(blocks.StructBlock):

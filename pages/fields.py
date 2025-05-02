@@ -40,7 +40,9 @@ common_blocks = [
     ('CustomTableBlock',CustomTableBlock()),
     ('PDFFlipBookBlock',PDFFlipBookBlock()),
     ('DynamicSnippetChooserBlock',DynamicSnippetChooserBlock()),
-    ('NextPrevBlock',NextPrevBlock())
+    ('NextPrevBlock',NextPrevBlock()),
+    ('ExplorePageswithFlyoutPanelBlock',ExplorePageswithFlyoutPanelBlock()),
+    ('LatestNewsBlock',LatestNewsBlock())
 ]
 homepage_stream_fields= common_blocks+ [
     ('HomepageIntroContentBlock',HomepageIntroContentBlock()),

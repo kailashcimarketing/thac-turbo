@@ -1,22 +1,24 @@
-{% load static wagtailcore_tags crispy_forms_filters extra_tags widget_tweaks %}
+{% load static wagtailcore_tags wagtailimages_tags crispy_forms_filters extra_tags widget_tweaks %}
 {% if page.layout == "left-image" %}
+{% image page.form_left_image original format-webp as form_left_image %}
 <section class="s-form" id="contact-form-section">
     <div class="container s-form__container container-anim-js">
         <div class="row s-form__row">
             <div class="col-md-6 col-12 s-form__col s-form__col-1">
                 <div class="s-form__pic-wrap overflow-hidden">
-                    <img class="s-form__pic w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="/static/images/contact/contact-banner.webp" alt="">
+                    <img class="s-form__pic w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="{{form_left_image.url}}" alt="">
                 </div>
             </div>
             <div class="col-md-6 col-12 s-form__col d-flex justify-content-center align-items-center s-form__col-2 light-theme">
                 <div class="s-form__block w-100">
-                    
-                    
-                    
+                                        
                         {% block form %}
                         <h2 class="s-form__block-title h2--secondary text-center block-anim-js">
-                            SEND
-                            <span class="child-special-text child-special-text--static"><span class="child-special-text__txt child-special-text__txt--secondary">us a</span></span> MESSAGE
+                            {{page.before_script_title}}
+                            <span class="child-special-text child-special-text--static">
+                              <span class="child-special-text__txt child-special-text__txt--secondary">{{page.script_title}}</span>
+                            </span> 
+                            {{page.after_script_title}}
                         </h2>
 
                         <form action="{% pageurl page %}" id="wagtail-form" class="webform-client-form s-form__form"

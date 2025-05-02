@@ -1,0 +1,34 @@
+{% load wagtailcore_tags wagtailimages_tags extra_tags %}
+{% get_news_items value.limit as news_listing %}
+<div class="text-center hero-news__btns-wrap-2">
+    <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible container-anim-js">
+      <div class="news-category-filter"  data-filter-group="category">
+                
+      </div>
+    </div>
+  </div>
+  <div class="row hero-news__cards">
+    {% for item in news_listing.items %}
+      <div class="col-lg-4 col-sm-6 col-12 hero-news__col element-item {% for cat in item.news_category.all %}{{ cat.category.slug}} {% endfor %}">
+        <div class="new-card new-card--third position-relative hover-pic-wrap">
+          <a href="#modal-{{ item.title|slugify|safe }}" class="link-mask modal-event-btn-js"></a>
+          <div class="new-card__pic-wrap position-relative overflow-hidden">
+            <div class="new-card__label position-absolute">
+              {% for cat in item.news_category.all %}
+                {% if forloop.first %}
+                  {{ cat.category.title|safe }}
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% image item.image original format-webp as img %}
+            <img class="w-100 h-100 obj-cover hover-pic" src="{{ img.url }}" alt="" />
+          </div>
+          <div class="new-card__content">
+            <time class="new-card__time d-block text-uppercase" datetime="{{ item.release_date|safe }}">{{ item.release_date|date:'d M Y' }}</time>
+            <h3 class="new-card__title">{{ item.title|truncatechars:45|safe }}</h3>
+            <div class="new-card__txt-wrap last-el-mb-0">{{ item.short_description|rm_tags:'style'|truncatewords:18|safe }}</div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>

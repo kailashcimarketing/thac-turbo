@@ -296,6 +296,17 @@ body .header__megamenu-footer-col-2 {
   height: 100%;
 }
 
+.block-VideoBlock .pb-0 .video-module-container {
+  padding-bottom: 0px;
+}
+
+.block-VideoBlock .container-fluid.video-module-container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
 .child-special-text__txt {
   position: relative;
 }
@@ -489,6 +500,54 @@ form button.btn {
   margin: 0;
 }
 
+.s-team.thac-team__cards.light-theme .new-card {
+  padding: 1.25rem;
+  border: 1px solid var(--primary-dark-blue, #002664);
+}
+
+.s-team.thac-team__cards.light-theme .new-card .new-card__content {
+  position: relative;
+  background: none;
+  padding: 1rem 0 0;
+  text-align: left;
+}
+.s-team.thac-team__cards.light-theme .new-card .new-card__content p {
+  margin: 0;
+}
+.s-team.thac-team__cards.light-theme .new-card .new-card__content p + p{
+  margin-top: 1.25rem;
+}
+.s-team.thac-team__cards .new-card .new-card__txt-wrap{
+  margin-bottom: 0;
+}
+.s-team.thac-team__cards.light-theme .new-card .new-card__content h3 {
+  color: var(--primary-dark-blue, #002664);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.s-team.thac-team__cards.light-theme .s-team__heading .s-team__heading-list li a.text-link .text-link__txt {
+  color: var(--primary-dark-blue, #002664);
+  text-align: center;
+  font-size: .875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  /* 14px */
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+.s-team.thac-team__cards.light-theme .s-team__cards{
+  margin-top: 0.5rem;
+}
+.s-team.thac-team__cards.light-theme .s-team__heading-list li:not(:last-child){
+  margin: 0 40px 4px 0;
+}
+
 
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
@@ -566,7 +625,8 @@ form button.btn {
     gap: 1rem;
     margin: 2rem 0 0;
   }
-  .s-team.thac-team__cards .s-team__cards{
+
+  .s-team.thac-team__cards .s-team__cards {
     margin-top: 0;
   }
 
@@ -589,8 +649,9 @@ form button.btn {
     outline: none !important;
     padding: 12px 20px;
   }
-  .s-team.thac-team__cards .s-team__heading-list li a .text-link__txt{
-  background: none;
+
+  .s-team.thac-team__cards .s-team__heading-list li a .text-link__txt {
+    background: none;
   }
 
   .s-team.thac-team__cards .s-team__heading-list li a.active,
@@ -598,7 +659,8 @@ form button.btn {
     color: var(--primary-dark-blue) !important;
     background: var(--secondary-teal) !important;
   }
-  .s-team.thac-team__cards .s-team__heading-list li:not(:last-child){
+
+  .s-team.thac-team__cards .s-team__heading-list li:not(:last-child) {
     margin: 0;
   }
 }

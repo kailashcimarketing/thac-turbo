@@ -42,6 +42,10 @@ $(function () {
     $('.modal-popup').each(function () {
         $(this).appendTo('body');
     });
+    $('.move-modal-items-to-body > .modal').each(function () {
+        $(this).appendTo('body');
+    });
+    
 
         
 
