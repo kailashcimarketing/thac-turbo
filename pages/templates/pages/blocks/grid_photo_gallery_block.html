@@ -2,10 +2,12 @@
 <div class="{{value.background}}">
 <section class="s-gallery-grid">
     <div class="container s-gallery-grid__container container-anim-js">
+        {% if value.title %}
         <h2 class="s-gallery-grid__title h3 block-anim-js">{{value.title|safe}}</h2>
+        {% endif %}
         <div class="row s-gallery-grid__row">
             {% for item in value.items %}
-            <div class="col-lg-3 col-sm-4 col-6 s-gallery-grid__col block-anim-js block-anim--each-4-lg-js block-anim--each-3-sm-js block-anim--each-2-js">
+            <div class="{{value.layout}} col-sm-4 col-6 s-gallery-grid__col block-anim-js block-anim--each-4-lg-js block-anim--each-3-sm-js block-anim--each-2-js">
                 <div class="s-gallery-grid__pic-wrap position-relative">
                     <div class="s-gallery-grid__pic-hover w-100 h-100 d-flex align-items-center justify-content-center position-absolute">
                         <div class="s-gallery-grid__pic-hover-block d-flex align-items-center justify-content-center">

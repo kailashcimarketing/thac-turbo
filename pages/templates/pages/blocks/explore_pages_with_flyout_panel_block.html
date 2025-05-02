@@ -52,7 +52,7 @@
 </section>
 <div class="move-modal-items-to-body">
 {% for item in value.landing_page.specific.get_child_pages %}
-    <div id="flyout-modal-{{ item.title|slugify|safe }}" class="modal modal-event-js modal--info position-fixed d-flex flex-column">
+    <div id="flyout-modal-{{ item.title|slugify|safe }}" class="flyout-modal-item modal modal-event-js modal--info position-fixed d-flex flex-column">
       <a href="#flyout-modal-{{ item.title|slugify|safe }}" id="modal__overlay" class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
       <div class="modal__block-wrap position-relative ml-auto w-100">
         <a href="#flyout-modal-{{ item.title|slugify|safe }}" id="modal-close-info" class="modal-close bg-img-none modal-event-btn-js d-inline-flex justify-content-center align-items-center cursor-pointer position-absolute">

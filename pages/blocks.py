@@ -669,7 +669,11 @@ class GridPhotoGalleryBlock(blocks.StructBlock):
         ('light-theme','Light'),
         ('dark-theme','Dark')
     ],label="background",default="light-theme")
-    title = blocks.CharBlock()
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Column'),
+        ('col-lg-3','Four Column')
+    ],label="layout",default="col-lg-3")
+    title = blocks.CharBlock(required=False)
     items = blocks.ListBlock(blocks.StructBlock([
             ('image',ImageChooserBlock())
             ]))
