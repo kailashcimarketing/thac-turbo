@@ -880,6 +880,8 @@ class LatestNewsBlock(blocks.StructBlock):
         ('light-theme','Light'),
         ('dark-theme','Dark') 
     ],label="background",default="dark-theme")
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     limit = blocks.IntegerBlock(default=3)
     items = blocks.StaticBlock()
     
