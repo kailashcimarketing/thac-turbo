@@ -520,8 +520,9 @@ form button.btn {
   margin-top: 1.25rem;
 }
 
-.s-team.thac-team__cards .new-card .new-card__txt-wrap {
+.s-team.thac-team__cards.light-theme  .new-card__txt-wrap {
   margin-bottom: 0;
+  min-height: 3.25rem;
 }
 
 .s-team.thac-team__cards.light-theme .new-card .new-card__content h3 {
