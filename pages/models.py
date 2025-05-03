@@ -239,6 +239,7 @@ class FormPage(AbstractEmailForm):
         max_length=20,
         choices=LAYOUT_TYPE,
         default='fullwidth',
+        verbose_name='Form Layout'
     )
     form_left_image = models.ForeignKey(
         Image, 

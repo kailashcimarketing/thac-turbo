@@ -42,7 +42,9 @@ common_blocks = [
     ('DynamicSnippetChooserBlock',DynamicSnippetChooserBlock()),
     ('NextPrevBlock',NextPrevBlock()),
     ('ExplorePageswithFlyoutPanelBlock',ExplorePageswithFlyoutPanelBlock()),
-    ('LatestNewsBlock',LatestNewsBlock())
+    ('LatestNewsBlock',LatestNewsBlock()),
+    ('TimetableBlock',TimetableBlock()),
+    ('InternalPageNavigationBlock',InternalPageNavigationBlock()),
 ]
 homepage_stream_fields= common_blocks+ [
     ('HomepageIntroContentBlock',HomepageIntroContentBlock()),

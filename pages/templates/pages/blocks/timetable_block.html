@@ -1,0 +1,138 @@
+{% load wagtailcore_tags %}
+<div class="section light-theme">
+    <div class="container">
+        {% if value.title %}
+        <h3>{{value.title|safe}}</h3>
+        {% endif %}
+    <table class="table">
+    <tr>
+        <th></th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+    </tr>
+    {% for item in value.rows %}
+    <tr>
+        <td>{{item.time|safe}}</td>
+        <td class="{{item.monday.category|safe}}" >{{item.monday.text|safe}}</td>
+        <td class="{{item.tuesday.category|safe}}">{{item.tuesday.text|safe}}</td>
+        <td class="{{item.wednesday.category|safe}}">{{item.wednesday.text|safe}}</td>
+        <td class="{{item.thursday.category|safe}}" >{{item.thursday.text|safe}}</td>
+        <td class="{{item.friday.category|safe}}" >{{item.friday.text|safe}}</td>
+    </tr>
+    {% endfor %}
+</table>        
+
+   <style>
+        /* General Table Styling */
+
+.table {
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+        .table-dark tr th{
+            text-align: center;
+            background: #234093;
+            color: #fff;
+        }
+        .schedule-table th,
+        .schedule-table td {
+            padding: 0;
+            min-width: 120px;          
+            vertical-align: middle;        
+        }
+
+       
+        td,th {
+           border-bottom: 1px solid #000;
+           border-left: 1px solid #000;
+           vertical-align: middle;
+        }
+        tr th{
+            text-align: center;
+        }
+
+        td.activity-athletics {
+            background-color: #e1e1f7;
+         
+        }
+
+        td.activity-basketball {
+            background-color: #ffe0cc;
+          
+        }
+
+        td.activity-football {
+            background-color: #dff0d8;
+    
+        }
+
+        td.activity-netball {
+            background-color: #fff8cc;
+    
+        }
+
+        td.activity-tennis {
+            background-color: #d9edf7;
+           
+        }
+
+        td.activity-volleyball {
+            background-color: #f7d9e8;
+        
+        }
+
+
+    </style>
+
+ <div class="table-responsive">
+            <table class="table ">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" style="width: 5rem;">Time</th>
+                        <th scope="col">Monday</th>
+                        <th scope="col">Tuesday</th>
+                        <th scope="col">Wednesday</th>
+                        <th scope="col">Thursday</th>
+                        <th scope="col">Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Morning Sessions -->
+                    <tr>
+                        <th scope="row">6.45am - 7.45am</th>
+                        <td> </td>
+                        <td class="activity-football">7-12 Boys Football</td>
+                        <td class="activity-basketball">7-12 Boys Football</td>
+                        <td class="activity-athletics">7-12 Boys Football</td>
+                        <td class="activity-volleyball">7-12 Girls Football</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6.50am - 7.50am</th>
+                        <td class=" activity-basketball">7-12 Girls Basketball</td>
+                        <td class="activity-tennis">7-12 Girls Netball</td>
+                        <td class="activity-netball">7-12 Girls Netball</td>
+                        <td class="activity-basketball">7-12 Boys Basketball</td>
+                        <td class="activity-basketball">7-12 Boys Basketball</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7.10am - 8.10am</th>
+                        <td class="activity-football">5-6 Boys and girls<br>Football Elevation</td>
+                        <td class="activity-basketball">5-6 Boys and girls<br>Football Elevation</td>
+                        <td class="activity-athletics">5-6 Boys and girls<br>Football Elevation</td>
+                        <td class="activity-netball">5-6 Boys and girls<br>Football Elevation</td>
+                        <td class="activity-basketball">5-6 Boys and girls<br>Football Elevation</td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

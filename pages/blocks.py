@@ -933,4 +933,35 @@ class NextPrevBlock(blocks.StructBlock):
         label = "Next Prev"    
         template = "pages/blocks/next_prev.html"
 
+class DayContentBlock(blocks.StructBlock):
+    text = blocks.TextBlock(required=False)
+    category = blocks.ChoiceBlock([
+        ('athletics','Athletics'),
+        ('basketball','Basketball'),
+        ('football','Bootball'),
+        ('netball','Netball'),
+        ('tennis','Tennis'),
+        ('volleyball','Volleyball'),
+    ],required=False)
 
+class TimetableBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    rows = blocks.ListBlock(blocks.StructBlock([
+        ('time',blocks.CharBlock(required=False)),
+        ('monday',DayContentBlock()),
+        ('tuesday',DayContentBlock()),
+        ('wednesday',DayContentBlock()),
+        ('thursday',DayContentBlock()),
+        ('friday',DayContentBlock()),
+    ]))
+
+    class Meta:
+        label = "Timetable"
+        template = "pages/blocks/timetable_block.html"
+        
+
+class InternalPageNavigationBlock(blocks.StructBlock):
+    link_label = blocks.CharBlock(help_text='Text to display for this menu link (e.g., "About", "Contact")')
+    class Meta:
+        label = "Internal nagivation link"
+        template = "pages/blocks/internal_navigation_link_block.html"

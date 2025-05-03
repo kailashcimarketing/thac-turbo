@@ -472,8 +472,10 @@ function scroll_offset(scroll) {
 function scroll_dir(direction) {
     if (direction === 1) {
         body.classList.add('scroll-down');
+        
     } else {
         body.classList.remove('scroll-down');
+
     }
 }
 function setScrollTrigger() {

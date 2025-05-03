@@ -100,5 +100,69 @@ $(function () {
         player.play();
         return false;
     });
+
+
+    /**** internal page navigation scripts  */
+    const $navLinks = $('.internal-navigation-link');
+    const $navContainer = $('.internal-page-navigation');
+
+    // Build the internal navigation menu
+    if ($navLinks.length) {
+        let navHtml = '';
+
+        $navLinks.each(function () {
+            const label = $(this).data('label');
+            const targetId = $(this).attr('id');
+
+            if (label && targetId) {
+                navHtml += `
+                <div class="w-auto block-anim-js block-anim--row-short-js">
+                    <a href="#${targetId}" class="btn btn--third scroll-link">
+                        <span class="btn__content">
+                            <span class="btn__txt">${label}</span>
+                        </span>
+                    </a>
+                </div>`;
+               /// navHtml += `<li><a href="#${targetId}" class="scroll-link">${label}</a></li>`;
+            }
+        });
+
+        
+        $navContainer.html(navHtml);
+    }
+
+    // Smooth scrolling on link click
+    $(document).on('click', '.scroll-link', function (e) {
+    e.preventDefault();
+    $('.internal-page-navigation-container').addClass('active');
+    const targetId = $(this).attr('href');
+    const $target = $(targetId);
+
+    if ($target.length && bodyScrollBar) {
+        // Get the target's offset inside the custom scroll container
+        const offsetTop = $target[0].offsetTop;
+
+        bodyScrollBar.scrollTo(0, offsetTop, 600); // x, y, duration (ms)
+    }
+});
+
+let lastScrollTop = 0;
+const $mainNavContainer = $('.internal-page-navigation-container');
+const initialOffsetTop = $mainNavContainer.offset().top;
+const stickyClass = 'is-sticky';
+
+bodyScrollBar.addListener(({ offset }) => {
+    const scrollTop = offset.y;
+
+    if (scrollTop > lastScrollTop && scrollTop >= initialOffsetTop) {
+        $mainNavContainer.addClass(stickyClass);
+    } else {
+        $mainNavContainer.removeClass(stickyClass);
+    }
+
+    lastScrollTop = scrollTop;
+});
+
+    /**** internal page navigation scripts  */
 });
 
