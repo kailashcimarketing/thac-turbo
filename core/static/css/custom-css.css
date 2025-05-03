@@ -629,6 +629,19 @@ background: var(--primary-teal-20, #ECFAF7);
 }
 
 
+#contact-form-section .s-form__block{
+  padding: 100px 40px 50px;
+}
+.block-ExplorePageswithFlyoutPanelBlock  .s-explore {
+  padding: 100px 0;
+}
+.block-ExplorePageswithFlyoutPanelBlock  .s-explore__title{
+  margin-bottom: 96px;
+}
+section,
+.footer{
+  clear: both;
+}
 
 
 @media (min-width:1300px) {
