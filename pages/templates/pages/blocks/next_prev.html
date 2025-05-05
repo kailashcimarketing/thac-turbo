@@ -43,10 +43,10 @@
               <img class="w-100 h-100 obj-cover hover-pic" src="{{ img.url }}" alt="" />
             </div>
             <div class="new-card__content">
-              <h3 class="new-card__title">{{ next_pre.next_page.title|safe }}</h3>
-              {% if next_pre.next_page.short_description %}
+              <h3 class="new-card__title">{{ next_pre.next_page.specific.title|safe }}</h3>
+              {% if next_pre.next_page.specific.short_description %}
                 <div class="new-card__txt-wrap last-el-mb-0">
-                  <p>{{ next_pre.next_page.short_description|safe }}</p>
+                  <p>{{ next_pre.next_page.specific.short_description|safe }}</p>
                 </div>
               {% endif %}
             </div>
