@@ -3,7 +3,7 @@
 {% if item.sub_menu %}
 <div id="header__megamenu-list-{{forloop.counter}}-wrap" class="hide-menu-item header__megamenu-list-2-wrap header__megamenu-list-2-wrap-js header__megamenu-list-wrap-col flex-auto">
     <div id="header__megamenu-list-{{forloop.counter}}-wrap-2" data-wrapper-2="#header__megamenu-list-{{forloop.counter}}-wrap"
-        data-wrapper="#header__megamenu-container-3"
+        data-wrapper="#header__megamenu-container-{{forloop.counter}}"
         class="header__megamenu-list-2-wrap-2 header__megamenu-list-2-wrap-2-js">
         <a href="#header__megamenu-panel--{{forloop.counter}}" data-panel="#header__megamenu-panel--{{forloop.counter}}"
             class="btn header__megamenu-list-2-wrap__btn d-lg-none"> <span
@@ -18,7 +18,7 @@
 
             </span> 
         </a>
-        <h3 class="header__megamenu-list-2-wrap-2__title d-lg-none">Learning Journey</h3>
+        <h3 class="header__megamenu-list-2-wrap-2__title d-lg-none">{{ item.text }}</h3>
         <div class="header__megamenu-list-2-col header__megamenu-list-2-col-1">
             <ul class="list-unstyled header__megamenu-list-2">
                 {% flat_menu item.handle max_levels=4 show_menu_heading=False template="pages/menu/main-menu.html" fall_back_to_default_site_menus=True %}
@@ -42,10 +42,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 {% endif %}
 {% endfor %}
    
