@@ -405,10 +405,10 @@ class AnnouncementsBlock(blocks.StructBlock):
 class FeaturedSectionBlock(blocks.StructBlock):
     light_theme = blocks.BooleanBlock(required=False)
     parallax_image = ImageChooserBlock()
+    background_opacity = blocks.CharBlock(required=False)
     title = blocks.CharBlock()
     highlighted_title = blocks.CharBlock(required=False)
-    button = SimpleButton()
-    background_opacity = blocks.CharBlock(required=False)
+    button = SimpleButton()    
     class Meta:
         label = "Featured Section"
         template = "pages/blocks/featured_section_block.html"

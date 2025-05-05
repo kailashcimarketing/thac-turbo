@@ -31,11 +31,12 @@
                 {% image item.link_page.specific.promo_page.specific.get_hero_image.image original format-webp as img %}
                 <a href="{{ item.link_page.specific.promo_page.url }}"  class="header__megamenu-list-pic-wrap">
                 <img class="w-100 h-100 obj-cover" src="{{ img.url }}" alt="{{ promo_title }}" />
-                </a>
+                
             
                 <h3 class="header__megamenu-list-pic-block-title">
                     {{ item.link_page.specific.promo_page.title|safe }}
                 </h3>
+            </a>
                 {% endif %}
             </div>
         </div>

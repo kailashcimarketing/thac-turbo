@@ -10,11 +10,11 @@ function makeid(length) {
 }
 
 $(function () {
-    $('.internal-link').on('click',function(){
-        if($($(this).attr('href')).length){
+    $('.internal-link').on('click', function () {
+        if ($($(this).attr('href')).length) {
             $('html, body').animate({ scrollTop: $($(this).attr('href')).offset.top }, 500);
         }
-        
+
     });
     if ($('.gallery-slider').length) {
         $('.gallery-slider').each(function () {
@@ -45,9 +45,9 @@ $(function () {
     $('.move-modal-items-to-body > .modal').each(function () {
         $(this).appendTo('body');
     });
-    
 
-        
+
+
 
     if (document.querySelector('#ajax-search')) {
         document.querySelector('#ajax-search').addEventListener('input', function (e) {
@@ -59,7 +59,7 @@ $(function () {
 
     function liveSearch($query) {
         var $searchInput = $('#search-block-input'), $resultsWrap = $('#search-block__results-list-wrap'),
-        $popular = $('#search-block__popular');
+            $popular = $('#search-block__popular');
         if ($query.length > 0) {
             $resultsWrap.addClass('d-block');
             if ($(window).width() < 576) {
@@ -71,7 +71,7 @@ $(function () {
                 $popular.removeClass('d-none');
             }
         }
-        
+
         $.ajax({
             type: 'get',
             url: '/search',
@@ -88,9 +88,9 @@ $(function () {
         });
     }
     let typingTimer;
-    
 
-    $('.vimeo-video-btn').on('click',function(){
+
+    $('.vimeo-video-btn').on('click', function () {
         var video_container = $(this).parents('.video-module-container');
         video_container.find('.vimeo-post-img').hide();
         $(this).hide();
@@ -123,45 +123,48 @@ $(function () {
                         </span>
                     </a>
                 </div>`;
-               /// navHtml += `<li><a href="#${targetId}" class="scroll-link">${label}</a></li>`;
+                /// navHtml += `<li><a href="#${targetId}" class="scroll-link">${label}</a></li>`;
             }
         });
 
-        
+
         $navContainer.html(navHtml);
+        $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div></div>");
     }
 
     // Smooth scrolling on link click
     $(document).on('click', '.scroll-link', function (e) {
-    e.preventDefault();
-    $('.internal-page-navigation-container').addClass('active');
-    const targetId = $(this).attr('href');
-    const $target = $(targetId);
+        e.preventDefault();
+        $('.internal-page-navigation-container').addClass('active');
+        const targetId = $(this).attr('href');
+        const $target = $(targetId);
 
-    if ($target.length && bodyScrollBar) {
-        // Get the target's offset inside the custom scroll container
-        const offsetTop = $target[0].offsetTop;
+        if ($target.length && bodyScrollBar) {
+            // Get the target's offset inside the custom scroll container
+            const offsetTop = $target[0].offsetTop;
 
-        bodyScrollBar.scrollTo(0, offsetTop, 600); // x, y, duration (ms)
+            bodyScrollBar.scrollTo(0, offsetTop, 600); // x, y, duration (ms)
+        }
+    });
+
+    if ($('.internal-page-navigation-container').length) {
+        let lastScrollTop = 0;
+        const $mainNavContainer = $('.internal-page-navigation-container');
+        const initialOffsetTop = $mainNavContainer.offset().top + 350;
+        const stickyClass = 'is-sticky-local-menu';
+
+        bodyScrollBar.addListener(({ offset }) => {
+            const scrollTop = offset.y;
+
+            if (scrollTop >= lastScrollTop && scrollTop >= initialOffsetTop) {
+                $('body').addClass(stickyClass);
+            } else {
+                $('body').removeClass(stickyClass);
+            }
+
+            lastScrollTop = scrollTop;
+        });
     }
-});
-
-let lastScrollTop = 0;
-const $mainNavContainer = $('.internal-page-navigation-container');
-const initialOffsetTop = $mainNavContainer.offset().top;
-const stickyClass = 'is-sticky';
-
-bodyScrollBar.addListener(({ offset }) => {
-    const scrollTop = offset.y;
-
-    if (scrollTop > lastScrollTop && scrollTop >= initialOffsetTop) {
-        $mainNavContainer.addClass(stickyClass);
-    } else {
-        $mainNavContainer.removeClass(stickyClass);
-    }
-
-    lastScrollTop = scrollTop;
-});
 
     /**** internal page navigation scripts  */
 });
