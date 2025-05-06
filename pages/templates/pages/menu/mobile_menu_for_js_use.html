@@ -1,0 +1,8 @@
+{% load menu_tags extra_tags wagtailimages_tags %}
+{% for item in menu_items %}
+  {% if item.sub_menu %}
+    <div data-scroll="exclude" id="header__megamenu-panel--{{ forloop.counter }}" class="header__megamenu-panel header__megamenu-panel-js header__megamenu-panel--2 d-lg-none">
+      <div id="header__megamenu-container-{{ forloop.counter }}" class="container header__megamenu-container header__megamenu-container-js"></div>
+    </div>
+  {% endif %}
+{% endfor %}

@@ -16,8 +16,8 @@
                     </div>
                     {% image item.image fill-280x280-c100 format-webp as img %}
                     {% image item.image original format-webp as img_o %}
-                    <a class="link-mask venobox" href="{{img.url}}" data-gall="gallery-1"></a>
-                    <img class="w-100 h-100 obj-cover s-gallery-grid__pic" src="{{img_o.url}}" alt="">
+                    <a class="link-mask venobox" href="{{img_o.url}}" data-gall="gallery-1"></a>
+                    <img class="w-100 h-100 obj-cover s-gallery-grid__pic" src="{{img.url}}" alt="">
                 </div>
             </div>
             {% endfor %}            
