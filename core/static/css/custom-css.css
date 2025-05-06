@@ -653,6 +653,7 @@ section,
   right: 0;
   top: 2rem;
   z-index: 99;
+  pointer-events: none;
   text-align: center;
   transition:all var(--animation-default), transform var(--animation-default);
 }
@@ -671,9 +672,20 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
   gap: 1rem;
   margin-left: 2.5rem;
   background: var(--primary-dark-blue);
+  pointer-events: all;
 }
 .internal-page-navigation-after-scroll .news-category-filter > div{
   margin: 0 !important;
+}
+.header .right-column .header__megamenu-list-pic-wrap{
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.header .right-column .header__megamenu-list-pic-wrap img{
+  transition: all ease .5s;
+}
+.header .right-column .header__megamenu-list-pic-wrap:hover img{
+  transform: scale(1.05);
 }
 
 @media (min-width:1300px) {

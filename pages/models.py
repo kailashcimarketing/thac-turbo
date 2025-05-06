@@ -313,6 +313,9 @@ class FormPage(AbstractEmailForm):
        # collection = self.uploaded_image_collection
         collection = Collection.objects.get(name__exact='uploads')
         return collection or Collection.get_first_root_node()
+    
+    def get_child_pages(self):
+        return self.get_children().live().filter(show_in_menus=True)
 
     @staticmethod
     def get_image_title(filename):

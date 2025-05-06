@@ -214,3 +214,6 @@ def get_promo_section(context,page_slug):
             'request': context['request'],  # To ensure images render correctly
     }
 
+@register.filter
+def is_mp4(url):
+    return '.mp4' in url if url else False
