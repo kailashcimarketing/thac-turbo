@@ -7,9 +7,13 @@
 
 {% with blocks=page.top_body %}
 {% for block in blocks %}
+{% if block.block_type != "InternalPageNavigationBlock" %}
 <section class="block-{{ block.block_type }}">
   {% include_block block %}
 </section>
+{% else %}
+{% include_block block %}
+{% endif %}
 {% endfor %}
 {% endwith %}
 
