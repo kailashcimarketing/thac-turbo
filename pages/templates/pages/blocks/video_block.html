@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <div class="{{value.background|safe}} {{value.top_padding|safe}} {{value.bottom_padding|safe}}">
-<div class="video-module-container {{value.layout}} container-anim-js">
+<div class="{% if value.layout == 'container' %}video-module-container {% endif %}{{value.layout}} container-anim-js">
     <div class="video-module video-module--def video-module-js block-anim-js block-anim--static-js">
         <div class="video-module__btn video-module__btn-js123 vimeo-video-btn">
             <img class="video-module__btn-icon video-module__btn-icon--play transition-def" src="/static/images/principal's-welcome/play-icon.svg" alt="">
