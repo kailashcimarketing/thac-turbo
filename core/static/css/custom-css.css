@@ -711,6 +711,11 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
 .vimeo-iframe .plyr__poster{
   background-size: cover;
 }
+
+.internal-page-navigation-after-scroll .news-category-filter a.active{
+    color: var(--primary-dark-blue);
+    background: var(--secondary-teal);
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
