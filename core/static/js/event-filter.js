@@ -42,9 +42,9 @@ $(window).on('load', function () {
     var counter = initShow; //counter for load more button
     var iso = $container.data('isotope'); // get Isotope instance
 
-    //loadMore(initShow); //execute function onload
+    loadMoreEvent(initShow); //execute function onload
 
-    function loadMore(toShow) {
+    function loadMoreEvent(toShow) {
         $container.find(".hidden").removeClass("hidden");
 
         var hiddenElems = iso.filteredItems.slice(toShow, iso.filteredItems.length).map(function (item) {
@@ -75,14 +75,14 @@ $(window).on('load', function () {
 
         counter = counter + initShow;
 
-        loadMore(counter);
+        loadMoreEvent(counter);
     });
 
     //when filter button clicked
     $(".event-category-filter").click(function () {
         $(this).data('clicked', true);
 
-        loadMore(initShow);
+        loadMoreEvent(initShow);
     });
 
     let $quicksearch = $('.quicksearch').keyup(debounce(function () {
