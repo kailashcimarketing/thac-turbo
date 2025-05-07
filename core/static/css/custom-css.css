@@ -698,7 +698,12 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
   height: auto;
 }
 
-
+.full-width-video-module{
+  padding: 0 !important;
+}
+.vimeo-iframe .plyr__poster{
+  background-size: cover;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;

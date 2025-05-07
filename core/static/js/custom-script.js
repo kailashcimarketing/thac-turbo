@@ -91,13 +91,18 @@ $(function () {
 
 
     $('.vimeo-video-btn').on('click', function () {
-        var video_container = $(this).parents('.video-module-container');
+        var video_container = $(this).parents('.video-module-wrapper');
         video_container.find('.vimeo-post-img').hide();
         $(this).hide();
         video_container.find('.vimeo-iframe').show();
-        var iframe = video_container.find('iframe');
-        const player = new Vimeo.Player(iframe);
-        player.play();
+        if ($(this).attr('type') == 'mp4-video') {
+            var video=$(this).parent().find('video').get(0);
+            video.play();
+        } else {
+            var iframe = video_container.find('iframe');
+            const player = new Vimeo.Player(iframe);
+            player.play();
+        }
         return false;
     });
 
@@ -128,7 +133,7 @@ $(function () {
             const $original = $('#' + targetId);
             const $next = $original.nextAll(':not(script):visible').first();
             if ($next.length) {
-                $next.attr('id',targetId);
+                $next.attr('id', targetId);
                 //$original.replaceWith($next.clone(true, true));
                 $original.remove();
             }
@@ -138,7 +143,7 @@ $(function () {
         $navContainer.html(navHtml);
         $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div></div>");
     }
-   
+
     // Smooth scrolling on link click
     $(document).on('click', '.scroll-link', function (e) {
         e.preventDefault();
@@ -172,47 +177,46 @@ $(function () {
             lastScrollTop = scrollTop;
         });
     }
-    
-    
+
+
 
     /**** internal page navigation scripts  */
 });
 
 
-$(window).on('load',function(){
+$(window).on('load', function () {
     const links = document.querySelectorAll('.scroll-link');
     const sections = Array.from(links).map(link =>
-       document.querySelector(link.getAttribute('href'))
+        document.querySelector(link.getAttribute('href'))
     );
-    console.log(sections);
+    //console.log(sections);
     const offset = 100; // Adjust for fixed header height
 
     bodyScrollBar.addListener(() => {
-    // Your existing logic
-    ScrollTrigger.update();
-    const currentScrollTop = bodyScrollBar.offset.y;
-    
-    
-    // 🔥 ScrollSpy logic inside the same listener
-    const scrollY = currentScrollTop + offset;
+        // Your existing logic
+        ScrollTrigger.update();
+        const currentScrollTop = bodyScrollBar.offset.y;
 
-    sections.forEach((section, index) => {
-        console.log(
-  `section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`
-);
-        if ( section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY ) {
-            console.log("hello active");
-            links.forEach(link => link.classList.remove('active'));
-            links[index].classList.add('active');
-        }
+
+        // 🔥 ScrollSpy logic inside the same listener
+        const scrollY = currentScrollTop + offset;
+
+        sections.forEach((section, index) => {
+            console.log(
+                `section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`
+            );
+            if (section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY) {
+                console.log("hello active");
+                links.forEach(link => link.classList.remove('active'));
+                links[index].classList.add('active');
+            }
+        });
     });
-    });
 
-  });
-
+});
 
 
 
 
-  
-  
+
+

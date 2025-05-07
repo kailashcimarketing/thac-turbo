@@ -80,9 +80,13 @@
                   </div>
                 {% endif %}
                 <div class="event-card__btns-wrap d-flex flex-wrap">
-                  <div class="event-card__btn-wrap">
+                  
+                    {% if item.show_details %}
+                    <div class="event-card__btn-wrap">
                     <a href="#event-modal-{{ item.title|slugify }}" class="btn btn--fifth modal-event-btn-js event-card__btn"><span class="btn__content"><span class="btn__txt">Full Details</span></span></a>
                   </div>
+                    {% endif %}
+                  
                   <div class="event-card__btn-wrap">
                     <a href="#" class="btn btn--fifth event-card__btn"><span class="btn__content"><span class="btn__txt">Book Tickets</span></span></a>
                   </div>
