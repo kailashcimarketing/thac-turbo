@@ -45,6 +45,8 @@ class Events(ClusterableModel):
     short_description = models.TextField(null=True,blank=True)
     location = models.CharField(null=True,blank=True,max_length=255)
     status = models.BooleanField(default=True)
+    homepage_featured_event = models.BooleanField(default=False,verbose_name="Show Featured Event on Homepage")
+    
     category = models.ForeignKey('events.Category', related_name='event_category', null=True, blank=True, on_delete=models.SET_NULL)
     body = StreamField(events_stream_fields,null=True,blank=True)
     
@@ -52,6 +54,7 @@ class Events(ClusterableModel):
         FieldPanel('title'),
         FieldPanel('slug'),
         FieldPanel('status'),
+        FieldPanel('homepage_featured_event'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
         FieldPanel('time_label'),

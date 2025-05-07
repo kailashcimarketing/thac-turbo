@@ -45,9 +45,11 @@ common_blocks = [
     ('LatestNewsBlock',LatestNewsBlock()),
     ('TimetableBlock',TimetableBlock()),
     ('InternalPageNavigationBlock',InternalPageNavigationBlock()),
+    
 ]
 homepage_stream_fields= common_blocks+ [
     ('HomepageIntroContentBlock',HomepageIntroContentBlock()),
+    ('HomepageFeaturedEventBlock',HomepageFeaturedEventBlock())
 ]
 contactpage_stream_fields= common_blocks+ [
     ('ContactpageHeroBlock',ContactpageHeroBlock()),

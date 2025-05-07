@@ -3,16 +3,16 @@ var searchResultFlag;
 $(window).on('load', function () {
 
     // init Isotope
-    let $container = $('.s-team__cards').isotope({
-        itemSelector: '.s-team__card-col',
+    let $container = $('.hero-news__events').isotope({
+        itemSelector: '.event-item',
         layoutMode: 'fitRows',
 
     });
 
 
     // bind filter button click
-    $('.team-category-filter').on('click', 'a', function () {
-        $('.team-category-filter a').removeClass('is-active');
+    $('.event-category-filter').on('click', 'a', function () {
+        $('.event-category-filter a').removeClass('is-active');
         $(this).addClass('is-active');
         var filterValue = $(this).attr('data-filter');
         // use filterFn if matches value
@@ -65,10 +65,10 @@ $(window).on('load', function () {
 
     //when load more button clicked
     $(".load-more-team").click(function () {
-        if ($('.team-category-filter').data('clicked')) {
+        if ($('.event-category-filter').data('clicked')) {
             //when filter button clicked, set initial value for counter
             counter = initShow;
-            $('.team-category-filter').data('clicked', false);
+            $('.event-category-filter').data('clicked', false);
         } else {
             counter = counter;
         };
@@ -79,7 +79,7 @@ $(window).on('load', function () {
     });
 
     //when filter button clicked
-    $(".team-category-filter").click(function () {
+    $(".event-category-filter").click(function () {
         $(this).data('clicked', true);
 
         loadMore(initShow);

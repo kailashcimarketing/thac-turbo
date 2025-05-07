@@ -401,6 +401,19 @@ class AnnouncementsBlock(blocks.StructBlock):
     class Meta:
         label = "Announcements"
         template = "pages/blocks/announcements_block.html"
+        
+class HomepageFeaturedEventBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    script_title = blocks.CharBlock(required=False)
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock()),
+        ('event',SnippetChooserBlock('events.Events',required=False)),
+        ('href',HrefBlock())
+    ]))
+    button = SimpleButton()
+    class Meta:
+        label = "Home page Featured Event"
+        template = "pages/blocks/homepage_featured_event_block.html"
 
 class FeaturedSectionBlock(blocks.StructBlock):
     light_theme = blocks.BooleanBlock(required=False)

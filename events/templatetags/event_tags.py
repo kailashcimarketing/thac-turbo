@@ -13,7 +13,13 @@ def get_event_categories():
 
 @register.simple_tag()
 def get_events():
-    items = Events.objects.filter(start_date__gte=today, status=True).order_by('start_date')
+    items = Events.objects.filter(status=True).order_by('start_date')
+    
+    return {'items':items}
+
+@register.simple_tag()
+def get_homepage_featured_events():
+    items = Events.objects.filter(homepage_featured_event=True).order_by('start_date')
     
     return {'items':items}
 
