@@ -143,6 +143,18 @@ class FacilityhireFormPage(AbstractEmailForm):
         FieldPanel('top_body'),
         FieldPanel('bottom_body'),
     ]
+
+    def get_hero(self):
+        if self.facilityhireformpage_hero.all():
+            return self.facilityhireformpage_hero.all()
+        else:
+            return False
+    
+    def get_hero_image(self):
+        if self.get_hero():
+            return self.get_hero()[0]
+        
+        return False
     
     def get_form_class(self):
         form_class = super().get_form_class()

@@ -698,6 +698,13 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
   height: auto;
 }
 
+.facility-form .booking-form .booking-fields-section{
+  background: none;
+}
+.facility-form .booking-form .booking-fields-section h3{
+  color: var(--primary-dark-blue);
+}
+
 .full-width-video-module{
   padding: 0 !important;
 }
