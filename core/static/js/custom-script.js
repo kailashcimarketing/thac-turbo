@@ -125,13 +125,20 @@ $(function () {
                 </div>`;
                 /// navHtml += `<li><a href="#${targetId}" class="scroll-link">${label}</a></li>`;
             }
+            const $original = $('#' + targetId);
+            const $next = $original.nextAll(':not(script):visible').first();
+            if ($next.length) {
+                $next.attr('id',targetId);
+                //$original.replaceWith($next.clone(true, true));
+                $original.remove();
+            }
         });
 
 
         $navContainer.html(navHtml);
         $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div></div>");
     }
-
+   
     // Smooth scrolling on link click
     $(document).on('click', '.scroll-link', function (e) {
         e.preventDefault();
@@ -165,7 +172,47 @@ $(function () {
             lastScrollTop = scrollTop;
         });
     }
+    
+    
 
     /**** internal page navigation scripts  */
 });
 
+
+$(window).on('load',function(){
+    const links = document.querySelectorAll('.scroll-link');
+    const sections = Array.from(links).map(link =>
+       document.querySelector(link.getAttribute('href'))
+    );
+    console.log(sections);
+    const offset = 100; // Adjust for fixed header height
+
+    bodyScrollBar.addListener(() => {
+    // Your existing logic
+    ScrollTrigger.update();
+    const currentScrollTop = bodyScrollBar.offset.y;
+    
+    
+    // 🔥 ScrollSpy logic inside the same listener
+    const scrollY = currentScrollTop + offset;
+
+    sections.forEach((section, index) => {
+        console.log(
+  `section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`
+);
+        if ( section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY ) {
+            console.log("hello active");
+            links.forEach(link => link.classList.remove('active'));
+            links[index].classList.add('active');
+        }
+    });
+    });
+
+  });
+
+
+
+
+
+  
+  
