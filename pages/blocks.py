@@ -195,7 +195,7 @@ class HrefBlock(blocks.StructBlock):
 make new block for theme buttons
 """
 class HeadingBlock(blocks.StructBlock):
-    heading = blocks.RichTextBlock(features=['H1','h2','h3','h4','h5','h6'])
+    heading = blocks.RichTextBlock(features=['h1','h2','h3','h4','h5','h6'])
     css_class = blocks.CharBlock(required=False)
     class Meta:
         label= "Heading"

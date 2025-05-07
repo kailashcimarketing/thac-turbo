@@ -688,6 +688,17 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
   transform: scale(1.05);
 }
 
+/*.hero--secondary */
+
+.s-team.thac-team__cards .new-card .new-card__pic-wrap{
+  height: auto;  
+}
+.s-team.thac-team__cards .new-card .new-card__pic-wrap img{
+  aspect-ratio:360/450;
+  height: auto;
+}
+
+
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;

@@ -67,4 +67,4 @@ class Events(ClusterableModel):
         return self.title
     
     class Meta:
-        verbose_name = 'News'
+        verbose_name = 'Event'
