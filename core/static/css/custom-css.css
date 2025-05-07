@@ -716,6 +716,9 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
     color: var(--primary-dark-blue);
     background: var(--secondary-teal);
 }
+.hero-news__events .event-item{
+  width: 100%;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
