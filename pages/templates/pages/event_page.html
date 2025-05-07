@@ -2,7 +2,7 @@
 
 {% load static wagtailcore_tags wagtailimages_tags event_tags %}
 {% block body_class %}
-  general-page innerpage
+  general-page innerpage event-index-page
 {% endblock %}
 
 {% block content %}
@@ -96,8 +96,8 @@
           </div>
         {% endfor %}
       </div>
-      <div class="hero-news__cards-btn-wrap block-anim-js text-center">
-        <a href="#" class="btn hero-news__cards-btn"><span class="btn__content"><span class="btn__txt">Load more events</span></span></a>
+      <div class="hero-news__cards-btn-wrap block-anim-js text-center ">
+        <a href="#" class="btn hero-news__cards-btn load-more-event"><span class="btn__content"><span class="btn__txt">Load more events</span></span></a>
       </div>
     </div>
   </section>

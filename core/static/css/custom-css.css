@@ -716,8 +716,14 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
     color: var(--primary-dark-blue);
     background: var(--secondary-teal);
 }
-.hero-news__events .event-item{
+.event-index-page .hero-news__events .event-item{
   width: 100%;
+}
+.event-index-page .hero-news__title{
+  color: var(--secondary-teal);
+}
+.event-index-page .hero-news__title .child-special-text__txt{
+  color: var(--basic-white);
 }
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {

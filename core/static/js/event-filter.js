@@ -24,7 +24,7 @@ $(window).on('load', function () {
     $container.on( 'arrangeComplete', function( event, filteredItems ) {
         if(filteredItems.length == 0){
             $('.no-result-found').show();
-            $('.load-more-team').hide();
+            $('.load-more-event').hide();
         }else{
             $('.no-result-found').hide();
         };
@@ -33,7 +33,7 @@ $(window).on('load', function () {
     //****************************
     // Isotope Load more button
     //****************************
-    var loadItem = $(".load-more-team").attr('data-load');
+    var loadItem = $(".load-more-event").attr('data-load');
     var initShow = 10;
     if (loadItem) {
         initShow = loadItem;
@@ -55,16 +55,16 @@ $(window).on('load', function () {
 
         //when no more to load, hide show more button
         if (hiddenElems.length == 0) {
-            $(".load-more-team").hide();
+            $(".load-more-event").hide();
         } else {
-            $(".load-more-team").show();
+            $(".load-more-event").show();
         };
 
     }
 
 
     //when load more button clicked
-    $(".load-more-team").click(function () {
+    $(".load-more-event").click(function () {
         if ($('.event-category-filter').data('clicked')) {
             //when filter button clicked, set initial value for counter
             counter = initShow;
@@ -88,9 +88,9 @@ $(window).on('load', function () {
     let $quicksearch = $('.quicksearch').keyup(debounce(function () {
         $container.find(".hidden").removeClass("hidden");
         if($quicksearch.val().length == 0){
-            $(".load-more-team").show();
+            $(".load-more-event").show();
         }else{
-            $(".load-more-team").hide();
+            $(".load-more-event").hide();
         }
         qsRegex = new RegExp($quicksearch.val(), 'gi');
         $container.isotope({
