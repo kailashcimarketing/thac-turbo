@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "events", 
     "team",
     "vacancies",
+    "facilityhire",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
