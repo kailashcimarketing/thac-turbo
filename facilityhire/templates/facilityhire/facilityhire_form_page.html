@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
-
+{% include "pages/hero.html" with type="internal" page=page %}
 {% block content %}
     <div class="container">
         <h1>{{ page.title }}</h1>
@@ -46,7 +46,7 @@
                 <div id="bookings-container">
                     <div class="booking" data-booking-index="1">
                         <h4>Booking #<span class="booking-number">1</span></h4>
-                        
+                        {{page.get_bookng_fields.all}}
                         {% for field_config in page.get_bookng_fields %}
                             <div class="form-group">
                                 <label for="id_booking_1_{{ field_config.name }}">{{ field_config.label }}</label>
@@ -90,7 +90,7 @@
     <template id="booking-template">
         <div class="booking" data-booking-index="__INDEX__">
             <h4>Booking #<span class="booking-number">__INDEX__</span></h4>
-            
+            {{page.get_booking_fields}}
             {% for field_config in page.get_booking_fields %}
                 <div class="form-group">
                     <label for="id_booking___INDEX___{{ field_config.name }}">{{ field_config.label }}</label>

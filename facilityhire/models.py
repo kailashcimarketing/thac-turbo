@@ -13,7 +13,9 @@ from django.utils.html import format_html, format_html_join
 import json
 from wagtail.contrib.forms.views import SubmissionsListView
 from django.utils.safestring import mark_safe
-
+from wagtail.fields import StreamField, RichTextField
+from pages.fields import generalpage_stream_fields
+from home.models import HeroAbstract
 
 class FacilityhireSubmissionsListView(SubmissionsListView):
     template_name = 'facilityhire/admin/default_submissions_list.html'
@@ -108,15 +110,26 @@ class FacilityhireFormField(AbstractFormField):
     page = ParentalKey('FacilityhireFormPage', on_delete=models.CASCADE, related_name='form_fields')      
     
 
+class FacilityhireformpageHero(HeroAbstract):
+    page = ParentalKey('FacilityhireFormPage', related_name='facilityhireformpage_hero')
 
 class FacilityhireFormPage(AbstractEmailForm):
     submissions_list_view_class = FacilityhireSubmissionsListView
-    intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
     booking_field_help_text = RichTextField(blank=True, help_text="Help text to display above booking fields")
+    top_body = StreamField(generalpage_stream_fields,null=True,blank=True)
+    bottom_body = StreamField(generalpage_stream_fields,null=True,blank=True)
     
     content_panels = AbstractEmailForm.content_panels + [
-        FieldPanel('intro'),
+        InlinePanel('facilityhireformpage_hero', label='Hero Images', panels=[
+            FieldPanel('image'),
+            FieldPanel('background_video_url'),   
+            FieldPanel('title'),
+            FieldPanel('script_title'),
+            FieldPanel('primary_tagline'),
+            FieldPanel('secondary_tagline'),   
+        ],max_num=1),
+        
         FieldPanel('booking_field_help_text'),
         MultiFieldPanel([
             InlinePanel('form_fields'),
@@ -126,7 +139,9 @@ class FacilityhireFormPage(AbstractEmailForm):
             FieldPanel('to_address'),
             FieldPanel('from_address'),
             FieldPanel('subject'),
-        ], heading="Email Settings")
+        ], heading="Email Settings"),
+        FieldPanel('top_body'),
+        FieldPanel('bottom_body'),
     ]
     
     def get_form_class(self):
