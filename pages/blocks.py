@@ -405,11 +405,7 @@ class AnnouncementsBlock(blocks.StructBlock):
 class HomepageFeaturedEventBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)
     script_title = blocks.CharBlock(required=False)
-    items = blocks.ListBlock(blocks.StructBlock([
-        ('image',ImageChooserBlock()),
-        ('event',SnippetChooserBlock('events.Events',required=False)),
-        ('href',HrefBlock())
-    ]))
+    items = blocks.StaticBlock()
     button = SimpleButton()
     class Meta:
         label = "Home page Featured Event"

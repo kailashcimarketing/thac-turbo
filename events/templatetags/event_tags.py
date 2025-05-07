@@ -19,7 +19,7 @@ def get_events():
 
 @register.simple_tag()
 def get_homepage_featured_events():
-    items = Events.objects.filter(homepage_featured_event=True).order_by('start_date')
+    items = Events.objects.filter(homepage_featured_event=True)
     
     return {'items':items}
 

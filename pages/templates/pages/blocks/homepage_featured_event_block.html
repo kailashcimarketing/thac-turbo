@@ -1,5 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags event_tags %}
-{% get_events as event_list %}
+{% get_homepage_featured_events as event_list %}
 <section class="s-small-banners position-relative">
     <div class="container position-relative s-small-banners__container container-anim-js">
         {% if value.title or value.script_title %}
