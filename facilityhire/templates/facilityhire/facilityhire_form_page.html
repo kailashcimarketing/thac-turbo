@@ -1,16 +1,34 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags crispy_forms_filters extra_tags widget_tweaks %}
+{% load static wagtailcore_tags crispy_forms_filters extra_tags widget_tweaks %}
 
 {% block content %}
-{% include "pages/hero.html" with type="internal" page=page %}
+
+
+{% with blocks=page.top_body %}
+{% for block in blocks %}
+
+{% if block.block_type != "InternalPageNavigationBlock" %}
+<section class="block-{{ block.block_type }}">
+  {% include_block block %}
+</section>
+{% else %}
+{% include_block block %}
+{% endif %}
+{% endfor %}
+{% endwith %}
+
+
+
 <div class="section s-form__col-2 facility-form">
     <div class="container">
-        
+         {% block thankyou_message %}
+        {% endblock %}
+        {% block form %}
         {% if page.intro %}
             <div class="intro">{{ page.intro|richtext }}</div>
         {% endif %}
         
-        <form action="." method="POST" class="booking-form">
+        <form action="." method="POST" class="booking-form"  enctype="multipart/form-data" >
             {% csrf_token %}
             
             {# Display the standard form fields #}
@@ -19,6 +37,25 @@
             {% for field in form %}
             <div class="col-lg-4">
                 {% if field.name != 'booking_count' %}
+                {% if field.field.widget|klass == 'ClearableFileInput' %}
+                <div class="s-form__form-item TextInput">
+                    <div class="input-wrap" data-required="True">                        
+                        {% render_field field class+='form-control input-style' placeholder=field.field.label %}
+                         <span class="file-custom"></span>
+                    </div>
+                    {% if field.help_text %}
+                        <p class="help-text">{{ field.help_text }}</p>
+                    {% endif %}
+                    {% if field.errors %}
+                            <ul class="errors">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    
+                </div>
+                {% else %}
                 <div class="s-form__form-item TextInput">
                     <div class="input-wrap" data-required="True">                        
                         {% render_field field class+='form-control input-style' placeholder=field.field.label %}
@@ -35,6 +72,7 @@
                         {% endif %}
                     
                 </div>
+                {% endif %}
 
 
 
@@ -76,7 +114,7 @@
                                         name="booking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -88,7 +126,7 @@
                                         name="booking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -99,7 +137,7 @@
                                         name="booking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -110,7 +148,8 @@
                                         name="booking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        {# % if field_config.required %}required{% endif % #}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -133,6 +172,7 @@
                 <button type="submit" class="btn btn-green">Submit</button>
             </div>
         </form>
+        {% endblock %}
     </div>
     </div>
     {# Booking template for JavaScript to use #}
@@ -153,7 +193,7 @@
                                         name="booking___INDEX___{{ field_config.name }}" 
                                         id="id_booking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -165,7 +205,7 @@
                                         name="booking___INDEX___{{ field_config.name }}" 
                                         id="id_booking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -176,7 +216,7 @@
                                         name="booking___INDEX___{{ field_config.name }}" 
                                         id="id_booking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -187,7 +227,7 @@
                                         name="booking___INDEX___{{ field_config.name }}" 
                                         id="id_booking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
-                                        {% if field_config.required %}required{% endif %}
+                                        required
                                         autocomplete="Off" placeholder="{{ field_config.label }}">
                                     </div>
                                 </div>
@@ -199,147 +239,24 @@
             <button type="button" class="remove-booking-btn btn btn-green">Remove Booking</button>
         </div>
     </template>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const bookingsContainer = document.getElementById('bookings-container');
-            const addBookingBtn = document.getElementById('add-booking-btn');
-            const bookingCountField = document.getElementById('id_booking_count');
-            const bookingTemplate = document.getElementById('booking-template').innerHTML;
-            
-            // Initialize booking count
-            let bookingCount = 1;
-            
-            // Add booking button event listener
-            addBookingBtn.addEventListener('click', function() {
-                bookingCount++;
-                
-                // Update the hidden field
-                bookingCountField.value = bookingCount;
-                
-                // Create new booking from template
-                const newBookingHtml = bookingTemplate.replace(/__INDEX__/g, bookingCount);
-                
-                // Add the new booking to the container
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = newBookingHtml;
-                const newBooking = tempDiv.firstElementChild;
-                bookingsContainer.appendChild(newBooking);
-                
-                // Initialize the remove button for this booking
-                initRemoveButton(newBooking.querySelector('.remove-booking-btn'));
-                
-                // Update booking numbers
-                updateBookingNumbers();
-            });
-            
-            // Initialize remove buttons for existing bookings
-            document.querySelectorAll('.remove-booking-btn').forEach(initRemoveButton);
-            
-            function initRemoveButton(button) {
-                button.addEventListener('click', function() {
-                    const booking = this.closest('.booking');
-                    booking.remove();
-                    
-                    // Update booking count
-                    bookingCount--;
-                    bookingCountField.value = bookingCount;
-                    
-                    // Update booking numbers
-                    updateBookingNumbers();
-                    
-                    // Show all remove buttons if there's more than one booking
-                    const removeButtons = document.querySelectorAll('.remove-booking-btn');
-                    if (removeButtons.length === 1) {
-                        removeButtons[0].style.display = 'none';
-                    }
-                });
-            }
-            
-            function updateBookingNumbers() {
-                // Update all booking numbers in the UI
-                document.querySelectorAll('.booking').forEach((booking, index) => {
-                    booking.querySelector('.booking-number').textContent = (index + 1);
-                    booking.dataset.bookingIndex = (index + 1);
-                });
-                
-                // Show/hide remove buttons based on booking count
-                const removeButtons = document.querySelectorAll('.remove-booking-btn');
-                if (removeButtons.length === 1) {
-                    removeButtons[0].style.display = 'none';
-                } else {
-                    removeButtons.forEach(btn => btn.style.display = 'block');
-                }
-            }
-            
-            // Set initial booking count
-            bookingCountField.value = bookingCount;
-        });
-    </script>
-    <style>
-        /* Add this to your site's CSS file */
+{% block extra_js %}
+<script src="{% static 'js/facility-hire-form.js' %}"></script>
+ {% endblock %}
 
 
-.booking-fields-section {
-    margin: 30px 0;
-    padding: 20px 0; 
-    border-radius: 5px;
-}
 
-.booking {
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    position: relative;
-}
+{% with blocks=page.bottom_body %}
+{% for block in blocks %}
 
-.booking h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
-     color: var(--primary-dark-blue);
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 10px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.help-text {
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 3px;
-}
-
-.errors {
-    color: #d32f2f;
-    list-style: none;
-    padding: 0;
-    margin: 5px 0 0;
-}
-
-.form-actions {
-    margin-top: 20px;
-    text-align: right;
-}
+{% if block.block_type != "InternalPageNavigationBlock" %}
+<section class="block-{{ block.block_type }}">
+  {% include_block block %}
+</section>
+{% else %}
+{% include_block block %}
+{% endif %}
+{% endfor %}
+{% endwith %}
 
 
-    </style>
 {% endblock %}

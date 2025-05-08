@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags crispy_forms_filters extra_tags widget_tweaks %}
+
+{% block content %}
+{% include "pages/hero.html" with type="internal" page=page %}
+
+{% with blocks=page.top_body %}
+{% for block in blocks %}
+
+{% if block.block_type != "InternalPageNavigationBlock" %}
+<section class="block-{{ block.block_type }}">
+  {% include_block block %}
+</section>
+{% else %}
+{% include_block block %}
+{% endif %}
+{% endfor %}
+{% endwith %}
+
+
+
+    <!-- form -->
+    <div class="section s-form__col-2 facility-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            
+            {% block thankyou_message %}
+            {{ page.thankyou_message | richtext }}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- form end -->
+
+
+{% with blocks=page.bottom_body %}
+{% for block in blocks %}
+
+{% if block.block_type != "InternalPageNavigationBlock" %}
+<section class="block-{{ block.block_type }}">
+  {% include_block block %}
+</section>
+{% else %}
+{% include_block block %}
+{% endif %}
+{% endfor %}
+{% endwith %}
+
+
+{% endblock %}
