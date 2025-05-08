@@ -182,6 +182,12 @@
           {% else %}           
           {% with placeholder_text=field.field.label|add:" *" %}
           <div class="s-form__form-item block-anim-js {{ field.field.widget|klass }} {{ field.field.widget.attrs.layout }}">
+            <label>
+                {{ field.field.label }}
+                {% if field.field.required %}
+                <span class="required=">*</span>
+                {% endif %}
+              </label>
               <div class="input-wrap" data-required="{{ field.field.required }}">
                   {% if field.field.required %}
                   {% render_field field class+='form-control input-style' placeholder=placeholder_text autocomplete="Off" %}
