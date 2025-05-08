@@ -124,7 +124,7 @@
           {% for field in form %}
           {% if field.field.widget.attrs.data_type == 'heading' %}
           <div class="section-heading col-lg-12">
-              <h6>{{ field.label|safe }}</h6>
+              <h4>{{ field.label|safe }}</h4>
           </div>
           {% elif field.field.widget|klass == 'ReCaptchaV2Checkbox' %}
           {% render_field field %}
