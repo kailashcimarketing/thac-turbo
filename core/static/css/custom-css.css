@@ -965,7 +965,9 @@ form h6,
 .wagtail-form-section p,
 .wagtail-form-section small,
 .wagtail-form-section .s-form__block-title{color: var(--primary-dark-blue);}
-
+.wagtail-form-section .input-style{
+  padding: 0.5rem 0;
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
