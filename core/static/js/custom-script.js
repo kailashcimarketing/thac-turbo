@@ -96,7 +96,7 @@ $(function () {
         $(this).hide();
         video_container.find('.vimeo-iframe').show();
         if ($(this).attr('type') == 'mp4-video') {
-            var video=$(this).parent().find('video').get(0);
+            var video = $(this).parent().find('video').get(0);
             video.play();
         } else {
             var iframe = video_container.find('iframe');
@@ -191,28 +191,28 @@ $(window).on('load', function () {
     );
     //console.log(sections);
     const offset = 100; // Adjust for fixed header height
+    if (bodyScrollBar) {
+        bodyScrollBar.addListener(() => {
+            // Your existing logic
+            ScrollTrigger.update();
+            const currentScrollTop = bodyScrollBar.offset.y;
 
-    bodyScrollBar.addListener(() => {
-        // Your existing logic
-        ScrollTrigger.update();
-        const currentScrollTop = bodyScrollBar.offset.y;
 
+            // 🔥 ScrollSpy logic inside the same listener
+            const scrollY = currentScrollTop + offset;
 
-        // 🔥 ScrollSpy logic inside the same listener
-        const scrollY = currentScrollTop + offset;
-
-        sections.forEach((section, index) => {
-            console.log(
-                `section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`
-            );
-            if (section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY) {
-                console.log("hello active");
-                links.forEach(link => link.classList.remove('active'));
-                links[index].classList.add('active');
-            }
+            sections.forEach((section, index) => {
+                console.log(
+                    `section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`
+                );
+                if (section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY) {
+                    console.log("hello active");
+                    links.forEach(link => link.classList.remove('active'));
+                    links[index].classList.add('active');
+                }
+            });
         });
-    });
-
+    }
 });
 
 
