@@ -190,9 +190,9 @@
               </label>
               <div class="input-wrap" data-required="{{ field.field.required }}">
                   {% if field.field.required %}
-                  {% render_field field class+='form-control input-style' placeholder=placeholder_text autocomplete="Off" %}
+                  {% render_field field class+='form-control input-style' autocomplete="Off" %}
                   {% else %}
-                  {% render_field field class+='form-control input-style' placeholder=field.field.label autocomplete="Off" %}
+                  {% render_field field class+='form-control input-style' autocomplete="Off" %}
                   {% endif %}
               </div>
               <small>{{ field.field.help_text|safe }}</small>
