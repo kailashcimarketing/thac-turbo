@@ -2,7 +2,7 @@
 {% load static wagtailcore_tags crispy_forms_filters extra_tags widget_tweaks %}
 
 {% block content %}
-
+{% include "pages/hero.html" with type="internal" page=page %}
 
 {% with blocks=page.top_body %}
 {% for block in blocks %}
