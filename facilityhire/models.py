@@ -154,7 +154,7 @@ class FacilityhireFormField(AbstractFormField):
         max_length=16,
         choices=list(FORM_FIELD_CHOICES) +
         [
-            ('image', 'Upload Image'), ('document', 'File Upload'),
+            ('image', 'Upload Image'), ('document', 'File Upload'), ('heading', 'Heading')
         ]
     )
     page = ParentalKey('FacilityhireFormPage', on_delete=models.CASCADE, related_name='form_fields')    
@@ -164,7 +164,10 @@ class CustomFormBuilder(FormBuilder):
         return WagtailImageField(**options)
 
     def create_document_field(self, field, options):
-        return FileField(**options)  
+        return FileField(**options) 
+    
+    def create_heading_field(self, field, options):
+        return CharField(widget=forms.HiddenInput(attrs={'data_type': 'heading'}), **options) 
     
 
 class FacilityhireformpageHero(HeroAbstract):

@@ -35,76 +35,76 @@
             <!------------------top fields -->
             <div class="row">
             {% for field in form %}
+            {% if field.field.widget.attrs.data_type == 'heading' %}
+            <div class="section-heading col-lg-12">
+                {{ field.label|safe }}
+            </div>
+            {% else %}
             <div class="col-lg-4">
                 {% if field.name != 'booking_count' %}
                 {% if field.field.widget|klass == 'ClearableFileInput' %}
-                <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
-                    {{ field.label_tag }}
-                    <div class="input-wrap" data-required="True">                        
-                        
-                        {% render_field field class+='form-control input-style' placeholder='' %}
-                         <span class="file-custom"></span>
-                    </div>
-                    {% if field.help_text %}
-                        <p class="help-text">{{ field.help_text }}</p>
-                    {% endif %}
-                    {% if field.errors %}
-                            <ul class="errors">
-                                {% for error in field.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
+                    <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
+                        {{ field.label_tag }}
+                        <div class="input-wrap" data-required="True">                        
+                            
+                            {% render_field field class+='form-control input-style' placeholder='' %}
+                            <span class="file-custom"></span>
+                        </div>
+                        {% if field.help_text %}
+                            <p class="help-text">{{ field.help_text }}</p>
                         {% endif %}
-                    
-                </div>
+                        {% if field.errors %}
+                                <ul class="errors">
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        
+                    </div>
                 
                 {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'Select1' %}
-                <div class="s-form__form-item {{field.field.widget|klass}}">
-                    {{ field.label_tag }}
-                    <div class="input-wrap" data-required="True">                        
+                    <div class="s-form__form-item {{field.field.widget|klass}}">
+                        {{ field.label_tag }}
+                        <div class="input-wrap" data-required="True">                        
+                            
+                            {% render_field field class+='form-control input-style' placeholder='' %}
+                        </div>
+                        {% if field.help_text %}
+                            <p class="help-text">{{ field.help_text }}</p>
+                        {% endif %}
+                        {% if field.errors %}
+                                <ul class="errors">
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         
-                        {% render_field field class+='form-control input-style' placeholder='' %}
                     </div>
-                    {% if field.help_text %}
-                        <p class="help-text">{{ field.help_text }}</p>
-                    {% endif %}
-                    {% if field.errors %}
-                            <ul class="errors">
-                                {% for error in field.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    
-                </div>
                 {% else %}
-                <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
-                    {{ field.label_tag }}
-                    <div class="input-wrap" data-required="True">    
-                                            
-                        {% render_field field class+='form-control input-style' placeholder='' %}
-                    </div>
-                    {% if field.help_text %}
-                        <p class="help-text">{{ field.help_text }}</p>
-                    {% endif %}
-                    {% if field.errors %}
-                            <ul class="errors">
-                                {% for error in field.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
+                    <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
+                        {{ field.label_tag }}
+                        <div class="input-wrap" data-required="True">    
+                                                
+                            {% render_field field class+='form-control input-style' placeholder='' %}
+                        </div>
+                        {% if field.help_text %}
+                            <p class="help-text">{{ field.help_text }}</p>
                         {% endif %}
-                    
-                </div>
-                {% endif %}
-
-
-
-
-
-                    
+                        {% if field.errors %}
+                                <ul class="errors">
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        
+                    </div>
+                {% endif %}                    
                 {% endif %}
             </div>
+            {% endif %}
             {% endfor %}
             </div>
             <!------------------top fields -->
