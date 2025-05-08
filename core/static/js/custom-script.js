@@ -159,7 +159,7 @@ $(function () {
         }
     });
 
-    if ($('.internal-page-navigation-container').length) {
+    if ($('.internal-page-navigation-container').length && bodyScrollBar) {
         let lastScrollTop = 0;
         const $mainNavContainer = $('.internal-page-navigation-container');
         const initialOffsetTop = $mainNavContainer.offset().top + 350;

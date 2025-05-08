@@ -725,6 +725,9 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
 .event-index-page .hero-news__title .child-special-text__txt{
   color: var(--basic-white);
 }
+.event-card__info-block i{
+  margin-right: 0.5rem;
+}
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
     width: 55vw;
