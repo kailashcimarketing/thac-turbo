@@ -61,16 +61,16 @@
                 <h3 class="event-card__title">{{ item.title|safe }}</h3>
                 <div class="event-card__infos d-flex flex-wrap">
                   <div class="event-card__info-block d-flex align-items-center">
-                    <img class="event-card__info-block-icon flex-auto" src="/static/images/events/date-icon.svg" alt="" /> {{ item.start_date }}
+                    <i class="fa-regular fa-calendar"></i> {{ item.start_date }}
                   </div>
                   {% if item.event_time %}
                     <div class="event-card__info-block d-flex align-items-center">
-                      <img class="event-card__info-block-icon flex-auto" src="/static/images/events/time-icon.svg" alt="" /> {{ item.event_time|safe }}
+                      <i class="fa-regular fa-clock"></i> {{ item.event_time|safe }}
                     </div>
                   {% endif %}
                   {% if item.location %}
                     <div class="event-card__info-block d-flex align-items-center">
-                      <img class="event-card__info-block-icon flex-auto" src="/static/images/events/location-icon.svg" alt="" /> {{ item.location|safe }}
+                      <i class="fa-regular fa-location-dot"></i>{{ item.location|safe }}
                     </div>
                   {% endif %}
                 </div>
