@@ -874,6 +874,35 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
   }
   
 
+  
+.hero-news__events .event-item .event-card__content .event-card__info-block i{
+color: var(--secondary-turquoise, #67CDA9);
+}
+.hero-news__events .event-item .event-card__content  .event-card__title{
+    margin-bottom: .625rem;
+    text-transform: uppercase;
+}
+
+.btn.btn-light-green{
+    border: 1px solid var(--secondary-teal, #A1E7D7);
+    background: var(--secondary-teal, #A1E7D7);
+    color: var(--primary-dark-blue);
+}
+.btn.btn-light-green:hover{
+    border: 1px solid var(--secondary-teal, #A1E7D7);
+    color: var(--secondary-teal, #A1E7D7);
+    background: var(--primary-dark-blue);
+}
+.s-form__form-item label{
+    color: var(--primary-dark-blue);
+    text-transform: uppercase;
+}
+
+.booking-fields-section h3,
+.booking-fields-section h4{
+    color: var(--primary-dark-blue);
+}
+
 
 /**************************************/
 @media (min-width:1300px) {

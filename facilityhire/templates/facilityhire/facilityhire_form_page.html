@@ -38,9 +38,11 @@
             <div class="col-lg-4">
                 {% if field.name != 'booking_count' %}
                 {% if field.field.widget|klass == 'ClearableFileInput' %}
-                <div class="s-form__form-item TextInput">
+                <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
+                    {{ field.label_tag }}
                     <div class="input-wrap" data-required="True">                        
-                        {% render_field field class+='form-control input-style' placeholder=field.field.label %}
+                        
+                        {% render_field field class+='form-control input-style' placeholder='' %}
                          <span class="file-custom"></span>
                     </div>
                     {% if field.help_text %}
@@ -56,11 +58,12 @@
                     
                 </div>
                 
-                {% elif field.field.widget|klass == 'CheckboxSelectMultiple' %}
-                <div class="s-form__form-item">
+                {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'Select1' %}
+                <div class="s-form__form-item {{field.field.widget|klass}}">
+                    {{ field.label_tag }}
                     <div class="input-wrap" data-required="True">                        
-                        {{ field.label_tag }}
-                        {% render_field field class+='form-control input-style' placeholder=field.field.label %}
+                        
+                        {% render_field field class+='form-control input-style' placeholder='' %}
                     </div>
                     {% if field.help_text %}
                         <p class="help-text">{{ field.help_text }}</p>
@@ -75,10 +78,11 @@
                     
                 </div>
                 {% else %}
-                <div class="s-form__form-item TextInput">
-                    
-                    <div class="input-wrap" data-required="True">                        
-                        {% render_field field class+='form-control input-style' placeholder=field.field.label %}
+                <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
+                    {{ field.label_tag }}
+                    <div class="input-wrap" data-required="True">    
+                                            
+                        {% render_field field class+='form-control input-style' placeholder='' %}
                     </div>
                     {% if field.help_text %}
                         <p class="help-text">{{ field.help_text }}</p>
