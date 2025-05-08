@@ -131,7 +131,9 @@
                   </time>
                 </div>
                 <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--2">
+                  {% if item.category %}
                   <a href="#" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">{{ item.category|safe }}</span></span></a>
+                  {% endif %}
                 </div>
               </div>
               <h2 class="modal__section-title">{{ item.title|safe }}</h2>
