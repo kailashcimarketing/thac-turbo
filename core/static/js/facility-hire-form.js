@@ -66,7 +66,7 @@
                 if (removeButtons.length === 1) {
                     removeButtons[0].style.display = 'none';
                 } else {
-                    removeButtons.forEach(btn => btn.style.display = 'block');
+                    removeButtons.forEach(btn => btn.style.display = 'inline-flex');
                 }
             }
             

@@ -185,14 +185,16 @@
                             </div>
                         {% endfor %}
                         </div>
+                        <a href="javascript:void(0);" class="remove-booking-btn btn btn--fifth" {% if forloop.first %}style="display:none;"{% endif %}>
+                            <span class="btn__content"> <span class="btn__txt">Remove Booking</span> </span>
+                        </a>
                         
-                        <button type="button" class="remove-booking-btn btn btn-green" {% if forloop.first %}style="display:none;"{% endif %}>
-                            Remove Booking
-                        </button>
                     </div>
                 </div>
                 
-                <button type="button" id="add-booking-btn" class="btn btn-green">Add Another Booking</button>
+                <a href="javascript:void(0);" id="add-booking-btn" class="btn btn--secondary">
+                    <span class="btn__content"> <span class="btn__txt">Add Another Booking</span> </span>
+                </a>
             </div>
             
             <div class="form-actions">
@@ -263,7 +265,9 @@
             {% endfor %}
             </div>
             
-            <button type="button" class="remove-booking-btn btn btn-green">Remove Booking</button>
+            <a href="javascript:void(0);" class="remove-booking-btn btn btn--fifth" >
+                <span class="btn__content"> <span class="btn__txt">Remove Booking</span> </span>
+            </a>
         </div>
     </template>
 
