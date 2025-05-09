@@ -394,6 +394,7 @@ class FacilityhireFormPage(AbstractEmailForm):
         #return super().process_form_submission(form)
     
     def serve(self, request):
+        booking_temp_data = []
         if request.method == 'POST':
             form = self.get_form(request.POST, request.FILES, page=self, user=request.user)
 
@@ -422,6 +423,15 @@ class FacilityhireFormPage(AbstractEmailForm):
                 form.fields[f'booking_{i}_number_of_participants'] = forms.IntegerField(
                     label=f"Booking {i} Number of Participants", #required=True
                 )
+                booking = {
+                    'start_date': form.data.get(f'booking_{i}_start_date', ''),
+                    'end_date': form.data.get(f'booking_{i}_end_date', ''),
+                    'frequency_of_booking': form.data.get(f'booking_{i}_frequency_of_booking', ''),
+                    'start_time': form.data.get(f'booking_{i}_start_time', ''),
+                    'finish_time': form.data.get(f'booking_{i}_finish_time', ''),
+                    'number_of_participants': form.data.get(f'booking_{i}_number_of_participants', ''),
+                }
+                booking_temp_data.append(booking)
             
             if form.is_valid():
                 # Process the form data
@@ -455,6 +465,7 @@ class FacilityhireFormPage(AbstractEmailForm):
         context = self.get_context(request)
         context['form'] = form
         context['booking_fields'] = self.get_booking_fields()  # Display booking fields on the form
+        context['booking_temp_data'] =booking_temp_data
         return TemplateResponse(request, self.get_template(request), context)
 
     

@@ -12,6 +12,13 @@ import re
 import random
 today = datetime.now()
 
+@register.filter
+def is_booking_field(field):
+    return field.name.startswith('booking_')
+
+@register.filter
+def not_booking_field(field):
+    return not field.name.startswith('booking_')
 
 @register.filter('klass')
 def klass(ob):

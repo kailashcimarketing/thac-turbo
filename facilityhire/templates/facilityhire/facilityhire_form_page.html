@@ -41,67 +41,68 @@
             </div>
             {% else %}
             <div class="col-lg-4">
-                {% if field.name != 'booking_count' %}
-                {% if field.field.widget|klass == 'ClearableFileInput' %}
-                    <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
-                        {{ field.label_tag }}
-                        <div class="input-wrap" data-required="True">                        
+                {% if field.name != 'booking_count' and field|not_booking_field %}
+                    {% if field.field.widget|klass == 'ClearableFileInput' %}
+                        <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
+                            {{ field.label_tag }}
+                            <div class="input-wrap" data-required="True">                        
+                                
+                                {% render_field field class+='form-control input-style' placeholder='' %}
+                                <span class="file-custom"></span>
+                            </div>
+                            {% if field.help_text %}
+                                <p class="help-text">{{ field.help_text }}</p>
+                            {% endif %}
+                            {% if field.errors %}
+                                    <ul class="errors">
+                                        {% for error in field.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
                             
-                            {% render_field field class+='form-control input-style' placeholder='' %}
-                            <span class="file-custom"></span>
                         </div>
-                        {% if field.help_text %}
-                            <p class="help-text">{{ field.help_text }}</p>
-                        {% endif %}
-                        {% if field.errors %}
-                                <ul class="errors">
-                                    {% for error in field.errors %}
-                                        <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
+                    
+                    {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'Select1' %}
+                        <div class="s-form__form-item {{field.field.widget|klass}}">
+                            {{ field.label_tag }}
+                            <div class="input-wrap" data-required="True">                        
+                                
+                                {% render_field field class+='form-control input-style' placeholder='' %}
+                            </div>
+                            {% if field.help_text %}
+                                <p class="help-text">{{ field.help_text }}</p>
                             {% endif %}
-                        
-                    </div>
-                
-                {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'Select1' %}
-                    <div class="s-form__form-item {{field.field.widget|klass}}">
-                        {{ field.label_tag }}
-                        <div class="input-wrap" data-required="True">                        
+                            {% if field.errors %}
+                                    <ul class="errors">
+                                        {% for error in field.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
                             
-                            {% render_field field class+='form-control input-style' placeholder='' %}
                         </div>
-                        {% if field.help_text %}
-                            <p class="help-text">{{ field.help_text }}</p>
-                        {% endif %}
-                        {% if field.errors %}
-                                <ul class="errors">
-                                    {% for error in field.errors %}
-                                        <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
+                    {% else %}
+                        <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
+                            {{ field.label_tag }}
+                            <div class="input-wrap" data-required="True">    
+                                                    
+                                {% render_field field class+='form-control input-style' placeholder='' %}
+                            </div>
+                            {% if field.help_text %}
+                                <p class="help-text">{{ field.help_text }}</p>
                             {% endif %}
-                        
-                    </div>
-                {% else %}
-                    <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
-                        {{ field.label_tag }}
-                        <div class="input-wrap" data-required="True">    
-                                                
-                            {% render_field field class+='form-control input-style' placeholder='' %}
+                            {% if field.errors %}
+                                    <ul class="errors">
+                                        {% for error in field.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            
                         </div>
-                        {% if field.help_text %}
-                            <p class="help-text">{{ field.help_text }}</p>
-                        {% endif %}
-                        {% if field.errors %}
-                                <ul class="errors">
-                                    {% for error in field.errors %}
-                                        <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        
-                    </div>
-                {% endif %}                    
+                    {% endif %}                    
+                    
                 {% endif %}
             </div>
             {% endif %}
@@ -111,6 +112,7 @@
             
             {# Hidden field to track the number of bookings #}
             {{ form.booking_count }}
+            {{form.booking_count.value}}
             
             {# booking fields section #}
             <div class="booking-fields-section">
@@ -124,7 +126,8 @@
                     <div class="booking" data-booking-index="1">
                         <h4>Booking #<span class="booking-number">1</span></h4>
                         <div class="row">
-
+                            
+                        
                         
                         {% for field_config in page.get_booking_fields %}
                         <div class="col-lg-4">
@@ -201,10 +204,10 @@
     </div>
     {# Booking template for JavaScript to use #}
     <template id="booking-template">
+        
         <div class="booking" data-booking-index="__INDEX__">
             <h4>Booking #<span class="booking-number">__INDEX__</span></h4>
-            <div class="row">
-                
+            <div class="row">   
             {% for field_config in page.get_booking_fields %}
             <div class="col-lg-4">
                 <div class="form-group">
@@ -263,9 +266,7 @@
             <button type="button" class="remove-booking-btn btn btn-green">Remove Booking</button>
         </div>
     </template>
-{% block extra_js %}
-<script src="{% static 'js/facility-hire-form.js' %}"></script>
- {% endblock %}
+
 
 
 
@@ -284,3 +285,64 @@
 
 
 {% endblock %}
+{% block extra_js %}
+<script>
+    var holding_values = {{booking_temp_data|safe}};
+
+    function fillBookings() {
+    let i = 0;
+
+    function processNext() {
+      if (i >= holding_values.length) return;
+
+      const bookingIndex = i + 1;
+      const booking = holding_values[i];
+
+      if (!booking) {
+        console.warn(`No booking data for index ${i}`);
+        i++;
+        processNext();
+        return;
+      }
+
+      const bookingBlock = $(`.booking[data-booking-index="${bookingIndex}"]`);
+      if (bookingBlock.length === 0) {
+        const addBtn = $('#add-booking-btn');
+        if (addBtn.length) {
+          addBtn.click();
+
+          // Wait a bit for DOM to update
+          setTimeout(() => {
+            fillFields(bookingIndex, booking);
+            i++;
+            processNext();
+          }, 200);
+          return;
+        }
+      } else {
+        fillFields(bookingIndex, booking);
+        i++;
+        processNext();
+      }
+    }
+
+    function fillFields(index, booking) {
+      const prefix = `booking_${index}_`;
+
+      $(`[name="${prefix}start_date"]`).val(booking.start_date);
+      $(`[name="${prefix}end_date"]`).val(booking.end_date);
+      $(`[name="${prefix}frequency_of_booking"]`).val(booking.frequency_of_booking);
+      $(`[name="${prefix}start_time"]`).val(booking.start_time);
+      $(`[name="${prefix}finish_time"]`).val(booking.finish_time);
+      $(`[name="${prefix}number_of_participants"]`).val(booking.number_of_participants);
+    }
+
+    processNext();
+  }
+
+  $(document).ready(function () {
+    fillBookings();
+  });
+    </script>
+<script src="{% static 'js/facility-hire-form.js' %}"></script>
+ {% endblock %}

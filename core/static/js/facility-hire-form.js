@@ -11,7 +11,7 @@
             // Add booking button event listener
             addBookingBtn.addEventListener('click', function() {
                 bookingCount++;
-                
+                console.log("clicked");
                 // Update the hidden field
                 bookingCountField.value = bookingCount;
                 
