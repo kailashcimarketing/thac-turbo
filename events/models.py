@@ -19,6 +19,11 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
 
+class EventCategory(Orderable):
+    page = ParentalKey('Events', related_name='categories')
+    category = models.ForeignKey('events.Category', related_name='+', null=True, blank=True, on_delete=models.SET_NULL)
+
+
 
 # Create your models here.
 class Events(ClusterableModel):
@@ -50,6 +55,18 @@ class Events(ClusterableModel):
     
     category = models.ForeignKey('events.Category', related_name='event_category', null=True, blank=True, on_delete=models.SET_NULL)
     body = StreamField(events_stream_fields,null=True,blank=True)
+
+    def get_categories(self):
+        if self.categories.all():
+            return self.categories.all()
+        
+        return False
+    
+    def get_first_category(self):
+        if self.get_categories():
+            return self.get_categories()[0]
+        
+        return False
     
     panels = [
         FieldPanel('title'),
@@ -64,7 +81,10 @@ class Events(ClusterableModel):
         FieldPanel('hero_image'),
         FieldPanel('location'),
         FieldPanel('short_description'),
-        FieldPanel('category'),
+        InlinePanel('categories', label='Categories', panels=[
+            FieldPanel('category'),
+        ]),
+        #FieldPanel('category'),
         
         FieldPanel('body'),        
     ]

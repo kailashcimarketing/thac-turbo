@@ -50,7 +50,7 @@
       </div>
       <div class="hero-news__events container-anim-js">
         {% for item in event_list.items %}
-          <div class="hero-news__events-col event-item {{ item.category.slug }}">
+          <div class="hero-news__events-col event-item {% for cat in item.categories.all %} {{cat.category.slug}}{% endfor %}">
             <div class="event-card d-flex">
               <div class="event-card__pic-wrap flex-auto">
                 {% image item.image original format-webp as img %}
@@ -131,8 +131,9 @@
                   </time>
                 </div>
                 <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--2">
-                  {% if item.category %}
-                  <a href="#" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">{{ item.category|safe }}</span></span></a>
+                  {% if item.get_first_category %}
+                  <a href="#" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">
+                    {{ item.get_first_category|safe }}</span></span></a>
                   {% endif %}
                 </div>
               </div>
