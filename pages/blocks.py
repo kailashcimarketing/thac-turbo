@@ -328,6 +328,8 @@ class ContentStreamBlock(blocks.StreamBlock):
     quote = QuoteBlock()
     table = CustomTableBlock()
     image = ChildImageBlock()
+    downloadlist = DownloadList()
+    themebutton = ThemeButton()
     
 
 class TwoColumnBlock(blocks.StructBlock):
