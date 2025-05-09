@@ -323,10 +323,12 @@ span.ellipses {
   margin-left: 0.5rem;
 }
 
-.download-list btn.btn-download+.btn.btn-download,
+.download-list .btn.btn-download+.btn.btn-download,
 .external-links .btn.btn-external-link+.btn.btn-external-link {
   margin-left: 0;
 }
+
+
 
 .external-links .external-link-item,
 .download-list {
