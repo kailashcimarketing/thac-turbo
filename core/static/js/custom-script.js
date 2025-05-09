@@ -92,18 +92,38 @@ $(function () {
 
     $('.vimeo-video-btn').on('click', function () {
         var video_container = $(this).parents('.video-module-wrapper');
-        video_container.find('.vimeo-post-img').hide();
-        $(this).hide();
-        video_container.find('.vimeo-iframe').show();
-        if ($(this).attr('type') == 'mp4-video') {
-            var video = $(this).parent().find('video').get(0);
-            video.play();
-        } else {
-            var iframe = video_container.find('iframe');
-            const player = new Vimeo.Player(iframe);
-            player.play();
+        if(video_container.hasClass('active')){
+            console.log('active');
+            video_container.find('.vimeo-post-img').show();
+            //$(this).hide();
+            video_container.removeClass('active');
+            //video_container.find('.vimeo-iframe').hide();
+            if ($(this).attr('type') == 'mp4-video') {
+                var video = $(this).parent().find('video').get(0);
+                video.pause();
+                video.currentTime = 0;
+            } else {
+                var iframe = video_container.find('iframe');
+                const player = new Vimeo.Player(iframe);
+                player.pause();
+            }
+            return false;
+        }else{
+console.log('---active');
+            video_container.find('.vimeo-post-img').hide();
+            //$(this).hide();
+            video_container.addClass('active');
+            video_container.find('.vimeo-iframe').show();
+            if ($(this).attr('type') == 'mp4-video') {
+                var video = $(this).parent().find('video').get(0);
+                video.play();
+            } else {
+                var iframe = video_container.find('iframe');
+                const player = new Vimeo.Player(iframe);
+                player.play();
+            }
+            return false;
         }
-        return false;
     });
 
 

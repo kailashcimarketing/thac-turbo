@@ -960,7 +960,7 @@ form h6,
 }
 .webform-client-form h4{color: var(--primary-dark-blue);}
 .wagtail-form-section{
-  padding: 5rem 0;
+  padding: 5rem 1rem;
 }
 .wagtail-form-section p,
 .wagtail-form-section small,
@@ -968,6 +968,48 @@ form h6,
 .wagtail-form-section .input-style{
   padding: 0.5rem 0;
 }
+
+
+form .booking-fields-section .booking .form-group label {
+    font-weight: 400;
+    color: var(--primary-dark-blue);
+    text-transform: uppercase;
+}
+
+form .booking-fields-section .booking .form-group input.form-control {
+    min-height: 42px;
+    padding: 8px 0;
+    text-transform: none;
+}
+
+form .booking-fields-section .booking .form-group ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    text-transform: none;
+}
+
+form .booking-fields-section .booking .form-group ::-moz-placeholder {
+    /* Firefox 19+ */
+    text-transform: none;
+}
+
+form .booking-fields-section .booking .form-group :-ms-input-placeholder {
+    /* IE 10+ */
+    text-transform: none;
+}
+
+form .booking-fields-section .booking .form-group :-moz-placeholder {
+    /* Firefox 18- */
+    text-transform: none;
+}
+
+.video-module-wrapper.active  .vimeo-video-btn .video-module__btn-icon--pause{
+  opacity: 1;
+}
+
+.video-module-wrapper.active  .vimeo-video-btn  .video-module__btn-icon--play{
+  opacity: 0;
+}
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
@@ -1090,6 +1132,9 @@ form h6,
     flex-direction: column;
     width: 100%;
   }
+    .menu-open .header__container-wrap .header__container{
+        background: var(--primary-dark-blue);
+    }
 
   .header__megamenu-container .right-column,
   .header__megamenu-footer-content .column-row>div .header__megamenu-footer-col-1,
@@ -1110,6 +1155,9 @@ form h6,
   .header__col-3-btns-wrap .btn {
     flex: 1;
   }
+     .hero--secondary .hero__container .hero__title{
+        margin-bottom: 0;
+    }
 
   .btn.btn--third .btn__txt br {
     display: none;
