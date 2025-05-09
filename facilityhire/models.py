@@ -149,6 +149,9 @@ class FacilityhireSubmissionsListView(SubmissionsListView):
 
     
 class FacilityhireFormField(AbstractFormField):
+    help_text = models.TextField(
+        verbose_name="help text", blank=True
+    )
     field_type = models.CharField(
         verbose_name='field type',
         max_length=16,
