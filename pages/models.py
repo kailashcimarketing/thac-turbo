@@ -176,9 +176,10 @@ class CustomFormBuilder(FormBuilder):
 
     
 class FormField(AbstractFormField):
-    help_text = RichTextField(
+    help_text_content = RichTextField(
         verbose_name="help text", blank=True
     )
+    
     field_type = models.CharField(
         verbose_name='field type',
         max_length=16,
@@ -187,6 +188,9 @@ class FormField(AbstractFormField):
             ('image', 'Upload Image'), ('document', 'File Upload'),('heading', 'Heading')
         ]
     )
+    panels = AbstractFormField.panels+[
+        FieldPanel('help_text_content'),
+    ]
     page = ParentalKey('FormPage', on_delete=models.CASCADE, related_name='form_fields')   
 
 class CustomSubmissionsListView(SubmissionsListView):
@@ -295,6 +299,8 @@ class FormPage(AbstractEmailForm):
     promote_panels = AbstractEmailForm.promote_panels + [
         FieldPanel('short_description'),
     ]
+
+    
     
     def get_hero(self):
         if self.formpage_hero.all():

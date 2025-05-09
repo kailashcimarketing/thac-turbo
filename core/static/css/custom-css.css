@@ -766,13 +766,28 @@ body:not(.is-sticky-local-menu) .internal-page-navigation-after-scroll {
   width: 0;
 }
 
-.internal-page-navigation-after-scroll .news-category-filter a.btn.btn--third.scroll-link.active {
+.internal-page-navigation-after-scroll .news-category-filter a.btn.btn--third.scroll-link.active .btn__txt  {
   color: var(--primary-dark-blue);
 }
 
 .internal-page-navigation-after-scroll .news-category-filter a.btn.btn--third.scroll-link.active:before {
   width: 100%;
+}
 
+.s-2cols__content ul li,
+.check-list li{
+    padding-left: 2.25rem;
+}
+.s-2cols__content ul li:before,
+.check-list li:before{
+    position: absolute;
+    left: 0;
+    background: none;
+    font-size: 1.25rem;
+    font-family: "Font Awesome 6 Pro";
+    content: "\f058";
+    font-weight: 900;
+    color: var(--secondary-turquoise, #67CDA9);
 }
 
 
@@ -1012,6 +1027,40 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
   opacity: 0;
 }
 
+.light-theme {
+    margin-top: -3px !important ;
+    margin-top: -3px !important;
+}
+
+
+.help-text-content ul li,
+.s-2cols__content ul li,
+.check-list li{
+    padding-left: 2.25rem;
+}
+.help-text-content ul li:before,
+.s-2cols__content ul li:before,
+.check-list li:before{
+    position: absolute;
+    left: 0;
+    background: none;
+    font-size: 1.25rem;
+    font-family: "Font Awesome 6 Pro";
+    content: "\f058";
+    font-weight: 900;
+    color: var(--secondary-turquoise, #67CDA9);
+}
+
+.help-text-content{
+     background: #ffff;
+    padding: 2rem;
+    height: 200px;
+    overflow: auto;
+    color: var(--house-lewis-2) !important;
+    margin-bottom: 2rem;
+}
+
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
@@ -1164,4 +1213,7 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
   .btn.btn--third .btn__txt br {
     display: none;
   }
+     .internal-page-navigation {
+        margin: 6rem 0 2.75rem;
+    }
 }
