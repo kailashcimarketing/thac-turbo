@@ -176,7 +176,7 @@ class CustomFormBuilder(FormBuilder):
 
     
 class FormField(AbstractFormField):
-    help_text = models.TextField(
+    help_text = RichTextField(
         verbose_name="help text", blank=True
     )
     field_type = models.CharField(

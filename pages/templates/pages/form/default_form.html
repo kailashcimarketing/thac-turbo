@@ -43,7 +43,7 @@
               <div class="select-input" data-required="{{ field.field.required }}">
                 {% render_field field class+='form-control input-style' %}
               </div>
-              <small>{{ field.field.help_text|safe }}</small>
+              <small class="{{field.field.label|slugify}} help-text-element" >{{ field.field.help_text|safe }}</small>
               {{ field.errors }}
             </div>
           {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'CheckboxInput' %}
@@ -57,7 +57,7 @@
               <div class="select-input" data-required="{{ field.field.required }}">
               {% render_field field class+='form-control input-style' %}
               </div>
-              <small>{{ field.field.help_text|safe }}</small>
+              <small class="{{field.field.label|slugify}} help-text-element">{{ field.field.help_text|safe }}</small>
               {{ field.errors }}
           </div>
           {% elif field.field.widget|klass == 'ClearableFileInput' %}
@@ -71,7 +71,7 @@
                 <div class="select-input" data-required="{{ field.field.required }}">
                   {% render_field field class+='form-control input-style' %}
                 </div>
-                <small>{{ field.field.help_text|safe }}</small>
+                <small class="{{field.field.label|slugify}} help-text-element" >{{ field.field.help_text|safe }}</small>
                 {{ field.errors }}
               </div>
           {% else %}           
@@ -84,7 +84,7 @@
                   {% render_field field class+='form-control input-style' placeholder=field.field.label autocomplete="Off" %}
                   {% endif %}
               </div>
-              <small>{{ field.field.help_text|safe }}</small>
+              <small class="{{field.field.label|slugify}} help-text-element" >{{ field.field.help_text|safe }}</small>
               {{ field.errors }}
           </div>
           {% endwith %}
@@ -148,7 +148,7 @@
               <div class="select-input" data-required="{{ field.field.required }}">
                 {% render_field field class+='form-control input-style' %}
               </div>
-              <small>{{ field.field.help_text|safe }}</small>
+              <small class="{{field.field.label|slugify}} help-text-element" >{{ field.field.help_text|safe }}</small>
               {{ field.errors }}
             </div>
           {% elif field.field.widget|klass == 'CheckboxSelectMultiple' or field.field.widget|klass == 'CheckboxInput' %}
@@ -162,7 +162,7 @@
               <div class="select-input" data-required="{{ field.field.required }}">
               {% render_field field class+='form-control input-style' %}
               </div>
-              <small>{{ field.field.help_text|safe }}</small>
+              <small class="{{field.field.label|slugify}} help-text-element" >{{ field.field.help_text|safe }}</small>
               {{ field.errors }}
           </div>
           {% elif field.field.widget|klass == 'ClearableFileInput' %}
@@ -176,7 +176,7 @@
                 <div class="select-input" data-required="{{ field.field.required }}">
                   {% render_field field class+='form-control input-style' %}
                 </div>
-                <small>{{ field.field.help_text|safe }}</small>
+                <small class="{{field.field.label|slugify}} help-text-element" >{{ field.field.help_text|safe }}</small>
                 {{ field.errors }}
               </div>
           {% else %}           
@@ -195,7 +195,7 @@
                   {% render_field field class+='form-control input-style' autocomplete="Off" %}
                   {% endif %}
               </div>
-              <small>{{ field.field.help_text|safe }}</small>
+              <small class="{{field.field.label|slugify}} help-text-element" >{{ field.field.help_text|safe }}</small>
               {{ field.errors }}
           </div>
           {% endwith %}
