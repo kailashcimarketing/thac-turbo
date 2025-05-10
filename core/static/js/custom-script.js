@@ -134,6 +134,9 @@ console.log('---active');
     // Build the internal navigation menu
     if ($navLinks.length) {
         let navHtml = '';
+        let mobile_navHtml='<div class="internal-navigation-dropdown">';      
+        mobile_navHtml += '<a class="btn">Overview</a>';
+        mobile_navHtml += '<ul>';
 
         $navLinks.each(function () {
             const label = $(this).data('label');
@@ -149,6 +152,7 @@ console.log('---active');
                     </a>
                 </div>`;
                 /// navHtml += `<li><a href="#${targetId}" class="scroll-link">${label}</a></li>`;
+                mobile_navHtml += `<li><a href="${targetId}" class="scroll-link">${label}</a></li>`;
             }
             const $original = $('#' + targetId);
             const $next = $original.nextAll(':not(script):visible').first();
@@ -158,10 +162,12 @@ console.log('---active');
                 $original.remove();
             }
         });
+        mobile_navHtml += '</ul>';
+        mobile_navHtml += '</div>';
 
 
-        $navContainer.html(navHtml);
-        $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div></div>");
+        $navContainer.html(navHtml+mobile_navHtml);
+        $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div>"+mobile_navHtml+"</div>");
     }
 
     // Smooth scrolling on link click
@@ -177,6 +183,11 @@ console.log('---active');
 
             bodyScrollBar.scrollTo(0, offsetTop, 600); // x, y, duration (ms)
         }
+    });
+
+    $(document).on('click', '.internal-navigation-dropdown > a', function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass('open');
     });
 
     if ($('.internal-page-navigation-container').length && bodyScrollBar) {
