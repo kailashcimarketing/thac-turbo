@@ -152,7 +152,7 @@ console.log('---active');
                     </a>
                 </div>`;
                 /// navHtml += `<li><a href="#${targetId}" class="scroll-link">${label}</a></li>`;
-                mobile_navHtml += `<li><a href="${targetId}" class="scroll-link">${label}</a></li>`;
+                mobile_navHtml += `<li><a href="#${targetId}" class="scroll-link">${label}</a></li>`;
             }
             const $original = $('#' + targetId);
             const $next = $original.nextAll(':not(script):visible').first();
@@ -176,6 +176,7 @@ console.log('---active');
         $('.internal-page-navigation-container').addClass('active');
         const targetId = $(this).attr('href');
         const $target = $(targetId);
+        $(".internal-navigation-dropdown").removeClass('open');
 
         if ($target.length && bodyScrollBar) {
             // Get the target's offset inside the custom scroll container
