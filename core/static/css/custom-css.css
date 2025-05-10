@@ -1352,3 +1352,8 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
     margin: 6rem 0 2.75rem;
   }
 }
+@media (max-width:575px){
+ .full-width-video-module .video-module{
+    height: auto;
+  }
+}
