@@ -135,7 +135,7 @@ console.log('---active');
     if ($navLinks.length) {
         let navHtml = '';
         let mobile_navHtml='<div class="internal-navigation-dropdown">';      
-        mobile_navHtml += '<a class="btn">Overview</a>';
+        mobile_navHtml += '<a class="btn nav-label">Overview</a>';
         mobile_navHtml += '<ul>';
 
         $navLinks.each(function () {
@@ -167,7 +167,11 @@ console.log('---active');
 
 
         $navContainer.html(navHtml+mobile_navHtml);
-        $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div>"+mobile_navHtml+"</div>");
+        if($(window).width() > 767){
+            $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div></div>");
+        }else{
+            $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">'+ mobile_navHtml +'</div></div>');
+        }
     }
 
     // Smooth scrolling on link click
@@ -177,12 +181,15 @@ console.log('---active');
         const targetId = $(this).attr('href');
         const $target = $(targetId);
         $(".internal-navigation-dropdown").removeClass('open');
-
+        
         if ($target.length && bodyScrollBar) {
             // Get the target's offset inside the custom scroll container
             const offsetTop = $target[0].offsetTop;
 
             bodyScrollBar.scrollTo(0, offsetTop, 600); // x, y, duration (ms)
+        }else{
+            const offsetTop = $target.offset().top;
+            $('html, body').animate({ scrollTop: offsetTop }, 600);
         }
     });
 
@@ -191,23 +198,39 @@ console.log('---active');
         $(this).parent().toggleClass('open');
     });
 
-    if ($('.internal-page-navigation-container').length && bodyScrollBar) {
-        let lastScrollTop = 0;
+    if ($('.internal-page-navigation-container').length) {
         const $mainNavContainer = $('.internal-page-navigation-container');
         const initialOffsetTop = $mainNavContainer.offset().top + 350;
         const stickyClass = 'is-sticky-local-menu';
+        let lastScrollTop = 0;
 
-        bodyScrollBar.addListener(({ offset }) => {
-            const scrollTop = offset.y;
+        if (bodyScrollBar != null) {
+            // Use custom scrollbar listener
+            bodyScrollBar.addListener(({ offset }) => {
+                const scrollTop = offset.y;
 
-            if (scrollTop >= lastScrollTop && scrollTop >= initialOffsetTop) {
-                $('body').addClass(stickyClass);
-            } else {
-                $('body').removeClass(stickyClass);
-            }
+                if (scrollTop >= lastScrollTop && scrollTop >= initialOffsetTop) {
+                    $('body').addClass(stickyClass);
+                } else {
+                    $('body').removeClass(stickyClass);
+                }
 
-            lastScrollTop = scrollTop;
-        });
+                lastScrollTop = scrollTop;
+            });
+        } else {
+            // Fallback to native scroll listener
+            $(window).on('scroll', function () {
+                const scrollTop = $(this).scrollTop();
+
+                if (scrollTop >= lastScrollTop && scrollTop >= initialOffsetTop) {
+                    $('body').addClass(stickyClass);
+                } else {
+                    $('body').removeClass(stickyClass);
+                }
+
+                lastScrollTop = scrollTop;
+            });
+        }
     }
 
 
@@ -221,31 +244,47 @@ $(window).on('load', function () {
     const sections = Array.from(links).map(link =>
         document.querySelector(link.getAttribute('href'))
     );
-    //console.log(sections);
+
     const offset = 100; // Adjust for fixed header height
-    if (bodyScrollBar) {
-        bodyScrollBar.addListener(() => {
-            // Your existing logic
-            ScrollTrigger.update();
-            const currentScrollTop = bodyScrollBar.offset.y;
 
+    function handleScroll(scrollTop) {
+        ScrollTrigger.update();
 
-            // 🔥 ScrollSpy logic inside the same listener
-            const scrollY = currentScrollTop + offset;
+        const scrollY = scrollTop + offset;
 
-            sections.forEach((section, index) => {
-                console.log(
+        sections.forEach((section, index) => {
+            if (!section) return; // Safety check
+
+            console.log(
                     `section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`
                 );
-                if (section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY) {
-                    console.log("hello active");
-                    links.forEach(link => link.classList.remove('active'));
-                    links[index].classList.add('active');
-                }
-            });
+
+            const inView =
+                section.offsetTop <= scrollY &&
+                section.offsetTop + section.offsetHeight > scrollY;
+
+            if (inView) {
+                links.forEach(link => link.classList.remove('active'));
+                console.log(links[index]);
+                links[index].classList.add('active');
+                $('.nav-label').text(links[index].textContent || links[index].innerText);
+            }
+        });
+    }
+
+    if (bodyScrollBar != null) {
+        bodyScrollBar.addListener(() => {
+            const currentScrollTop = bodyScrollBar.offset.y;
+            handleScroll(currentScrollTop);
+        });
+    } else {
+        $(window).on('scroll', function () {
+            const currentScrollTop = $(this).scrollTop();
+            handleScroll(currentScrollTop);
         });
     }
 });
+
 
 
 

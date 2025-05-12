@@ -1229,7 +1229,7 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
     padding: 0.5rem;
   }
 
-  .hero-news__btns-wrap .internal-navigation-dropdown>a.btn {
+  .internal-navigation-dropdown>a.btn {
     background: var(--secondary-teal, #a1e7d7);
     color: var(--primary-dark-blue, #002664);
     border: 1px solid var(--secondary-teal, #a1e7d7);
@@ -1244,7 +1244,7 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
     z-index: 11;
   }
 
-  .hero-news__btns-wrap .internal-navigation-dropdown>a:after {
+  .internal-navigation-dropdown>a:after {
     border: none;
     font-family: "Font Awesome 6 Pro";
     content: "\f107";
@@ -1253,24 +1253,23 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
     color: var(--primary-dark-blue);
     font-size: 1rem;
   }
-     .hero-news__btns-wrap .internal-navigation-dropdown.open{
+     .internal-navigation-dropdown.open{
       border-radius: 2rem 2rem 0 0;
      }
-    .hero-news__btns-wrap .internal-navigation-dropdown.open>a:after {
+     .internal-navigation-dropdown.open>a:after {
          content: "\f106";
     }
 
-  .hero-news__btns-wrap .internal-navigation-dropdown ul li {
+ .internal-navigation-dropdown ul li {
     list-style: none;
     padding: 0;
     margin-bottom: 0;
   }
-
-  .hero-news__btns-wrap .internal-navigation-dropdown ul li:before {
+ .internal-navigation-dropdown ul li:before {
     display: none;
   }
 
-  .hero-news__btns-wrap .internal-navigation-dropdown ul {
+.internal-navigation-dropdown ul {
     transition: all ease .5s;
     background: var(--primary-dark-blue);
     margin-top: 0;
@@ -1279,13 +1278,12 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
     transform: scaleY(0);
     transform-origin: top;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: .5rem;
+    right: .5rem;
     border-radius: 0 0 2rem 2rem;
     padding: 0 0.5rem;
   }
-
-  .hero-news__btns-wrap .internal-navigation-dropdown.open ul {
+.internal-navigation-dropdown.open ul {
     margin-top: 3rem;
     pointer-events: all;
     opacity: 1;
@@ -1294,7 +1292,7 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
 
 
 
-  .hero-news__btns-wrap .internal-navigation-dropdown ul li a {
+   .internal-navigation-dropdown ul li a {
     background: var(--primary-dark-blue, #002664);
     color: var(--basic-white, #fff);
     padding: 0.625rem 1.5rem;
@@ -1347,9 +1345,20 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
   .btn.btn--third .btn__txt br {
     display: none;
   }
+  .internal-page-navigation-after-scroll .news-category-filter{
+    background-color: transparent;
+  }
 
   .internal-page-navigation {
     margin: 6rem 0 2.75rem;
+  }
+  .internal-page-navigation-after-scroll .news-category-filter {
+    display: flex;
+    border-radius: 2rem;
+    margin:auto !important;
+  }
+  .internal-page-navigation-after-scroll .internal-page-navigation-after-scroll .news-category-filter.open{
+    margin: 2rem 2rem 0 0;
   }
 }
 @media (max-width:575px){
