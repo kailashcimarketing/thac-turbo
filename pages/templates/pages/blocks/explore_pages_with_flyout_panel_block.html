@@ -2,7 +2,7 @@
 
 
 
-<section class="s-explore position-relative">
+<section class="s-explore position-relative explore-pages-with-flyout-panel-block">
     <div class="s-explore__bg-wrap overlay--special overlay after-el before-el overflow-hidden parallax-trigger-js">
         {% image value.image original format-webp as img %}
         <img class="w-100 h-100 obj-cover parallax-js parallax-y-js parallax-img-js" src="{{img.url}}" alt="">
@@ -26,7 +26,28 @@
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>
                     <div class="new-card__content">
-                        <h3 class="new-card__title">{{item.title|safe}}</h3>
+                        
+                        <div class="block-content"><h3 class="new-card__title">{{item.title|safe}}</h3>
+                        {% if item.specific.short_description %}
+                        <div class="new-card__txt-wrap last-el-mb-0">
+                            <p>{{item.specific.short_description|safe}}</p>
+                        </div>
+                        {% endif %}
+
+
+                        <div class="btn-wrap">
+
+                       
+                        {% if item.specific.url %}
+                        <div class="s-feature__btn-wrap block-anim-js">
+                            <a href="{{item.specific.url}}" class="btn btn--eighth">
+                                <span class="btn__content"> <span class="btn__txt">View Details</span> </span>
+                            </a>
+                        </div>
+                        {% endif %}
+                       </div>
+                      
+                      </div>
                     </div>
                 </div>
             </div>

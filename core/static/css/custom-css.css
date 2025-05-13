@@ -1088,9 +1088,80 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
   display: none;
 }
 
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary{
+border: none;
+padding: 0;
+position: relative;
+overflow: hidden;
+}
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content{
+  position: absolute;
+  padding: 45% 1.25rem 1.25rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  bottom: -34%;
+  left: 0;
+min-height: 250px;
+  right: 0;
+  color: var(--basic-white);
+  background: linear-gradient(180deg, rgba(0, 38, 100, 0.00) 0%, rgba(0, 38, 100, 0.65) 51.44%, rgba(0, 38, 100, 0.85) 100%);
+justify-content:flex-start;
+gap:.625rem;
+transition: all ease .5s;
 
+}
 
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content  .new-card__title{
+  color: var(--basic-white);
+font-size: 2.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: 120%; /* 48px */
+letter-spacing: -0.8px;
+margin-bottom: 0.5rem;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1; /* number of lines to show */
+        line-clamp: 1;
+-webkit-box-orient: vertical;
+}
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content p{
+  font-size: .875rem;
+  line-height: 150%;
+  transition: all ease .5s;
+  opacity: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+          line-clamp: 4;
+  -webkit-box-orient: vertical;
 
+}
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__pic-wrap {
+  height: auto;
+  margin-block-end: 0;
+}
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__pic-wrap img{
+  aspect-ratio: 360/480;
+}
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content .btn{
+  border: 1px solid var(--secondary-teal, #A1E7D7);
+  background: var(--secondary-teal, #A1E7D7);
+  margin-top: 1.25rem;
+  opacity: 0;
+  transition: all ease .5s;
+}
+
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary:hover .new-card__content{
+  bottom: 0;
+}
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary:hover .new-card__content p ,
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary:hover .new-card__content .btn{
+opacity: 1;  
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
