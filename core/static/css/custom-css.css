@@ -663,7 +663,7 @@ section,
   position: fixed;
   left: 0;
   right: 0;
-  top: 2rem;
+  top: 10px;
   z-index: 99;
   pointer-events: none;
   text-align: center;
@@ -1120,24 +1120,12 @@ font-weight: 700;
 line-height: 120%; /* 48px */
 letter-spacing: -0.8px;
 margin-bottom: 0.5rem;
-overflow: hidden;
-text-overflow: ellipsis;
-display: -webkit-box;
--webkit-line-clamp: 1; /* number of lines to show */
-        line-clamp: 1;
--webkit-box-orient: vertical;
 }
 .explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content p{
   font-size: .875rem;
   line-height: 150%;
   transition: all ease .5s;
   opacity: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* number of lines to show */
-          line-clamp: 4;
-  -webkit-box-orient: vertical;
 
 }
 .explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__pic-wrap {
@@ -1161,6 +1149,27 @@ display: -webkit-box;
 .explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary:hover .new-card__content p ,
 .explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary:hover .new-card__content .btn{
 opacity: 1;  
+}
+.s-scroll-banners__slide .small-title{
+  left: 0;
+    right: 0;
+}
+
+
+body .header__login-block-container .header__login-block-item{
+  position: relative;
+  overflow: hidden; 
+}
+
+body .header__login-block-container .header__login-block-item img{
+  transition: all ease .4s;
+}
+body .header__login-block-container .header__login-block-item:hover  img{
+  transform: scale(1.1);
+}
+
+.mylivechat_inline{
+  z-index: 11;
 }
 /**************************************/
 @media (min-width:1300px) {
@@ -1203,7 +1212,9 @@ opacity: 1;
   .s-scroll-banners__slide .small-title {
     position: absolute;
     top: 3rem;
-    left: 4rem;
+    left: 0;
+    right: 0;
+
   }
 
   .s-scroll-banners__slide .small-title h3 {
@@ -1415,6 +1426,9 @@ opacity: 1;
 
   .btn.btn--third .btn__txt br {
     display: none;
+  }
+  .internal-page-navigation-after-scroll{
+    top: 2px;
   }
   .internal-page-navigation-after-scroll .news-category-filter{
     background-color: transparent;
