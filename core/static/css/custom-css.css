@@ -1203,9 +1203,10 @@ body .header__login-block-container .header__login-block-item:hover img {
   display: block;
   width: 100%;
   clear: both;
+  float: left;
 }
 
-.divider-block>div {
+.divider-block>span {
   min-height: 1px;
   height: 1px;
   display: block;
