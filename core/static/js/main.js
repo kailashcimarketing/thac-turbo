@@ -525,7 +525,9 @@ document.addEventListener('DOMContentLoaded', () => {
             //event.preventDefault();
             
             if(!$('body').hasClass('menu-open') && $('body').hasClass('is-open-menu')){
-            $('.close-search').trigger('click');
+                if($('#search-block').hasClass('is-open')){
+                    $('.close-search').trigger('click');
+                }
             }
             document.body.classList.toggle('menu-open');
             document.querySelector('#header__overlay').classList.toggle('show-overlay-1');            
@@ -1446,8 +1448,6 @@ $(window).on('load', function () {
     let dropupBtns = $('.drop-block__btn-js');
     if (dropupBtns.length) {
         dropupBtns.on('click', function (e) {
-            console.log("hello");
-            
             //e.preventDefault();
             let targetId = $(this).attr('href'),
                 targetContent = $(targetId),
