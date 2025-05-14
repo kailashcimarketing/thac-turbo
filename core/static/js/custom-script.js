@@ -110,7 +110,7 @@ $(function () {
     $('.vimeo-video-btn').on('click', function () {
         var video_container = $(this).parents('.video-module-wrapper');
         if(video_container.hasClass('active')){
-            console.log('active');
+            //console.log('active');
             video_container.find('.vimeo-post-img').show();
             //$(this).hide();
             video_container.removeClass('active');
@@ -126,7 +126,7 @@ $(function () {
             }
             return false;
         }else{
-console.log('---active');
+//console.log('---active');
             video_container.find('.vimeo-post-img').hide();
             //$(this).hide();
             video_container.addClass('active');
@@ -272,9 +272,7 @@ $(window).on('load', function () {
         sections.forEach((section, index) => {
             if (!section) return; // Safety check
 
-            console.log(
-                    `section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`
-                );
+            //console.log(`section: #${section.id} | offsetTop: ${section.offsetTop} | offsetHeight: ${section.offsetHeight} | scrollY: ${scrollY} | inView: ${section.offsetTop <= scrollY && section.offsetTop + section.offsetHeight > scrollY}`);
 
             const inView =
                 section.offsetTop <= scrollY &&
@@ -282,9 +280,9 @@ $(window).on('load', function () {
 
             if (inView) {
                 links.forEach(link => link.classList.remove('active'));
-                console.log(links[index]);
+                //console.log(links[index]);
                 links[index].classList.add('active');
-                $('.nav-label').text(links[index].textContent || links[index].innerText);
+                $('.internal-page-navigation-after-scroll .nav-label').text(links[index].textContent || links[index].innerText);
             }
         });
     }
