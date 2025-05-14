@@ -7,7 +7,7 @@
         {% for item in value.items %}
           <div class="{{value.layout}}">
               <div class="thumbnail-block">
-                  <a href="{{item.external_link.url}}">
+                  <a href="{{item.external_link}}">
                       <div class="image">
                         {% image item.image original as img %}
                           <img src="{{img.url}}" class="w-100" alt="">

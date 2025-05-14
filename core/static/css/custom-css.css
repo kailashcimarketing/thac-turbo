@@ -1230,6 +1230,7 @@ body .header__login-block-container .header__login-block-item:hover img {
 }
 .external-link-thumbnails .thumbnail-block a   .image img {
   aspect-ratio: 275/185;
+  object-fit: cover;
   transition: all ease .4s;
 }
 .external-link-thumbnails .thumbnail-block a:hover .image img{
