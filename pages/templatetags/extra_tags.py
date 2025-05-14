@@ -170,6 +170,8 @@ def get_news_items(category='all', limit='all'):
 
 @register.simple_tag()
 def get_next_pre_pages(page):
+    if not page:
+        return False
         # Get the current page's parent
     parent_page = page.specific.get_parent()
 
