@@ -74,4 +74,51 @@ class Team(ClusterableModel):
         return self.title or "Unnamed Team"
 
     class Meta:
-        verbose_name = "Team"
+        verbose_name = "Leadership Team"
+
+class TeamAbstract(models.Model):
+    title = models.CharField(null=True,blank=False,max_length=255)
+    profile_picture = models.ForeignKey(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL, 
+        related_name='+'
+    ) 
+    position = models.CharField(null=True,blank=False,max_length=500)
+    credentials = models.CharField(null=True,blank=True,max_length=500)
+    phone = models.CharField(null=True,blank=True,max_length=50)
+    email  = models.EmailField(null=True,blank=True)
+    status = models.BooleanField(default=True,blank=True)
+    weight = models.IntegerField(default=100,null=False,blank=False)
+    additional_information = models.TextField(null=True, blank=True)
+
+    class Meta:
+        abstract = True
+
+# Create your models here.
+class Coaches(TeamAbstract,ClusterableModel):
+    def __str__(self):
+        return self.title or "Unnamed Team"
+
+    class Meta:
+        verbose_name = "Coach"
+        verbose_name_plural = "Coaches"
+         
+
+class Tutors(TeamAbstract,ClusterableModel):
+    def __str__(self):
+        return self.title or "Unnamed Team"
+
+    class Meta:
+        verbose_name = "Tutor"                
+        verbose_name_plural = "Tutors"
+
+
+class Instructors(TeamAbstract,ClusterableModel):
+    def __str__(self):
+        return self.title or "Unnamed Team"
+
+    class Meta:
+        verbose_name = "Instructor"                
+        verbose_name_plural = "Instructors"

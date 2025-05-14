@@ -45,6 +45,9 @@ common_blocks = [
     ('LatestNewsBlock',LatestNewsBlock()),
     ('TimetableBlock',TimetableBlock()),
     ('InternalPageNavigationBlock',InternalPageNavigationBlock()),
+    ('TutorListBlock',TutorListBlock()),
+    ('InstructorListBlock',InstructorListBlock()),
+    ('CoacheListBlock',CoacheListBlock()),
     
 ]
 homepage_stream_fields= common_blocks+ [

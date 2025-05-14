@@ -1,6 +1,6 @@
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
-from .models import Team, Category
+from .models import Team, Category, Coaches, Tutors,Instructors
 
 class TeamViewSet(SnippetViewSet):
     model = Team
@@ -9,6 +9,27 @@ class TeamViewSet(SnippetViewSet):
     list_display  =["title","position","status","weight",]
     search_fields = ("title",)
     #add_to_admin_menu = True
+
+class CoachesViewSet(SnippetViewSet):
+    model = Coaches
+    menu_label = "Coaches"
+    ordering = ("title",)
+    list_display  =["title","position","status","weight",]
+    search_fields = ("title",)    
+
+class TutorsViewSet(SnippetViewSet):
+    model = Tutors
+    menu_label = "Tutors"
+    ordering = ("title",)
+    list_display  =["title","position","status","weight",]
+    search_fields = ("title",)    
+
+class InstructorsViewSet(SnippetViewSet):
+    model = Instructors
+    menu_label = "Instructors"
+    ordering = ("title",)
+    list_display  =["title","position","status","weight",]
+    search_fields = ("title",)    
 
 class CatgoryViewSet(SnippetViewSet):
     model = Category
@@ -25,7 +46,9 @@ class TeamGroup(SnippetViewSetGroup):
     items = (
         CatgoryViewSet,
         TeamViewSet,
-        
+        CoachesViewSet,
+        TutorsViewSet,
+        InstructorsViewSet        
     )
 
 register_snippet(TeamGroup)

@@ -3,7 +3,7 @@ var searchResultFlag;
 $(window).on('load', function () {
 
     // init Isotope
-    let $container = $('.s-team__cards').isotope({
+    let $container = $('.s-team__cards.leadership-team').isotope({
         itemSelector: '.s-team__card-col',
         layoutMode: 'fitRows',
 

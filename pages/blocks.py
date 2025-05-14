@@ -879,6 +879,7 @@ class VacanciesListBlock(blocks.StructBlock):
 class TeamListBlock(blocks.StructBlock): 
     title = blocks.CharBlock(required=False)   
     category = SnippetChooserBlock('team.Category',required=False)
+    exclude = SnippetChooserBlock('team.Category',required=False)
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark') 
@@ -886,7 +887,41 @@ class TeamListBlock(blocks.StructBlock):
     items = blocks.StaticBlock()
     class Meta:
         label = "List all team"
+        group = 'Team'
         template = "pages/blocks/all_team_list.html"
+
+class CoacheListBlock(blocks.StructBlock): 
+    title = blocks.CharBlock(required=False)   
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark') 
+    ],label="background",default="dark-theme")
+    class Meta:
+        label = "Coaches List"
+        group = 'Team'
+        template = "pages/blocks/coache_list_block.html"
+
+class TutorListBlock(blocks.StructBlock): 
+    title = blocks.CharBlock(required=False)   
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark') 
+    ],label="background",default="dark-theme")
+    class Meta:
+        label = "Tutor List"
+        group = 'Team'
+        template = "pages/blocks/tutor_list_block.html"
+
+class InstructorListBlock(blocks.StructBlock): 
+    title = blocks.CharBlock(required=False)   
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark') 
+    ],label="background",default="dark-theme")
+    class Meta:
+        label = "Instructor List"
+        group = 'Team'
+        template = "pages/blocks/instructor_list_block.html"
         
 class LatestNewsBlock(blocks.StructBlock): 
     title = blocks.CharBlock(required=False)   
