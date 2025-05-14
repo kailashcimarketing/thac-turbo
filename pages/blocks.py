@@ -80,6 +80,12 @@ class SpaceBlock(blocks.StructBlock):
         label = "Space"
         template = "pages/blocks/space.html"
 
+class LeadTextBlock(blocks.StructBlock):
+    text = blocks.TextBlock()
+    class Meta:
+        label = "Lead Text"
+        template = "pages/blocks/lead_text_block.html"
+
 
 class DynamicSnippetChooserBlock(blocks.StructBlock):
     css_class = blocks.CharBlock(required=False, help_text='(optional)')
@@ -324,6 +330,7 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('ChildImageBlock',ChildImageBlock()),
         ('ThemeButton',ThemeButton()),
         ('LeadParagraphCapsBlock',LeadParagraphCapsBlock()),
+        ('LeadTextBlock',LeadTextBlock()),
     ])
     css_class = blocks.CharBlock(required=False)
     class Meta:
@@ -343,6 +350,7 @@ class ContentStreamBlock(blocks.StreamBlock):
     downloadlist = DownloadList()
     themebutton = ThemeButton()
     LeadParagraphCapsBlock = LeadParagraphCapsBlock()
+    LeadTextBlock = LeadTextBlock()
     
 
 class TwoColumnBlock(blocks.StructBlock):
