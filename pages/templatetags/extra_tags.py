@@ -202,6 +202,13 @@ def get_next_pre_pages(page):
         second_next_page = parent_page.get_next_sibling().get_children().first()
 
     # Now you can pass these pages to the template context
+    
+    if not previous_page:
+        previous_page = False
+    if not next_page:
+        next_page = False
+    if not second_next_page:
+        second_next_page = False    
     return {
         'previous_page': previous_page,
         'next_page': next_page,
