@@ -47,7 +47,14 @@ bottom_padding_list =[
 ]
 background_color =[
         ('light-theme','Light'),
-        ('dark-theme','Dark')
+        ('dark-theme','Dark'),
+        ('light-teal-theme','Light Teal')
+    ]
+
+theme_layout =[
+        ('light-theme','White'),
+        ('dark-theme','Navy'),
+        ('light-teal-theme','Light Teal')
     ]
 
 class TableItemBlock(blocks.StreamBlock):
@@ -75,7 +82,7 @@ class HtmlSourceBlock(blocks.StructBlock):
 
 class SpaceBlock(blocks.StructBlock):
     height = blocks.IntegerBlock(default=50)
-    background = blocks.ChoiceBlock(background_color,label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     class Meta:
         label = "Space"
         template = "pages/blocks/space.html"
@@ -263,10 +270,7 @@ class ChildImageBlock(blocks.StructBlock):
         template = "pages/blocks/child_image_block.html"
                
 class AccordionBlock(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     items = blocks.ListBlock(blocks.StructBlock([
@@ -298,20 +302,14 @@ class FaqBlock(blocks.StructBlock):
 class LeadParagraphCapsBlock(blocks.StructBlock):
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     lead_text = blocks.TextBlock()
     class Meta:
         label = "lead paragraph in all caps"        
         template = "pages/blocks/lead_paragraph_caps_block.html"
 
 class ContentWithVariableWidthBlock(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="dark-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     column_width = blocks.ChoiceBlock(column_width,default="col-lg-12")        
@@ -353,11 +351,8 @@ class ContentStreamBlock(blocks.StreamBlock):
     LeadTextBlock = LeadTextBlock()
     
 
-class TwoColumnBlock(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="dark-theme")
+class TwoColumnBlock(blocks.StructBlock):    
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     left_column_width = blocks.ChoiceBlock(column_width,required=False,default='col-lg-6')
@@ -703,10 +698,7 @@ class StatsCardWithoutParallaxBlock(blocks.StructBlock):
         template = "pages/blocks/stats_card_without_parallax_block.html" 
 
 class GridPhotoGalleryBlock(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     layout = blocks.ChoiceBlock([
         ('col-lg-4','Three Column'),
         ('col-lg-3','Four Column')
@@ -728,10 +720,7 @@ class NewsPhotoGalleryBlock(blocks.StructBlock):
         template = "pages/blocks/news_photo_gallery_block.html"
 
 class CentredTitleBlock(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     title = blocks.CharBlock()
     script_title = blocks.CharBlock()    
     class Meta:
@@ -743,10 +732,7 @@ class CentredTitleBlock(blocks.StructBlock):
 class VideoBlock(blocks.StructBlock):
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     layout = blocks.ChoiceBlock([
         ('container','Container'),
         ('container-fluid','Fullwidth')
@@ -787,10 +773,7 @@ class TwocolumnListContentBlock(blocks.StructBlock):
         template = "pages/blocks/twocolumn_list_content_block.html"
 
 class CTAButton(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     title = blocks.CharBlock()
     sub_title =blocks.CharBlock(required=False)
     button = SimpleButton()
@@ -849,10 +832,7 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     left_title = blocks.CharBlock()
     left_title_css_class = blocks.CharBlock(required=False)
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")   
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     
     content = blocks.StreamBlock([
         ('html',HtmlSourceBlock()),
@@ -884,10 +864,7 @@ class HomepageIntroContentBlock(blocks.StructBlock):
 
 
 class VacanciesListBlock(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark') 
-    ],label="background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     items = blocks.StaticBlock()
     class Meta:
         label = "List all vacancies"
@@ -902,10 +879,7 @@ class TeamListBlock(blocks.StructBlock):
         ('col-lg-4','Three Columns'),
         ('col-lg-3','Four columns'),
     ],default='col-lg-3')
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark') 
-    ],label="background",default="dark-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
     items = blocks.StaticBlock()
     class Meta:
         label = "List all team"
@@ -918,10 +892,7 @@ class CoacheListBlock(blocks.StructBlock):
         ('col-lg-4','Three Columns'),
         ('col-lg-3','Four columns'),
     ],default='col-lg-3')
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark') 
-    ],label="background",default="dark-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
     class Meta:
         label = "Coaches List"
         group = 'Team'
@@ -933,10 +904,7 @@ class TutorListBlock(blocks.StructBlock):
         ('col-lg-4','Three Columns'),
         ('col-lg-3','Four columns'),
     ],default='col-lg-3') 
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark') 
-    ],label="background",default="dark-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
     class Meta:
         label = "Tutor List"
         group = 'Team'
@@ -948,10 +916,7 @@ class InstructorListBlock(blocks.StructBlock):
         ('col-lg-4','Three Columns'),
         ('col-lg-3','Four columns'),
     ],default='col-lg-3')
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark') 
-    ],label="background",default="dark-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
     class Meta:
         label = "Instructor List"
         group = 'Team'
@@ -960,10 +925,7 @@ class InstructorListBlock(blocks.StructBlock):
 class LatestNewsBlock(blocks.StructBlock): 
     title = blocks.CharBlock(required=False)   
     category = SnippetChooserBlock('news.Category',required=False)
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark') 
-    ],label="background",default="dark-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     limit = blocks.IntegerBlock(default=3)
@@ -975,10 +937,7 @@ class LatestNewsBlock(blocks.StructBlock):
 
 
 class PDFFlipBookBlock(blocks.StructBlock):
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark') 
-    ],label="background",default="dark-theme")
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
     title = blocks.CharBlock()
     html = HtmlSourceBlock()
     class Meta:

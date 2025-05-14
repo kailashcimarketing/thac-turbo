@@ -431,8 +431,13 @@ form button.btn {
   margin-top: 1.5rem;
 }
 
+.light-teal-theme{
+  background: var(--primary-teal-20);
+  color: var(--primary-dark-blue);
+}
+
 .s-faq.light-theme {
-  background: var(--template-cover);
+  background: var(--primary-teal-20);
 }
 
 .s-faq.dark-theme {
@@ -449,7 +454,7 @@ form button.btn {
 }
 
 .news-detail .light-theme {
-  background: var(--primary-dark-blue)
+  background: var(--primary-dark-blue);
 }
 
 .modal__section-title a {
@@ -1038,7 +1043,7 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
 .video-module-wrapper.active .vimeo-video-btn .video-module__btn-icon--play {
   opacity: 0;
 }
-
+.light-teal-theme,
 .light-theme {
   margin-top: -3px !important;
   margin-bottom: -3px !important;
@@ -1177,6 +1182,14 @@ body .header__login-block-container .header__login-block-item:hover  img{
 .hero-news__events .hero-news__events-col.event-item.hidden{
 display: none;
 }
+.s-map .s-map__map-wrap{
+  overflow: hidden;
+}
+.s-map__btn-wrap {
+  margin-top: 1.5rem;
+  position: relative;
+}
+
 
 /**************************************/
 @media (min-width:1300px) {
