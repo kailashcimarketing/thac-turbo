@@ -889,6 +889,10 @@ class TeamListBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False)   
     category = SnippetChooserBlock('team.Category',required=False)
     exclude = SnippetChooserBlock('team.Category',required=False)
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Columns'),
+        ('col-lg-3','Four columns'),
+    ],default='col-lg-3')
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark') 
@@ -901,6 +905,10 @@ class TeamListBlock(blocks.StructBlock):
 
 class CoacheListBlock(blocks.StructBlock): 
     title = blocks.CharBlock(required=False)   
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Columns'),
+        ('col-lg-3','Four columns'),
+    ],default='col-lg-3')
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark') 
@@ -911,7 +919,11 @@ class CoacheListBlock(blocks.StructBlock):
         template = "pages/blocks/coache_list_block.html"
 
 class TutorListBlock(blocks.StructBlock): 
-    title = blocks.CharBlock(required=False)   
+    title = blocks.CharBlock(required=False)  
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Columns'),
+        ('col-lg-3','Four columns'),
+    ],default='col-lg-3') 
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark') 
@@ -923,6 +935,10 @@ class TutorListBlock(blocks.StructBlock):
 
 class InstructorListBlock(blocks.StructBlock): 
     title = blocks.CharBlock(required=False)   
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Columns'),
+        ('col-lg-3','Four columns'),
+    ],default='col-lg-3')
     background = blocks.ChoiceBlock([
         ('light-theme','Light'),
         ('dark-theme','Dark') 
