@@ -179,7 +179,7 @@ def get_next_pre_pages(page):
     previous_page = page.specific.get_prev_sibling()
 
     # If no previous sibling, get the parent's previous sibling
-    if not previous_page:
+    if not previous_page and parent_page.get_prev_sibling():
         previous_page = parent_page.get_prev_sibling().get_children().last()  # Get the last child before the current page's depth
 
     # Get the next two pages (siblings)
@@ -201,14 +201,8 @@ def get_next_pre_pages(page):
     if not second_next_page and next_page:
         second_next_page = parent_page.get_next_sibling().get_children().first()
 
-    # Now you can pass these pages to the template context
-    
-    if not previous_page:
-        previous_page = False
-    if not next_page:
-        next_page = False
-    if not second_next_page:
-        second_next_page = False    
+    # Now you can pass these pages to the template context    
+
     return {
         'previous_page': previous_page,
         'next_page': next_page,
