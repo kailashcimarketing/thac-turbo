@@ -16,31 +16,28 @@
             </span>
         </h2>
         <div class="row s-explore__row">
-            {% if value.landing_page %}
-            {% for item in value.landing_page.specific.get_child_pages %}
+            {% if value.items %}
+            {% for item in value.items %}
             <div class="col-lg-4 col-sm-6 col-12 s-explore__col block-anim-js block-anim--each-3-lg-js block-anim--each-2-sm-js">
                 <div class="new-card new-card--secondary position-relative hover-pic-wrap">
-                    <a href="#flyout-modal-{{ item.title|slugify|safe }}" class="link-mask modal-event-btn-js"></a>
+                    <a href="#flyout-modal-{{ item.title|slugify|safe }}-{{forloop.counter}}" class="link-mask modal-event-btn-js"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
-                        {% image item.specific.get_hero_image.image fill-320x320-c100 as img %}
+                        {% image item.image fill-320x320-c100 as img %}
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>
                     <div class="new-card__content">
                         
                         <div class="block-content"><h3 class="new-card__title">{{item.title|safe}}</h3>
-                        {% if item.specific.short_description %}
+                        {% if item.text %}
                         <div class="new-card__txt-wrap last-el-mb-0">
-                            <p>{{item.specific.short_description|safe}}</p>
+                            <p>{{item.text|safe}}</p>
                         </div>
                         {% endif %}
-
-
                         <div class="btn-wrap">
-                      
-                        {% if item.specific.url %}
+                        {% if item.button.text %}
                         <div class="s-feature__btn-wrap">
-                            <a href="{{item.specific.url}}" class="btn btn--eighth">
-                                <span class="btn__content"> <span class="btn__txt">View Details</span> </span>
+                            <a href="{{item.button.href.url}}" class="btn btn--eighth">
+                                <span class="btn__content"> <span class="btn__txt">{{item.button.text|safe}}</span> </span>
                             </a>
                         </div>
                         {% endif %}
@@ -71,11 +68,11 @@
     </div>
 </section>
 <div class="move-modal-items-to-body">
-{% for item in value.landing_page.specific.get_child_pages %}
-    <div id="flyout-modal-{{ item.title|slugify|safe }}" class="flyout-modal-item modal modal-event-js modal--info position-fixed d-flex flex-column">
-      <a href="#flyout-modal-{{ item.title|slugify|safe }}" id="modal__overlay" class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
+{% for item in value.items %}
+    <div id="flyout-modal-{{ item.title|slugify|safe }}-{{forloop.counter}}" class="flyout-modal-item modal modal-event-js modal--info position-fixed d-flex flex-column">
+      <a href="#flyout-modal-{{ item.title|slugify|safe }}-{{forloop.counter}}" id="modal__overlay" class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
       <div class="modal__block-wrap position-relative ml-auto w-100">
-        <a href="#flyout-modal-{{ item.title|slugify|safe }}" id="modal-close-info" class="modal-close bg-img-none modal-event-btn-js d-inline-flex justify-content-center align-items-center cursor-pointer position-absolute">
+        <a href="#flyout-modal-{{ item.title|slugify|safe }}-{{forloop.counter}}" id="modal-close-info" class="modal-close bg-img-none modal-event-btn-js d-inline-flex justify-content-center align-items-center cursor-pointer position-absolute">
           <svg class="modal-close__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path class="transition-def" d="M15.1875 7.58691L11.9062 10.8682L15.1875 14.1807C15.5938 14.5557 15.5938 15.2119 15.1875 15.5869C14.8125 15.9932 14.1562 15.9932 13.7812 15.5869L10.5 12.3057L7.1875 15.5869C6.8125 15.9932 6.15625 15.9932 5.78125 15.5869C5.375 15.2119 5.375 14.5557 5.78125 14.1807L9.0625 10.8682L5.78125 7.58691C5.375 7.21191 5.375 6.55566 5.78125 6.18066C6.15625 5.77441 6.8125 5.77441 7.1875 6.18066L10.5 9.46191L13.7812 6.18066C14.1562 5.77441 14.8125 5.77441 15.1875 6.18066C15.5938 6.55566 15.5938 7.21191 15.1875 7.58691Z" fill="var(--primary-dark-blue)" fill-opacity="0.5" />
           </svg>
@@ -83,7 +80,7 @@
         <div data-scroll="exclude" class="modal__block modal__block--info hide-scrollbar">
           <section class="modal__section">
             <div class="modal__section-pic-wrap">
-              {% image item.specific.get_hero_image.image original format-webp as img %}
+              {% image item.detail_page.specific.get_hero_image.image original format-webp as img %}
               <img class="modal__section-pic w-100 h-100 obj-cover" src="{{ img.url }}" alt="" />
             </div>
             <div class="modal__section-container mx-auto w-100">
@@ -94,10 +91,10 @@
                 </div>
               </div>
               <h2 class="modal__section-title">
-                <a href="{{item.url}}">{{ item.title|safe }}</a>
+                <a href="{{item.detail_page.url}}">{{ item.detail_page.title|safe }}</a>
               </h2>
               <div class="modal__section-simple-content-wrap last-el-mb-0">
-                {% with blocks=item.specific.body %}
+                {% with blocks=item.detail_page.specific.body %}
                   {% for block in blocks %}
                     {% include_block block %}
                   {% endfor %}
@@ -129,12 +126,12 @@
                 </a></li>
             </ul>
               <div class="modal__section-btn-wrap">
-                <a href="#flyout-modal-{{ item.title|slugify|safe }}" class="btn modal-event-btn-js modal__section-btn btn--fifth">
+                <a href="#flyout-modal-{{ item.title|slugify|safe }}-{{forloop.counter}}" class="btn modal-event-btn-js modal__section-btn btn--fifth">
                   <span class="btn__content">
                     <svg class="btn__icon" width="15" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0.714844 9.17773C0.558594 9.02148 0.496094 8.83398 0.496094 8.61523C0.496094 8.42773 0.558594 8.24023 0.714844 8.08398L6.21484 2.83398C6.52734 2.55273 6.99609 2.55273 7.27734 2.86523C7.55859 3.14648 7.55859 3.64648 7.24609 3.92773L3.08984 7.86523H13.7461C14.1523 7.86523 14.4961 8.20898 14.4961 8.61523C14.4961 9.05273 14.1523 9.36523 13.7461 9.36523H3.08984L7.24609 13.334C7.55859 13.6152 7.55859 14.084 7.27734 14.3965C6.99609 14.709 6.52734 14.709 6.21484 14.4277L0.714844 9.17773Z" fill="var(--primary-dark-blue)" />
                     </svg>
-                    <span class="btn__txt">Back to {{item.specific.get_parent.title}} List</span>
+                    <span class="btn__txt">Back to {{item.detail_page.specific.get_parent.title}} List</span>
                   </span>
                 </a>
               </div>

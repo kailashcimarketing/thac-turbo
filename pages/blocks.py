@@ -571,8 +571,14 @@ class ExplorePagesBlock(blocks.StructBlock):
 class ExplorePageswithFlyoutPanelBlock(blocks.StructBlock):
     image = ImageChooserBlock(label="Background image")
     title = blocks.CharBlock(required=False)
-    script_title =blocks.CharBlock(required=False) 
-    landing_page = PageChooserBlock(required=False)
+    script_title =blocks.CharBlock(required=False)    
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock(label="Image")),
+        ('title',blocks.CharBlock()),
+        ('text',blocks.TextBlock(required=False)),
+        ('detail_page',PageChooserBlock(required=False,label="Page")),
+        ('button',SimpleButton()),
+    ]))
     class Meta:
         label = "Explore Pages with Flyout Panel"
         group = "Landing Page"
