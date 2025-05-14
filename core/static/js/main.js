@@ -525,12 +525,12 @@ document.addEventListener('DOMContentLoaded', () => {
             //event.preventDefault();
             
             if(!$('body').hasClass('menu-open') && $('body').hasClass('is-open-menu')){
-                $('#search-block').removeClass('is-open');
+                /*$('#search-block').removeClass('is-open');
                 $('[href="#search-block"]').removeClass('is-open');
                 $('#header__login-block').removeClass('is-open');
-                $('[href="#header__login-block"]').removeClass('is-open');
+                $('[href="#header__login-block"]').removeClass('is-open');*/
                 if($('#search-block').hasClass('is-open')){
-                   // $('.close-search').trigger('click');
+                    $('.close-search').trigger('click');
                 }
             }
             document.body.classList.toggle('menu-open');
