@@ -847,6 +847,7 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
     ],label="background",default="light-theme")   
     
     content = blocks.StreamBlock([
+        ('html',HtmlSourceBlock()),
         ('heading',HeadingBlock()),
         ('content',ContentBlock()),
         ('video',ChildVideBlock()),
