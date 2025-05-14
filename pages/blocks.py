@@ -289,6 +289,17 @@ class FaqBlock(blocks.StructBlock):
         label = "FAQs"
         template = "pages/blocks/faq_block.html"
 
+class LeadParagraphCapsBlock(blocks.StructBlock):
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
+    background = blocks.ChoiceBlock([
+        ('light-theme','Light'),
+        ('dark-theme','Dark')
+    ],label="background",default="light-theme")
+    lead_text = blocks.TextBlock()
+    class Meta:
+        label = "lead paragraph in all caps"        
+        template = "pages/blocks/lead_paragraph_caps_block.html"
 
 class ContentWithVariableWidthBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock([
@@ -311,7 +322,8 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('table',CustomTableBlock()),
         ('DownloadList',DownloadList()),
         ('ChildImageBlock',ChildImageBlock()),
-        ('ThemeButton',ThemeButton())
+        ('ThemeButton',ThemeButton()),
+        ('LeadParagraphCapsBlock',LeadParagraphCapsBlock()),
     ])
     css_class = blocks.CharBlock(required=False)
     class Meta:
@@ -330,6 +342,7 @@ class ContentStreamBlock(blocks.StreamBlock):
     image = ChildImageBlock()
     downloadlist = DownloadList()
     themebutton = ThemeButton()
+    LeadParagraphCapsBlock = LeadParagraphCapsBlock()
     
 
 class TwoColumnBlock(blocks.StructBlock):
@@ -717,17 +730,7 @@ class CentredTitleBlock(blocks.StructBlock):
         label = "Centred Title Block"        
         template = "pages/blocks/centred_title_block.html"
         
-class LeadParagraphCapsBlock(blocks.StructBlock):
-    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
-    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
-    background = blocks.ChoiceBlock([
-        ('light-theme','Light'),
-        ('dark-theme','Dark')
-    ],label="background",default="light-theme")
-    lead_text = blocks.TextBlock()
-    class Meta:
-        label = "lead paragraph in all caps"        
-        template = "pages/blocks/lead_paragraph_caps_block.html"
+
         
 class VideoBlock(blocks.StructBlock):
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)

@@ -10,12 +10,29 @@ function makeid(length) {
 }
 
 $(function () {
-    $('.internal-link').on('click', function () {
-        if ($($(this).attr('href')).length) {
-            $('html, body').animate({ scrollTop: $($(this).attr('href')).offset.top }, 500);
-        }
+    $('.internal-link').on('click', function (e) {
+        e.preventDefault();
 
+        const targetId = $(this).attr('href');
+        const targetElement = $(targetId);
+
+        if (targetElement.length) {
+            if (bodyScrollBar != null) {
+                // Get the offset relative to the scroll container
+                const bounding = targetElement[0].getBoundingClientRect();
+                const containerScrollTop = bodyScrollBar.offset.y;
+                const scrollTop = containerScrollTop + bounding.top;
+
+                // Scroll to exact top of the section
+                bodyScrollBar.scrollTo(0, scrollTop, 500);
+            } else {
+                // Fallback for native scroll
+                const targetOffsetTop = targetElement.offset().top;
+                $('html, body').animate({ scrollTop: targetOffsetTop }, 500);
+            }
+        }
     });
+    
     if ($('.gallery-slider').length) {
         $('.gallery-slider').each(function () {
             let gallery_id = "gallery-" + makeid(10);
