@@ -1299,6 +1299,10 @@ display: none;
 
 @media (max-width:767px) {
 
+  .internal-page-navigation-after-scroll .news-category-filter a.active{
+    display: none;
+  }
+
   .internal-page-navigation-container .hero-news__btns-wrap,
   .news-category-filter.internal-page-navigation {
     display: flex !important;
