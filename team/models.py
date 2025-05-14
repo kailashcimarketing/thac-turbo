@@ -75,6 +75,7 @@ class Team(ClusterableModel):
 
     class Meta:
         verbose_name = "Leadership Team"
+        verbose_name_plural = "Leadership Team"
 
 class TeamAbstract(models.Model):
     title = models.CharField(null=True,blank=False,max_length=255)
