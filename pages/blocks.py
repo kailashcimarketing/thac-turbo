@@ -1025,3 +1025,21 @@ class InternalPageNavigationBlock(blocks.StructBlock):
     class Meta:
         label = "Internal nagivation link"
         template = "pages/blocks/internal_navigation_link_block.html"
+        
+class ExternalLinkThumbnailsBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Columns'),
+        ('col-lg-3','Four columns'),
+    ],default='col-lg-3') 
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('image',ImageChooserBlock(label="Image")),
+        ('title',blocks.CharBlock()),
+        ('external_link',blocks.URLBlock(required=False)),
+    ]))
+    class Meta:
+        label = "External Link Thumbnails"
+        template = "pages/blocks/external_link_thumbnails_block.html"

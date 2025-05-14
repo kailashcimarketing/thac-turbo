@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section class="external-link-thumbnails section {{value.background|safe}} {{value.top_padding|safe}} {{value.bottom_padding|safe}}">
+  <div class="container">
+      <h3 class="h3 block-anim-js">{{value.title|safe}}</h3>
+      <div class="row">
+        {% for item in value.items %}
+          <div class="{{value.layout}}">
+              <div class="thumbnail-block">
+                  <a href="{{item.external_link.url}}">
+                      <div class="image">
+                        {% image item.image original as img %}
+                          <img src="{{img.url}}" class="w-100" alt="">
+                      </div>
+                      <div class="thumbnail-content">
+                          <h4>{{ item.title|safe }}</h4>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+</section>

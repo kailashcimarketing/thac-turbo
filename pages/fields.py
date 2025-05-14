@@ -49,6 +49,7 @@ common_blocks = [
     ('TutorListBlock',TutorListBlock()),
     ('InstructorListBlock',InstructorListBlock()),
     ('CoacheListBlock',CoacheListBlock()),
+    ('ExternalLinkThumbnailsBlock',ExternalLinkThumbnailsBlock())
     
 ]
 homepage_stream_fields= common_blocks+ [
