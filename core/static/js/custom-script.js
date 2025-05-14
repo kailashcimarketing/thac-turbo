@@ -135,7 +135,7 @@ console.log('---active');
     if ($navLinks.length) {
         let navHtml = '';
         let mobile_navHtml='<div class="internal-navigation-dropdown">';      
-        mobile_navHtml += '<a class="btn nav-label">Overview</a>';
+        mobile_navHtml += '<a class="btn nav-label">Select Section</a>';
         mobile_navHtml += '<ul>';
 
         $navLinks.each(function () {

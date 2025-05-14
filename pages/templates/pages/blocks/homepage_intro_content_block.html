@@ -12,7 +12,7 @@
                 </div>
                 {% if value.button.text %}
                 <div class="text-2-cols__btn-wrap block-anim-js">
-                    <a href="#" class="btn btn--third">
+                    <a href="{{ value.button.href.url|safe }}" class="btn btn--third">
                         <span class="btn__content"> <span class="btn__txt">{{value.button.text|safe}}</span> </span>
                     </a>
                 </div>

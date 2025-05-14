@@ -1171,6 +1171,13 @@ body .header__login-block-container .header__login-block-item:hover  img{
 .mylivechat_inline{
   z-index: 11;
 }
+.leadership-team .hidden,
+.s-vacancies__items .hidden,
+.hero-news__cards .hidden,
+.hero-news__events .hero-news__events-col.event-item.hidden{
+display: none;
+}
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
