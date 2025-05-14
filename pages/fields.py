@@ -4,6 +4,7 @@ from .blocks import *
 common_blocks = [
     ('HtmlSourceBlock',HtmlSourceBlock()),
     ('space',SpaceBlock()),
+    ('divider',DividerBlock()),
     ('ContentWithVariableWidthBlock',ContentWithVariableWidthBlock()),
     ('TwoColumnBlock',TwoColumnBlock()),
     ('SliderGalleryBlock',SliderGalleryBlock()),

@@ -56,6 +56,13 @@ theme_layout =[
         ('dark-theme','Navy'),
         ('light-teal-theme','Light Teal')
     ]
+divider_background =[
+        ('light-theme','White'),
+        ('dark-theme','Navy'),
+        ('light-teal-theme','Light Teal'),
+        ('light-grey','Light Grey'),
+    ]
+
 
 class TableItemBlock(blocks.StreamBlock):
     table = TableBlock()
@@ -86,6 +93,15 @@ class SpaceBlock(blocks.StructBlock):
     class Meta:
         label = "Space"
         template = "pages/blocks/space.html"
+        
+class DividerBlock(blocks.StructBlock):
+    #height = blocks.IntegerBlock(default=50)
+    background = blocks.ChoiceBlock(divider_background,label="Background",default="light-theme")
+    top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
+    bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
+    class Meta:
+        label = "Divider"
+        template = "pages/blocks/divider_block.html"
 
 class LeadTextBlock(blocks.StructBlock):
     text = blocks.TextBlock()
@@ -280,6 +296,7 @@ class AccordionBlock(blocks.StructBlock):
                 ('content',ContentBlock()),
                 ('heading',HeadingBlock()),
                 ('space',SpaceBlock()),
+                ('divider',DividerBlock()),
                 ('table',CustomTableBlock()),
             ])),
         ])
@@ -320,6 +337,7 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('html',HtmlSourceBlock()),
         ('heading',HeadingBlock()),
         ('space',SpaceBlock()),
+        ('divider',DividerBlock()),
         ('content',ContentBlock()),    
         ('accordion',AccordionBlock()),
         ('QuoteBlock',QuoteBlock()),
@@ -341,6 +359,7 @@ class ContentStreamBlock(blocks.StreamBlock):
     heading =HeadingBlock()
     content = ContentBlock()
     space = SpaceBlock()
+    divider = DividerBlock()
     accordion = AccordionBlock()
     quote = QuoteBlock()
     table = CustomTableBlock()
@@ -399,6 +418,7 @@ class ContentWithImageAlignmentOption(blocks.StructBlock):
     content = blocks.StreamBlock([
         ('heading',HeadingBlock()),
         ('html',HtmlSourceBlock()),
+        ('divider',DividerBlock()),
         ('content',ContentBlock()),
     ])
     class Meta:
@@ -843,6 +863,7 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
         ('ProfileBlock',ProfileBlock()),
         ('ChildImageBlock',ChildImageBlock()),
         ('space',SpaceBlock()),
+        ('divider',DividerBlock()),
         ('DownloadList',DownloadList()),
         ('button',ThemeButton()),
         ('external_links',ExternalLinkListingBlock()),
