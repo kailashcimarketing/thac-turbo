@@ -1461,8 +1461,10 @@ $(window).on('load', function () {
                 hides = $($(this).data('hide-open')),
                 overlay = $($(this).data('overlay'));
             if (targetContent.length) {
-                if(targetId == '#search-block' && !targetContent.hasClass('is-open') && $('body').hasClass('menu-open')){
-                    
+                if(targetId == '#search-block' && !targetContent.hasClass('is-open') ){
+                    $('#header__login-block').removeClass('is-open');
+                    $('[href="#header__login-block"]').removeClass('is-open');
+                    $('#header__overlay').removeClass('show-overlay-2');
                 }
                 body.toggleClass('is-open-menu');
                 targetContent.toggleClass('is-open');
