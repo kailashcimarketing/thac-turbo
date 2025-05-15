@@ -523,14 +523,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBurger) {
         menuBurger.addEventListener('click', () => {
             //event.preventDefault();
+            $('#search-block').removeClass('is-open');
+            $('[href="#search-block"]').removeClass('is-open');
+            $('#header__login-block').removeClass('is-open');
+            $('[href="#header__login-block"]').removeClass('is-open');
+            $('#header__col-2,#header__col-3').removeClass('hide-when-open');
+            $('#header__overlay').removeClass('show-overlay-3 show-overlay-2');
             
             if(!$('body').hasClass('menu-open') && $('body').hasClass('is-open-menu')){
-                /*$('#search-block').removeClass('is-open');
-                $('[href="#search-block"]').removeClass('is-open');
-                $('#header__login-block').removeClass('is-open');
-                $('[href="#header__login-block"]').removeClass('is-open');*/
+                
                 if($('#search-block').hasClass('is-open')){
-                    $('.close-search').trigger('click');
+                //    $('.close-search').trigger('click');
                 }
             }
             document.body.classList.toggle('menu-open');
@@ -1459,8 +1462,7 @@ $(window).on('load', function () {
                 overlay = $($(this).data('overlay'));
             if (targetContent.length) {
                 if(targetId == '#search-block' && !targetContent.hasClass('is-open') && $('body').hasClass('menu-open')){
-                    document.body.classList.toggle('menu-open');
-                    document.querySelector('#header__overlay').classList.toggle('show-overlay-1');
+                    
                 }
                 body.toggleClass('is-open-menu');
                 targetContent.toggleClass('is-open');
@@ -1477,8 +1479,8 @@ $(window).on('load', function () {
 }           
 
             if($('body').hasClass('menu-open')){
-                document.body.classList.toggle('menu-open');
-                document.querySelector('#header__overlay').classList.toggle('show-overlay-1');
+                document.body.classList.remove('menu-open');
+                    document.querySelector('#header__overlay').classList.remove('show-overlay-1');
             }
             return false;
         });
