@@ -1,3 +1,9 @@
+{% if value.with_container %}
+<div class=""><div class="container">
+    {% endif %}
 <div class="divider-block {{value.top_padding|safe}} {{value.bottom_padding|safe}}">
     <span class="{{value.background|safe}}"></span>
 </div>
+{% if value.with_container %}
+</div></div>
+    {% endif %}

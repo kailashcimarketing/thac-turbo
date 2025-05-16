@@ -99,6 +99,7 @@ class DividerBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock(divider_background,label="Background",default="light-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
+    with_container = blocks.BooleanBlock(default=False,required=False)
     class Meta:
         label = "Divider"
         template = "pages/blocks/divider_block.html"
