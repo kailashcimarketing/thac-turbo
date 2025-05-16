@@ -523,12 +523,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBurger) {
         menuBurger.addEventListener('click', () => {
             //event.preventDefault();
-            $('#search-block').removeClass('is-open');
-            $('[href="#search-block"]').removeClass('is-open');
-            $('#header__login-block').removeClass('is-open');
-            $('[href="#header__login-block"]').removeClass('is-open');
-            $('#header__col-2,#header__col-3').removeClass('hide-when-open');
-            $('#header__overlay').removeClass('show-overlay-3 show-overlay-2');
+            if($(window).width() > 767){
+                $('#search-block').removeClass('is-open');
+                $('[href="#search-block"]').removeClass('is-open');
+                $('#header__login-block').removeClass('is-open');
+                $('[href="#header__login-block"]').removeClass('is-open');
+                $('#header__col-2,#header__col-3').removeClass('hide-when-open');
+                $('#header__overlay').removeClass('show-overlay-3 show-overlay-2');
+            }
             
             if(!$('body').hasClass('menu-open') && $('body').hasClass('is-open-menu')){
                 
