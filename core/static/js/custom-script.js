@@ -8,7 +8,18 @@ function makeid(length) {
     }
     return result;
 }
-
+document.addEventListener("DOMContentLoaded", function () {
+    const videoWrappers = document.querySelectorAll('.video-wrapper');
+    
+    videoWrappers.forEach(wrapper => {
+      const video = wrapper.querySelector('video');
+      const videoSrc = wrapper.getAttribute('data-video-src');
+      if (videoSrc) {
+        video.src = videoSrc;
+        video.load();
+      }
+    });
+  });
 $(function () {
     $('.internal-link').on('click', function (e) {
         e.preventDefault();

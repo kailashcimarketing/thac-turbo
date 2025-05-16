@@ -8,7 +8,10 @@
        <div class="overlay hero-primary__bg-wrap after-el after-el--full before-el overflow-hidden container-video-js">
         {% image item.image original format-webp as img %}
         {% if item.background_video_url %}
-        <video class="w-100 h-100 obj-cover video-js" playsinline="" autoplay="" muted="" loop="" preload="metadata" src="{{item.background_video_url}}" poster="{{img.url}}"></video>        {% else %}
+        <div class="video-wrapper" data-video-src="{{ item.background_video_url }}">
+  <video class="w-100 h-100 obj-cover video-js" playsinline autoplay muted loop preload="none" poster="{{ img.url }}"></video>
+</div>
+        {% else %}
         
         {% endif %}
         <img class="w-100 h-100 obj-cover hero-pic-scale-js" src="{{img.url}}" alt="">
