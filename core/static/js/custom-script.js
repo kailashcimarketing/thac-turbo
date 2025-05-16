@@ -8,14 +8,14 @@ function makeid(length) {
     }
     return result;
 }
-document.addEventListener("DOMContentLoaded", function () {
+$(window).on('load',function(){
     const wrapper = document.querySelector('.video-wrapper');
     const video = wrapper.querySelector('video');
     const videoSrc = wrapper.getAttribute('data-video-src');
 
     if (video && videoSrc) {
       video.src = videoSrc;
-
+        console.log(video);
       video.load();
 
       // Try to play once ready
@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     }
-  });
+});
+
 $(function () {
     $('.internal-link').on('click', function (e) {
         e.preventDefault();
