@@ -8,23 +8,25 @@ function makeid(length) {
     }
     return result;
 }
-$(window).on('load',function(){
+$(window).on('load', function () {
     const wrapper = document.querySelector('.video-wrapper');
-    const video = wrapper.querySelector('video');
-    const videoSrc = wrapper.getAttribute('data-video-src');
+    if (wrapper) {
+        const video = wrapper.querySelector('video');
+        const videoSrc = wrapper.getAttribute('data-video-src');
 
-    if (video && videoSrc) {
-      video.src = videoSrc;
-        console.log(video);
-      video.load();
+        if (video && videoSrc) {
+            video.src = videoSrc;
+            console.log(video);
+            video.load();
 
-      // Try to play once ready
-      video.addEventListener('canplay', () => {
-        video.play().catch((e) => {
-          // Autoplay might be blocked, especially if not muted
-          console.warn("Video play blocked:", e);
-        });
-      });
+            // Try to play once ready
+            video.addEventListener('canplay', () => {
+                video.play().catch((e) => {
+                    // Autoplay might be blocked, especially if not muted
+                    console.warn("Video play blocked:", e);
+                });
+            });
+        }
     }
 });
 
@@ -51,7 +53,7 @@ $(function () {
             }
         }
     });
-    
+
     if ($('.gallery-slider').length) {
         $('.gallery-slider').each(function () {
             let gallery_id = "gallery-" + makeid(10);
@@ -128,7 +130,7 @@ $(function () {
 
     $('.vimeo-video-btn').on('click', function () {
         var video_container = $(this).parents('.video-module-wrapper');
-        if(video_container.hasClass('active')){
+        if (video_container.hasClass('active')) {
             //console.log('active');
             video_container.find('.vimeo-post-img').show();
             //$(this).hide();
@@ -144,8 +146,8 @@ $(function () {
                 player.pause();
             }
             return false;
-        }else{
-//console.log('---active');
+        } else {
+            //console.log('---active');
             video_container.find('.vimeo-post-img').hide();
             //$(this).hide();
             video_container.addClass('active');
@@ -170,7 +172,7 @@ $(function () {
     // Build the internal navigation menu
     if ($navLinks.length) {
         let navHtml = '';
-        let mobile_navHtml='<div class="internal-navigation-dropdown">';      
+        let mobile_navHtml = '<div class="internal-navigation-dropdown">';
         mobile_navHtml += '<a class="btn nav-label">Select Section</a>';
         mobile_navHtml += '<ul>';
 
@@ -202,11 +204,11 @@ $(function () {
         mobile_navHtml += '</div>';
 
 
-        $navContainer.html(navHtml+mobile_navHtml);
-        if($(window).width() > 767){
+        $navContainer.html(navHtml + mobile_navHtml);
+        if ($(window).width() > 767) {
             $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + navHtml + "</div></div>");
-        }else{
-            $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">'+ mobile_navHtml +'</div></div>');
+        } else {
+            $('body').append('<div class="internal-page-navigation-after-scroll"><div class="news-category-filter ">' + mobile_navHtml + '</div></div>');
         }
     }
 
@@ -217,13 +219,13 @@ $(function () {
         const targetId = $(this).attr('href');
         const $target = $(targetId);
         $(".internal-navigation-dropdown").removeClass('open');
-        
+
         if ($target.length && bodyScrollBar) {
             // Get the target's offset inside the custom scroll container
             const offsetTop = $target[0].offsetTop;
 
             bodyScrollBar.scrollTo(0, offsetTop, 600); // x, y, duration (ms)
-        }else{
+        } else {
             const offsetTop = $target.offset().top;
             $('html, body').animate({ scrollTop: offsetTop }, 600);
         }
