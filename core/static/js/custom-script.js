@@ -9,16 +9,23 @@ function makeid(length) {
     return result;
 }
 document.addEventListener("DOMContentLoaded", function () {
-    const videoWrappers = document.querySelectorAll('.video-wrapper');
-    
-    videoWrappers.forEach(wrapper => {
-      const video = wrapper.querySelector('video');
-      const videoSrc = wrapper.getAttribute('data-video-src');
-      if (videoSrc) {
-        video.src = videoSrc;
-        video.load();
-      }
-    });
+    const wrapper = document.querySelector('.video-wrapper');
+    const video = wrapper.querySelector('video');
+    const videoSrc = wrapper.getAttribute('data-video-src');
+
+    if (video && videoSrc) {
+      video.src = videoSrc;
+
+      video.load();
+
+      // Try to play once ready
+      video.addEventListener('canplay', () => {
+        video.play().catch((e) => {
+          // Autoplay might be blocked, especially if not muted
+          console.warn("Video play blocked:", e);
+        });
+      });
+    }
   });
 $(function () {
     $('.internal-link').on('click', function (e) {
