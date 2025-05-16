@@ -1624,9 +1624,22 @@ body .header__login-block-container .header__login-block-item:hover img {
     margin: 0.5rem auto;
     max-width: 94%;
   }
-  .video-block.light-theme.pt-0.pb-5 {
+.general-page.innerpage .video-block.light-theme.pt-0.pb-5 {
     padding-bottom: 0 !important;
 }
+.video-block + .video-block {
+  padding-top: 1.5rem !important;
+}
+.s-faq__item-title-icon{
+  top: 1.55rem;
+  bottom: inherit;
+}
+
+.block-TwoColumnBlock + .block-VideoBlock{
+  margin-top: 2rem;
+}
+
+
 }
 
 @media (max-width:575px) {
@@ -1641,5 +1654,10 @@ body .header__login-block-container .header__login-block-item:hover img {
   /*.s-promo-banner__big-txt {
     font-size: 10vw;
   }*/
+  .s-college__title {
+    font-size: 40px;
+    letter-spacing: -0.04em;
+    padding-left: 0;
+}
 
 }
