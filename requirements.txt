@@ -46,13 +46,14 @@ pytz==2024.1
 rcssmin==1.1.2
 requests==2.32.3
 rjsmin==1.2.2
-six==1.16.0
+six==1.17.0
 soupsieve==2.6
 sqlparse==0.5.1
 telepath==0.3.1
 typing_extensions==4.12.2
 urllib3==2.2.2
 wagtail==6.2.1
-wagtail-modeladmin==2.0.0
+wagtail-modeladmin==2.2.0
+wagtail-robots @ git+https://github.com/torchbox-forks/wagtail-robots@5982f5ae0ccb01d64684bfbcfa90135043a8c553
 wagtailmenus==4.0.1
 Willow==1.8.0

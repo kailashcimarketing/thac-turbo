@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.table_block',
      'django_recaptcha',
       'widget_tweaks',
+      'robots',
 ]
 
 MIDDLEWARE = [

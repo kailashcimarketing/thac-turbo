@@ -11,6 +11,8 @@ from search import views as search_views
 from wagtail.images.views.serve import ServeView
 
 
+
+
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
@@ -19,6 +21,7 @@ urlpatterns = [
     path('news/<slug:slug>/', pages_views.news_detail, name='news_detail_page'),
     path('events/<slug:slug>/', pages_views.event_detail, name='event_detail_page'),
     re_path(r'^images/([^/]*)/(\d*)/([^/]*)/[^/]*$', ServeView.as_view(), name='wagtailimages_serve'),
+    path("robots.txt", include("robots.urls")),
 ]
 
 
