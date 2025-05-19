@@ -11130,6 +11130,8 @@ textarea:focus::placeholder {
     -o-transition: background var(--animation-default), color var(--animation-default) !important;
     transition: background var(--animation-default), color var(--animation-default) !important;
     background-image: none !important;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .btn--active-cat {
@@ -13119,7 +13121,7 @@ body:not(.menu-open) .header__megamenu {
     .header__login-block-col {
         width: 100%;
     }
-}
+    }
 
 @media (max-width: 575px) {
     .btn--menu .btn__txt {
@@ -13161,7 +13163,7 @@ body:not(.menu-open) .header__megamenu {
         width: 31px;
     }
 
-    .header__megamenu-list-1 li:not(:last-child) {
+ .header__megamenu-list-1 li:not(:last-child) {
         margin-bottom: 2px;
     }
 
@@ -15402,7 +15404,7 @@ body:not(.menu-open) .header__megamenu {
     .s-promo-banner__big-txt-line--1 {
         padding-left: 5.4vw;
     }
-}
+    }
 
 @media (max-width: 375px) {}
 
@@ -16891,7 +16893,7 @@ body:not(.menu-open) .header__megamenu {
     }
 
     .s-map__map-wrap {
-        height: 350px;
+        height: auto;
     }
 }
 

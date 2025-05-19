@@ -154,6 +154,24 @@ class EventPage(Page):
     ) 
     hero_title = models.CharField(null=True,blank=False,max_length=255)
     hero_script_title = models.CharField(null=True,blank=False,max_length=255)
+    
+    class Meta:
+        verbose_name = "Event Page"
+    
+    def get_hero(self):
+        if self.formpage_hero.all():
+            return self.formpage_hero.all()
+        else:
+            return False
+    
+    def get_hero_image(self):
+        if self.get_hero():
+            return self.get_hero()[0]
+        
+        return False
+    
+    def get_child_pages(self):
+        return self.get_children().live().filter(show_in_menus=True)
 
 
 
