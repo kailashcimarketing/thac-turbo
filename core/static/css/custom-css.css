@@ -1316,6 +1316,9 @@ section.light-theme .s-faq.light-theme  {
 .ratio-16x9 {
   --bs-aspect-ratio: calc(9 / 16.125 * 100%) !important;
 }
+.template-searchresults .main form{
+  padding: 0;
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
