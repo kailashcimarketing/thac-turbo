@@ -35,6 +35,11 @@ LandingPage.promote_panels = Page.promote_panels + [
 ]
 
 EventPage.content_panels = Page.content_panels + [
+    InlinePanel('eventpage_hero', label='Hero Images', panels=[
+        FieldPanel('image'),
+        FieldPanel('title'),     
+        FieldPanel('script_title'),   
+    ],max_num=1),
     FieldPanel('hero_image'),
     FieldPanel('hero_title'),     
     FieldPanel('hero_script_title'),   

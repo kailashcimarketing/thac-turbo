@@ -10,8 +10,9 @@
   {% get_events as event_list %}
 
   <section class="hero-news hero-news--secondary parallax-trigger-js">
+    {% for item in page.get_hero %}
     <div class="hero-news__bg-wrap overlay--special overlay after-el before-el overflow-hidden">
-      {% image page.hero_image original format-webp as img %}
+      {% image item.image original format-webp as img %}
       <img class="w-100 h-100 obj-cover parallax-js parallax-def-js parallax-hero-js" src="{{ img.url }}" alt="" />
     </div>
     <div class="container hero-news__container position-relative z-index-2 container-hero-anim-js">
@@ -30,10 +31,10 @@
         {% endif %}
       </div>
       <h1 class="hero-news__title hero-item-js hero-item-2-js text-center">
-        {{ page.hero_title|safe }}
-        <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">{{ page.hero_script_title|safe }}</span></span>
+        {{ page.title|safe }}
+        <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">{{ page.script_title|safe }}</span></span>
       </h1>
-
+{% endfor %}
       <div class="text-center hero-news__btns-wrap-2">
         <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
           <div class="swiper-wrapper event-category-filter">

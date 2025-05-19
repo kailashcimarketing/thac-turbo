@@ -142,7 +142,9 @@ class GeneralPage(Page):
         
         return False
         
-
+class EventpageHero(HeroAbstract):
+    page = ParentalKey('EventPage', related_name='eventpage_hero') 
+    
 class EventPage(Page):
     show_in_menus_default = True
     hero_image = models.ForeignKey(
@@ -159,8 +161,8 @@ class EventPage(Page):
         verbose_name = "Event Page"
     
     def get_hero(self):
-        if self.formpage_hero.all():
-            return self.formpage_hero.all()
+        if self.eventpage_hero.all():
+            return self.eventpage_hero.all()
         else:
             return False
     
