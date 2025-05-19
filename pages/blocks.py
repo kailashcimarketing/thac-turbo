@@ -729,7 +729,7 @@ class GridPhotoGalleryBlock(blocks.StructBlock):
             ('image',ImageChooserBlock())
             ]))
     class Meta:
-        label = "Grid photo gallery"
+        label = "Photo gallery grid"
         template = "pages/blocks/grid_photo_gallery_block.html"
         
         
@@ -737,7 +737,7 @@ class NewsPhotoGalleryBlock(blocks.StructBlock):
     #items = blocks.ListBlock(blocks.StructBlock([('image',ImageChooserBlock())            ]),required=False)
     show_photo_gallery = blocks.StaticBlock()
     class Meta:
-        label = "Grid photo gallery"
+        label = "Photo gallery grid"
         help_text= "Add this block between content to place photo gallery images uploaded in gallery images section"
         template = "pages/blocks/news_photo_gallery_block.html"
 
