@@ -523,9 +523,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBurger) {
         menuBurger.addEventListener('click', () => {
             //event.preventDefault();
+            $('#search-block').removeClass('is-open');
+            $('[href="#search-block"]').removeClass('is-open');
             if($(window).width() > 767){
-                $('#search-block').removeClass('is-open');
-                $('[href="#search-block"]').removeClass('is-open');
+                
                 $('#header__login-block').removeClass('is-open');
                 $('[href="#header__login-block"]').removeClass('is-open');
                 $('#header__col-2,#header__col-3').removeClass('hide-when-open');
@@ -1468,6 +1469,11 @@ $(window).on('load', function () {
                         $('#header__login-block').removeClass('is-open');
                         $('[href="#header__login-block"]').removeClass('is-open');
                         $('#header__overlay').removeClass('show-overlay-2');
+                    }
+
+                    if($(window).width() < 768){
+                        document.body.classList.remove('menu-open');
+                        document.querySelector('#header__overlay').classList.remove('show-overlay-1');
                     }
                 }
                 body.toggleClass('is-open-menu');
