@@ -124,7 +124,10 @@
   padding: 0 1rem;
 }
 
-
+.template-searchresults .next-prev-btns{
+  display: flex;
+  justify-content: space-between;
+}
 
 .header__megamenu-list-1 {
   font-family: var(--font-family);
