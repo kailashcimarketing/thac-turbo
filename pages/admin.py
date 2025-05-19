@@ -39,9 +39,6 @@ EventPage.content_panels = Page.content_panels + [
         FieldPanel('image'),
         FieldPanel('title'),     
         FieldPanel('script_title'),   
-    ],max_num=1),
-    FieldPanel('hero_image'),
-    FieldPanel('hero_title'),     
-    FieldPanel('hero_script_title'),   
+    ],max_num=1), 
     #FieldPanel('body'),
 ]

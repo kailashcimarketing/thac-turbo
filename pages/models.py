@@ -146,16 +146,7 @@ class EventpageHero(HeroAbstract):
     page = ParentalKey('EventPage', related_name='eventpage_hero') 
     
 class EventPage(Page):
-    show_in_menus_default = True
-    hero_image = models.ForeignKey(
-        Image, 
-        null=True, 
-        blank=True, 
-        on_delete=models.SET_NULL, 
-        related_name='+'
-    ) 
-    hero_title = models.CharField(null=True,blank=False,max_length=255)
-    hero_script_title = models.CharField(null=True,blank=False,max_length=255)
+    show_in_menus_default = True    
     
     class Meta:
         verbose_name = "Event Page"
