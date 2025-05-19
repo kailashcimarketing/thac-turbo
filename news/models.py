@@ -4,7 +4,7 @@ from modelcluster.fields import ParentalKey
 from wagtail.models import Page, Orderable
 from django_extensions.db.fields import AutoSlugField
 from modelcluster.models import ClusterableModel
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel, MultipleChooserPanel
 from home.models import HeroAbstract
 from pages.fields import generalpage_stream_fields,newspage_stream_fields
 from wagtail.fields import StreamField, RichTextField
@@ -46,6 +46,12 @@ class News(ClusterableModel):
     status = models.BooleanField(default=True)
     body = StreamField(newspage_stream_fields,null=True,blank=True)
     
+    def get_photogallery(self):
+        if self.gallery_images.all():
+            return self.gallery_images.all()
+        
+        return False
+
     panels = [
         FieldPanel('title'),
         FieldPanel('slug'),
@@ -56,6 +62,9 @@ class News(ClusterableModel):
         InlinePanel('news_category', label='Categories', panels=[
             FieldPanel('category'),
         ]),
+        MultipleChooserPanel(
+            'gallery_images', label="Gallery images", chooser_field_name="image"
+        ),
         FieldPanel('body'),
         
 
@@ -63,6 +72,17 @@ class News(ClusterableModel):
     class Meta:
         verbose_name = 'News'
 
+class NewsGalleryImage(Orderable):
+    page = ParentalKey(News, on_delete=models.CASCADE, related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
+
+    panels = [
+        FieldPanel('image'),
+        FieldPanel('caption'),
+    ]
 
 class NewspageHero(HeroAbstract):
     page = ParentalKey('NewsIndexPage', related_name='newspage_hero')

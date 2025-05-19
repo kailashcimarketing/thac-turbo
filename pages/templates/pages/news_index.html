@@ -145,7 +145,11 @@
               <div class="modal__section-simple-content-wrap last-el-mb-0">
                 {% with blocks=item.body %}
                   {% for block in blocks %}
+                  {% if block.block_type == 'NewsPhotoGalleryBlock' %}
+                  {% include 'pages/blocks/news_photo_gallery_block.html' with gallery=item.get_photogallery %}
+                  {% else %}
                     {% include_block block %}
+                    {% endif %}
                   {% endfor %}
                 {% endwith %}
               </div>
