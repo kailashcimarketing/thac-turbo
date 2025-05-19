@@ -1369,9 +1369,13 @@ section.light-theme .s-faq.light-theme  {
     top: 3rem;
     left: 0;
     right: 0;
-
   }
-
+  .row.hero-news__cards > div{
+    height: 100%;
+  }
+  .row.hero-news__cards  .new-card--third .new-card__txt-wrap{
+margin-bottom: 0;
+  }
   .s-scroll-banners__slide .small-title h3 {
     font-size: 1rem;
     color: white;
