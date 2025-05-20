@@ -85,7 +85,7 @@
                     {% endif %}
                   {% endfor %}
                 </div>
-                {% image item.image original format-webp as img %}
+                {% image item.image fill-700x800-c100 format-webp as img %}
                 <img class="w-100 h-100 obj-cover hover-pic" src="{{ img.url }}" alt="" />
               </div>
               <div class="new-card__content">
