@@ -446,6 +446,10 @@ class PhotoGallery(ClusterableModel,models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = "Photo Gallery"
+        verbose_name_plural = "Photo Galleries"
 
 class GalleryImage(Orderable):
     page = ParentalKey('pages.PhotoGallery', on_delete=models.CASCADE, related_name='photo_gallery')

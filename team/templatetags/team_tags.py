@@ -1,7 +1,7 @@
 from django import template
 from django.template import Template, Context
 from django.utils.safestring import mark_safe
-from team.models import Team, Category,Coaches, Tutors,Instructors
+from team.models import Team, Category,Coaches, Tutors,Instructors, Boardmember
 register = template.Library()
 from django.utils.timezone import now
 today = now().date()
@@ -19,6 +19,11 @@ def get_tutors():
 @register.simple_tag
 def get_instructors():
     items = Instructors.objects.filter(status=True).order_by('weight')
+    return {'items':items}
+
+@register.simple_tag
+def get_boardmembers():
+    items = Boardmember.objects.filter(status=True).order_by('weight')
     return {'items':items}
 
 @register.simple_tag

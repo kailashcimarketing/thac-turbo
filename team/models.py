@@ -123,3 +123,12 @@ class Instructors(TeamAbstract,ClusterableModel):
     class Meta:
         verbose_name = "Instructor"                
         verbose_name_plural = "Instructors"
+
+
+class Boardmember(TeamAbstract,ClusterableModel):
+    def __str__(self):
+        return self.title or "Unnamed Team"
+
+    class Meta:
+        verbose_name = "Board Member"                
+        verbose_name_plural = "Board Members"

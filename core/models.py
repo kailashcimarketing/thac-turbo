@@ -16,7 +16,7 @@ class ExtraStyleSettings(BaseSiteSetting):
 
 @register_setting
 class GlobalAnnouncement(BaseSiteSetting):
-    status = models.BooleanField(default=False,blank=True,help_text="Check to show alert message",verbose_name="Show alert")
+    status = models.BooleanField(default=False,blank=True,help_text="Check to show alert message",verbose_name="Enable Popup")
     title = models.CharField(null=True,blank=False,max_length=255)
     date_label = models.CharField(null=True,blank=False,max_length=255,verbose_name='Date and Time label')
     text = models.TextField(null=True,blank=True)

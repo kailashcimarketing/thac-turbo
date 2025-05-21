@@ -70,7 +70,8 @@ class News(ClusterableModel):
 
     ]
     class Meta:
-        verbose_name = 'News'
+        verbose_name = "News"
+        verbose_name_plural = "News"
 
 class NewsGalleryImage(Orderable):
     page = ParentalKey(News, on_delete=models.CASCADE, related_name='gallery_images')

@@ -49,6 +49,7 @@ common_blocks = [
     ('TutorListBlock',TutorListBlock()),
     ('InstructorListBlock',InstructorListBlock()),
     ('CoacheListBlock',CoacheListBlock()),
+    ('BoardmemberListBlock',BoardmemberListBlock()),
     ('ExternalLinkThumbnailsBlock',ExternalLinkThumbnailsBlock()),
     ('GalleryBlock',GalleryBlock()),
 

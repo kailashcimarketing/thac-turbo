@@ -933,6 +933,21 @@ class TutorListBlock(blocks.StructBlock):
         group = 'Team'
         template = "pages/blocks/tutor_list_block.html"
 
+class BoardmemberListBlock(blocks.StructBlock): 
+    title = blocks.CharBlock(required=False)  
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Columns'),
+        ('col-lg-3','Four columns'),
+    ],default='col-lg-3') 
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="dark-theme")
+    class Meta:
+        label = "Boardmember List"
+        group = 'Team'
+        template = "pages/blocks/boardmember_list_block.html"        
+
+
+
+
 class InstructorListBlock(blocks.StructBlock): 
     title = blocks.CharBlock(required=False)   
     layout = blocks.ChoiceBlock([
