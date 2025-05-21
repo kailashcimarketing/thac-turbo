@@ -93,6 +93,14 @@ class TeamAbstract(models.Model):
     status = models.BooleanField(default=True,blank=True)
     weight = models.IntegerField(default=100,null=False,blank=False)
     additional_information = models.TextField(null=True, blank=True)
+    linked_page = models.ForeignKey(
+        'pages.GeneralPage',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name="Bio Page"
+    )
 
     class Meta:
         abstract = True
