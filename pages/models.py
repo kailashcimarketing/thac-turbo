@@ -1,9 +1,9 @@
 from django.db import models
-from wagtail.models import Page, Collection
+from wagtail.models import Page, Collection, Orderable
 from django_extensions.db.fields import AutoSlugField
 from pages.fields import content_holder_stream_fields
 from wagtail.fields import StreamField, RichTextField
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel, MultipleChooserPanel
 from wagtail.images.models import Image
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.models import ClusterableModel
@@ -424,3 +424,35 @@ class FormPage(AbstractEmailForm):
 
 
 
+
+
+class PhotoGallery(ClusterableModel,models.Model):
+    title = models.CharField(max_length=100)
+    slug = AutoSlugField(populate_from="title", editable=True)
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('slug'),
+        MultipleChooserPanel(
+            'photo_gallery', label="Gallery images", chooser_field_name="image"
+        )
+    ]
+
+    def get_images(self):
+        if self.photo_gallery.all():
+            return self.photo_gallery.all()
+        
+        return False
+
+    def __str__(self):
+        return self.title
+
+class GalleryImage(Orderable):
+    page = ParentalKey('pages.PhotoGallery', on_delete=models.CASCADE, related_name='photo_gallery')
+    image = models.ForeignKey('wagtailimages.Image', on_delete=models.CASCADE)
+    caption = models.CharField(max_length=255, blank=True)
+
+    panels = [
+        FieldPanel('image'),
+        FieldPanel('caption'),
+    ]    

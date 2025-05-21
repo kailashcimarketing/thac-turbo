@@ -17,7 +17,12 @@ class ExtraStyleSettings(BaseSiteSetting):
 @register_setting
 class GlobalAnnouncement(BaseSiteSetting):
     status = models.BooleanField(default=False,blank=True,help_text="Check to show alert message",verbose_name="Show alert")
-    text = RichTextField(blank=True,null=True,verbose_name="Text")
+    title = models.CharField(null=True,blank=False,max_length=255)
+    date_label = models.CharField(null=True,blank=False,max_length=255,verbose_name='Date and Time label')
+    text = models.TextField(null=True,blank=True)
+    button_label = models.CharField(null=True,blank=True,max_length=255) 
+    button_url = models.URLField(null=True,blank=True)
+    tagline = models.CharField(null=True,blank=True,max_length=255)
     
     class Meta:
         verbose_name = "Global Announcement"

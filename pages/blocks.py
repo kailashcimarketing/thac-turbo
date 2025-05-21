@@ -1045,3 +1045,16 @@ class ExternalLinkThumbnailsBlock(blocks.StructBlock):
     class Meta:
         label = "External Link Thumbnails"
         template = "pages/blocks/external_link_thumbnails_block.html"
+
+
+class GalleryBlock(blocks.StructBlock):
+    background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
+    layout = blocks.ChoiceBlock([
+        ('col-lg-4','Three Column'),
+        ('col-lg-3','Four Column')
+    ],label="layout",default="col-lg-3")
+    title = blocks.CharBlock(required=False)
+    photo_gallery = SnippetChooserBlock('pages.PhotoGallery')
+    class Meta:
+        label = "Photo Gallery Grid (snippet)"
+        template = "pages/blocks/photo_gallery_grid.html"        

@@ -1,6 +1,15 @@
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
-from .models import ContentHolder, DynamicContentSnippet
+from .models import ContentHolder, DynamicContentSnippet, PhotoGallery
+
+class PhotoGalleryViewSet(SnippetViewSet):
+    model = PhotoGallery
+    menu_label = "Photo Galleries"
+    ordering = ("title",)
+    search_fields = ("title",)
+    add_to_admin_menu = True
+
+register_snippet(PhotoGalleryViewSet)    
 
 class CHSnippetViewSet(SnippetViewSet):
     model = ContentHolder
