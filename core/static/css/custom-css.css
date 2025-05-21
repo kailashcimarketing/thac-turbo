@@ -1330,8 +1330,13 @@ section.light-theme .s-faq.light-theme  {
 	max-height: 92vh;
     width: 100%;
 }
+.primary-font *,
 .primary-font{
-  font-family: var(--font-family) !important;
+  font-family: var(--font-family) !important;      
+}
+.primary-font h5{
+  font-weight: 500;
+  line-height: 120%;
 }
 /**************************************/
 @media (min-width:1300px) {
