@@ -1326,6 +1326,10 @@ section.light-theme .s-faq.light-theme  {
 .template-searchresults .main form{
   padding: 0;
 }
+.vbox-open .vbox-grab .vbox-child img{
+	max-height: 92vh;
+    width: 100%;
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
