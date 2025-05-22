@@ -1387,6 +1387,18 @@ section.light-theme .s-faq.light-theme {
    -webkit-box-orient: vertical;
 }
 
+.footer .footer__row-4{
+  justify-content: center;
+    margin: 5rem 0 1rem;
+}
+.footer .footer__row-4 a{
+  background: none;
+}
+.footer .footer__row-2{
+  margin-bottom: 0;
+}
+
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {

@@ -8,22 +8,22 @@ today = now().date()
 
 @register.simple_tag
 def get_coaches():
-    items = Coaches.objects.filter(status=True).order_by('weight')
+    items = Coaches.objects.filter(status=True).order_by('-weight')
     return {'items':items}
 
 @register.simple_tag
 def get_tutors():
-    items = Tutors.objects.filter(status=True).order_by('weight')
+    items = Tutors.objects.filter(status=True).order_by('-weight')
     return {'items':items}
 
 @register.simple_tag
 def get_instructors():
-    items = Instructors.objects.filter(status=True).order_by('weight')
+    items = Instructors.objects.filter(status=True).order_by('-weight')
     return {'items':items}
 
 @register.simple_tag
 def get_boardmembers():
-    items = Boardmember.objects.filter(status=True).order_by('weight')
+    items = Boardmember.objects.filter(status=True).order_by('-weight')
     return {'items':items}
 
 @register.simple_tag
@@ -51,7 +51,7 @@ def get_team(**kwargs):
 
 @register.simple_tag
 def get_categories(exclude_item=False):
-    items = Category.objects.all().order_by('weight')
+    items = Category.objects.all().order_by('-weight')
     if exclude_item:
         items = items.exclude(slug=exclude_item)
     return {'items':items}
