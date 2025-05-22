@@ -31,7 +31,7 @@ $(window).on('load', function () {
 
     function equalizeNewsHeights() {
         let maxHeight = 0;
-        const $items = $('.hero-news__cards .element-item');
+        const $items = $('.hero-news__cards .element-item .new-card');
 
         $items.css('min-height', 'auto'); // Reset first
 
