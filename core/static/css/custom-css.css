@@ -1371,6 +1371,14 @@ section.light-theme .s-faq.light-theme {
   content: "\f104";
 }
 
+.hero-news__cards .new-card--third .new-card__title{
+  min-height: 3.25rem;
+  overflow: hidden;display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
