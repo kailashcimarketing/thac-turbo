@@ -1344,6 +1344,8 @@ section.light-theme .s-faq.light-theme {
   line-height: 120%;
 }
 
+.instructor-list .owl-carousel .owl-nav,
+.coach-list .owl-carousel .owl-nav,
 .tutor-list .owl-carousel .owl-nav {
   position: absolute;
   top: 0;
@@ -1356,17 +1358,23 @@ section.light-theme .s-faq.light-theme {
   justify-content: space-between;
 }
 
+.instructor-list .owl-carousel .owl-nav button,
+.coach-list .owl-carousel .owl-nav button,
 .tutor-list .owl-carousel .owl-nav button {
   font-size: 0;
   position: relative;
 }
 
+.instructor-list .owl-carousel .owl-nav button:before ,
+.coach-list .owl-carousel .owl-nav button:before ,
 .tutor-list .owl-carousel .owl-nav button:before {
   font-family: "Font Awesome 6 Pro";
   content: "\f105";
   font-size: 1.5rem;
   color: var(--basic-white);
 }
+.instructor-list .owl-carousel .owl-nav button.owl-prev:before,
+.coach-list .owl-carousel .owl-nav button.owl-prev:before,
 .tutor-list .owl-carousel .owl-nav button.owl-prev:before {
   content: "\f104";
 }

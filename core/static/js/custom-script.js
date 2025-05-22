@@ -65,8 +65,8 @@ $(window).on('load', function () {
             }
         });
     }
-    if($('.coache-list').length){    
-        $('.coache-list .owl-carousel').owlCarousel({
+    if($('.coach-list').length){    
+        $('.coach-list .owl-carousel').owlCarousel({
             loop:true,
             margin:10,
             nav:true,
