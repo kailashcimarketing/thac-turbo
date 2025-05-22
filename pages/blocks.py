@@ -85,6 +85,14 @@ class HtmlSourceBlock(blocks.StructBlock):
         icon = "code"
         collapsed = True
         template = "pages/blocks/html_source.html"
+        
+class IframeBlock(blocks.StructBlock):
+    source = blocks.TextBlock()
+    class Meta:
+        label = "Iframe"
+        icon = "code"
+        collapsed = True
+        template = "pages/blocks/iframe_source.html"
 
 
 class SpaceBlock(blocks.StructBlock):
@@ -294,6 +302,7 @@ class AccordionBlock(blocks.StructBlock):
             ('title',blocks.CharBlock()),
             ('content_blocks',blocks.StreamBlock([
                 ('html',HtmlSourceBlock()),
+                ('iframe',IframeBlock()),
                 ('content',ContentBlock()),
                 ('heading',HeadingBlock()),
                 ('space',SpaceBlock()),
@@ -336,6 +345,7 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
     
     content_blocks = blocks.StreamBlock([
         ('html',HtmlSourceBlock()),
+        ('iframe',IframeBlock()),
         ('heading',HeadingBlock()),
         ('space',SpaceBlock()),
         ('divider',DividerBlock()),
@@ -357,6 +367,7 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
 
 class ContentStreamBlock(blocks.StreamBlock):
     html = HtmlSourceBlock()
+    iframe = IframeBlock()    
     heading =HeadingBlock()
     content = ContentBlock()
     space = SpaceBlock()
@@ -419,6 +430,7 @@ class ContentWithImageAlignmentOption(blocks.StructBlock):
     content = blocks.StreamBlock([
         ('heading',HeadingBlock()),
         ('html',HtmlSourceBlock()),
+        ('iframe',IframeBlock()),
         ('divider',DividerBlock()),
         ('content',ContentBlock()),
     ])
@@ -858,6 +870,7 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
     
     content = blocks.StreamBlock([
         ('html',HtmlSourceBlock()),
+        ('iframe',IframeBlock()),
         ('heading',HeadingBlock()),
         ('content',ContentBlock()),
         ('video',ChildVideBlock()),

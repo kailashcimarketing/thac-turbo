@@ -63,6 +63,7 @@ class Team(ClusterableModel):
         ]),
         FieldPanel('position'),
         FieldPanel('credentials'),
+        FieldPanel('email'),
         FieldPanel('phone'),
         FieldPanel('status'),
         FieldPanel('weight'),
