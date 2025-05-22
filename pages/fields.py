@@ -85,7 +85,8 @@ newspage_stream_fields=[
    ('CTABannerBlock',CTABannerBlock()),
    ('NewsPhotoGalleryBlock',NewsPhotoGalleryBlock()),
    ('NewsProfileBlock',NewsProfileBlock()),
-   ('SpaceBlock',SpaceBlock())
+   ('SpaceBlock',SpaceBlock()),
+   ('VideoBlock',VideoBlock()),
 ]
 
 content_holder_stream_fields= [

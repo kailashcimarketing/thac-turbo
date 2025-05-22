@@ -19135,6 +19135,9 @@ body:not(.menu-open) .header__megamenu {
 .s-team__card-col {
     margin-top: 40px;
 }
+.s-team__card-col .new-card__content a{
+    background: none;
+}
 
 .new-card--third {
     border: 1px solid var(--secondary-teal);
