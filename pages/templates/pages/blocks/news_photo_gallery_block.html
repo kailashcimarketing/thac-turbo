@@ -1,6 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="row modal__section-simple-content-pics-grid">
+    {% if gallery %}
     {% for item in gallery %}
     {% image item.image fill-500x500-c100 format-webp as img %}
     {% image item.image original format-webp as img_o %}
@@ -16,6 +17,7 @@
         </div>
     </div>
     {% endfor %}
+    {% endif %}
 </div>
 
 
