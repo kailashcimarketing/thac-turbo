@@ -4,12 +4,12 @@ var filters = {};
 $(window).on('load', function () {
     var $grid = $('.grid').isotope({
         // options
-      });
-      // filter items on button click
-      $('.filter-button-group').on( 'click', 'button', function() {
+    });
+    // filter items on button click
+    $('.filter-button-group').on('click', 'button', function () {
         var filterValue = $(this).attr('data-filter');
         $grid.isotope({ filter: filterValue });
-      });
+    });
 
     // init Isotope
     let $container = $('.hero-news__cards').isotope({
@@ -17,19 +17,47 @@ $(window).on('load', function () {
         layoutMode: 'fitRows',
     });
 
+    // Equalize heights after Isotope completes arranging
+    $container.on('arrangeComplete', function () {
+        equalizeNewsHeights();
+    });
 
-    $('.news-category-filter a').on( 'click', function() {
+    // Also run on window resize to maintain responsiveness
+    $(window).on('resize', function () {
+        // Debounce for performance (optional)
+        clearTimeout(window.resizeTimeout);
+        window.resizeTimeout = setTimeout(equalizeNewsHeights, 100);
+    });
+
+    function equalizeNewsHeights() {
+        let maxHeight = 0;
+        const $items = $('.hero-news__cards .element-item');
+
+        $items.css('min-height', 'auto'); // Reset first
+
+        $items.each(function () {
+            const itemHeight = $(this).outerHeight(); // Use outerHeight to include padding
+            if (itemHeight > maxHeight) {
+                maxHeight = itemHeight;
+            }
+        });
+
+        $items.css('min-height',maxHeight);
+    }
+
+
+    $('.news-category-filter a').on('click', function () {
         $('.news-category-filter a').removeClass('is-active');
         var filterValue = $(this).attr('data-filter');
         $(this).addClass('is-active');
         $container.isotope({ filter: filterValue });
-      });
+    });
 
-      $('.modal-category-tag').on('click',function(){
+    $('.modal-category-tag').on('click', function () {
         var filterValue = $(this).attr('data-filter');
         console.log(filterValue);
-        $('.news-category-filter a[data-filter="'+filterValue+'"').trigger('click');
-      });
+        $('.news-category-filter a[data-filter="' + filterValue + '"').trigger('click');
+    });
 
     // bind filter button click
     /*$('.news-category-filter').on('click', 'a', function () {
