@@ -54,7 +54,7 @@
         {% load_content_holder "footer-script" %}
         {% block extra_js %}{% endblock %}
         {% if settings.core.GlobalAnnouncement.status %}
-        {% load_content_holder 'announcement-modal' %}
+        {% include "pages/announcement-modal.html" with value=settings.core.GlobalAnnouncement %}
         {% endif %}
         <script>
             {{ settings.core.ExtraStyleSettings.extra_js|safe|default:"" }}

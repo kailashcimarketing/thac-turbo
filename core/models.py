@@ -18,6 +18,13 @@ class ExtraStyleSettings(BaseSiteSetting):
 class GlobalAnnouncement(BaseSiteSetting):
     status = models.BooleanField(default=False,blank=True,help_text="Check to show alert message",verbose_name="Enable Popup")
     title = models.CharField(null=True,blank=False,max_length=255)
+    image = models.ForeignKey(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL, 
+        related_name='+'
+    )
     date_label = models.CharField(null=True,blank=False,max_length=255,verbose_name='Date and Time label')
     text = models.TextField(null=True,blank=True)
     button_label = models.CharField(null=True,blank=True,max_length=255) 
