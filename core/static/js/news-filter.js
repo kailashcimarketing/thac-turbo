@@ -90,6 +90,7 @@ $(window).on('load', function () {
     var iso = $container.data('isotope'); // get Isotope instance
 
     loadMore(initShow); //execute function onload
+    equalizeNewsHeights();
 
     function loadMore(toShow) {
         $container.find(".hidden").removeClass("hidden");
