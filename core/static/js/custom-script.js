@@ -195,7 +195,7 @@ $(function () {
             if ($(this).attr('type') == 'mp4-video') {
                 var video = $(this).parent().find('video').get(0);
                 video.pause();
-                video.currentTime = 0;
+                //video.currentTime = 0;
             } else {
                 var iframe = video_container.find('iframe');
                 const player = new Vimeo.Player(iframe);
