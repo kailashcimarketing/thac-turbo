@@ -45,6 +45,8 @@ $(window).on('load', function () {
         $items.css('min-height',maxHeight);
     }
 
+    $container.isotope('layout');
+
 
     $('.news-category-filter a').on('click', function () {
         $('.news-category-filter a').removeClass('is-active');
