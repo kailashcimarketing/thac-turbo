@@ -17,11 +17,6 @@ $(window).on('load', function () {
         layoutMode: 'fitRows',
     });
 
-    // Equalize heights after Isotope completes arranging
-    $container.on('arrangeComplete', function () {
-        equalizeNewsHeights();
-    });
-
     // Also run on window resize to maintain responsiveness
     $(window).on('resize', function () {
         // Debounce for performance (optional)
@@ -44,9 +39,6 @@ $(window).on('load', function () {
 
         $items.css('min-height',maxHeight);
     }
-
-    $container.isotope('layout');
-
 
     $('.news-category-filter a').on('click', function () {
         $('.news-category-filter a').removeClass('is-active');
@@ -76,6 +68,7 @@ $(window).on('load', function () {
     });*/
 
     $container.on('arrangeComplete', function (event, filteredItems) {
+        equalizeNewsHeights();
         if (filteredItems.length == 0) {
             $('.no-result-found').show();
             $('.load-more-news').hide();
