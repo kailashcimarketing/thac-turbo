@@ -13,12 +13,14 @@ class Category(models.Model):
     title = models.CharField(null=True,max_length=255,blank=False)
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     weight = models.IntegerField(default=100,blank=False)
-
-    def __str__(self):
-        return self.title
     
     class Meta:
-        verbose_name = 'Category'
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"  # Correct plural form
+
+    def __str__(self):
+        return self.title    
+
 
 class NewsCategories(Orderable):   
     category = models.ForeignKey(
