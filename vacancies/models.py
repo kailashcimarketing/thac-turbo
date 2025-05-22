@@ -8,8 +8,12 @@ class Category(models.Model):
     title = models.CharField(null=True,blank=False,max_length=255)
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"  # Correct plural form
+
     def __str__(self):
-        return self.title 
+        return self.title
 
 class Vacancies(models.Model):
     title = models.CharField(null=True,blank=False,max_length=500)
@@ -32,7 +36,11 @@ class Vacancies(models.Model):
         blank=True, 
         on_delete=models.SET_NULL, 
         related_name='+'
-    ) 
+    )
+    
+    class Meta:
+        verbose_name = "Vacancies"
+        verbose_name_plural = "Vacancies"  # Correct plural form
 
     def __str__(self):
         return self.title 
