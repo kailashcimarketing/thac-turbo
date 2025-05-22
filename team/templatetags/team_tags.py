@@ -39,7 +39,7 @@ def get_team(**kwargs):
 
     if exclude_item:
         items = items.exclude(categories__catgory__slug=exclude_item)
-        
+    items = items.order_by('-weight')
     if limit != 'all':
         try:
             limit = int(limit)
