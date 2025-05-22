@@ -46,7 +46,8 @@ class BoardmemberViewSet(SnippetViewSet):
 class CatgoryViewSet(SnippetViewSet):
     model = Category
     menu_label = "Leadership Categories"
-    ordering = ("title",)
+    ordering = ("title",'weight',)
+    list_display = ['title','weight',]
     search_fields = ("title",)
     #add_to_admin_menu = True
     icon = "list-ol"

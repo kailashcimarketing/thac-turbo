@@ -51,7 +51,7 @@ def get_team(**kwargs):
 
 @register.simple_tag
 def get_categories(exclude_item=False):
-    items = Category.objects.all()
+    items = Category.objects.all().order_by('weight')
     if exclude_item:
         items = items.exclude(slug=exclude_item)
     return {'items':items}

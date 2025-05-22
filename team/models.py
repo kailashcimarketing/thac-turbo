@@ -8,6 +8,7 @@ from modelcluster.models import ClusterableModel
 class Category(models.Model):
     title = models.CharField(null=True,blank=False,max_length=255)
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
+    weight = models.IntegerField(default=100,null=False,blank=False)
     
     def __str__(self):
         return self.title or "Unnamed Category"
