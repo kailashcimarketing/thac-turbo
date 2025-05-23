@@ -1398,6 +1398,11 @@ section.light-theme .s-faq.light-theme {
   margin-bottom: 0;
 }
 
+a:focus-visible,
+a:focus,
+a:focus-within{
+  outline: none;
+}
 
 /**************************************/
 @media (min-width:1300px) {

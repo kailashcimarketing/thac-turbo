@@ -364,7 +364,18 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         label = "Content with variable width"
         template = "pages/blocks/content_with_variable_width_block.html"
 
-
+class ExternalLinkListingBlock(blocks.StructBlock):
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('title',blocks.CharBlock(required=False)),
+        ('links',blocks.ListBlock(blocks.StructBlock([
+            ('label', blocks.CharBlock()),
+            ('external_link',blocks.URLBlock())
+        ])))
+    ]))
+    class Meta:
+        label = "External Link List"
+        template = "pages/blocks/external_link_list_block.html"
+        
 class ContentStreamBlock(blocks.StreamBlock):
     html = HtmlSourceBlock()
     iframe = IframeBlock()    
@@ -380,6 +391,7 @@ class ContentStreamBlock(blocks.StreamBlock):
     themebutton = ThemeButton()
     LeadParagraphCapsBlock = LeadParagraphCapsBlock()
     LeadTextBlock = LeadTextBlock()
+    ExternalLinkListingBlock = ExternalLinkListingBlock()
     
 
 class TwoColumnBlock(blocks.StructBlock):    
@@ -849,18 +861,6 @@ class ProfileBlock(blocks.StructBlock):
         label = "Profile"
         template = "pages/blocks/profile_block.html"
 
-class ExternalLinkListingBlock(blocks.StructBlock):
-    items = blocks.ListBlock(blocks.StructBlock([
-        ('title',blocks.CharBlock(required=False)),
-        ('links',blocks.ListBlock(blocks.StructBlock([
-            ('label', blocks.CharBlock()),
-            ('external_link',blocks.URLBlock())
-        ])))
-    ]))
-    class Meta:
-        label = "External Link List"
-        template = "pages/blocks/external_link_list_block.html"
-      
 class ContentWithLeftHeadingBlock(blocks.StructBlock):
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)

@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags team_tags %}
 {% get_instructors as team %}
-<section class="instructor-list s-team thac-team__cards {{value.background}}">
+<section class="instructor-list s-team thac-team__cards {{value.background}}" data-layout="{{value.layout}}">
     <div class="container s-team__container container-anim-js1">
         <div class="s-team__heading row align-items-end">
             <div class="col-lg-4 col-xl-5 col-12 s-team__heading-col s-team__heading-col--1">
@@ -15,8 +15,7 @@
         </div>
         <div class="row s-team__cards">
             <div class="owl-carousel" id="owl-carousel" >
-            {% for item in team.items %}
-            
+            {% for item in team.items %}            
             <div class="s-team__card-col {% for cat in item.categories.all %} {{cat.catgory.slug|safe}} {% endfor %}">
                 <div class="new-card new-card--third position-relative hover-pic-wrap">
                   {% if item.linked_page %}
