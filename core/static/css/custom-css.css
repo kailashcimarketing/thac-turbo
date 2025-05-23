@@ -1442,7 +1442,9 @@ a:focus,
 a:focus-within{
   outline: none;
 }
-
+.content-with-alignment-option-wrap.image-right .container > .row{
+  flex-direction: row-reverse;
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
