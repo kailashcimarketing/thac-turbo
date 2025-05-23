@@ -1107,7 +1107,7 @@ ul.check-list li:before {
   position: relative;
   overflow: hidden;
 }
-
+/*
 .explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content {
   position: absolute;
   padding: 45% 1.25rem 1.25rem;
@@ -1124,8 +1124,42 @@ ul.check-list li:before {
   gap: .625rem;
   transition: all ease .5s;
 
+}*/
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content {
+  position: absolute;
+  padding: 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  bottom: -40%;
+  left: 0;
+  min-height: 280px;
+  right: 0;
+  color: var(--basic-white); 
+  justify-content: flex-start;
+  gap: .625rem;
+  transition: all ease .5s;
+  justify-content: flex-start;
 }
 
+
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: linear-gradient(180deg, rgba(0, 38, 100, 0.00) 0%, rgba(0, 38, 100, 0.65) 51.44%, rgba(0, 38, 100, 0.85) 100%);
+  height: 180%;
+  z-index: 1;
+}
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content *{
+  position: relative;
+  z-index: 2;
+}
 .explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content .new-card__title {
   color: var(--basic-white);
   font-size: 2.5rem;
@@ -1377,6 +1411,11 @@ section.light-theme .s-faq.light-theme {
 .coach-list .owl-carousel .owl-nav button.owl-prev:before,
 .tutor-list .owl-carousel .owl-nav button.owl-prev:before {
   content: "\f104";
+}
+
+
+.owl-carousel .owl-nav.disabled{
+  display: none !important;
 }
 
 .hero-news__cards .new-card--third .new-card__title{

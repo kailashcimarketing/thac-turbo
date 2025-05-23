@@ -30,21 +30,26 @@ $(window).on('load', function () {
     }
 
     if ($('.tutor-list').length) {
-        $('.tutor-list .owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 4
-                }
+        $('.tutor-list').each(function () {
+            var data_layout = $(this).attr('data-layout');
+            if (data_layout == 'col-lg-4') {
+                layout = 3
+            } else {
+                layout = 4
             }
+            $(this).find('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    992: {
+                        items: layout
+                    }
+                }
+            });
         });
     }
     if ($('.instructor-list').length) {
@@ -71,21 +76,29 @@ $(window).on('load', function () {
         });
     }
     if ($('.coach-list').length) {
-        $('.coach-list .owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 4
-                }
+        $('.coach-list').each(function () {
+            var data_layout = $(this).attr('data-layout');
+            if (data_layout == 'col-lg-4') {
+                layout = 3
+            } else {
+                layout = 4
             }
+            $(this).find('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
         });
     }
 });
