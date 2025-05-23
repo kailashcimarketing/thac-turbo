@@ -255,6 +255,7 @@ class FormPage(AbstractEmailForm):
     LAYOUT_TYPE = [
         ('fullwidth', 'Fullwidth'),
         ('left-image', 'Form with Left Image'),
+        ('hide-form', 'Hide Form'),
     ]
     layout = models.CharField(
         max_length=20,

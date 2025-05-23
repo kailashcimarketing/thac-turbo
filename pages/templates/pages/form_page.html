@@ -18,15 +18,15 @@
 {% endwith %}
 
 <!-- form -->
+{% if page.layout != "hide-form" %}
 <div class="section s-form__col-2">
-
       {% block thankyou_message %}
       {% endblock %}
       {% block form %}
       {% include 'pages/form/default_form.html' %}
       {% endblock %}
-    
 </div>
+{% endif %}
 <!-- form end -->
 
 {% with blocks=page.bottom_body %}

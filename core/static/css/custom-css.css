@@ -1156,7 +1156,7 @@ ul.check-list li:before {
   height: 180%;
   z-index: 1;
 }
-.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content *{
+.explore-pages-with-flyout-panel-block .s-explore__row .new-card--secondary .new-card__content .block-content *{
   position: relative;
   z-index: 2;
 }
