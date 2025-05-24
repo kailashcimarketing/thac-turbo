@@ -84,6 +84,8 @@ class Events(ClusterableModel):
         FieldPanel('hero_image'),
         FieldPanel('location'),
         FieldPanel('short_description'),
+        FieldPanel('button_label'),
+        FieldPanel('button_url'),
         InlinePanel('categories', label='Categories', panels=[
             FieldPanel('category'),
         ]),
