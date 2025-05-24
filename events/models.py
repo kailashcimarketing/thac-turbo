@@ -53,6 +53,8 @@ class Events(ClusterableModel):
     status = models.BooleanField(default=True)
     homepage_featured_event = models.BooleanField(default=False,verbose_name="Show Featured Event on Homepage")
     show_details = models.BooleanField(default=False,verbose_name="Show Details")
+    button_label = models.CharField(null=True,blank=True,max_length=255)
+    button_url = models.CharField(null=True,blank=True,max_length=255)    
     
     category = models.ForeignKey('events.Category', related_name='event_category', null=True, blank=True, on_delete=models.SET_NULL)
     body = StreamField(events_stream_fields,null=True,blank=True)

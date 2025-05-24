@@ -89,10 +89,11 @@
                     <a href="#event-modal-{{ item.title|slugify }}" class="btn btn--fifth modal-event-btn-js event-card__btn"><span class="btn__content"><span class="btn__txt">Full Details</span></span></a>
                   </div>
                     {% endif %}
-                  
+                  {% if item.button_label %}
                   <div class="event-card__btn-wrap">
-                    <a href="#" class="btn btn--fifth event-card__btn"><span class="btn__content"><span class="btn__txt">Book Tickets</span></span></a>
+                    <a href="{{item.button_url}}" class="btn btn--fifth event-card__btn"><span class="btn__content"><span class="btn__txt">{{item.button_label}}</span></span></a>
                   </div>
+                  {% endif %}
                 </div>
               </div>
             </div>
