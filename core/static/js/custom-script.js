@@ -202,7 +202,7 @@ $(function () {
     let typingTimer;
 
 
-    $('.vimeo-video-btn').on('click', function () {
+    $(document).on('click','.vimeo-video-btn', function () {
         var video_container = $(this).parents('.video-module-wrapper');
         if (video_container.hasClass('active')) {
             //console.log('active');
