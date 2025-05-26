@@ -5,7 +5,7 @@ from wagtail.models import Page, Orderable
 from django_extensions.db.fields import AutoSlugField
 from modelcluster.models import ClusterableModel
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel, MultipleChooserPanel
-from home.models import HeroAbstract
+from home.models import HeroAbstract, SeoFieldsAbstract
 from pages.fields import generalpage_stream_fields,newspage_stream_fields
 from wagtail.fields import StreamField, RichTextField
 
@@ -90,7 +90,7 @@ class NewsGalleryImage(Orderable):
 class NewspageHero(HeroAbstract):
     page = ParentalKey('NewsIndexPage', related_name='newspage_hero')
 
-class NewsIndexPage(Page):
+class NewsIndexPage(Page, SeoFieldsAbstract):
     short_description = models.TextField(null=True,blank=True)
     body = StreamField(generalpage_stream_fields,null=True,blank=True)
     """

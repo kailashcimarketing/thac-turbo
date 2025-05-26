@@ -12,7 +12,7 @@ from wagtail.images import get_image_model_string
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from pages.fields import generalpage_stream_fields,landingpage_stream_fields
 from django import forms
-from home.models import HeroAbstract
+from home.models import HeroAbstract, SeoFieldsAbstract
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField, FORM_FIELD_CHOICES
 from wagtail.admin.panels import (
     FieldPanel, FieldRowPanel,
@@ -68,7 +68,7 @@ class DynamicContentSnippet(models.Model):
 class LandingpageHero(HeroAbstract):
     page = ParentalKey('LandingPage', related_name='landingpage_hero')
 
-class LandingPage(Page):
+class LandingPage(Page, SeoFieldsAbstract):
     short_description = models.TextField(null=True,blank=True)
     promo_image = models.ForeignKey(
         Image, 
@@ -118,7 +118,7 @@ class LandingPage(Page):
 class GeneralpageHero(HeroAbstract):
     page = ParentalKey('GeneralPage', related_name='generalpage_hero')
 
-class GeneralPage(Page):
+class GeneralPage(Page, SeoFieldsAbstract):
     show_in_menus_default = True
     short_description = models.TextField(null=True,blank=True)
     body = StreamField(generalpage_stream_fields,null=True,blank=True)
@@ -145,7 +145,7 @@ class GeneralPage(Page):
 class EventpageHero(HeroAbstract):
     page = ParentalKey('EventPage', related_name='eventpage_hero') 
     
-class EventPage(Page):
+class EventPage(Page, SeoFieldsAbstract):
     show_in_menus_default = True    
     
     class Meta:
@@ -251,7 +251,7 @@ class FormpageHero(HeroAbstract):
     page = ParentalKey('FormPage', related_name='formpage_hero')
 
     
-class FormPage(AbstractEmailForm):
+class FormPage(AbstractEmailForm, SeoFieldsAbstract):
     LAYOUT_TYPE = [
         ('fullwidth', 'Fullwidth'),
         ('left-image', 'Form with Left Image'),
@@ -310,6 +310,8 @@ class FormPage(AbstractEmailForm):
     ]
     promote_panels = AbstractEmailForm.promote_panels + [
         FieldPanel('short_description'),
+        FieldPanel('seo_image'),
+        FieldPanel('noindex'),
     ]
 
     

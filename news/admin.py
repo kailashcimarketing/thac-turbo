@@ -11,4 +11,6 @@ NewsIndexPage.content_panels = Page.content_panels + [
 ]
 NewsIndexPage.promote_panels = Page.promote_panels + [
     FieldPanel('short_description'),
+    FieldPanel('seo_image'),
+    FieldPanel('noindex'),
 ]

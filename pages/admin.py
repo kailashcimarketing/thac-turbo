@@ -15,6 +15,8 @@ GeneralPage.content_panels = Page.content_panels + [
 ]
 GeneralPage.promote_panels = Page.promote_panels + [
     FieldPanel('short_description'),
+    FieldPanel('seo_image'),
+    FieldPanel('noindex'),
 ]
 
 
@@ -29,6 +31,8 @@ LandingPage.content_panels = Page.content_panels + [
 ]
 LandingPage.promote_panels = Page.promote_panels + [
     FieldPanel('short_description'),
+    FieldPanel('seo_image'),
+    FieldPanel('noindex'),
     #FieldPanel('promo_image'),
     #FieldPanel('promo_title'),
     #FieldPanel('promo_page'),    
@@ -41,4 +45,9 @@ EventPage.content_panels = Page.content_panels + [
         FieldPanel('script_title'),   
     ],max_num=1), 
     #FieldPanel('body'),
+]
+
+EventPage.promote_panels = Page.promote_panels + [
+    FieldPanel('seo_image'),
+    FieldPanel('noindex'),
 ]

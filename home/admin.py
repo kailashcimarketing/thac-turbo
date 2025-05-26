@@ -17,3 +17,9 @@ HomePage.content_panels = [
     ],max_num=1),
     FieldPanel('body'),
 ]
+
+
+HomePage.promote_panels = HomePage.promote_panels+[
+    FieldPanel('seo_image'),
+    FieldPanel('noindex'),
+]

@@ -4,7 +4,7 @@ from django.template.loader import get_template
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from pages.fields import contactpage_stream_fields
-from home.models import HeroAbstract
+from home.models import HeroAbstract, SeoFieldsAbstract
 from wagtail.fields import StreamField, RichTextField
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from modelcluster.fields import ParentalKey
@@ -63,7 +63,7 @@ class ContactSubmission(models.Model):
         useremail.send()   
 
 
-class ContactPage(Page):
+class ContactPage(Page, SeoFieldsAbstract):
     short_description = models.TextField(null=True,blank=True)
     # intro = RichTextField(blank=True)
     thankyou_message = RichTextField()
@@ -98,6 +98,8 @@ class ContactPage(Page):
 
     promote_panels = Page.promote_panels + [
         FieldPanel('short_description'),
+        FieldPanel('seo_image'),
+        FieldPanel('noindex'),
     ]
     class Meta:
         verbose_name = "Contact Page"

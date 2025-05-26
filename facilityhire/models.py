@@ -17,7 +17,7 @@ from wagtail.contrib.forms.views import SubmissionsListView
 from django.utils.safestring import mark_safe
 from wagtail.fields import StreamField, RichTextField
 from pages.fields import generalpage_stream_fields
-from home.models import HeroAbstract
+from home.models import HeroAbstract, SeoFieldsAbstract
 from wagtail.images.fields import WagtailImageField
 from django.forms import FileField, CharField, ChoiceField
 from wagtail.images import get_image_model
@@ -176,7 +176,7 @@ class CustomFormBuilder(FormBuilder):
 class FacilityhireformpageHero(HeroAbstract):
     page = ParentalKey('FacilityhireFormPage', related_name='facilityhireformpage_hero')
 
-class FacilityhireFormPage(AbstractEmailForm):
+class FacilityhireFormPage(AbstractEmailForm, SeoFieldsAbstract):
     submissions_list_view_class = FacilityhireSubmissionsListView
     form_builder = CustomFormBuilder
     thank_you_text = RichTextField(blank=True)
@@ -207,6 +207,11 @@ class FacilityhireFormPage(AbstractEmailForm):
         ], heading="Email Settings"),
         FieldPanel('top_body'),
         FieldPanel('bottom_body'),
+    ]
+    
+    promote_panels = Page.promote_panels + [
+        FieldPanel('seo_image'),
+        FieldPanel('noindex'),
     ]
 
     def get_hero(self):
