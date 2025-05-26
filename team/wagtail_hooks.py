@@ -15,7 +15,7 @@ class CoachesViewSet(SnippetViewSet):
     model = Coaches
     menu_label = "Coaches"
     ordering = ("title",)
-    list_display  =["title","position","status","weight",]
+    list_display  =["title","position","status",'linked_page',"weight",]
     search_fields = ("title",)  
     icon = "user"  
 
@@ -23,7 +23,7 @@ class TutorsViewSet(SnippetViewSet):
     model = Tutors
     menu_label = "Tutors"
     ordering = ("title",)
-    list_display  =["title","position","status","weight",]
+    list_display  =["title","position","status",'linked_page',"weight",]
     search_fields = ("title",)   
     icon = "user" 
 
@@ -31,7 +31,7 @@ class InstructorsViewSet(SnippetViewSet):
     model = Instructors
     menu_label = "Instructors"
     ordering = ("title",)
-    list_display  =["title","position","status","weight",]
+    list_display  =["title","position","status",'linked_page',"weight",]
     search_fields = ("title",)   
     icon = "user" 
 
