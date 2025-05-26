@@ -61,7 +61,7 @@ def str_to_date(value, format="%Y-%m-%d"):
     
 @register.simple_tag()
 def get_news_category():
-    items = Category.objects.filter()
+    items = Category.objects.filter(newscategories__isnull=False).distinct()
     #print("---------------",items)
     return {'items':items}
 
