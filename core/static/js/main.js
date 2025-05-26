@@ -3088,17 +3088,19 @@ $(window).on('load', function () {
     return VenoBox;
 
 })));
-
+function initVenoBox(){
+    let venobox = new VenoBox({
+        selector: '.venobox',
+        spinner: 'rotating-plane',
+        overlayColor: 'rgba(255, 255, 255, 0.8)',
+        bgcolor: 'none',
+        toolsColor: '#002664',
+        toolsBackground: 'rgba(255, 255, 255, 0.8)',
+        transitionSpeed: 400,
+    });
+}
 $(window).on('load',function() {
-   let venobox = new VenoBox({
-       selector: '.venobox',
-       spinner: 'rotating-plane',
-       overlayColor: 'rgba(255, 255, 255, 0.8)',
-       bgcolor: 'none',
-       toolsColor: '#002664',
-       toolsBackground: 'rgba(255, 255, 255, 0.8)',
-       transitionSpeed: 400,
-   });
+    initVenoBox();
    // console.log(venobox)
 })
 

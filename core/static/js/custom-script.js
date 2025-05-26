@@ -393,6 +393,28 @@ $(window).on('load', function () {
             handleScroll(currentScrollTop);
         });
     }
+
+    if ($('.flyout-btn').length) {
+        $('.flyout-btn').on('click', function () {
+            var href = $(this).data('href');
+    
+            // Send GET request
+            $.get(href, function (response) {
+                // Insert response into .flyout-content
+                $('.flyout-content').html(response);
+                gsap.set('.container-anim-js', {
+                    autoAlpha: 1,
+                    delay: .15,
+                });
+
+                initVenoBox();
+   
+            }).fail(function () {
+                console.error('Request failed: ' + href);
+            });
+            return false;
+        });
+    }
 });
 
 

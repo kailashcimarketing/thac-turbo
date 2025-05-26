@@ -20,7 +20,7 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path('news/<slug:slug>/', pages_views.news_detail, name='news_detail_page'),
     path('events/<slug:slug>/', pages_views.event_detail, name='event_detail_page'),
-    path('tutor/<slug:slug>/',pages_views.tutor_detail,name='tutor_detail'),
+    path('profile/<slug:slug>/',pages_views.profile_detail,name='profile_detail'),
     re_path(r'^images/([^/]*)/(\d*)/([^/]*)/[^/]*$', ServeView.as_view(), name='wagtailimages_serve'),
     path("robots.txt", include("robots.urls")),
 ]

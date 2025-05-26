@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from pages.models import GeneralPage
 
-def tutor_detail(request,slug):
+def profile_detail(request,slug):
     page = get_object_or_404(GeneralPage, slug=slug)
     return render(request, 'pages/flyout_detail.html', {"slug": slug, 'page': page})
 
