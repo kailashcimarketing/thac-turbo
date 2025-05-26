@@ -18,6 +18,11 @@
         <meta name="description" content="{{ page.search_description }}" />
         {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% if page.noindex %}
+            <meta name="robots" content="noindex">
+            {% else %}
+            <meta name="robots" content="index, follow">
+        {% endif %}
 
         <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}" />
         <meta property="og:description" content="{{ page.search_description }}" />
