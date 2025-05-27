@@ -791,6 +791,7 @@ class VideoBlock(blocks.StructBlock):
     ],label="layout",default="container")
     poster_image = ImageChooserBlock(required=False)
     video_url = blocks.URLBlock(help_text="MP4 video url")
+    autoplay = blocks.BooleanBlock(required=False,default=False,help_text='Check to autoplay video without controls overlay.')
     class Meta:
         label = "Video"        
         template = "pages/blocks/video_block.html"
