@@ -38,7 +38,7 @@ $(window).on('load', function () {
                 layout = 4
             }
             $(this).find('.owl-carousel').owlCarousel({
-                loop: false,
+                loop: true,
                 margin: 10,
                 nav: true,
                 responsive: {
@@ -61,7 +61,7 @@ $(window).on('load', function () {
                 layout = 4
             }
             $(this).find('.owl-carousel').owlCarousel({
-                loop: false,
+                loop: true,
                 margin: 10,
                 nav: true,
                 responsive: {
@@ -84,7 +84,7 @@ $(window).on('load', function () {
                 layout = 4
             }
             $(this).find('.owl-carousel').owlCarousel({
-                loop: false,
+                loop: true,
                 margin: 10,
                 nav: true,
                 responsive: {
