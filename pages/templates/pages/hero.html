@@ -98,9 +98,11 @@
             </ul>
             {% endif %}
         </div>
+        {% if item.title %}
         <h1 class="hero-about__title position-relative z-index-4 hero-title-js hero-title--to-right-js split-text-by-line-js">
             {{item.title|safe}}
         </h1>
+        {% endif %}
     </div>
     <div class="hero-about__bg-wrap overflow-hidden container-video-js">
         {% image item.image original format-webp as img %}
@@ -149,7 +151,10 @@
         </div>
         <h1 class="hero__title hero-item-js hero-item-2-js">
             {{item.title|safe}}
+            {% if item.script_title %}
             <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">{{item.script_title|safe}}</span></span>
+            {% endif %}
+
         </h1>
         <div class="text-center hero-news__btns-wrap-2 internal-page-navigation-container">
         <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible container-anim-js">
@@ -161,7 +166,7 @@
         </div>
       </div>
         <h3 class="hero__sub-title mb-0 text-anim-by-line-js">
-            <span class="color-1">{{item.primary_tagline|safe}}</span> {{item.secondary_tagline|safe}}
+            <span class="color-1">{{item.primary_tagline|safe}}</span> {% if item.secondary_tagline %}{{item.secondary_tagline|safe}}{% endif %}
         </h3>
     </div>
 </section>
