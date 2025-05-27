@@ -179,6 +179,7 @@ class FacilityhireformpageHero(HeroAbstract):
 class FacilityhireFormPage(AbstractEmailForm, SeoFieldsAbstract):
     submissions_list_view_class = FacilityhireSubmissionsListView
     form_builder = CustomFormBuilder
+    short_description = models.TextField(null=True,blank=True)
     thank_you_text = RichTextField(blank=True)
     thankyou_message = RichTextField(blank=True)
     booking_field_help_text = RichTextField(blank=True, help_text="Help text to display above booking fields")
@@ -210,6 +211,7 @@ class FacilityhireFormPage(AbstractEmailForm, SeoFieldsAbstract):
     ]
     
     promote_panels = Page.promote_panels + [
+        FieldPanel('short_description'),
         FieldPanel('seo_image'),
         FieldPanel('noindex'),
     ]

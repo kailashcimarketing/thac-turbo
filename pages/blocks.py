@@ -293,6 +293,18 @@ class ChildImageBlock(blocks.StructBlock):
     class Meta:
         label = "Image"
         template = "pages/blocks/child_image_block.html"
+        
+class ExternalLinkListingBlock(blocks.StructBlock):
+    items = blocks.ListBlock(blocks.StructBlock([
+        ('title',blocks.CharBlock(required=False)),
+        ('links',blocks.ListBlock(blocks.StructBlock([
+            ('label', blocks.CharBlock()),
+            ('external_link',blocks.URLBlock())
+        ])))
+    ]))
+    class Meta:
+        label = "External Link List"
+        template = "pages/blocks/external_link_list_block.html"        
                
 class AccordionBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
@@ -308,6 +320,10 @@ class AccordionBlock(blocks.StructBlock):
                 ('space',SpaceBlock()),
                 ('divider',DividerBlock()),
                 ('table',CustomTableBlock()),
+                ('image',ChildImageBlock()),
+                ('DownloadList',DownloadList()),
+                ('ThemeButton',ThemeButton()),
+                ('ExternalLinkListingBlock',ExternalLinkListingBlock()),
             ])),
         ])
     )
@@ -364,17 +380,7 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         label = "Content with variable width"
         template = "pages/blocks/content_with_variable_width_block.html"
 
-class ExternalLinkListingBlock(blocks.StructBlock):
-    items = blocks.ListBlock(blocks.StructBlock([
-        ('title',blocks.CharBlock(required=False)),
-        ('links',blocks.ListBlock(blocks.StructBlock([
-            ('label', blocks.CharBlock()),
-            ('external_link',blocks.URLBlock())
-        ])))
-    ]))
-    class Meta:
-        label = "External Link List"
-        template = "pages/blocks/external_link_list_block.html"
+
         
 class ContentStreamBlock(blocks.StreamBlock):
     html = HtmlSourceBlock()

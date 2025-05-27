@@ -10,6 +10,7 @@
   {% get_events as event_list %}
 
   <section class="hero-news hero-news--secondary parallax-trigger-js">
+    {% if page.get_hero %}
     {% for item in page.get_hero %}
     <div class="hero-news__bg-wrap overlay--special overlay after-el before-el overflow-hidden">
       {% image item.image original format-webp as img %}
@@ -31,10 +32,13 @@
         {% endif %}
       </div>
       <h1 class="hero-news__title hero-item-js hero-item-2-js text-center">
-        {{ page.title|safe }}
-        <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">{{ page.script_title|safe }}</span></span>
+        {{ item.title|safe }}
+        {% if item.script_title %}
+        <span class="child-special-text d-flex justify-content-center"><span class="child-special-text__txt">{{ item.script_title|safe }}</span></span>
+        {% endif %}
       </h1>
 {% endfor %}
+{% endif %}
       <div class="text-center hero-news__btns-wrap-2">
         <div class="hero-news__btns-wrap d-inline-block swiper overflow-visible swiper-def-btns-js container-anim-js">
           <div class="swiper-wrapper event-category-filter">
@@ -51,7 +55,7 @@
       </div>
       <div class="hero-news__events container-anim-js">
         {% for item in event_list.items %}
-          <div class="hero-news__events-col event-item {% for cat in item.categories.all %} {{cat.category.slug}}{% endfor %}">
+          <div class="hero-news__events-col event-item {% for cat in item.event_category.all %} {{cat.category.slug}}{% endfor %}">
             <div class="event-card d-flex">
               <div class="event-card__pic-wrap flex-auto">
                 {% image item.image original format-webp as img %}

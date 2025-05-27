@@ -1466,6 +1466,9 @@ a:focus-within {
 .s-pin-banners__content--2 img{
   max-width:2rem;
 }
+.header .btn.dropup-block__btn .btn__arrow{
+  pointer-events: none;
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {

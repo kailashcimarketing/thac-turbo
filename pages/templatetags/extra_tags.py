@@ -172,36 +172,64 @@ def get_news_items(category='all', limit='all'):
 def get_next_pre_pages(page):
     if not page:
         return False
-        # Get the current page's parent
+
+    # Get the current page's parent
     parent_page = page.specific.get_parent()
 
-    # Get the previous page (sibling)
-    previous_page = page.specific.get_prev_sibling()
+    # Get the previous page (sibling), published and in menu
+    previous_page = (
+        page.specific.get_prev_sibling()
+        if page.specific.get_prev_sibling() and page.specific.get_prev_sibling().live and page.specific.get_prev_sibling().show_in_menus
+        else None
+    )
 
-    # If no previous sibling, get the parent's previous sibling
+    # If no previous sibling, get the last child of the parent's previous sibling
     if not previous_page and parent_page.get_prev_sibling():
-        previous_page = parent_page.get_prev_sibling().get_children().last()  # Get the last child before the current page's depth
+        previous_sibling = parent_page.get_prev_sibling()
+        previous_page = (
+            previous_sibling.get_children()
+            .live()
+            .in_menu()
+            .last()
+        )
 
-    # Get the next two pages (siblings)
+    # Get the next page (sibling), published and in menu
     next_page = page.specific.get_next_sibling()
+    if next_page and (not next_page.live or not next_page.show_in_menus):
+        next_page = None
+
+    # Try to get the second next page
     second_next_page = None
+    if next_page:
+        temp = next_page.get_next_sibling()
+        if temp and temp.live and temp.show_in_menus:
+            second_next_page = temp
 
-    # Get the second next page     
-    if next_page :
-        second_next_page = next_page.get_next_sibling()
-
-    # If no next page, get the parent's next sibling
+    # If no next_page, get the first child of parent's next sibling
     if not next_page:
-        next_page = parent_page.get_next_sibling().get_children().first()
-        if next_page :
-            second_next_page = next_page.get_next_sibling()
-        
+        next_sibling = parent_page.get_next_sibling()
+        if next_sibling:
+            next_page = (
+                next_sibling.get_children()
+                .live()
+                .in_menu()
+                .first()
+            )
+            # Attempt to get second next page after this
+            if next_page:
+                temp = next_page.get_next_sibling()
+                if temp and temp.live and temp.show_in_menus:
+                    second_next_page = temp
 
-    # If no second next page, get the parent's next sibling after the next page
-    if not second_next_page and next_page:
-        second_next_page = parent_page.get_next_sibling().get_children().first()
-
-    # Now you can pass these pages to the template context    
+    # If second_next_page is still not found, try again from parent's next sibling
+    if not second_next_page and parent_page.get_next_sibling():
+        second_next_page = (
+            parent_page.get_next_sibling()
+            .get_children()
+            .live()
+            .in_menu()
+            .first()
+        )
 
     return {
         'previous_page': previous_page,

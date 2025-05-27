@@ -8,7 +8,7 @@ today = datetime.now()
 
 @register.simple_tag()
 def get_event_categories():
-    items = Category.objects.all().order_by('weight')
+    items = Category.objects.filter(event_category__isnull=False).distinct().order_by('weight')
     return {'items':items}
 
 @register.simple_tag()
