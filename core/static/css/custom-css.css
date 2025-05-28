@@ -1469,6 +1469,13 @@ a:focus-within {
 .header .btn.dropup-block__btn .btn__arrow{
   pointer-events: none;
 }
+
+
+.container>.row>div.light-theme {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
