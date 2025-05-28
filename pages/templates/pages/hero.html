@@ -165,9 +165,11 @@
           </div>
         </div>
       </div>
+      {% if item.primary_tagline or item.secondary_tagline %}
         <h3 class="hero__sub-title mb-0 text-anim-by-line-js">
             <span class="color-1">{{item.primary_tagline|safe}}</span> {% if item.secondary_tagline %}{{item.secondary_tagline|safe}}{% endif %}
         </h3>
+        {% endif %}
     </div>
 </section>
 {% endif %}
