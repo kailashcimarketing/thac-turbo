@@ -63,6 +63,15 @@ divider_background =[
         ('light-grey','Light Grey'),
     ]
 
+button_theme = [
+        ('btn btn--dark-blue','Solid blue'),
+        ('btn btn--fifth','Solid white'),
+        ('btn btn--secondary','Solid teal'),
+        ('btn btn--third','Teal outline'),
+        ('btn btn-download','Download'),
+        ('btn btn-external-link','External link'),
+        ('link','Link'),
+    ]
 
 class TableItemBlock(blocks.StreamBlock):
     table = TableBlock()
@@ -248,15 +257,7 @@ class SimpleButton(blocks.StructBlock):
 
 class ThemeButton(blocks.StructBlock):
     text = blocks.CharBlock(required=False)        
-    theme = blocks.ChoiceBlock([
-        ('btn btn--dark-blue','Solid blue'),
-        ('btn btn--fifth','Solid white'),
-        ('btn btn--secondary','Solid teal'),
-        ('btn btn--third','Teal outline'),
-        ('btn btn-download','Download'),
-        ('btn btn-external-link','External link'),
-        ('link','Link'),
-    ],required=False)
+    theme = blocks.ChoiceBlock(button_theme,required=False)
     href = HrefBlock()
     class Meta:
         label = "Theme Button"
@@ -305,7 +306,18 @@ class ExternalLinkListingBlock(blocks.StructBlock):
     class Meta:
         label = "External Link List"
         template = "pages/blocks/external_link_list_block.html"        
-               
+
+class LinkEmbedDrawerBlock(blocks.StructBlock):
+    button_label = blocks.CharBlock()
+    button_theme = blocks.ChoiceBlock(button_theme,required=False)    
+    embed_link = blocks.TextBlock()
+    drawer_id = blocks.CharBlock(help_text='Enter a unique ID for this drawer. You can open this drawer automatically by using a URL without a hash, like your-drawer-id.')
+    class Meta:
+        label = "Link Embed Drawer"
+        icon = "code"
+        collapsed = True
+        template = "pages/blocks/link_embed_drawer.html"
+                      
 class AccordionBlock(blocks.StructBlock):
     background = blocks.ChoiceBlock(theme_layout,label="Background",default="light-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
@@ -324,6 +336,7 @@ class AccordionBlock(blocks.StructBlock):
                 ('DownloadList',DownloadList()),
                 ('ThemeButton',ThemeButton()),
                 ('ExternalLinkListingBlock',ExternalLinkListingBlock()),
+                ('LinkEmbedDrawerBlock',LinkEmbedDrawerBlock()),
             ])),
         ])
     )
@@ -374,6 +387,7 @@ class ContentWithVariableWidthBlock(blocks.StructBlock):
         ('ThemeButton',ThemeButton()),
         ('LeadParagraphCapsBlock',LeadParagraphCapsBlock()),
         ('LeadTextBlock',LeadTextBlock()),
+        ('LinkEmbedDrawerBlock',LinkEmbedDrawerBlock()),
     ])
     css_class = blocks.CharBlock(required=False)
     class Meta:
@@ -398,6 +412,7 @@ class ContentStreamBlock(blocks.StreamBlock):
     LeadParagraphCapsBlock = LeadParagraphCapsBlock()
     LeadTextBlock = LeadTextBlock()
     ExternalLinkListingBlock = ExternalLinkListingBlock()
+    LinkEmbedDrawerBlock = LinkEmbedDrawerBlock()
     
 
 class TwoColumnBlock(blocks.StructBlock):    
@@ -451,6 +466,7 @@ class ContentWithImageAlignmentOption(blocks.StructBlock):
         ('iframe',IframeBlock()),
         ('divider',DividerBlock()),
         ('content',ContentBlock()),
+        ('LinkEmbedDrawerBlock',LinkEmbedDrawerBlock())
     ])
     class Meta:
         label = "Content with image alignment option"
@@ -890,6 +906,7 @@ class ContentWithLeftHeadingBlock(blocks.StructBlock):
         ('button',ThemeButton()),
         ('external_links',ExternalLinkListingBlock()),
         ('accordion',AccordionBlock()),
+        ('LinkEmbedDrawerBlock',LinkEmbedDrawerBlock()),
         
     ])
     class Meta:
@@ -1092,4 +1109,4 @@ class GalleryBlock(blocks.StructBlock):
     photo_gallery = SnippetChooserBlock('pages.PhotoGallery')
     class Meta:
         label = "Photo Gallery Grid (snippet)"
-        template = "pages/blocks/photo_gallery_grid.html"        
+        template = "pages/blocks/photo_gallery_grid.html"

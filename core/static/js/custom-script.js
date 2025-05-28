@@ -101,6 +101,17 @@ $(window).on('load', function () {
             });
         });
     }
+
+    var hash = window.location.hash;
+    if (hash && $(hash).length) {
+        setTimeout(function () {
+            $(".modal-event-btn-js").each(function (i) {
+                if ($(this).attr('href') == hash) {
+                    $(this).trigger('click');
+                }
+            });
+        }, 2000);
+    }
 });
 
 
@@ -202,7 +213,7 @@ $(function () {
     let typingTimer;
 
 
-    $(document).on('click','.vimeo-video-btn', function () {
+    $(document).on('click', '.vimeo-video-btn', function () {
         var video_container = $(this).parents('.video-module-wrapper');
         if (video_container.hasClass('active')) {
             //console.log('active');
@@ -397,7 +408,7 @@ $(window).on('load', function () {
     if ($('.flyout-btn').length) {
         $('.flyout-btn').on('click', function () {
             var href = $(this).data('href');
-    
+
             // Send GET request
             $.get(href, function (response) {
                 // Insert response into .flyout-content
@@ -408,7 +419,7 @@ $(window).on('load', function () {
                 });
 
                 initVenoBox();
-   
+
             }).fail(function () {
                 console.error('Request failed: ' + href);
             });
