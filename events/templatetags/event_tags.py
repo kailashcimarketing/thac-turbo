@@ -1,14 +1,16 @@
 from django import template
 from django.template import Template, Context
 register = template.Library()
-from events.models import Events, Category
+from events.models import Events, Category,EventCategory
 from datetime import datetime
 
 today = datetime.now()
 
 @register.simple_tag()
 def get_event_categories():
-    items = Category.objects.filter(event_category__isnull=False).distinct().order_by('weight')
+    used_category_ids = EventCategory.objects.values_list('category_id', flat=True).distinct()
+    # Filter categories using those IDs
+    items = Category.objects.filter(id__in=used_category_ids).order_by('weight')
     return {'items':items}
 
 @register.simple_tag()
