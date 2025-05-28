@@ -1,8 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% with drawer_id=value.drawer_id %}
-
   <a href="#{{ drawer_id }}" class="{{ value.button_theme|safe }} modal-event-btn-js"><span class="btn__content"><span class="btn__txt">{{ value.button_label|safe }}</span></span></a>
-  
+
   <div class="move-modal-items-to-body">
     <div id="{{ drawer_id|slugify|safe }}" class="drawer-flyout-modal-item modal modal-event-js modal--info position-fixed d-flex flex-column">
       <a href="#{{ drawer_id|slugify|safe }}" id="modal__overlay" class="modal__overlay position-absolute bg-img-none modal-event-btn-js"></a>
@@ -12,15 +11,16 @@
             <path class="transition-def" d="M15.1875 7.58691L11.9062 10.8682L15.1875 14.1807C15.5938 14.5557 15.5938 15.2119 15.1875 15.5869C14.8125 15.9932 14.1562 15.9932 13.7812 15.5869L10.5 12.3057L7.1875 15.5869C6.8125 15.9932 6.15625 15.9932 5.78125 15.5869C5.375 15.2119 5.375 14.5557 5.78125 14.1807L9.0625 10.8682L5.78125 7.58691C5.375 7.21191 5.375 6.55566 5.78125 6.18066C6.15625 5.77441 6.8125 5.77441 7.1875 6.18066L10.5 9.46191L13.7812 6.18066C14.1562 5.77441 14.8125 5.77441 15.1875 6.18066C15.5938 6.55566 15.5938 7.21191 15.1875 7.58691Z" fill="var(--primary-dark-blue)" fill-opacity="0.5" />
           </svg>
         </a>
-        <div data-scroll="exclude" class="modal__block modal__block--info hide-scrollbar">
-          <section class="modal__section">            
-            <div class="modal__section-container mx-auto w-100">              
-              <h2 class="modal__section-title"><a href="{{ item.detail_page.url }}">{{ item.detail_page.title|safe }}</a></h2>
-              <div class="modal__section-simple-content-wrap last-el-mb-0">
+        <div data-scroll="exclude" class="modal__block modal__block--info hide-scrollbar" style="height: 100vh;">
+          <section class="modal__section" style="padding: 0;">
+            <div class="modal__section-container mx-auto w-100" style="max-width: 100%;padding: 0;">
+              <div class="modal__section-simple-content-wrap last-el-mb-0" style="margin-bottom: 0;">
                 {% if value.embed_link %}
-                <script src="{{ value.embed_link|safe }}" type="text/javascript"></script>
+                  <div class="ratio ratio-16x9" data-scroll="exclude">
+                    <iframe src="{{ value.embed_link|safe }}" allowfullscreen></iframe>
+                  </div>
                 {% endif %}
-              </div>             
+              </div>
             </div>
           </section>
         </div>
