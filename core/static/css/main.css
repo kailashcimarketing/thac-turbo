@@ -19189,9 +19189,9 @@ body:not(.menu-open) .header__megamenu {
 @media (min-width: 992px) {}
 
 @media (min-width: 1200px) {
-    .s-team__container {
+    /* .s-team__container {
         max-width: 1194px;
-    }
+    } */
 
     .s-team__cards {
         margin: 0 -20px;

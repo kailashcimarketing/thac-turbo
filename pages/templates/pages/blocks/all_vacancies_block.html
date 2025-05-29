@@ -35,8 +35,7 @@
             <div class="no-result-found" style="display:none;">No result found.</div>
             {% for item in vacancies.items %}
             <div class="s-vacancies__item-wrap block-anim-js {{item.catgory|slugify}}" style="width: 100%;">
-                <div class="s-vacancies__item position-relative">
-                    <a href="{{item.document.file.url}}" class="link-mask" target="_blank" download></a>
+                <div class="s-vacancies__item position-relative">                    
                     <h3 class="s-vacancies__item-title">{{item.title|safe}}</h3>
                     <div class="d-flex justify-content-between s-vacancies__item-row">
                         <div class="s-vacancies__item-col s-vacancies__item-col-1">
@@ -48,8 +47,9 @@
                             </time>
                         </div>
                         <div class="s-vacancies__item-col s-vacancies__item-col-2 flex-auto">
+                            <a href="{{item.document.file.url}}" download>
                             <span class="link-with-icon link-with-icon--secondary link-with-icon--reverse bg-img-none">
-                                <span class="link-with-icon__txt transition-def">View Position</span>
+                                <span class="link-with-icon__txt transition-def">Position Description</span>
                                 <span class="link-with-icon__icon-wrap">
                                     <svg width="12" height="16" viewBox="0 0 12 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -59,6 +59,7 @@
                                     </svg>
                                 </span>
                             </span>
+                            </a>
                         </div>
                     </div>
                 </div>
