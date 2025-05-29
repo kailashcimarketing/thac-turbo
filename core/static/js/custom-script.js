@@ -221,11 +221,7 @@ $(function () {
             //$(this).hide();
             video_container.removeClass('active');
             //video_container.find('.vimeo-iframe').hide();
-            if ($(this).attr('type') == 'mp4-video') {
-                var video = $(this).parent().find('video').get(0);
-                video.pause();
-                //video.currentTime = 0;
-            } else {
+            if ($(this).attr('type') != 'mp4-video') {
                 var iframe = video_container.find('iframe');
                 const player = new Vimeo.Player(iframe);
                 player.pause();
@@ -237,10 +233,7 @@ $(function () {
             //$(this).hide();
             video_container.addClass('active');
             video_container.find('.vimeo-iframe').show();
-            if ($(this).attr('type') == 'mp4-video') {
-                var video = $(this).parent().find('video').get(0);
-                video.play();
-            } else {
+            if ($(this).attr('type') != 'mp4-video') {
                 var iframe = video_container.find('iframe');
                 const player = new Vimeo.Player(iframe);
                 player.play();
