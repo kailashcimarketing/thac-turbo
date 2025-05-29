@@ -1463,14 +1463,16 @@ a:focus-within {
   position: relative;
   left: .5rem;
 }
-.s-pin-banners__content--2 img{
-  max-width:2rem;
+
+.s-pin-banners__content--2 img {
+  max-width: 2rem;
 }
-.header .btn.dropup-block__btn .btn__arrow{
+
+.header .btn.dropup-block__btn .btn__arrow {
   pointer-events: none;
 }
 
-
+.container>.row>div.light-teal-theme,
 .container>.row>div.light-theme {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -1546,6 +1548,29 @@ a:focus-within {
 
   .s-team.thac-team__cards .s-team__heading-list li:not(:last-child) {
     margin: 0px 15px 2px 0;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .s-pin-banners__content-container {
+    padding: 56px 0 56px;
+  }
+
+  .s-pin-banners__title {
+    font-size: 32px;
+    margin: 0 auto 64px;
+  }
+
+  .s-pin-banners__txt-wrap {
+    margin: 0 20px;
+  }
+
+  .s-pin-banners__hr {
+    margin: 2px auto 20px;
+  }
+
+  h4.s-pin-banners__content-kicker {
+    margin-bottom: 1rem;
   }
 }
 
@@ -1835,6 +1860,41 @@ a:focus-within {
     font-size: 4rem;
     top: -1.5rem;
   }
+
+
+  .mylivechat_template5>div {
+    font-size: 0;
+    height: 3rem;
+    width: 3rem;
+    padding: 0;
+    border-radius: 50%;
+    min-width: inherit !important;
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+
+  }
+
+  .mylivechat_template5 .mylivechat_sprite,
+  .mylivechat_template5 .mylivechat_collapsed_text {
+    display: none;
+  }
+
+  .mylivechat_template5 .mylivechat_collapsed:after {
+    /*  font-family: "Font Awesome 6 Pro";
+    content: "\f4b6";
+    color: var(--basic-white);
+    font-size: 1.5rem;*/
+    content: "";
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+    background: url(/static/images/chat-icon.svg) center no-repeat;
+    position: fixed;
+    background-size: 1.5rem;
+
+  }
+
 }
 
 @media (max-width:575px) {
