@@ -139,7 +139,7 @@
                 <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--2">
                   {% if item.get_first_category %}
                   <a href="#" class="btn btn--fifth modal__section-head-btn"><span class="btn__content"><span class="btn__txt">
-                    {{ item.get_first_category.title|safe }}</span></span></a>
+                    {{ item.get_first_category.category.title|safe }}</span></span></a>
                   {% endif %}
                 </div>
               </div>
