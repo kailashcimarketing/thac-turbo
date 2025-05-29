@@ -1238,7 +1238,13 @@ body .header__login-block-container .header__login-block-item:hover img {
 .hero-news__events .hero-news__events-col.event-item.hidden {
   display: none;
 }
-
+.s-vacancies__item-col a{
+  background: none !important;
+  background-image: none !important;
+}
+.s-vacancies__item-col a:hover {
+  color: var(--primary-dark-blue);
+}
 .s-map .s-map__map-wrap {
   overflow: hidden;
 }

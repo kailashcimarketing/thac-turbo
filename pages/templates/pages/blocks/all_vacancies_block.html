@@ -47,6 +47,7 @@
                             </time>
                         </div>
                         <div class="s-vacancies__item-col s-vacancies__item-col-2 flex-auto">
+                            {% if item.document.file.ur %}
                             <a href="{{item.document.file.url}}" download>
                             <span class="link-with-icon link-with-icon--secondary link-with-icon--reverse bg-img-none">
                                 <span class="link-with-icon__txt transition-def">Position Description</span>
@@ -60,6 +61,7 @@
                                 </span>
                             </span>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
