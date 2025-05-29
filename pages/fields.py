@@ -87,6 +87,9 @@ newspage_stream_fields=[
    ('NewsProfileBlock',NewsProfileBlock()),
    ('SpaceBlock',SpaceBlock()),
    ('VideoBlock',VideoBlock()),
+   ('ChildImageBlock',ChildImageBlock()),
+   ('LeadParagraphCapsBlock',LeadParagraphCapsBlock()),
+   ('LeadTextBlock',LeadTextBlock()),
 ]
 
 content_holder_stream_fields= [
