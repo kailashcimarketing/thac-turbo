@@ -1238,13 +1238,16 @@ body .header__login-block-container .header__login-block-item:hover img {
 .hero-news__events .hero-news__events-col.event-item.hidden {
   display: none;
 }
-.s-vacancies__item-col a{
+
+.s-vacancies__item-col a {
   background: none !important;
   background-image: none !important;
 }
+
 .s-vacancies__item-col a:hover {
   color: var(--primary-dark-blue);
 }
+
 .s-map .s-map__map-wrap {
   overflow: hidden;
 }
@@ -1485,6 +1488,21 @@ a:focus-within {
   margin-bottom: 0 !important;
 }
 
+
+.s-vacancies.light-theme .s-vacancies__item-wrap  .link-with-icon {
+  color: var(--primary-dark-blue);
+  opacity: 0.8;
+}
+
+.s-vacancies.light-theme .s-vacancies__item-wrap  .link-with-icon:hover {
+  color: var(--primary-dark-blue);
+  opacity: 1;
+}
+
+.mobile-menu-footer{
+  display: none;
+  position: relative;
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
@@ -1754,6 +1772,7 @@ a:focus-within {
 
   .header__megamenu-footer-content .column-row>div .header__megamenu-footer-col-2 {
     padding: 15px 18px;
+    margin-bottom: 1.5rem;
   }
 
   .header__megamenu-header,
@@ -1954,11 +1973,37 @@ a:focus-within {
   body:not(.menu-open) .header .btn__icon-line {
     background: var(--secondary-teal);
   }
-  .header .header__container .header__col>a.btn:hover .btn__icon-line{
+
+  .header .header__container .header__col>a.btn:hover .btn__icon-line {
     background: var(--primary-dark-blue);
   }
+
   .btn--login .btn__icon--primary {
     width: 15px;
+  }
+
+  .home-page .main .s-small-banners {
+    padding-bottom: 2.5rem !important;
+  }
+
+  .home-page .s-banner:not(.light-theme) {
+    background: var(--primary-dark-blue) !important;
+    min-height: inherit;
+  }
+  .home-page .s-banner:not(.light-theme)  img{
+    opacity: .1 !important;
+  }
+
+  .home-page .s-banner:not(.light-theme) .s-banner__title {
+    font-size: 40px;
+    margin-bottom: 37px;
+    letter-spacing: -0.8px;
+}
+
+.mobile-menu-footer{
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 }
 

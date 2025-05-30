@@ -13,6 +13,7 @@ class Category(models.Model):
     title = models.CharField(null=True,max_length=255,blank=False)
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     weight = models.IntegerField(default=100,blank=False)
+    #is_top_category = models.BooleanField(default=False)
     
     class Meta:
         verbose_name = "Category"
