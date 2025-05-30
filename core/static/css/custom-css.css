@@ -1363,6 +1363,7 @@ section.light-theme .s-faq.light-theme {
 }
 
 .btn,
+.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo
 .header #google_translate_element .goog-te-gadget .goog-te-combo {
   backface-visibility: hidden;
   will-change: transform;
@@ -1503,6 +1504,91 @@ a:focus-within {
   display: none;
   position: relative;
 }
+
+
+
+
+.header .dropup-block {
+  padding: 0;
+}
+
+.header .btn.dropup-block__btn {
+  padding: 0;
+  min-height: inherit;
+  position: relative;
+  background: none;
+  border: none;
+}
+
+.header .btn.dropup-block__btn .btn__icon,
+.header .btn.dropup-block__btn .btn__arrow {
+  position: absolute;
+  left: 1rem;
+}
+
+.header .btn.dropup-block__btn .btn__arrow {
+  left: inherit;
+  right: 1rem;
+}
+
+.header .btn.dropup-block__btn:hover .btn__icon path,
+.header .btn.dropup-block__btn:hover .btn__arrow path {
+  fill: var(--secondary-teal);
+}
+
+body {
+  top: 0 !important;
+}
+
+.skiptranslate iframe {
+  display: none;
+}
+
+.header #google_translate_element_mobile {
+  min-height: 50px;
+}
+
+.header #google_translate_element_mobile .goog-te-gadget {
+  font-size: 0;
+  height: 50px;
+  position: relative;
+}
+
+.header #google_translate_element .goog-te-gadget>span {
+  display: none;
+}
+
+.header #google_translate_element .goog-te-gadget .goog-te-combo {
+
+  color: var(--secondary-teal);
+  background: #0000;
+  border: 1px solid var(--secondary-teal);
+  border-radius: 360px;
+  margin: 0;
+  padding: 0 2rem 0 2.5rem;
+  font-size: 1rem;
+  line-height: 50px;
+  appearance: none;
+  min-height: 50px;
+  font-family: var(--font-family);
+  font-size: .875rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.07px;
+  cursor: pointer;
+}
+
+.header #google_translate_element .goog-te-gadget .goog-te-combo:focus-visible,
+.header #google_translate_element .goog-te-gadget .goog-te-combo:focus-within {
+  outline: none;
+}
+
+
+.header #google_translate_element .goog-te-gadget .goog-te-combo option {
+  background: var(--primary-dark-blue);
+}
+
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
