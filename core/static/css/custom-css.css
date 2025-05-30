@@ -1364,7 +1364,7 @@ section.light-theme .s-faq.light-theme {
 
 .btn,
 .header #google_translate_element_mobile .goog-te-gadget .goog-te-combo
-.header #google_translate_element .goog-te-gadget .goog-te-combo {
+.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo {
   backface-visibility: hidden;
   will-change: transform;
 }
@@ -1554,11 +1554,11 @@ body {
   position: relative;
 }
 
-.header #google_translate_element .goog-te-gadget>span {
+.header #google_translate_element_mobile .goog-te-gadget>span {
   display: none;
 }
 
-.header #google_translate_element .goog-te-gadget .goog-te-combo {
+.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo {
 
   color: var(--secondary-teal);
   background: #0000;
@@ -1578,13 +1578,13 @@ body {
   cursor: pointer;
 }
 
-.header #google_translate_element .goog-te-gadget .goog-te-combo:focus-visible,
-.header #google_translate_element .goog-te-gadget .goog-te-combo:focus-within {
+.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo:focus-visible,
+.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo:focus-within {
   outline: none;
 }
 
 
-.header #google_translate_element .goog-te-gadget .goog-te-combo option {
+.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo option {
   background: var(--primary-dark-blue);
 }
 
