@@ -421,6 +421,19 @@ $(window).on('load', function () {
     }
 });
 
+$(document).ready(function () {
+    $('.s-promo-banner .child-special-text__txt--secondary').each(function () {
+        let html = $(this).html();
+
+        // Use regex to find 3 or more dots not already inside a span
+        html = html.replace(/([^>])(\.{3,})(?![^<]*<\/span>)/g, function (match, before, dots) {
+            return before + '<span class="dots">' + dots + '</span>';
+        });
+
+        $(this).html(html);
+    });
+});
+
 
 
 
