@@ -5,7 +5,7 @@ from django.template import Template, Context
 from pages.models import ContentHolder,LandingPage
 from django.utils.safestring import mark_safe
 register = template.Library()
-from news.models import Category,News
+from news.models import Category,News,TopCategory
 from django.utils.html import strip_spaces_between_tags, strip_tags
 from datetime import datetime
 import re
@@ -62,6 +62,11 @@ def str_to_date(value, format="%Y-%m-%d"):
 @register.simple_tag()
 def get_news_category():
     items = Category.objects.filter(newscategories__isnull=False).distinct()
+    #print("---------------",items)
+    return {'items':items}
+@register.simple_tag()
+def get_news_top_level_category():
+    items = TopCategory.objects.distinct()
     #print("---------------",items)
     return {'items':items}
 

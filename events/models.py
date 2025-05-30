@@ -30,7 +30,7 @@ class EventCategory(Orderable):
 class Events(ClusterableModel):
     title = models.CharField(null=True,max_length=255,blank=False)
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
-    start_date = models.DateField()
+    start_date = models.DateField(null=True,blank=True)
     end_date = models.DateField()  
     time_label = models.CharField(null=True,blank=True,help_text='Event time eg. 1:00pm - 5:15pm')  
     image = models.ForeignKey(

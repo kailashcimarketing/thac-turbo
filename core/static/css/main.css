@@ -17516,11 +17516,6 @@ body:not(.menu-open) .header__megamenu {
     border-color: var(--secondary-teal);
 }
 
-.s-vacancies__item:hover .link-with-icon__icon-wrap {
-    background: var(--secondary-turquoise);
-    color: var(--primary-dark-blue);
-}
-
 .s-vacancies__item-col-2 {
     padding-left: 30px;
 }

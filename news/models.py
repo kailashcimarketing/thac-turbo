@@ -13,14 +13,25 @@ class Category(models.Model):
     title = models.CharField(null=True,max_length=255,blank=False)
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     weight = models.IntegerField(default=100,blank=False)
-    #is_top_category = models.BooleanField(default=False)
     
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"  # Correct plural form
 
     def __str__(self):
-        return self.title    
+        return self.title
+    
+class TopCategory(models.Model):
+    title = models.CharField(null=True,max_length=255,blank=False)
+    slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
+    weight = models.IntegerField(default=100,blank=False)
+    
+    class Meta:
+        verbose_name = "Top Level Category"
+        verbose_name_plural = "Top Level Categories"  # Correct plural form
+
+    def __str__(self):
+        return self.title
 
 
 class NewsCategories(Orderable):   
@@ -31,6 +42,15 @@ class NewsCategories(Orderable):
         on_delete=models.CASCADE,
     )
     page = ParentalKey('News', related_name='news_category')
+    
+class NewsTopCategories(Orderable):   
+    category = models.ForeignKey(
+        "news.TopCategory",
+        null=True,
+        blank=False,
+        on_delete=models.CASCADE,
+    )
+    page = ParentalKey('News', related_name='top_news_category')
   
 
 # Create your models here.
@@ -62,9 +82,13 @@ class News(ClusterableModel):
         FieldPanel('short_description'),
         FieldPanel('release_date'),
         FieldPanel('status'),
+        InlinePanel('top_news_category', label='Top level Categories', panels=[
+            FieldPanel('category'),
+        ]),
         InlinePanel('news_category', label='Categories', panels=[
             FieldPanel('category'),
         ]),
+        
         MultipleChooserPanel(
             'gallery_images', label="Gallery images", chooser_field_name="image"
         ),

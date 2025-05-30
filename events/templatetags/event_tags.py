@@ -3,7 +3,7 @@ from django.template import Template, Context
 register = template.Library()
 from events.models import Events, Category,EventCategory
 from datetime import datetime
-
+from django.utils import timezone
 today = datetime.now()
 
 @register.simple_tag()
@@ -15,9 +15,9 @@ def get_event_categories():
 
 @register.simple_tag()
 def get_events():
-    items = Events.objects.filter(status=True).order_by('start_date')
-    
-    return {'items':items}
+    today = timezone.now().date()
+    items = Events.objects.filter(status=True, end_date__gte=today).order_by('start_date')
+    return {'items': items}
 
 @register.simple_tag()
 def get_homepage_featured_events():

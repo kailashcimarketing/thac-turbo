@@ -40,32 +40,19 @@ $(window).on('load', function () {
         $items.css('min-height',maxHeight);
     }
 
-    $('.news-category-filter a').on('click', function () {
-        $('.news-category-filter a').removeClass('is-active');
-        var filterValue = $(this).attr('data-filter');
-        $(this).addClass('is-active');
-        $container.isotope({ filter: filterValue });
-    });
-
-    $('.modal-category-tag').on('click', function () {
-        var filterValue = $(this).attr('data-filter');
-        console.log(filterValue);
-        $('.news-category-filter a[data-filter="' + filterValue + '"').trigger('click');
-    });
-
     // bind filter button click
-    /*$('.news-category-filter').on('click', 'a', function () {
+    $('.news-category-filter').on('click', 'a', function () {
+        var $this = $(this);
         var filterGroup = $(this).parents('.news-category-filter').attr('data-filter-group');
-        $('.news-category-filter a').removeClass('is-active');
+        $this.parents('.news-category-filter').find('a').removeClass('is-active');
         $(this).addClass('is-active');
         var filterValue = $(this).attr('data-filter');
-        if (!filters[filterGroup]) {
-            filters[filterGroup] = [];
-        }
-        var filterString = Object.values(filters).map(group => group.join(',')).join('');
+        filters[filterGroup] = filterValue;
+        //var filterString = Object.values(filters).map(filters => filters.join(',')).join('');
+        var filterString = concatValues( filters );
         // use filterFn if matches value
         $container.isotope({ filter: filterString || '*' });
-    });*/
+    });
 
     $container.on('arrangeComplete', function (event, filteredItems) {
         equalizeNewsHeights();
@@ -165,3 +152,11 @@ function debounce(fn, threshold) {
         setTimeout(delayed, threshold || 100);
     };
 }
+
+function concatValues( obj ) {
+    var value = '';
+    for ( var prop in obj ) {
+      value += obj[ prop ];
+    }
+    return value;
+  }

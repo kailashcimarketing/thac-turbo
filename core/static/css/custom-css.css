@@ -1363,7 +1363,7 @@ section.light-theme .s-faq.light-theme {
 }
 
 .btn,
-.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo
+.header #google_translate_element_mobile .goog-te-gadget .goog-te-combo ,
 .header #google_translate_element_mobile .goog-te-gadget .goog-te-combo {
   backface-visibility: hidden;
   will-change: transform;
@@ -1490,17 +1490,17 @@ a:focus-within {
 }
 
 
-.s-vacancies.light-theme .s-vacancies__item-wrap  .link-with-icon {
+.s-vacancies.light-theme .s-vacancies__item-wrap .link-with-icon {
   color: var(--primary-dark-blue);
   opacity: 0.8;
 }
 
-.s-vacancies.light-theme .s-vacancies__item-wrap  .link-with-icon:hover {
+.s-vacancies.light-theme .s-vacancies__item-wrap .link-with-icon:hover {
   color: var(--primary-dark-blue);
   opacity: 1;
 }
 
-.mobile-menu-footer{
+.mobile-menu-footer {
   display: none;
   position: relative;
 }
@@ -1586,6 +1586,20 @@ body {
 
 .header #google_translate_element_mobile .goog-te-gadget .goog-te-combo option {
   background: var(--primary-dark-blue);
+}
+
+.s-vacancies__item .link-with-icon:hover .link-with-icon__icon-wrap {
+  background: var(--secondary-turquoise);
+  color: var(--primary-dark-blue);
+}
+
+.hero-news .hero-news__events-col .event-card__txt-wrap p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 
@@ -1887,7 +1901,7 @@ body {
   }
 
   .internal-page-navigation {
-    margin: 6rem 0 2.75rem;
+    margin: 4rem 0 2.75rem;
   }
 
   .internal-page-navigation-after-scroll .news-category-filter {
@@ -2076,7 +2090,8 @@ body {
     background: var(--primary-dark-blue) !important;
     min-height: inherit;
   }
-  .home-page .s-banner:not(.light-theme)  img{
+
+  .home-page .s-banner:not(.light-theme) img {
     opacity: .1 !important;
   }
 
@@ -2084,13 +2099,13 @@ body {
     font-size: 40px;
     margin-bottom: 37px;
     letter-spacing: -0.8px;
-}
+  }
 
-.mobile-menu-footer{
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
+  .mobile-menu-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
 }
 
 @media (max-width:575px) {
