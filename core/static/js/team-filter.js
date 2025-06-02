@@ -6,7 +6,6 @@ $(window).on('load', function () {
     let $container = $('.s-team__cards.leadership-team').isotope({
         itemSelector: '.s-team__card-col',
         layoutMode: 'fitRows',
-
     });
 
 

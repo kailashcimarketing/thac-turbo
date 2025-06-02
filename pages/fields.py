@@ -65,6 +65,7 @@ contactpage_stream_fields= common_blocks+ [
 
 events_stream_fields = [
     ('EventQuote',EventQuote()),
+    ('QuoteBlock',QuoteBlock()),
     ('EventContentBlocks',EventContentBlocks()),
     ('ProfileBlock',ProfileBlock()),
     ('HtmlSourceBlock',HtmlSourceBlock()),
@@ -72,6 +73,8 @@ events_stream_fields = [
     ('VideoBlock',VideoBlock()),
     ('ContentWithVariableWidthBlock',ContentWithVariableWidthBlock()),
     ('CTAButton',CTAButton()),
+    ('LeadParagraphCapsBlock',LeadParagraphCapsBlock()),
+    ('LeadTextBlock',LeadTextBlock()),
 ]
 
 

@@ -1602,7 +1602,9 @@ body {
   -webkit-box-orient: vertical;
 }
 
-
+.s-form__form-item .help-text-element{
+color: var(--primary-dark-blue);
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
