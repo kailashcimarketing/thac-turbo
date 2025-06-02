@@ -411,28 +411,7 @@ $(window).on('load', function () {
                     delay: .15,
                 });
 
-                let blocks_anim = $('.block-anim-js');
-                if (blocks_anim.length) {
-                    blocks_anim.each(function (index, item) {
-                        trigger_block = item,
-                        y_set = 25,
-                        x_set = 0,
-                        duration_opacity = .5,
-                        duration_transform = .7;
-                    let anim_tl = gsap.timeline({
-                        defaults: {
-                            ease: 'power2.inOut',
-                        },
-                        
-                        scrollTrigger: {
-                            trigger: trigger_block,
-                            start: start_trigger,
-                            pin: false,
-                            once: true
-                        }
-                    });
-                });
-            }
+                
 
                 initVenoBox();
 

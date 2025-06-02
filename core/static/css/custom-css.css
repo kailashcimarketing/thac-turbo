@@ -352,6 +352,42 @@ span.ellipses {
 
 }
 
+.external-links .external-link-item .btn {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  min-height: 4.125rem;
+  border-radius: 0;
+  margin-bottom: .625rem;
+  width: 100%;
+  gap: 1.25rem;
+  text-transform: none;
+  margin-left: 0;
+}
+.external-links .external-link-item .btn svg {
+  position: absolute;
+  right: 1.25rem;
+}
+
+.external-links .external-link-item .btn.btn--dark-blue svg path{
+      fill: var(--basic-white);
+}
+
+.external-links .external-link-item .btn.btn--dark-blue:hover svg path{
+  fill: var(--primary-dark-blue);
+}
+.external-links .external-link-item .btn.btn--secondary:hover svg path{
+  fill: var(--basic-white);
+
+}
+
+
+
+
 .btn--dark-blue {
   color: var(--basic-white);
   background: var(--primary-dark-blue);
@@ -1261,7 +1297,6 @@ body .header__login-block-container .header__login-block-item:hover img {
   display: block;
   width: 100%;
   clear: both;
-  float: left;
 }
 
 .divider-block>span {

@@ -1,9 +1,8 @@
-{% if value.with_container %}
-<div class=""><div class="container">
-    {% endif %}
-<div class="divider-block {{value.top_padding|safe}} {{value.bottom_padding|safe}}">
-    <span class="{{value.background|safe}}"></span>
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="{{ value.background|safe }} {{ value.top_padding|safe }} {{ value.bottom_padding|safe }}">
+  <div class="{% if value.with_container %}container{% endif %}">
+    <div class="divider-block">
+      <span class="{{ value.divider_color|safe }}"></span>
+    </div>
+  </div>
 </div>
-{% if value.with_container %}
-</div></div>
-    {% endif %}

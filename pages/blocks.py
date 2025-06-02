@@ -73,6 +73,12 @@ button_theme = [
         ('link','Link'),
     ]
 
+external_link_button_theme = [
+        ('btn btn--dark-blue','Solid blue'),
+        ('btn btn--secondary','Solid teal'),
+        ('btn btn-external-link','External link'),
+    ]
+
 class TableItemBlock(blocks.StreamBlock):
     table = TableBlock()
 
@@ -113,10 +119,11 @@ class SpaceBlock(blocks.StructBlock):
         
 class DividerBlock(blocks.StructBlock):
     #height = blocks.IntegerBlock(default=50)
-    background = blocks.ChoiceBlock(divider_background,label="Background",default="light-theme")
+    background = blocks.ChoiceBlock(theme_layout,required=False,label="Section Background")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     with_container = blocks.BooleanBlock(default=False,required=False)
+    divider_color = blocks.ChoiceBlock(divider_background,label="Divider Color",default="light-theme")
     class Meta:
         label = "Divider"
         template = "pages/blocks/divider_block.html"
@@ -296,6 +303,7 @@ class ChildImageBlock(blocks.StructBlock):
         template = "pages/blocks/child_image_block.html"
         
 class ExternalLinkListingBlock(blocks.StructBlock):
+    theme = blocks.ChoiceBlock(external_link_button_theme,label="Background",default="btn btn-external-link")
     items = blocks.ListBlock(blocks.StructBlock([
         ('title',blocks.CharBlock(required=False)),
         ('links',blocks.ListBlock(blocks.StructBlock([

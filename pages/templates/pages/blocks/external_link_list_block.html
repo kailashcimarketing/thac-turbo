@@ -3,7 +3,7 @@
     <div class="external-link-item">
         <h3>{{item.title|safe}}</h3>
         {% for link in item.links %}
-        <a href="{{link.external_link}}" target="_blank" class="btn btn-external-link">{{link.label|safe}} <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="{{link.external_link}}" target="_blank" class="{{value.theme}}">{{link.label|safe}} <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14.75 0H15.5V0.75V11.25V12H14V11.25V2.57812L2.14062 14.4375L1.625 14.9531L0.546875 13.875L1.0625 13.3594L12.9219 1.5H4.25H3.5V0H4.25H14.75Z" fill="#193154"/>
             </svg></a>
         {% endfor %}
