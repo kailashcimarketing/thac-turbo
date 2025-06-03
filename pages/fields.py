@@ -75,6 +75,9 @@ events_stream_fields = [
     ('CTAButton',CTAButton()),
     ('LeadParagraphCapsBlock',LeadParagraphCapsBlock()),
     ('LeadTextBlock',LeadTextBlock()),
+    ('DownloadList',DownloadList()),
+    ('ExternalLinkListingBlock',ExternalLinkListingBlock()),
+    ('ThemeButton',ThemeButton()),
 ]
 
 

@@ -33,7 +33,7 @@ class Events(ClusterableModel):
     start_date = models.DateField(null=True,blank=True)
     end_date = models.DateField()  
     release_date = models.DateField(null=True,blank=False,help_text="The date this event is intended to be publicly announced or made visible (for reference only; does not control visibility).")  
-    time_label = models.CharField(null=True,blank=True,help_text='Event time eg. 1:00pm - 5:15pm')  
+    time_label = models.CharField(null=True,blank=True,help_text='Overwrite the default event date label, e.g. Wednesday, 24th November, 1:00 PM – 5:15 PM.',verbose_name='Custom date label')  
     image = models.ForeignKey(
         Image, 
         null=True, 
