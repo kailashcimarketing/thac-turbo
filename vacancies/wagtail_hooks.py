@@ -6,7 +6,7 @@ class VacanciesViewSet(SnippetViewSet):
     model = Vacancies
     menu_label = "Vacancies"
     ordering = ("title",)
-    list_display  =["title","catgory","start_date","end_date","status_icon","weight"]
+    list_display  =["title","catgory","start_date","end_date","lifecycle_status","weight"]
     search_fields = ("title",)
     #add_to_admin_menu = True
 

@@ -3,6 +3,8 @@ from wagtail.images.models import Image
 from django_extensions.db.fields import AutoSlugField
 from wagtail.documents.models import Document
 from django.utils.html import format_html
+from django.utils.timezone import now
+
 # Create your models here.
 class Category(models.Model):
     title = models.CharField(null=True,blank=False,max_length=255)
@@ -49,6 +51,20 @@ class Vacancies(models.Model):
         return format_html(
             '<span style="color:{};">{}</span>',
             'green' if self.status else 'red',
-            '✓' if self.status else '✗'
+            'Active' if self.status else 'Inactive'
         )
     status_icon.short_description = 'Status'
+    
+    def lifecycle_status(self):
+        today = now().date()
+        if self.start_date and self.end_date and self.start_date > self.end_date:
+            return format_html('<span style="color: red;">Invalid Dates</span>')
+        elif self.start_date and today < self.start_date and self.status:
+            return format_html('<span style="color: orange;">Scheduled</span>')
+        elif self.end_date and today > self.end_date:
+            return format_html('<span style="color: gray;">Expired</span>')
+        elif self.status:
+            return format_html('<span style="color: green;">Live</span>')
+        else:
+            return format_html('<span style="color: red;">Inactive</span>')
+    lifecycle_status.short_description = 'Live Status'
