@@ -2204,3 +2204,9 @@ color: var(--primary-dark-blue);
   }
 
 }
+@media (min-width:1020px){
+  .hero-primary {
+    min-height: inherit;  
+     height: 80vh;
+    }
+}
