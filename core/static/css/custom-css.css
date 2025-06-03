@@ -848,6 +848,7 @@ ul.bullets-list li:before {
   content: "\f058";
   font-weight: 900;
   color: var(--secondary-turquoise, #67CDA9);
+  top:0px;
 }
 
 
