@@ -1305,6 +1305,9 @@ body .header__login-block-container .header__login-block-item:hover img {
   display: block;
   width: 100%;
 }
+.divider-block .light-teal-theme{
+  background: var(--secondary-teal);
+}
 
 .light-grey {
   background: lightgrey;
