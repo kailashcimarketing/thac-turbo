@@ -3,6 +3,7 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.fields import RichTextField
 from modelcluster.fields import ParentalKey
 from wagtail.images.models import Image
+from wagtail.admin.panels import FieldPanel
 
 @register_setting
 class ExtraStyleSettings(BaseSiteSetting):
@@ -48,4 +49,22 @@ class AdminSettings(BaseSiteSetting):
 
     class Meta:
         verbose_name = "Admin Setting"
-        verbose_name_plural = "Admin Settings"        
+        verbose_name_plural = "Admin Settings"
+        
+@register_setting
+class SocialMediaSettings(BaseSiteSetting):
+    facebook = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    vimeo = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    youtube = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+
+    panels = [
+        FieldPanel('facebook'),
+        FieldPanel('twitter'),
+        FieldPanel('vimeo'),
+        FieldPanel('linkedin'),
+        FieldPanel('youtube'),
+        FieldPanel('instagram'),
+    ]

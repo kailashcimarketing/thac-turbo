@@ -55,9 +55,7 @@
                             {% endif %}
                         </div>
                         {% if item.email %}
-                        <a href="mailto:{{item.email}}">
-                        <span class="text-link--reverse text-link color-1"><span class="text-link__txt">{{item.email|safe}}</span></span>
-                    </a>
+                        <a href="mailto:{{item.email}}"><span class="text-link--reverse text-link color-1"><span class="text-link__txt">{{item.email|safe}}</span></span></a>
                         {% endif %}
                     </div>
                 </div>

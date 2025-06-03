@@ -18,8 +18,7 @@
             {% for item in team.items %}
             
             <div class="s-team__card-col {{value.layout}} col-sm-6 col-12 block-anim-js {% for cat in item.categories.all %} {{cat.catgory.slug|safe}} {% endfor %}">
-                <div class="new-card new-card--third position-relative hover-pic-wrap">
-                    <a href="mailto:{{item.email}}" class="link-mask"></a>
+                <div class="new-card new-card--third position-relative hover-pic-wrap">                    
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
                         {% image item.profile_picture original format-webp as img  %}
                         <img class="w-100 obj-cover hover-pic" src="{{img.url}}" alt="">
@@ -36,9 +35,9 @@
                             {% if item.credentials %}
                             <p>{{item.credentials|safe}}</p>
                             {% endif %}
-                        </div>
+                        </div>                        
                         {% if item.email %}
-                        <span class="text-link--reverse text-link color-1"><span class="text-link__txt">{{item.email|safe}}</span></span>
+                        <a href="mailto:{{item.email}}"><span class="text-link--reverse text-link color-1"><span class="text-link__txt">{{item.email|safe}}</span></span></a>
                         {% endif %}
                     </div>
                 </div>
