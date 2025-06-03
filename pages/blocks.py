@@ -119,7 +119,7 @@ class SpaceBlock(blocks.StructBlock):
         
 class DividerBlock(blocks.StructBlock):
     #height = blocks.IntegerBlock(default=50)
-    background = blocks.ChoiceBlock(theme_layout,required=False,label="Section Background")
+    background = blocks.ChoiceBlock(theme_layout,required=False,label="Section Background",default="light-theme")
     top_padding = blocks.ChoiceBlock(top_padding_list,required=False)
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     with_container = blocks.BooleanBlock(default=False,required=False)
