@@ -5,18 +5,30 @@ from events.models import Events, Category,EventCategory
 from datetime import datetime
 from django.utils import timezone
 today = datetime.now()
+from django.db.models import Exists, OuterRef
 
 @register.simple_tag()
 def get_event_categories():
-    used_category_ids = EventCategory.objects.values_list('category_id', flat=True).distinct()
-    # Filter categories using those IDs
-    items = Category.objects.filter(id__in=used_category_ids).order_by('weight')
-    return {'items':items}
+    today = timezone.now().date()
+    items = Category.objects.filter(
+        Exists(
+            Events.objects.filter(
+                categories__category=OuterRef('pk'),
+                release_date__lte=today,
+                end_date__gte=today
+            )
+        )
+    )
+    return {'items': items}
 
 @register.simple_tag()
 def get_events():
     today = timezone.now().date()
-    items = Events.objects.filter(status=True, end_date__gte=today).order_by('start_date')
+    items = Events.objects.filter(
+        status=True,
+        end_date__gte=today,
+        release_date__lte=today
+    ).order_by('start_date')
     return {'items': items}
 
 @register.simple_tag()

@@ -76,7 +76,7 @@ button_theme = [
 external_link_button_theme = [
         ('btn btn--dark-blue','Solid blue'),
         ('btn btn--secondary','Solid teal'),
-        ('btn btn-external-link','External link'),
+        ('btn btn-external-link','Outline teal'),
     ]
 
 class TableItemBlock(blocks.StreamBlock):

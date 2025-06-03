@@ -262,3 +262,4 @@ SEND_HQ_URL = 'http://demo.sendhq.com.au'
 ENROL_HQ_URL = 'https://cimarketing.enrolhq.com.au/dashboard/'
 ISSUE_REFERENCES_URL = "https://sendhq.com.au/demo/issue-references/"
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000

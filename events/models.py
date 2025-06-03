@@ -32,6 +32,7 @@ class Events(ClusterableModel):
     slug = AutoSlugField(populate_from='title',editable=True, null=True,max_length=500)
     start_date = models.DateField(null=True,blank=True)
     end_date = models.DateField()  
+    release_date = models.DateField(null=True,blank=False,help_text="The date this event is intended to be publicly announced or made visible (for reference only; does not control visibility).")  
     time_label = models.CharField(null=True,blank=True,help_text='Event time eg. 1:00pm - 5:15pm')  
     image = models.ForeignKey(
         Image, 
@@ -77,6 +78,7 @@ class Events(ClusterableModel):
         FieldPanel('status'),
         FieldPanel('homepage_featured_event'),
         FieldPanel('show_details'),
+        FieldPanel('release_date'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
         FieldPanel('time_label'),
