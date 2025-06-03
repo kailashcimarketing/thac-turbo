@@ -148,7 +148,8 @@ class DynamicSnippetChooserBlock(blocks.StructBlock):
 class ContentBlock(blocks.StructBlock):
     list_style = blocks.ChoiceBlock([
         ('check-list','Checklist'),
-    ],default="check-list",required=False)
+        ('bullets-list','Bullets'),
+    ],default="bullets-list",required=False)
     content = blocks.RichTextBlock()
     css_class = blocks.CharBlock(required=False)
     class Meta:

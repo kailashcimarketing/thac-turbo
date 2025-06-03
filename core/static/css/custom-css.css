@@ -482,7 +482,9 @@ form button.btn {
 .s-faq.dark-theme {
   background: var(--primary-dark-blue);
 }
-
+.s-faq.light-theme {
+  background: var(--template-cover);
+}
 .header .header__megamenu-list-pic-block-title {
   position: absolute;
   bottom: 0;
@@ -827,6 +829,17 @@ ul.check-list li {
 .s-2cols__content ul li:before,
 .check-list ul li:before,
 ul.check-list li:before {
+  position: absolute;
+  left: 0;
+  background: none;
+  font-size: 1.25rem;
+  font-family: "Font Awesome 6 Pro";
+  content: "\f138";
+  font-weight: 900;
+  color: var(--secondary-turquoise, #67CDA9);
+}
+.bullets-list ul li:before,
+ul.bullets-list li:before {
   position: absolute;
   left: 0;
   background: none;
