@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
 {% load static wagtailcore_tags wagtailimages_tags extra_tags %}
-{% block body_class %}error500-page{% endblock %}
+{% block body_class %}general-page innerpage error404-page{% endblock %}
 
 {% block content %}
-{% load_content_holder '404-page' %}
+{% include "pages/hero.html" with type="internal" page=page %}
+
+{% with blocks=page.body %}
+{% for block in blocks %}
+{% include_block block %}
+{% endfor %}
+{% endwith %}
 {% endblock content %}

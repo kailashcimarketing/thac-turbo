@@ -10,6 +10,10 @@ from pages import views as pages_views
 from search import views as search_views
 from wagtail.images.views.serve import ServeView
 
+from wagtail.models import Site
+from home.models import Custom404Page
+from django.shortcuts import render
+
 
 
 
@@ -43,3 +47,19 @@ urlpatterns = urlpatterns + [
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
 ]
+
+def wagtail_custom_404(request, exception):
+    site = Site.find_for_request(request)
+    try:
+        error_page = Custom404Page.objects.live().descendant_of(site.root_page).first()
+        if error_page:
+            return render(request, error_page.get_template(request), {
+                'page': error_page,
+                'request': request,
+            }, status=404)
+    except Custom404Page.DoesNotExist:
+        pass
+
+    return render(request, "404.html", status=404)  # fallback
+
+handler404 = 'core.urls.wagtail_custom_404'
