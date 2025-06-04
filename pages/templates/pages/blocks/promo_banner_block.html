@@ -1,5 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<section class="s-promo-banner position-relative overflow-hidden">
+<section class="s-promo-banner position-relative overflow-hidden {% if value.promo_image_container_width %} s-promo-banner-auto-width{% endif %}">
     <div class="s-promo-banner__bg-wrap overlay--special overlay after-el before-el">
         {% image value.image original format-webp as img %}
         <img class="w-100 h-100 obj-cover" src="{{img.url}}" alt="">

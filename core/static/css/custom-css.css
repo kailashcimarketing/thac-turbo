@@ -1105,7 +1105,16 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
   margin-top: -3px !important;
   margin-bottom: -3px !important;
 }
-
+.btn + .light-teal-theme,
+.btn + .light-theme {
+  margin-top: 0px !important;
+}
+.s-promo-banner-auto-width .s-promo-banner__pic-wrap{
+  width: 100%;
+}
+.s-promo-banner-auto-width .s-promo-banner__pic{
+  width: auto;
+}
 
 .help-text-content ul li,
 .s-2cols__content ul li,
