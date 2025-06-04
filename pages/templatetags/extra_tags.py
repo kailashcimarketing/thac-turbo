@@ -160,9 +160,9 @@ def get_related_news(category='all', limit='all',related='all'):
 @register.simple_tag
 def get_news_items(category='all', limit='all'):
     if category != 'all':
-        items = News.objects.filter(status=True,news_category__category__slug=category)
+        items = News.objects.filter(status=True,news_category__category__slug=category).order_by('-release_date')
     else:
-        items = News.objects.filter(status=True).order_by('release_date')
+        items = News.objects.filter(status=True).order_by('-release_date')
 
     if limit != 'all':
         try:

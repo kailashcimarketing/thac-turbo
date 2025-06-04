@@ -58,6 +58,7 @@ class Events(ClusterableModel):
     button_url = models.CharField(null=True,blank=True,max_length=255)    
     
     category = models.ForeignKey('events.Category', related_name='event_category', null=True, blank=True, on_delete=models.SET_NULL)
+    weight = models.IntegerField(default=100,null=False,blank=False)
     body = StreamField(events_stream_fields,null=True,blank=True)
 
     def get_categories(self):
@@ -92,7 +93,7 @@ class Events(ClusterableModel):
             FieldPanel('category'),
         ]),
         #FieldPanel('category'),
-        
+        FieldPanel('weight'),
         FieldPanel('body'),        
     ]
     def __str__(self):

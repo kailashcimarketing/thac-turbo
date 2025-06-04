@@ -1115,6 +1115,10 @@ form .booking-fields-section .booking .form-group :-moz-placeholder {
 .s-promo-banner-auto-width .s-promo-banner__pic{
   width: auto;
 }
+.s-promo-banner-auto-width .s-promo-banner__pic:focus,
+.s-promo-banner-auto-width .s-promo-banner__pic:focus-visible{
+  outline: none;
+}
 
 .help-text-content ul li,
 .s-2cols__content ul li,

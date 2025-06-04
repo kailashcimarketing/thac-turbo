@@ -621,7 +621,7 @@ class PromoBlock(blocks.StructBlock):
     title2 = blocks.CharBlock()
     text = blocks.TextBlock()
     script_title = blocks.CharBlock(required=False)
-    promo_image_container_width = blocks.BooleanBlock(required=False,default=False)
+    promo_image_container_width = blocks.BooleanBlock(required=False,default=False,label="Allow promo image size up to container width")
     class Meta:
         label = "Promo Banner"
         template = "pages/blocks/promo_banner_block.html"

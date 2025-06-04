@@ -68,7 +68,7 @@ $(window).on('load', function () {
     // Isotope Load more button
     //****************************
     var loadItem = $(".load-more-news").attr('data-load');
-    var initShow = 12;
+    var initShow = 3;
     if (loadItem) {
         initShow = loadItem;
     }
