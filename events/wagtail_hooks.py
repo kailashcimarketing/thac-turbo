@@ -12,7 +12,7 @@ class EvntsCategoryViewSet(SnippetViewSet):
 class EventsViewSet(SnippetViewSet):
     model = Events
     menu_label = "Events"
-    list_display  = ("title",'start_date','end_date','release_date','status',)
+    list_display  = ("title",'start_date','end_date','release_date','status','weight')
     search_fields = ("title",)
 
 

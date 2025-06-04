@@ -28,7 +28,7 @@ def get_events():
         status=True,
         end_date__gte=today,
         release_date__lte=today
-    ).order_by('-weight')
+    ).order_by('-promote', '-start_date')
     return {'items': items}
 
 @register.simple_tag()

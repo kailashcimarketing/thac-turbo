@@ -53,6 +53,7 @@ class Events(ClusterableModel):
     location = models.CharField(null=True,blank=True,max_length=255)
     status = models.BooleanField(default=True)
     homepage_featured_event = models.BooleanField(default=False,verbose_name="Show Featured Event on Homepage")
+    promote = models.BooleanField(default=False,verbose_name="Promote")
     show_details = models.BooleanField(default=False,verbose_name="Show Details")
     button_label = models.CharField(null=True,blank=True,max_length=255)
     button_url = models.CharField(null=True,blank=True,max_length=255)    
