@@ -79,6 +79,7 @@ class Events(ClusterableModel):
         FieldPanel('slug'),
         FieldPanel('status'),
         FieldPanel('homepage_featured_event'),
+        FieldPanel('promote'),
         FieldPanel('show_details'),
         FieldPanel('release_date'),
         FieldPanel('start_date'),
