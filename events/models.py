@@ -83,6 +83,7 @@ class Events(ClusterableModel):
         FieldPanel('start_date'),
         FieldPanel('end_date'),
         FieldPanel('time_label'),
+        FieldPanel('weight'),
         FieldPanel('image'),
         FieldPanel('hero_image'),
         FieldPanel('location'),
@@ -92,8 +93,7 @@ class Events(ClusterableModel):
         InlinePanel('categories', label='Categories', panels=[
             FieldPanel('category'),
         ]),
-        #FieldPanel('category'),
-        FieldPanel('weight'),
+        #FieldPanel('category'),        
         FieldPanel('body'),        
     ]
     def __str__(self):
