@@ -67,9 +67,9 @@
                 {% endfor %}
                 <h3 class="event-card__title">{{ item.title|safe }}</h3>
                 <div class="event-card__infos d-flex flex-wrap">
-                  {% if item.start_date %}
+                  {% if item.start_date  or item.time_label %}
                   <div class="event-card__info-block d-flex align-items-center">
-                    <i class="fa-regular fa-calendar"></i> {{ item.start_date }}
+                    <i class="fa-regular fa-calendar"></i>{% if item.time_label %}{{item.time_label|safe}}{% else %} {{ item.start_date|safe|default:"" }}{% endif %}
                   </div>
                   {% endif %}
                   {% if item.event_time %}
@@ -132,11 +132,15 @@
             </div>
             <div class="modal__section-container mx-auto w-100">
               <div class="modal__section-head row position-relative z-index-3 text-uppercase align-items-end">
-                {% if item.start_date %}
+                {% if item.start_date or item.time_label %}
                 <div class="col-sm-6 col-12 modal__section-head-col modal__section-head-col--1">
                   <time class="modal__section-head-time">
+                    {% if item.time_label %}
+                    <span class="modal__section-head-time-small d-inline-block">{{ item.time_label|safe }}</span>
+                    {% else %}
                     <span class="modal__section-head-time-big">{{ item.start_date|date:'d' }}</span>
                     <span class="modal__section-head-time-small d-inline-block">{{ item.start_date|date:'M Y' }}</span>
+                    {% endif %}
                   </time>
                 </div>
                 {% endif %}
