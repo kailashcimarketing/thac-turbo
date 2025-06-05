@@ -299,6 +299,7 @@ class DownloadList(blocks.StructBlock):
 class ChildImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     caption = blocks.CharBlock(required=False)
+    href = HrefBlock()
     class Meta:
         label = "Image"
         template = "pages/blocks/child_image_block.html"

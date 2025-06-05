@@ -1,7 +1,13 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 <figure>
     {% image value.image original format-webp as img %}
+    {% if value.href.is_url %}
+    <a href="{{value.href.url}}" {{value.href.target}}>
+    {% endif %}
     <img src="{{img.url}}" alt="{{value.captions|slugify}}"/>
+    {% if value.href.is_url %}
+    </a>
+    {% endif %}
     {% if value.caption %}
     <figcaption>
         {{value.caption|safe}}
