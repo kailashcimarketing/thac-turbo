@@ -1,6 +1,16 @@
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
-from .models import ContentHolder, DynamicContentSnippet, PhotoGallery
+from .models import ContentHolder, DynamicContentSnippet, PhotoGallery, PortalMenu
+
+
+class PortalMenuViewSet(SnippetViewSet):
+    model = PortalMenu
+    menu_label = "Portal Menu"
+    ordering = ("title",'image','url',)
+    search_fields = ("title",)
+    add_to_admin_menu = True
+
+register_snippet(PortalMenuViewSet)    
 
 class PhotoGalleryViewSet(SnippetViewSet):
     model = PhotoGallery

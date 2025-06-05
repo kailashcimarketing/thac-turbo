@@ -2,7 +2,7 @@ import requests
 from django import template
 from django.conf import settings
 from django.template import Template, Context
-from pages.models import ContentHolder,LandingPage
+from pages.models import ContentHolder,LandingPage, PortalMenu
 from django.utils.safestring import mark_safe
 register = template.Library()
 from news.models import Category,News,TopCategory
@@ -32,18 +32,23 @@ def highlight(string, term):
     rht = '' if len(parts) < 2 else parts[1][:max_length]
     return mark_safe('...%s<b>%s</b>%s...' % (lft, term, rht))
 
+@register.simple_tag()
+def get_portal_links():
+    return PortalMenu.objects.all()
+
 @register.inclusion_tag('pages/content-holders/content_holder.html',takes_context=True)
 def load_content_holder(context, Slug):
-    try:
-        header = ContentHolder.objects.get(slug=Slug)
-        header = Template(header.content)
-        html_header = header.render(context)
-    except Exception:
-        html_header = "Content holder with name '" +Slug+"' not found."
+    #try:
+    header = ContentHolder.objects.get(slug=Slug)
+    header = Template(header.content)
+    html_header = header.render(context)
+    #except Exception:
+    #    html_header = "Content holder with name '" +Slug+"' not found."
     
     return {
         'html_header': html_header
     }
+
 @register.filter
 def rm_tags(string,tags):
     html = string

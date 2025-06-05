@@ -64,6 +64,25 @@ class DynamicContentSnippet(models.Model):
     def __str__(self):
         return self.title 
     
+class PortalMenu(ClusterableModel):
+    title = models.CharField(null=True,blank=False,max_length=255)
+    image = models.ForeignKey(
+        Image, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL, 
+        related_name='+',        
+    )
+    url = models.URLField(null=True,blank=True)
+    is_external_link = models.BooleanField(default=False,blank=True,help_text='Check to open link in new window')
+
+    def __str__(self):
+        return self.title 
+
+    class Meta:
+        verbose_name = 'Portal Item'
+        verbose_name_plural = 'Portal Items'
+    
 
 class LandingpageHero(HeroAbstract):
     page = ParentalKey('LandingPage', related_name='landingpage_hero')
