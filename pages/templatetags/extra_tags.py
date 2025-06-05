@@ -34,7 +34,7 @@ def highlight(string, term):
 
 @register.simple_tag()
 def get_portal_links():
-    return PortalMenu.objects.all()
+    return PortalMenu.objects.all().order_by('weight')
 
 @register.inclusion_tag('pages/content-holders/content_holder.html',takes_context=True)
 def load_content_holder(context, Slug):

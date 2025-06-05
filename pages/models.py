@@ -75,6 +75,7 @@ class PortalMenu(ClusterableModel):
     )
     url = models.URLField(null=True,blank=True)
     is_external_link = models.BooleanField(default=False,blank=True,help_text='Check to open link in new window')
+    weight = models.IntegerField(default=100,blank=False)
 
     def __str__(self):
         return self.title 

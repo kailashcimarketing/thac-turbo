@@ -6,9 +6,11 @@ from .models import ContentHolder, DynamicContentSnippet, PhotoGallery, PortalMe
 class PortalMenuViewSet(SnippetViewSet):
     model = PortalMenu
     menu_label = "Portal Menu"
-    ordering = ("title",'image','url',)
+    ordering = ("title",'image','url','weight',)
+    list_display = ordering = ("title",'url','weight',)
     search_fields = ("title",)
-    add_to_admin_menu = True
+    add_to_admin_menu = False
+    add_to_settings_menu = True
 
 register_snippet(PortalMenuViewSet)    
 
