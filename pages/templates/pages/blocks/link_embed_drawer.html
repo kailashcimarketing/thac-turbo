@@ -14,7 +14,7 @@
         <div data-scroll="exclude" class="modal__block modal__block--info hide-scrollbar" style="height: 100vh;background: #f3f3fe;">
           <section class="modal__section" style="padding: 0;height: 100%;">
             {% if value.embed_link %}
-              <div class="ratio ratio-16x9" data-scroll="exclude">
+              <div class="ratio ratio-16x9 h-100" data-scroll="exclude">
                 <iframe src="{{ value.embed_link|safe }}" allowfullscreen></iframe>
               </div>
             {% endif %}
