@@ -268,6 +268,13 @@ if (document.querySelectorAll('.hero-item-js.hero-item-3-js').length > 0) {
         stagger: stagger_step,
     }, delay_6);
 }
+if (document.querySelectorAll('.container-anim-js.homepage-anim-js').length > 0) {
+    hero_tl.from('.container-anim-js.homepage-anim-js .block-anim-js', {
+        autoAlpha: 0,
+        stagger: stagger_step,
+    }, delay_6)
+}
+
 //-----------------------------------
 let selector_anim_container = '.container-hero-anim-js',
     selector_anim_header = '.container-header-anim-js';
