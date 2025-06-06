@@ -269,7 +269,7 @@ if (document.querySelectorAll('.hero-item-js.hero-item-3-js').length > 0) {
     }, delay_6);
 }
 if (document.querySelectorAll('.container-anim-js.homepage-anim-js').length > 0) {
-    hero_tl.from('.container-anim-js.homepage-anim-js .block-anim-js', {
+    hero_tl.from('.container-anim-js.homepage-anim-js .anim-js', {
         autoAlpha: 0,
         stagger: stagger_step,
     }, delay_6)
