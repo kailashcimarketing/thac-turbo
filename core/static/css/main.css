@@ -13669,12 +13669,12 @@ body:not(.menu-open) .header__megamenu {
 
 .hero-primary__big-circle-btn-wrap {
     bottom: -92px;
-    left: 52px;
+    left: 20px; /*52px**/
 }
 
-.hero-primary__col-1 {
+/* .hero-primary__col-1 {
     padding-left: 26px;
-}
+} */
 
 .hero-primary__col-2 {
     padding: 0 6px 17px 0;
