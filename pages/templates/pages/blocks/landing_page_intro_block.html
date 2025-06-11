@@ -8,7 +8,7 @@
         <div class="position-relative s-college__title-wrap">
             <div class="s-college__big-circle-btn-wrap position-absolute z-index-3 d-md-block d-none block-anim-js">
                 {% if value.video_url %}
-                <a href="#modal-2" class="big-circle-btn d-flex align-items-center justify-content-center">
+                <a href="#modal-landing-intro-video-2" class="big-circle-btn d-flex align-items-center justify-content-center modal-toggle-btn-js">
                     <svg class="big-circle-btn__border">
                         <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
                         <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
@@ -69,10 +69,11 @@
 </section>
 
 {% if value.video_url %}
-<div id="modal-2" class="modal modal--full-video modal--secondary-anim position-fixed d-flex flex-column modal-js modal-popup">
-    <a href="#modal-2" class="modal__overlay position-absolute bg-img-none modal-toggle-btn-js"></a>
+<div class="move-modal-items-to-body">
+<div id="modal-landing-intro-video-2" class="modal modal--full-video modal--secondary-anim position-fixed d-flex flex-column modal-js modal-popup">
+    <a href="#modal-landing-intro-video-2" class="modal__overlay position-absolute bg-img-none modal-toggle-btn-js"></a>
     <div  data-scroll="exclude" class="modal__block hide-scrollbar position-relative m-auto">
-        <a href="#modal-2" class="modal-close bg-img-none modal-toggle-btn-js d-flex justify-content-center align-items-center cursor-pointer position-absolute">
+        <a href="#modal-landing-intro-video-2" class="modal-close bg-img-none modal-toggle-btn-js d-flex justify-content-center align-items-center cursor-pointer position-absolute">
             <svg class="modal-close__icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="transition-def" d="M15.1875 7.58691L11.9062 10.8682L15.1875 14.1807C15.5938 14.5557 15.5938 15.2119 15.1875 15.5869C14.8125 15.9932 14.1562 15.9932 13.7812 15.5869L10.5 12.3057L7.1875 15.5869C6.8125 15.9932 6.15625 15.9932 5.78125 15.5869C5.375 15.2119 5.375 14.5557 5.78125 14.1807L9.0625 10.8682L5.78125 7.58691C5.375 7.21191 5.375 6.55566 5.78125 6.18066C6.15625 5.77441 6.8125 5.77441 7.1875 6.18066L10.5 9.46191L13.7812 6.18066C14.1562 5.77441 14.8125 5.77441 15.1875 6.18066C15.5938 6.55566 15.5938 7.21191 15.1875 7.58691Z" fill="white" fill-opacity="0.5"/>
             </svg>
@@ -84,5 +85,6 @@
             <!-- <div id="modal-video-1" class=" w-100 h-100 modal-video"></div>-->
         </div>
     </div>
+</div>
 </div>
 {% endif %}
