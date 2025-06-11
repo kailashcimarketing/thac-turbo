@@ -631,7 +631,7 @@ class LandingPageIntroBlock(blocks.StructBlock):
     background_image = ImageChooserBlock()
     primary_title = blocks.CharBlock()        
     text = blocks.TextBlock(required=False)
-    video_url = blocks.URLBlock(help_text="Mp4 Video")
+    video_url = blocks.URLBlock(help_text="Mp4 Video",required=False)
     title = blocks.CharBlock(required=False)
     sub_title = blocks.CharBlock(required=False)
     image = ImageChooserBlock()
