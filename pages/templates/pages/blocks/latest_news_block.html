@@ -1,49 +1,59 @@
 {% load wagtailcore_tags wagtailimages_tags extra_tags %}
 {% get_news_items value.category.slug value.limit as news_listing %}
-<div class="latest-news-with-category section {{ value.top_padding }} {{ value.bottom_padding }} {{ value.background }}">
-  <div class="row hero-news__cards ">
-    <div class="news__heading row align-items-end">
-        <div class="col-lg-4 col-xl-5 col-12 s-team__heading-col s-team__heading-col--1">
-            <h2 class="h3 s-team__title block-anim-js">
-                {{value.title}}
-            </h2>
-        </div>
-        
-        <div class="col-lg-8 col-xl-7 col-12 s-team__heading-col s-team__heading-col--2">
-            <ul class="nav s-team__heading-list team-category-filter">
-                <li class="block-anim-js block-anim--row-short-js">
-                    <a class="text-link" href="#"><span class="text-link__txt">ALL</span></a>
-                </li>
-            </ul>
-        </div>
-        
-    </div>
-  </div>
-  <div class="row hero-news__cards">
-    {% for item in news_listing.items %}
-      <div class="col-lg-4 col-sm-6 col-12 hero-news__col element-item {% for cat in item.news_category.all %}
-          {{ cat.category.slug }}
-        {% endfor %}">
-        <div class="new-card new-card--third position-relative hover-pic-wrap">
-          <a href="#modal-{{ item.title|slugify|safe }}" class="link-mask modal-event-btn-js"></a>
-          <div class="new-card__pic-wrap position-relative overflow-hidden">
-            <div class="new-card__label position-absolute">
-              {% for cat in item.news_category.all %}
+
+ <section class="s-news light-theme {{ value.top_padding }} {{ value.bottom_padding }} {{ value.background }}">
+    <div class="container s-news__container container-anim-js">
+        <div class="row s-news__row">
+            <div class="col-auto s-news__col s-news__col-1 position-relative parallax-trigger-js  block-anim-js">
+                <h2 class="s-news__title">
+                    <span class="d-block parallax-x-js parallax-js" data-parallax-value="30">{{value.title|safe}}</span>
+                </h2>
+                {% if value.button.text %}
+                <div class="s-news__big-circle-btn-wrap position-absolute z-index-3">
+                    <a href="{{value.button.href.url}}" {{value.button.href.target}} class="big-circle-btn d-flex align-items-center justify-content-center">
+                        <svg class="big-circle-btn__border">
+                            <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                            <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
+                        </svg>
+                        <svg width="29" height="32" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M27.6875 16.75L17.1875 27.25L16.5 27.9375L15.0625 26.5L15.75 25.8125L24.5625 17H1.5H0.5V15H1.5H24.5625L15.75 6.25L15.0625 5.5L16.5 4.125L17.1875 4.8125L27.6875 15.3125L28.375 16L27.6875 16.75Z" class="transition-def" fill="#002664"/>
+                        </svg>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-auto s-news__col s-news__col-2">
+                <div class="row s-news__row-child">
+                  {% for item in news_listing.items %}
+                    <div class="col-md-6 col-12 s-news__col-child block-anim-js block-anim--each-2-md-js">
+                      
+                        <div class="new-card position-relative hover-pic-wrap">
+                            <a href="#" class="link-mask"></a>
+                            <div class="new-card__pic-wrap position-relative overflow-hidden">
+                                <div class="new-card__label position-absolute">{% for cat in item.news_category.all %}
                 {% if forloop.first %}
                   {{ cat.category.title|safe }}
                 {% endif %}
-              {% endfor %}
+              {% endfor %}</div>
+                                 {% image item.image original format-webp as img %}
+                                <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
+                            </div>
+                            <div class="new-card__content">
+                                <time class="new-card__time d-block text-uppercase" datetime="{{ item.release_date|date:'d M Y' }}">{{ item.release_date|date:'d M Y' }}</time>
+                                <h3 class="new-card__title">{{ item.title|truncatechars:45|safe }}</h3>
+                                <div class="new-card__txt-wrap last-el-mb-0">
+                                    <p>{{ item.short_description|rm_tags:'style'|truncatewords:18|safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            {% image item.image original format-webp as img %}
-            <img class="w-100 h-100 obj-cover hover-pic" src="{{ img.url }}" alt="" />
-          </div>
-          <div class="new-card__content">
-            <time class="new-card__time d-block text-uppercase" datetime="{{ item.release_date|safe }}">{{ item.release_date|date:'d M Y' }}</time>
-            <h3 class="new-card__title">{{ item.title|truncatechars:45|safe }}</h3>
-            <div class="new-card__txt-wrap last-el-mb-0">{{ item.short_description|rm_tags:'style'|truncatewords:18|safe }}</div>
-          </div>
         </div>
-      </div>
-    {% endfor %}
-  </div>
-</div>
+    </div>
+</section>
+
+
+

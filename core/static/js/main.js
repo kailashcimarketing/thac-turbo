@@ -150,6 +150,18 @@ let hero_tl = gsap.timeline({
         duration: .5,
     }
 });
+
+hero_tl.from("#header", {
+    y: '-100px',
+    opacity: 1,
+    duration: 0.75,
+    ease: "power2.in",
+    onComplete: () => {
+        // Clear inline styles added by GSAP
+        gsap.set("#header", { clearProps: "all" });
+        gsap.set("#header", { opacity: 1 });
+      }
+  });
 //-----------------------------------
 if (document.querySelectorAll('.header-item-js.header-item-1-js').length > 0) {
     hero_tl.from('.header-item-js.header-item-1-js', {
@@ -223,7 +235,7 @@ if (document.querySelectorAll('.hero-title-2-js .anim-lines').length > 0) {
 }
 //-----------------------------------
 if (document.querySelectorAll('.hero-pic-scale-js').length > 0) {
-    hero_tl
+ /*   hero_tl
     // .from('.hero-pic-scale-js', {
     //     autoAlpha: 0,
     //     duration: .3,
@@ -232,7 +244,7 @@ if (document.querySelectorAll('.hero-pic-scale-js').length > 0) {
         scale: 1,
         ease: 'cubic-bezier(0.74, 0, 0.24, 0.99)',
         duration: 2,
-    },0)
+    },0)*/
 //    delay_3
 }
 //-----------------------------------
@@ -347,7 +359,38 @@ function cookieCheck() {
 }
 //-----------------------------------
 if(document.querySelectorAll('#preloader').length > 0) {
-    tl_preloader.play().then(function() {
+     tl_preloader
+  .fromTo(".first_word", 
+    { opacity: 0, x: -20 }, 
+    { opacity: 1, x: 0, duration: 0.8 }
+  )
+  .to(".first_word", { opacity: 0, duration: 0.5 })
+
+  .fromTo(".second_word", 
+    { opacity: 0, x: -20 }, 
+    { opacity: 1, x: 0, duration: 0.8 }
+  )
+  .to(".second_word", { opacity: 0, duration: 0.5 })
+
+  .fromTo(".third_word", 
+    { opacity: 0, x: -20 }, 
+    { opacity: 1, x: 0, duration: 0.8 }
+  )
+  .to(".third_word", { opacity: 0, duration: 0.5 })
+
+  .fromTo(".fourth_word", 
+    { opacity: 0, x: -20 }, 
+    { opacity: 1, x: 0, duration: 0.8 })
+    .to(".fourth_word", { opacity: 0, duration: 0.5 });
+    tl_preloader.to(".preloader__logo", {
+        duration: 2,
+        x: "-45vw",
+        y: "-45vh",
+        opacity: 0,
+        scale: 0.55, 
+        ease: "power2.inOut",
+    });
+    /*tl_preloader.play().then(function() {
         hero_tl.play();
         gsap.to('#preloader',{
             autoAlpha: 0,
@@ -361,10 +404,114 @@ if(document.querySelectorAll('#preloader').length > 0) {
                 });
             },
         })
+    });*/
+} else {
+    //hero_tl.play();
+}
+
+/****new loader */
+let tl_hero = gsap.timeline({
+    paused: true,
+});
+hero_tl
+  .from(".hero-title-anim-js", {
+    x: "-200",
+    autoAlpha: 0,
+    duration: 1,
+    ease: "power2.In"
+  }, 1) // Start at 0 seconds
+  .from(".hero-btn-anim-js", {
+    x: "100",
+    autoAlpha: 0,
+    duration: 1,
+    ease: "power2.In"
+  }, 1.25) // Start at 0 seconds (same time)
+  .from(".hero-round-btn-anim-js", {
+    y: "150",
+    autoAlpha: 0,
+    duration: 1,
+    ease: "power2.In"
+  }, 1.5); // Start at 0 seconds (same time)
+  
+let tl_logo_preloader = gsap.timeline({
+    paused: true,
+});
+
+let tl_preloader_bg = gsap.timeline({ paused: true, })
+    .to(".preloader-bg", {
+        height: "0",
+        autoAlpha: 1,
+        duration: 2,
+        delay: 1,
+        ease: "power2.out",
+        onStart:function(){
+            $('.logo-loader').css('background','none');
+        }
+
+    });
+if ($('.logo-loader').length) {
+    tl_logo_preloader
+        .fromTo(".first_word",
+            { opacity: 0, x: -20 },
+            { opacity: 1, x: 0, duration: 0.8 }
+        )
+        .to(".first_word", { opacity: 0, duration: 0.5 })
+
+        .fromTo(".second_word",
+            { opacity: 0, x: -20 },
+            { opacity: 1, x: 0, duration: 0.8 }
+        )
+        .to(".second_word", { opacity: 0, duration: 0.5 })
+
+        .fromTo(".third_word",
+            { opacity: 0, x: -20 },
+            { opacity: 1, x: 0, duration: 0.8 }
+        )
+        .to(".third_word", {
+            opacity: 0, duration: 0.5,
+
+        })
+
+        .fromTo(".fourth_word",
+            { opacity: 0, x: -20 },
+            { opacity: 1, x: 0, duration: 0.8 })
+        .to(".fourth_word", {
+            opacity: 0, duration: 0.5, onStart: function () {
+                tl_preloader_bg.play();
+            }
+        });
+    tl_logo_preloader.to(".preloader__logo", {
+        duration: 2,
+        x: "-45vw",
+        y: "-45vh",
+        opacity: 0,
+        scale: 0.55,
+        ease: "power2.inOut",
+        onStart: function () {
+            hero_tl.play();
+        }
+    });
+
+    tl_logo_preloader.play().then(function () {
+        /*hero_tl.play();*/
+        gsap.to('.logo-loader', {
+            autoAlpha: 0,
+            duration: .7,
+            onStart: function () {
+                gsap.delayedCall(.2, function () {
+                    hero_tl.play();
+                });
+                gsap.delayedCall(2, function () {
+                    cookieCheck();
+                });
+            },
+        })
     });
 } else {
     hero_tl.play();
 }
+/************** */
+
 // window.addEventListener('load', () => {
 //     const endTime = performance.now();
 //     const loadDuration = (endTime - startTime) / 1000;

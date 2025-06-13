@@ -1670,6 +1670,38 @@ body {
 .s-form__form-item .help-text-element{
 color: var(--primary-dark-blue);
 }
+       .first_word,
+.second_word,
+.third_word,
+.fourth_word {
+  opacity: 0;
+  position: absolute; /* So they appear in same position */
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  text-transform: uppercase;
+}
+.first_word{
+    top: 5rem;
+    left: 80px;
+    opacity: 0;
+    
+}
+.second_word{
+        top: 35%;
+    left: 72%;
+    opacity: 0;
+    
+}
+.third_word{
+    top: 70%;
+    left: 25%;
+    opacity: 0;    
+}
+.fourth_word{
+    top: 85%;
+    left: 85%;
+    opacity: 0;    
+}
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {

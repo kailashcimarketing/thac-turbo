@@ -1016,6 +1016,7 @@ class LatestNewsBlock(blocks.StructBlock):
     bottom_padding = blocks.ChoiceBlock(bottom_padding_list,required=False)
     limit = blocks.IntegerBlock(default=3)
     items = blocks.StaticBlock()
+    button = SimpleButton()
     
     class Meta:
         label = "Latest News"

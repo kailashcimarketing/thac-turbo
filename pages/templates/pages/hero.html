@@ -4,7 +4,7 @@
 {% for item in page.get_hero %}
 {% if type == 'home' %}
 <section class="hero-primary position-relative d-flex align-items-end">
-
+<div class="preloader-bg"></div>
        <div class="overlay hero-primary__bg-wrap after-el after-el--full before-el overflow-hidden container-video-js">
         {% image item.image original format-webp as img %}
         {% if item.background_video_url %}
@@ -18,7 +18,7 @@
     </div>
     <div class="container container-hero-anim-js hero-primary__container position-relative d-xl-flex flex-wrap justify-content-between align-items-end">
         {% if item.popup_video_url %}
-        <div class="hero-primary__big-circle-btn-wrap position-absolute hero-item-js hero-item-2-js">
+        <div class="hero-primary__big-circle-btn-wrap position-absolute hero-item-js hero-item-2-js-old hero-round-btn-anim-js">
             <a href="#modal-2" class="big-circle-btn d-flex align-items-center justify-content-center modal-toggle-btn-js">
                 <svg class="big-circle-btn__border">
                     <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
@@ -39,7 +39,7 @@
         </div>
         {% endif %}
         <div class="col-auto hero-primary__col hero-primary__col-1">
-            <h1 class="hero-primary__title hero-title-js">
+            <h1 class="hero-primary__title hero-title-js-old hero-title-anim-js">
                 {{item.title|safe}}
                 {% if item.script_title %}
                 <span class="child-special-text"><span class="child-special-text__txt">{{item.script_title|safe}}</span></span>
@@ -47,7 +47,7 @@
             </h1>
         </div>
         {% if item.button_url %}
-        <div class="col-auto hero-primary__col hero-primary__col-2 hero-item-js hero-item-3-js">
+        <div class="col-auto hero-primary__col hero-primary__col-2 hero-item-js hero-item-3-js-old hero-btn-anim-js">
             <div class="hero-primary__small-card transition-def position-relative overflow-hidden d-inline-flex align-items-center">
                 <a href="{{item.button_url|safe}}" target="_blank" class="link-mask"></a>
                 <div class="hero-primary__small-card-pic-wrap">
