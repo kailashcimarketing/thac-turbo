@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <section class="s-small-banners position-relative">
-    <div class="container-fluid position-relative s-small-banners__container container-anim-js">
+    <div class="container position-relative s-small-banners__container container-anim-js">
         {% if value.title or value.script_title %}
         <h2 class="s-small-banners__title block-anim-js block-anim--from-right-js">{{value.title|safe|default:""}}
             <span class="child-special-text"><span class="child-special-text__txt child-special-text__txt--secondary">{{value.script_title|safe|default:""}}</span></span>
