@@ -209,9 +209,6 @@
   padding-bottom: 4rem;
 }
 
-.home-page .main .s-small-banners__btn-wrap {
-  bottom: -8.5rem;
-}
 
 body .header__login-block-container,
 body .header__megamenu-container {
@@ -1670,6 +1667,18 @@ body {
 .s-form__form-item .help-text-element{
 color: var(--primary-dark-blue);
 }
+.s-scroll-banners .swiper-slide .s-scroll-banners__pic-wrap ,
+.s-small-banners .small-banner-card{
+  height: auto;
+  aspect-ratio: 1/1;
+}
+.home-page  .s-scroll-banners__btn-wrap
+{
+  bottom: -5rem;
+}
+.home-page  .s-scroll-banners__btn-wrap{
+  bottom: -1rem;
+}
        .first_word,
 .second_word,
 .third_word,
@@ -1702,6 +1711,7 @@ color: var(--primary-dark-blue);
     left: 85%;
     opacity: 0;    
 }
+
 /**************************************/
 @media (min-width:1300px) {
   .landing-page .s-quote--primary .s-quote__pic-wrap {
