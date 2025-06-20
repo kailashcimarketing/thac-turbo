@@ -9,7 +9,7 @@
               <div class="thumbnail-block">
                   <a href="{{item.external_link}}">
                       <div class="image">
-                        {% image item.image original as img %}
+                        {% image item.image original format-webp as img %}
                           <img src="{{img.url}}" class="w-100" alt="">
                       </div>
                       <div class="thumbnail-content">

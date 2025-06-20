@@ -10,7 +10,7 @@
                             <div data-scrollbar class="s-pin-banners__content-container">
                                 <h4 class="s-pin-banners__content-kicker">
                                 <span class="d-block s-pin-banners__content-kicker-icon-wrap d-flex align-items-center justify-content-center">
-                                    {% image item.icon original as img %}
+                                    {% image item.icon original format-webp as img %}
                                     <img class="s-pin-banners__content-kicker-icon" src="{{img.url}}" alt="">
                                 </span> {{item.pre_title|safe}}
                                 </h4>

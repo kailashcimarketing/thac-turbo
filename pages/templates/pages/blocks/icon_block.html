@@ -4,6 +4,6 @@
 {% elif value.icon_svg %}
 
 {% elif value.icon_image %}
-{% image value.icon_image original as img %}
+{% image value.icon_image original format-webp as img %}
 <img src="{{img.url}}"  >
 {% endif %}

@@ -10,7 +10,7 @@
         <a href="{% pageurl result %}" class="link-mask"></a>
         <div class="search-block__results-pic-wrap">
             {% if result.specific.get_hero_image %}
-            {% image result.specific.get_hero_image.image fill-425x265 as img %}
+            {% image result.specific.get_hero_image.image fill-425x265 format-webp as img %}
             <img class="search-block__results-pic w-100 h-100 obj-cover transition-def" src="{{img.url}}" alt="">
             {% else %}
             <img class="search-block__results-pic w-100 h-100 obj-cover transition-def" src="/static/images/header/search-res-3_3.webp" alt="">

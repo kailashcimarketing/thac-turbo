@@ -20,7 +20,7 @@
                 <div class="new-card new-card--secondary position-relative hover-pic-wrap">
                     <a href="{{item.url}}" class="link-mask"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
-                        {% image item.specific.get_hero_image.image fill-320x320-c100 as img %}
+                        {% image item.specific.get_hero_image.image fill-320x320-c100 format-webp as img %}
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>
                     <div class="new-card__content">
@@ -38,7 +38,7 @@
                 <div class="new-card new-card--secondary position-relative hover-pic-wrap">
                     <a href="{{item.url}}" class="link-mask"></a>
                     <div class="new-card__pic-wrap position-relative overflow-hidden">
-                        {% image item.specific.get_hero_image.image fill-320x320-c100 as img %}
+                        {% image item.specific.get_hero_image.image fill-320x320-c100 format-webp as img %}
                         <img class="w-100 h-100 obj-cover hover-pic" src="{{img.url}}" alt="">
                     </div>
                     <div class="new-card__content">
