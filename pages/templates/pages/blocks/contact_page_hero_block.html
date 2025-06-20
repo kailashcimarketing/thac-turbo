@@ -31,7 +31,7 @@
                     <a href="{{item.button.href.url}}" {{item.buton.href.target}} class="link-mask internal-link"></a>
                     <div class="cta-card__content mx-auto">
                         <div class="cta-card__icon-wrap d-flex align-items-center justify-content-center">
-                            {% image item.icon original format-webp as img %}
+                            {% image item.icon original as img %}
                             <img class="cta-card__icon limited-size-icon" src="{{img.url}}" alt="">
                         </div>
                         <h3 class="cta-card__title">{{item.title|safe}}</h3>
