@@ -8,7 +8,7 @@
                 <h2 class="s-news__title">
                     <span class="d-block parallax-x-js parallax-js" data-parallax-value="30">{{value.title|safe}}</span>
                 </h2>
-                {% if value.button.text %}
+                {% if value.button.href.url %}
                 <div class="s-news__big-circle-btn-wrap position-absolute z-index-3">
                     <a href="{{value.button.href.url}}" {{value.button.href.target}} class="big-circle-btn d-flex align-items-center justify-content-center">
                         <svg class="big-circle-btn__border">
