@@ -1697,36 +1697,33 @@ body {
 .fourth_word {
   opacity: 0;
   position: absolute;
-  /* So they appear in same position */
-  transform: translate(-50%, -50%);
-  font-size: 10rem;
   text-transform: uppercase;
-}
-
-.first_word {
-  top: 5rem;
-  left: 80px;
-  opacity: 0;
+  font-size: 1.3rem;
+  left: 0;
+  right: 0;
+  margin: auto;
 
 }
 
-.second_word {
-  top: 35%;
-  left: 72%;
-  opacity: 0;
-
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.third_word {
-  top: 70%;
-  left: 25%;
-  opacity: 0;
+.word-wrap {
+  z-index: 1;
+  position: relative;
+  height: 2.5rem;
+  text-align: center;
+  width: 100%;
+overflow: hidden;
 }
 
-.fourth_word {
-  top: 85%;
-  left: 85%;
-  opacity: 0;
+.logo-loader .loader-content svg {
+  position: relative;
+  margin: 0 auto !important;
 }
 
 /**************************************/

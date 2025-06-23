@@ -423,13 +423,11 @@ $(window).on('load', function () {
     }
 });
 
-let initialWidth = $(window).width();
 
-  $(window).on('resize', function () {
-    if ($(window).width() !== initialWidth) {
-      location.reload();
-    }
-  });
+window.addEventListener("orientationchange", function() {
+    location.reload();
+});
+
 
 $(document).ready(function () {
     $('.s-promo-banner .child-special-text__txt--secondary').each(function () {

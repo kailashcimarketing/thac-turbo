@@ -450,7 +450,60 @@ let tl_preloader_bg = gsap.timeline({ paused: true, })
 
     });
 if ($('.logo-loader').length) {
-    tl_logo_preloader
+            const first = document.querySelector('.first');
+            const second = document.querySelector('.second');
+            const three = document.querySelector('.third');
+            // Set initial positions - all words start below the container
+            gsap.set([first, second, three], {
+                y: 100,
+                opacity: 0
+            });
+            
+            // Animate first word with smooth bounce effect
+            tl_logo_preloader.to(first, {
+                duration: 0.8,
+                y: 0,
+                opacity: 1,
+                ease: "back.out(0.7)"
+            })
+            .to(first, {
+                duration: 0.5,
+                y: -100,
+                opacity: 0,
+                ease: "power2.in"
+            }, "+=0.8")
+            
+            // Animate second word with smooth bounce effect
+            .to(second, {
+                duration: 0.8,
+                y: 0,
+                opacity: 1,
+                ease: "back.out(0.7)"
+            }, "-=0.3")
+            .to(second, {
+                duration: 0.5,
+                y: -100,
+                opacity: 0,
+                ease: "power2.in"
+            }, "+=0.8")
+            
+            // Animate third word with smooth bounce effect
+            .to(three, {
+                duration: 0.8,
+                y: 0,
+                opacity: 1,
+                ease: "back.out(0.7)"
+            }, "-=0.3")
+            .to(three, {
+                duration: 0.5,
+                y: -100,
+                opacity: 0,
+                ease: "power2.in",
+                onStart: function () {
+                    tl_preloader_bg.play();
+                }
+            }, "+=0.8");
+    /*tl_logo_preloader
         .fromTo(".first_word",
             { opacity: 0, x: -20 },
             { opacity: 1, x: 0, duration: 0.8 }
@@ -479,21 +532,22 @@ if ($('.logo-loader').length) {
             opacity: 0, duration: 0.5, onStart: function () {
                 tl_preloader_bg.play();
             }
-        });
+        });*/
+        
     tl_logo_preloader.to(".preloader__logo", {
         duration: 2,
-        x: "-45vw",
-        y: "-45vh",
-        opacity: 0,
-        scale: 0.55,
+        x: window.innerWidth>991?"-45.74vw":"0",
+        y: "-41.58vh",
+        opacity: 1,
+        scale: 0.49,
         ease: "power2.inOut",
         onStart: function () {
             hero_tl.play();
+            tl_logo_preloader.to(".preloader__logo", {opacity:0});
         }
     });
 
     tl_logo_preloader.play().then(function () {
-        /*hero_tl.play();*/
         gsap.to('.logo-loader', {
             autoAlpha: 0,
             duration: .7,
