@@ -39,9 +39,6 @@
 
         {# Global stylesheets #}
         {% load_content_holder "header-script" %}
-        {% compress css %}
-        <link href="{% static 'less/style.less' %}" rel="stylesheet" type="text/less"> 
-        {% endcompress %}
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
@@ -64,7 +61,10 @@
             </div>
         </div>
         {% block model_block %}{% endblock %}
-        {% load_content_holder "footer-script" %}
+        {# % load_content_holder "footer-script" % #}
+        {% include 'shared/footer-script.html' %}
+        
+
         {% block extra_js %}{% endblock %}
         {% if settings.core.GlobalAnnouncement.status %}
         {% include "pages/announcement-modal.html" with value=settings.core.GlobalAnnouncement %}
