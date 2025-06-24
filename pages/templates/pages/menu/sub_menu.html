@@ -28,7 +28,7 @@
             <div class="header__megamenu-list-pic-container overflow-hidden">
                 {% if item.link_page.specific.promo_page %}
                     
-                {% image item.link_page.specific.promo_page.specific.get_hero_image.image original format-webp as img %}
+                {% image item.link_page.specific.promo_page.specific.get_hero_image.image fill-986x756 format-webp as img %}
                 <a href="{{ item.link_page.specific.promo_page.url }}"  class="header__megamenu-list-pic-wrap">
                 <img class="w-100 h-100 obj-cover" src="{{ img.url }}" alt="{{ promo_title }}" />
                 
