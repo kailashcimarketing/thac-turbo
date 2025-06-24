@@ -9,8 +9,8 @@
         {% image item.image original format-webp as img %}
         {% if item.background_video_url %}
         <div class="video-wrapper" data-video-src="{{ item.background_video_url }}">
-  <video class="w-100 h-100 obj-cover video-js" playsinline muted loop preload="none" poster="{{ img.url }}"></video>
-</div>
+            <video class="w-100 h-100 obj-cover video-js lazy-video" playsinline muted loop preload="metadata" poster="{{ img.url }}"></video>
+        </div>
         {% else %}
         
         {% endif %}

@@ -10,24 +10,24 @@ function makeid(length) {
 }
 $(window).on('load', function () {
     const wrapper = document.querySelector('.video-wrapper');
-    if (wrapper) {
-        const video = wrapper.querySelector('video');
-        const videoSrc = wrapper.getAttribute('data-video-src');
+    if (!wrapper) return;
 
-        if (video && videoSrc) {
-            video.src = videoSrc;
-            console.log(video);
-            video.load();
+    const video = wrapper.querySelector('video');
+    const videoSrc = wrapper.getAttribute('data-video-src');
 
-            // Try to play once ready
-            video.addEventListener('canplay', () => {
-                video.play().catch((e) => {
-                    // Autoplay might be blocked, especially if not muted
-                    console.warn("Video play blocked:", e);
-                });
+    if (!video || !videoSrc) return;
+
+    // Use requestIdleCallback to load in a non-blocking way
+    (window.requestIdleCallback || window.requestAnimationFrame)(() => {
+        video.src = videoSrc;
+        video.load();
+
+        video.addEventListener('canplay', () => {
+            video.play().catch((e) => {
+                console.warn("Autoplay blocked:", e);
             });
-        }
-    }
+        });
+    });
 
     if ($('.tutor-list').length) {
         $('.tutor-list').each(function () {
