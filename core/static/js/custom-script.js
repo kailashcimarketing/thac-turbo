@@ -443,7 +443,27 @@ $(document).ready(function () {
 });
 
 
+  function loadGoogleTranslateScript() {
+    if (window.google && window.google.translate) return; // already loaded
 
+    const script = document.createElement('script');
+    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
+  function googleTranslateElementInit() {
+    const targetId = window.innerWidth < 768 ? 'google_translate_element_mobile' : 'google_translate_element';
+    new google.translate.TranslateElement({ pageLanguage: 'en' }, targetId);
+  }
+
+  // Load only when idle or after initial paint
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadGoogleTranslateScript, { timeout: 3000 });
+  } else {
+    window.addEventListener('load', () => setTimeout(loadGoogleTranslateScript, 1500));
+  }
 
 
 
