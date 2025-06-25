@@ -2348,3 +2348,22 @@ overflow: hidden;
     max-width: 90% !important;
   }
 }
+
+@media (min-width:1200px) and (max-width:1300px){
+  .home-page .hero-primary .hero-primary__title {
+  font-size: 5rem;
+  letter-spacing: -0.04em;
+  margin-bottom: 0;
+  line-height: 90%;
+  text-transform: none;
+  max-width: 900px;
+}
+.home-page .hero-primary .hero-primary__title  span{
+  display: block;
+  line-height: 9rem;
+  height: auto;
+}
+.home-page  .hero-primary__big-circle-btn-wrap{
+  bottom: -82px;
+}
+}
