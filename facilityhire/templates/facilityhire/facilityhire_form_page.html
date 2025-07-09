@@ -140,7 +140,7 @@
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="date" 
                                         name="fieldbooking_1_{{ field_config.name }}" 
-                                        id="id_booking_1_{{ field_config.name }}"
+                                        id="id_fieldbooking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         required
                                         autocomplete="Off" placeholder="">
@@ -152,7 +152,7 @@
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="email" 
                                         name="fieldbooking_1_{{ field_config.name }}" 
-                                        id="id_booking_1_{{ field_config.name }}"
+                                        id="id_fieldbooking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         required
                                         autocomplete="Off" placeholder="">
@@ -163,7 +163,7 @@
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="number" 
                                         name="fieldbooking_1_{{ field_config.name }}" 
-                                        id="id_booking_1_{{ field_config.name }}"
+                                        id="id_fieldbooking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         required
                                         autocomplete="Off" placeholder="">
@@ -174,7 +174,7 @@
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="text" 
                                         name="fieldbooking_1_{{ field_config.name }}" 
-                                        id="id_booking_1_{{ field_config.name }}"
+                                        id="id_fieldbooking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         {# % if field_config.required %}required{% endif % #}
                                         required
@@ -351,5 +351,5 @@ document.addEventListener('turbo:load', function () {
   //});
 });
     </script>
-
+<script src="{% static 'js/facility-hire-form.js' %}" data-turbo-track="reload"  ></script>
  {% endblock %}

@@ -8,7 +8,7 @@ from importlib import import_module
 from fabric.context_managers import settings
 from fabric.operations import get, put
 
-env.proj_app = "thac"
+env.proj_app = "thacturbo"
 
 conf = {}
 
@@ -54,17 +54,17 @@ def ls_al():
 
 
 def virtualenv_command(command):
-    source = 'source /home/ec2-user/.virtualenvs/thacenv/bin/activate && '
+    source = 'source /home/ec2-user/.virtualenvs/thacturboenv/bin/activate && '
     sudo(source + command)
 
 @task
 def deploy_migrate_restart():
-    local("git pull git@github.com:team-and-systems-hq/thac.git")
-    local("pip freeze > requirements.txt; git add .; git commit; git push --verbose --progress git@github.com:team-and-systems-hq/thac.git")
-    sudo("cd /home/ec2-user/webapps/thac/ && git pull git@github.com:team-and-systems-hq/thac.git", user="ec2-user")
-    virtualenv_command("pip install -r /home/ec2-user/webapps/thac/requirements.txt")
-    virtualenv_command("python /home/ec2-user/webapps/thac/manage.py migrate")
-    virtualenv_command("python /home/ec2-user/webapps/thac/manage.py collectstatic --noinput")
+    local("git pull git@github.com:kailashcimarketing/thac-turbo.git")
+    local("pip freeze > requirements.txt; git add .; git commit; git push --verbose --progress git@github.com:kailashcimarketing/thac-turbo.git")
+    sudo("cd /home/ec2-user/webapps/thacturbo/ && git pull git@github.com:kailashcimarketing/thac-turbo.git", user="ec2-user")
+    virtualenv_command("pip install -r /home/ec2-user/webapps/thacturbo/requirements.txt")
+    virtualenv_command("python /home/ec2-user/webapps/thacturbo/manage.py migrate")
+    virtualenv_command("python /home/ec2-user/webapps/thacturbo/manage.py collectstatic --noinput")
     sudo("systemctl restart gunicorn-thac")
 
 
@@ -72,8 +72,8 @@ def deploy_migrate_restart():
 def fab_push_html():
     local("git pull; hg update")
     local("git add .; git commit; git push")
-    with prefix('source /home/ec2-user/webapps/thac/bin/activate'):
-        _run("cd /home/ec2-user/webapps/thac; git pull")
+    with prefix('source /home/ec2-user/webapps/thacturbo/bin/activate'):
+        _run("cd /home/ec2-user/webapps/thacturbo; git pull")
 
 
 def virtualenv(command):
@@ -188,7 +188,7 @@ def status_check():
 
 @task
 def media_backup():
-    with prefix('source /home/ec2-user/.virtualenvs/thacenv/bin/activate'):
-        _run("python /home/ec2-user/webapps/thac/manage.py mediabackup")
+    with prefix('source /home/ec2-user/.virtualenvs/thacturboenv/bin/activate'):
+        _run("python /home/ec2-user/webapps/thacturbo/manage.py mediabackup")
 
 

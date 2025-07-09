@@ -491,36 +491,6 @@ if ($('.logo-loader').length) {
                     tl_preloader_bg.play();
                 }
             }, "+=0.8");
-    /*tl_logo_preloader
-        .fromTo(".first_word",
-            { opacity: 0, x: -20 },
-            { opacity: 1, x: 0, duration: 0.8 }
-        )
-        .to(".first_word", { opacity: 0, duration: 0.5 })
-
-        .fromTo(".second_word",
-            { opacity: 0, x: -20 },
-            { opacity: 1, x: 0, duration: 0.8 }
-        )
-        .to(".second_word", { opacity: 0, duration: 0.5 })
-
-        .fromTo(".third_word",
-            { opacity: 0, x: -20 },
-            { opacity: 1, x: 0, duration: 0.8 }
-        )
-        .to(".third_word", {
-            opacity: 0, duration: 0.5,
-
-        })
-
-        .fromTo(".fourth_word",
-            { opacity: 0, x: -20 },
-            { opacity: 1, x: 0, duration: 0.8 })
-        .to(".fourth_word", {
-            opacity: 0, duration: 0.5, onStart: function () {
-                tl_preloader_bg.play();
-            }
-        });*/
         // 1. Get target logo position
 var logoOffset = $('.header__logo-1').offset(); // { top: ..., left: ... }
 
