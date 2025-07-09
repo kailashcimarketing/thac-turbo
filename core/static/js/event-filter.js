@@ -1,6 +1,6 @@
 var qsRegex;
 var searchResultFlag;
-$(window).on('load', function () {
+document.addEventListener('turbo:load', function () {
 
     // init Isotope
     let $container = $('.hero-news__events').isotope({
@@ -11,7 +11,7 @@ $(window).on('load', function () {
 
 
     // bind filter button click
-    $('.event-category-filter').on('click', 'a', function () {
+    $(document).on('click', '.event-category-filter a', function () {
         $('.event-category-filter a').removeClass('is-active');
         $(this).addClass('is-active');
         var filterValue = $(this).attr('data-filter');
@@ -64,7 +64,7 @@ $(window).on('load', function () {
 
 
     //when load more button clicked
-    $(".load-more-event").click(function () {
+    $(document).on('click',".load-more-event",function () {
         if ($('.event-category-filter').data('clicked')) {
             //when filter button clicked, set initial value for counter
             counter = initShow;

@@ -1,3 +1,4 @@
+document.addEventListener('turbo:load', function () {
 //----------------------------------------
 let $parentContainer = $('#header__megamenu-list-2-wrap-menus'),
     btns_menu = $('.header__megamenu-panel-btn-js');
@@ -90,3 +91,5 @@ if (videos_js.length) {
 
 
 
+
+});

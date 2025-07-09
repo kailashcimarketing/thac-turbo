@@ -1,6 +1,6 @@
 var qsRegex;
 var searchResultFlag;
-$(window).on('load', function () {
+document.addEventListener('turbo:load', function () {
 
     // init Isotope
     let $container = $('.s-team__cards.leadership-team').isotope({

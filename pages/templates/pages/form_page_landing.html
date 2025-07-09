@@ -18,16 +18,17 @@
 {% endwith %}
 
     <!-- form -->
+     <turbo-frame id="form-frame">
     <div class="section light-theme">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          {% block thankyou_message %}
-          {% endblock %}
+        <div class="col-lg-8 offset-lg-2">Thnk you
+          {{page.thankyou_message|safe}}
         </div>
       </div>
     </div>
   </div>
+  </turbo-frame>
     <!-- form end -->
 
   {% with blocks=page.bottom_body %}

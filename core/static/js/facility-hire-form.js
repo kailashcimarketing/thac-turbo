@@ -1,5 +1,4 @@
-
-        document.addEventListener('DOMContentLoaded', function() {
+$(function(){
             const bookingsContainer = document.getElementById('bookings-container');
             const addBookingBtn = document.getElementById('add-booking-btn');
             const bookingCountField = document.getElementById('id_booking_count');

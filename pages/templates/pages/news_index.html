@@ -42,7 +42,7 @@
         </div>
         {% for category in top_level_categories.items %}
         <div class="hero-news__circle-btn-wrap hero-item-js hero-item-2-js">
-          <a href="#" data-filter=".{{ category.slug|safe }}"  class="big-circle-btn d-flex align-items-center justify-content-center">
+          <a href="#" data-turbo="false" data-filter=".{{ category.slug|safe }}"  class="big-circle-btn d-flex align-items-center justify-content-center">
             <svg class="big-circle-btn__border">
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
               <rect x="0.75" y="0.75" rx="1.5" width="1.5" height="1.5"></rect>
@@ -60,7 +60,7 @@
             </div>
             {% for category in categories.items %}
               <div class="w-auto block-anim-js block-anim--row-short-js">
-                <a href="#" data-filter=".{{ category.slug|safe }}" class="btn btn--third"><span class="btn__content"><span class="btn__txt">{{ category.title|safe }}</span></span></a>
+                <a href="#" data-turbo="false" data-filter=".{{ category.slug|safe }}" class="btn btn--third"><span class="btn__content"><span class="btn__txt">{{ category.title|safe }}</span></span></a>
               </div>
             {% endfor %}
           </div>
@@ -200,5 +200,5 @@
       background: var(--secondary-teal);
     }
   </style>
-  <script src="/static/js/news-filter.js"></script>
+  <script src="/static/js/news-filter.js" data-turbo-track="reload" ></script>
 {% endblock %}

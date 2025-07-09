@@ -32,6 +32,8 @@ from django.forms import FileField, CharField, ChoiceField
 from django import forms
 from wagtail.contrib.forms.views import SubmissionsListView
 from wagtail.search import index
+from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 
 # Create your models here.
@@ -442,6 +444,13 @@ class FormPage(AbstractEmailForm, SeoFieldsAbstract):
         #self.send_mail(form,document_list,images_list)
         return submission    
 
+    def get_landing_page(self, request, form_submission=None):
+        # Turbo Frame support: return only the turbo-frame if requested
+        if request.headers.get('Turbo-Frame'):
+            html = render_to_string('pages/form_page_landing.html', {'page': self,'self':self})
+            return HttpResponse(html)
+        return super().get_landing_page(request, form_submission)
+    
     class Meta:
         verbose_name = "Form Page"
 

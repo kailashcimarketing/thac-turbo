@@ -19,13 +19,17 @@
 
 <!-- form -->
 {% if page.layout != "hide-form" %}
+<turbo-frame id="form-frame">
 <div class="section s-form__col-2">
+  
       {% block thankyou_message %}
       {% endblock %}
       {% block form %}
       {% include 'pages/form/default_form.html' %}
       {% endblock %}
+      
 </div>
+</turbo-frame>
 {% endif %}
 <!-- form end -->
 

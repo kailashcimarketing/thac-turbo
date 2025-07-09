@@ -24,6 +24,8 @@ from wagtail.images import get_image_model
 from wagtail.documents import get_document_model
 from django.utils.html import format_html
 from django.urls import reverse
+from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 class FacilityhireSubmissionsListView(SubmissionsListView):
     template_name = 'facilityhire/admin/default_submissions_list.html'
@@ -320,18 +322,18 @@ class FacilityhireFormPage(AbstractEmailForm, SeoFieldsAbstract):
         
         for i in range(1, booking_count + 1):
             booking = {
-                'start_date': form.cleaned_data.get(f'booking_{i}_start_date', ''),
-                'end_date': form.cleaned_data.get(f'booking_{i}_end_date', ''),
-                'frequency_of_booking': form.cleaned_data.get(f'booking_{i}_frequency_of_booking', ''),
-                'start_time': form.cleaned_data.get(f'booking_{i}_start_time', ''),
-                'finish_time': form.cleaned_data.get(f'booking_{i}_finish_time', ''),
-                'number_of_participants': form.cleaned_data.get(f'booking_{i}_number_of_participants', ''),
+                'start_date': form.cleaned_data.get(f'fieldbooking_{i}_start_date', ''),
+                'end_date': form.cleaned_data.get(f'fieldbooking_{i}_end_date', ''),
+                'frequency_of_booking': form.cleaned_data.get(f'fieldbooking_{i}_frequency_of_booking', ''),
+                'start_time': form.cleaned_data.get(f'fieldbooking_{i}_start_time', ''),
+                'finish_time': form.cleaned_data.get(f'fieldbooking_{i}_finish_time', ''),
+                'number_of_participants': form.cleaned_data.get(f'fieldbooking_{i}_number_of_participants', ''),
             }
             booking_data.append(booking)
             
             # Remove booking fields from form.cleaned_data to prevent duplicates in form_data
             for field_name in ['start_date', 'end_date', 'frequency_of_booking', 'start_time','finish_time','number_of_participants']:
-                form.cleaned_data.pop(f'booking_{i}_{field_name}', None)
+                form.cleaned_data.pop(f'fieldbooking_{i}_{field_name}', None)
         
         # Add consolidated booking data to form.cleaned_data
         form.cleaned_data['bookings'] = booking_data
@@ -414,32 +416,32 @@ class FacilityhireFormPage(AbstractEmailForm, SeoFieldsAbstract):
                 booking_count = 1
 
             for i in range(1, booking_count + 1):
-                form.fields[f'booking_{i}_start_date'] = forms.DateField(
+                form.fields[f'fieldbooking_{i}_start_date'] = forms.DateField(
                     label=f"Booking {i} Start Date", #required=True
                 )
-                form.fields[f'booking_{i}_end_date'] = forms.DateField(
+                form.fields[f'fieldbooking_{i}_end_date'] = forms.DateField(
                     label=f"Booking {i} End Date", #required=True
                 )
                 
-                form.fields[f'booking_{i}_frequency_of_booking'] = forms.CharField(
+                form.fields[f'fieldbooking_{i}_frequency_of_booking'] = forms.CharField(
                     label=f"Booking {i} Frequency of Booking", #required=True
                 )
-                form.fields[f'booking_{i}_start_time'] = forms.CharField(
+                form.fields[f'fieldbooking_{i}_start_time'] = forms.CharField(
                     label=f"Booking {i} Start Time", #required=True
                 )
-                form.fields[f'booking_{i}_finish_time'] = forms.CharField(
+                form.fields[f'fieldbooking_{i}_finish_time'] = forms.CharField(
                     label=f"Booking {i} Finish Time", #required=True
                 )
-                form.fields[f'booking_{i}_number_of_participants'] = forms.IntegerField(
+                form.fields[f'fieldbooking_{i}_number_of_participants'] = forms.IntegerField(
                     label=f"Booking {i} Number of Participants", #required=True
                 )
                 booking = {
-                    'start_date': form.data.get(f'booking_{i}_start_date', ''),
-                    'end_date': form.data.get(f'booking_{i}_end_date', ''),
-                    'frequency_of_booking': form.data.get(f'booking_{i}_frequency_of_booking', ''),
-                    'start_time': form.data.get(f'booking_{i}_start_time', ''),
-                    'finish_time': form.data.get(f'booking_{i}_finish_time', ''),
-                    'number_of_participants': form.data.get(f'booking_{i}_number_of_participants', ''),
+                    'start_date': form.data.get(f'fieldbooking_{i}_start_date', ''),
+                    'end_date': form.data.get(f'fieldbooking_{i}_end_date', ''),
+                    'frequency_of_booking': form.data.get(f'fieldbooking_{i}_frequency_of_booking', ''),
+                    'start_time': form.data.get(f'fieldbooking_{i}_start_time', ''),
+                    'finish_time': form.data.get(f'fieldbooking_{i}_finish_time', ''),
+                    'number_of_participants': form.data.get(f'fieldbooking_{i}_number_of_participants', ''),
                 }
                 booking_temp_data.append(booking)
             
@@ -453,12 +455,12 @@ class FacilityhireFormPage(AbstractEmailForm, SeoFieldsAbstract):
                 
                 for i in range(1, booking_count + 1):
                     booking = {
-                        'start_date': form.cleaned_data.get(f'booking_{i}_start_date', ''),
-                        'end_date': form.cleaned_data.get(f'booking_{i}_end_date', ''),
-                        'frequency_of_booking': form.cleaned_data.get(f'booking_{i}_frequency_of_booking', ''),
-                        'start_time': form.cleaned_data.get(f'booking_{i}_start_time', ''),
-                        'finish_time': form.cleaned_data.get(f'booking_{i}_finish_time', ''),
-                        'number_of_participants': form.cleaned_data.get(f'booking_{i}_number_of_participants', ''),
+                        'start_date': form.cleaned_data.get(f'fieldbooking_{i}_start_date', ''),
+                        'end_date': form.cleaned_data.get(f'fieldbooking_{i}_end_date', ''),
+                        'frequency_of_booking': form.cleaned_data.get(f'fieldbooking_{i}_frequency_of_booking', ''),
+                        'start_time': form.cleaned_data.get(f'fieldbooking_{i}_start_time', ''),
+                        'finish_time': form.cleaned_data.get(f'fieldbooking_{i}_finish_time', ''),
+                        'number_of_participants': form.cleaned_data.get(f'fieldbooking_{i}_number_of_participants', ''),
                     }
                     booking_data.append(booking)
                 

@@ -1,14 +1,16 @@
 var qsRegex;
 var searchResultFlag;
 var filters = {};
-$(window).on('load', function () {
+document.addEventListener('turbo:load', function () {
     var $grid = $('.grid').isotope({
         // options
     });
+    console.log("filted");
     // filter items on button click
     $('.filter-button-group').on('click', 'button', function () {
         var filterValue = $(this).attr('data-filter');
         $grid.isotope({ filter: filterValue });
+        
     });
 
     // init Isotope
@@ -41,7 +43,7 @@ $(window).on('load', function () {
     }
 
     // bind filter button click
-    $('.news-category-filter').on('click', 'a', function () {
+    $(document).on('click', '.news-category-filter a', function () {
         var $this = $(this);
         var filterGroup = $(this).parents('.news-category-filter').attr('data-filter-group');
         $this.parents('.news-category-filter').find('a').removeClass('is-active');

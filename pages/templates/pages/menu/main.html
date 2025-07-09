@@ -3,7 +3,7 @@
   {% for item in menu_items %}
     {% if item.sub_menu %}
     <li><a class="header__megamenu-panel-btn-js" data-menu="#header__megamenu-list-{{forloop.counter}}-wrap"
-      data-panel="#header__megamenu-panel--{{forloop.counter}}" href="#"> <span> {{item.text|safe}}
+      data-panel="#header__megamenu-panel--{{forloop.counter}}" data-turbo="false" href="#"> <span> {{item.text|safe}}
           <svg width="48" height="32" viewBox="0 0 48 32" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path

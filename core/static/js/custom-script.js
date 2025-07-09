@@ -1,3 +1,6 @@
+document.addEventListener('turbo:load', function () {
+
+    
 function makeid(length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -213,34 +216,7 @@ $(function () {
     let typingTimer;
 
 
-    $(document).on('click', '.vimeo-video-btn', function () {
-        var video_container = $(this).parents('.video-module-wrapper');
-        if (video_container.hasClass('active')) {
-            //console.log('active');
-            video_container.find('.vimeo-post-img').show();
-            //$(this).hide();
-            video_container.removeClass('active');
-            //video_container.find('.vimeo-iframe').hide();
-            if ($(this).attr('type') != 'mp4-video') {
-                var iframe = video_container.find('iframe');
-                const player = new Vimeo.Player(iframe);
-                player.pause();
-            }
-            return false;
-        } else {
-            //console.log('---active');
-            video_container.find('.vimeo-post-img').hide();
-            //$(this).hide();
-            video_container.addClass('active');
-            video_container.find('.vimeo-iframe').show();
-            if ($(this).attr('type') != 'mp4-video') {
-                var iframe = video_container.find('iframe');
-                const player = new Vimeo.Player(iframe);
-                player.play();
-            }
-            return false;
-        }
-    });
+ 
 
 
     /**** internal page navigation scripts  */
@@ -464,7 +440,10 @@ $(document).ready(function () {
   } else {
     window.addEventListener('load', () => setTimeout(loadGoogleTranslateScript, 1500));
   }
+  loadGoogleTranslateScript();
 
 
 
 
+
+});

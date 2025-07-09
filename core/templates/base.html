@@ -39,35 +39,39 @@
         {% endif %}
 
         {# Global stylesheets #}
-        {# % load_content_holder "header-script" % #}
         {% include 'shared/header-script.html' %}
+        {% include 'shared/footer-script.html' %}
+        {% block extra_js %}{% endblock %}
 
-        {% block extra_css %}
-        {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
+        {% block extra_css %}{% endblock %}
+
         <style type="text/css">
         {{ settings.core.ExtraStyleSettings.extra_css|safe|default:"" }}
         </style>
     </head>
 
     <body class="{% block body_class %}{% endblock %} {{page.body_css_class|safe}}">
-        {% wagtailuserbar %}
+        {# % wagtailuserbar % #}
         {% block pre_loader %}{% endblock %}
         {% load_content_holder "header-design" %}
         <div id="body-content-wrap" class="body-content-wrap hide-scrollbar {% block main_div_class %}{% endblock %}" data-scrollbar>
             <div id="body-content" class="body-content">
                 <main id="main" class="main overflow-hidden">
+                    <turbo-frame id="content">
                     {% block content %}{% endblock %}
+                    </turbo-frame>
                 </main>
                 {% load_content_holder "footer-design" %}
             </div>
         </div>
+
         {% block model_block %}{% endblock %}
-        {# % load_content_holder "footer-script" % #}
-        {% include 'shared/footer-script.html' %}
+        
+        
         
 
-        {% block extra_js %}{% endblock %}
+        
+
         {% if settings.core.GlobalAnnouncement.status %}
         {% include "pages/announcement-modal.html" with value=settings.core.GlobalAnnouncement %}
         {% endif %}

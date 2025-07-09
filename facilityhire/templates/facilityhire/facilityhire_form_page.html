@@ -19,7 +19,7 @@
 
 
 
-<div class="section s-form__col-2 facility-form">
+<div class="section s-form__col-2 facility-form" data-turbo="false" >
     <div class="container">
          {% block thankyou_message %}
         {% endblock %}
@@ -42,6 +42,7 @@
             {% else %}
             <div class="col-lg-4">
                 {% if field.name != 'booking_count' and field|not_booking_field %}
+                
                     {% if field.field.widget|klass == 'ClearableFileInput' %}
                         <div class="s-form__form-item TextInput {{field.field.widget|klass}}">
                             {{ field.label_tag }}
@@ -138,7 +139,7 @@
                                 <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="date" 
-                                        name="booking_1_{{ field_config.name }}" 
+                                        name="fieldbooking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         required
@@ -150,7 +151,7 @@
                                     <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="email" 
-                                        name="booking_1_{{ field_config.name }}" 
+                                        name="fieldbooking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         required
@@ -161,7 +162,7 @@
                                     <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="number" 
-                                        name="booking_1_{{ field_config.name }}" 
+                                        name="fieldbooking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         required
@@ -172,7 +173,7 @@
                                     <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="text" 
-                                        name="booking_1_{{ field_config.name }}" 
+                                        name="fieldbooking_1_{{ field_config.name }}" 
                                         id="id_booking_1_{{ field_config.name }}"
                                         class="form-control input-style"
                                         {# % if field_config.required %}required{% endif % #}
@@ -213,14 +214,14 @@
             {% for field_config in page.get_booking_fields %}
             <div class="col-lg-4">
                 <div class="form-group">
-                    <label for="id_booking___INDEX___{{ field_config.name }}">{{ field_config.label }}</label>
+                    <label for="id_fieldbooking___INDEX___{{ field_config.name }}">{{ field_config.label }}</label>
                     
                     {% if field_config.field_type == 'date' %}
                             <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="date" 
-                                        name="booking___INDEX___{{ field_config.name }}" 
-                                        id="id_booking___INDEX___{{ field_config.name }}" 
+                                        name="fieldbooking___INDEX___{{ field_config.name }}" 
+                                        id="id_fieldbooking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
                                         required
                                         autocomplete="Off" placeholder="">
@@ -231,8 +232,8 @@
                         <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="email" 
-                                        name="booking___INDEX___{{ field_config.name }}" 
-                                        id="id_booking___INDEX___{{ field_config.name }}" 
+                                        name="fieldbooking___INDEX___{{ field_config.name }}" 
+                                        id="id_fieldbooking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
                                         required
                                         autocomplete="Off" placeholder="">
@@ -242,8 +243,8 @@
                         <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="number" 
-                                        name="booking___INDEX___{{ field_config.name }}" 
-                                        id="id_booking___INDEX___{{ field_config.name }}" 
+                                        name="fieldbooking___INDEX___{{ field_config.name }}" 
+                                        id="id_fieldbooking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
                                         required
                                         autocomplete="Off" placeholder="">
@@ -253,8 +254,8 @@
                         <div class="s-form__form-item block-anim-js TextInput " >
                                     <div class="input-wrap" data-required="True">                  
                                         <input type="text" 
-                                        name="booking___INDEX___{{ field_config.name }}" 
-                                        id="id_booking___INDEX___{{ field_config.name }}" 
+                                        name="fieldbooking___INDEX___{{ field_config.name }}" 
+                                        id="id_fieldbooking___INDEX___{{ field_config.name }}" 
                                         class="form-control input-style"
                                         required
                                         autocomplete="Off" placeholder="">
@@ -291,6 +292,7 @@
 {% endblock %}
 {% block extra_js %}
 <script>
+    
     var holding_values = {{booking_temp_data|safe}};
 
     function fillBookings() {
@@ -343,10 +345,11 @@
 
     processNext();
   }
-
-  $(document).ready(function () {
+document.addEventListener('turbo:load', function () {
+  ///$(document).ready(function () {
     fillBookings();
-  });
+  //});
+});
     </script>
-<script src="{% static 'js/facility-hire-form.js' %}"></script>
+
  {% endblock %}
