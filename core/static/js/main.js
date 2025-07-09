@@ -1871,7 +1871,13 @@ $(window).on('load', function () {
 
     }
     //-----------------------------
-    if($('.s-promo-banner__big-txt').length) {
+    
+    
+})
+/**--------------------------------------*/
+
+/**** */
+if($('.s-promo-banner__big-txt').length) {
         let parallax_tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.s-promo-banner__big-txt',
@@ -1903,11 +1909,6 @@ $(window).on('load', function () {
             force3D: true
         },0);
     }
-    
-})
-/**--------------------------------------*/
-
-/**** */
 //-----------------------------
     let acc_items = $('.acc-items-js');
     if (acc_items.length) {
